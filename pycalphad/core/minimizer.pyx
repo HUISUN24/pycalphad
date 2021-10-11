@@ -632,8 +632,10 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     # Update state variables in the `x` array
     for idx in range(len(state.compsets)):
         x = state.dof[idx]
+        print('ori_x',np.asarray(x))
         for statevar_idx in range(state.delta_statevars.shape[0]):
             x[statevar_idx] += state.delta_statevars[statevar_idx]
+        print('change_x',np.asarray(x))
         # We need real state variable bounds support
 
     # 3. Step in phase internal degrees of freedom
@@ -641,17 +643,25 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     for idx in range(len(state.compsets)):
         #print('num',idx)
         # TODO: Use better dof storage
+        print('compset',np.asarray(state.compsets))
         x = state.dof[idx]
         csst = state.cs_states[idx]
-        #print('site',np.asarray(x))#N,P,T, and site fraction
+        print('site',np.asarray(x))#N,P,T, and site fraction
         #print('which',np.asarray(csst))
         # Construct delta_y from Eq. 43 in Sundman 2015
         csst.delta_y[:] = 0
         #print('all=',np.asarray(csst.full_e_matrix),np.asarray(csst.phase_matrix))
         #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
-        norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
+        #print('phase_matrix',np.asarray(csst.phase_matrix))
+        charge_factor = False
+        print('len',len(x),len(csst.phase_matrix[:-1]))
+        if len(x) == (len(csst.phase_matrix[:-1])+1):
+            print('charge_factor')
+            charge_factor = True
+        if charge_factor:
+            norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
         ##print('norm_valence',norm_valence,np.sum(x[3:]))
-        Q=np.sum(np.multiply(x[3:],norm_valence))
+            Q=np.sum(np.multiply(x[3:],norm_valence))
         #print('result=',Q)
         # TODO: needs charge balance contribution
         for i in range(csst.delta_y.shape[0]):
@@ -663,9 +673,10 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
             ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
             #print('pre_results',np.asarray(csst.delta_y))
-            norm_valence_i=csst.full_e_matrix[i,-1]
+            if charge_factor:
+                norm_valence_i=csst.full_e_matrix[i,-1]
 #            ##print(norm_valence_i)
-            csst.delta_y[i] -= norm_valence_i*Q
+                csst.delta_y[i] -= norm_valence_i*Q
             #print('cur_results',np.asarray(csst.delta_y))
         #x=np.array([1.00000000e+00, 1.01325000e+05, 5.00000000e+02, 3.33333333e-01,
  #7.05834921e-12, 3.33333333e-01, 3.33333342e-01, 1.00000000e+00])
@@ -844,7 +855,7 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     cdef SystemState state = SystemState(spec, compsets)
 
     # convergence criteria
-    cdef double ALLOWED_DELTA_Y = 1e-5
+    cdef double ALLOWED_DELTA_Y = 1e-10
     cdef double ALLOWED_DELTA_PHASE_AMT = 1e-10
     cdef double ALLOWED_DELTA_STATEVAR = 1e-5  # changes defined as percent change
 
