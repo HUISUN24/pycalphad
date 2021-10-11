@@ -213,6 +213,7 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
                                .format(','.join([c.name for c in (set(comps) - set(dbf.species))])))
     calc_opts = calc_opts if calc_opts is not None else dict()
     solver = solver if solver is not None else Solver(verbose=verbose)
+    
     parameters = parameters if parameters is not None else dict()
     if isinstance(parameters, dict):
         parameters = OrderedDict(sorted(parameters.items(), key=str))
@@ -278,6 +279,9 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
     coord_dict['vertex'] = np.arange(len(pure_elements) + 1)  # +1 is to accommodate the degenerate degree of freedom at the invariant reactions
     coord_dict['component'] = pure_elements
     properties = starting_point(conds, state_variables, phase_records, grid)
+    print('properties',properties, phase_records, grid,
+                                         list(str_conds.keys()), state_variables,
+                                         verbose, solver)
     properties = _solve_eq_at_conditions(properties, phase_records, grid,
                                          list(str_conds.keys()), state_variables,
                                          verbose, solver=solver)

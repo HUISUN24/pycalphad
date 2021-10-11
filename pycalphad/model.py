@@ -396,7 +396,7 @@ class Model(object):
         for idx, sublattice in enumerate(self.constituents):
             constraints.append(sum(v.SiteFraction(self.phase_name, idx, spec) for spec in sublattice) - 1)
         # Charge balance for all phases that are charged
-        print('working')
+        #print('working')
         if self.model_hints.get('charged_phase', False):
             TARGET_CHARGE = 0
             total_charge = 0
@@ -404,15 +404,15 @@ class Model(object):
             for idx, (sublattice, site_ratio) in enumerate(zip(self.constituents, self.site_ratios)):
                 #a.append(v.SiteFraction(self.phase_name, idx, spec),spec.charge for spec in sublattice,site_ratio)
                 total_site_ratios+=site_ratio
-                for spec in sublattice:
-                    print('charge',v.SiteFraction(self.phase_name, idx, spec), spec.charge,site_ratio)
+                #for spec in sublattice:
+                    #print('charge',v.SiteFraction(self.phase_name, idx, spec), spec.charge,site_ratio)
                 total_charge += sum(v.SiteFraction(self.phase_name, idx, spec)*spec.charge*site_ratio for spec in sublattice)
-            print('total_charge',total_charge)
-            print('site_ratiose',total_site_ratios)
+            #print('total_charge',total_charge)
+            #print('site_ratiose',total_site_ratios)
             total_charge=total_charge-TARGET_CHARGE
             #total_charge *= 1.0/100.0  # rescale charge constraints
             constraints.append(total_charge - 0)
-            print(constraints)
+            #print(constraints)
         return constraints
 
 
