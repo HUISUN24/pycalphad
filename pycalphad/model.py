@@ -140,6 +140,7 @@ class Model(object):
                 else:
                     raise ValueError('Two-sublattice ionic liquid specified with more than two sublattices')
                 self.site_ratios[subl_idx] = Add(*[v.SiteFraction(self.phase_name, idx, spec) * abs(spec.charge) for spec in subl_comps])
+        #print('phase',phase)
         if phase.model_hints.get('ionic_liquid_2SL', False):
             # Special treatment of "neutral" vacancies in 2SL ionic liquid
             # These are treated as having variable valence
@@ -397,7 +398,9 @@ class Model(object):
             constraints.append(sum(v.SiteFraction(self.phase_name, idx, spec) for spec in sublattice) - 1)
         # Charge balance for all phases that are charged
         #print('working')
+        charge_factor = False
         if self.model_hints.get('charged_phase', False):
+            charge_factor = True
             TARGET_CHARGE = 0
             total_charge = 0
             total_site_ratios = 0

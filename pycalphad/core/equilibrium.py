@@ -239,8 +239,7 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
         print('Phases:', end=' ')
     output = output if output is not None else 'GM'
     output = output if isinstance(output, (list, tuple, set)) else [output]
-    output = set(output)
-    output |= {'GM'}
+    output = {'GM'}
     output = sorted(output)
     if phase_records is None:
         models = instantiate_models(dbf, comps, active_phases, model=model, parameters=parameters)
@@ -279,9 +278,16 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
     coord_dict['vertex'] = np.arange(len(pure_elements) + 1)  # +1 is to accommodate the degenerate degree of freedom at the invariant reactions
     coord_dict['component'] = pure_elements
     properties = starting_point(conds, state_variables, phase_records, grid)
-    print('properties',properties, phase_records, grid,
-                                         list(str_conds.keys()), state_variables,
-                                         verbose, solver)
+    #for i in phase_records['HALITE'].components:
+#        print('species',i)
+#        try:
+#            if i.charge:
+#                print('Yes')
+#        except:
+#            pass;
+    #print('properties',properties, phase_records['HALITE'].components, grid,
+     #                                    list(str_conds.keys()), state_variables,
+      #                                   verbose, solver)
     properties = _solve_eq_at_conditions(properties, phase_records, grid,
                                          list(str_conds.keys()), state_variables,
                                          verbose, solver=solver)

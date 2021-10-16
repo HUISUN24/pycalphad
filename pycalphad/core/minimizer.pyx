@@ -6,6 +6,7 @@ from pycalphad.core.constants import MIN_SITE_FRACTION
 cimport scipy.linalg.cython_lapack as cython_lapack
 from libc.stdlib cimport malloc, free
 
+
 @cython.boundscheck(False)
 cdef void lstsq(double *A, int M, int N, double* x, double rcond) nogil:
     cdef int i
@@ -496,7 +497,7 @@ cdef class SystemState:
 
             compute_phase_matrix(csst.phase_matrix, csst.hess, csst.cons_jac_tmp, compset, spec.num_statevars, self.chemical_potentials, x,
                                  csst.fixed_phase_dof_indices)
-            #print('phase_matrix=',np.asarray(csst.phase_matrix))
+            ##print('phase_matrix=',np.asarray(csst.phase_matrix))
             # Copy the phase matrix into the e matrix and invert the e matrix
             for i in range(csst.full_e_matrix.shape[0]):
                 for j in range(csst.full_e_matrix.shape[1]):
@@ -632,32 +633,39 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     # Update state variables in the `x` array
     for idx in range(len(state.compsets)):
         x = state.dof[idx]
-        print('ori_x',np.asarray(x))
+        #print('ori_x',np.asarray(x))
         for statevar_idx in range(state.delta_statevars.shape[0]):
             x[statevar_idx] += state.delta_statevars[statevar_idx]
-        print('change_x',np.asarray(x))
+        #print('change_x',np.asarray(x))
         # We need real state variable bounds support
 
     # 3. Step in phase internal degrees of freedom
+    #print('compset',state.compsets[0].phase_record.__dict__)
+    #print('site',str(state.compsets[0].phase_record))
+    #print('dbf',phases)
     #print('len=',len(state.compsets))
     for idx in range(len(state.compsets)):
         #print('num',idx)
         # TODO: Use better dof storage
-        print('compset',np.asarray(state.compsets))
+        print('compset',idx,state.compsets[idx])
+        charge_factor = False
+        for k in state.compsets[idx].phase_record.components:
+            #print('species',k)
+            try:
+                if k.charge:
+                    charge_factor = True
+            except:
+                pass;
+        #print('charge_factor',charge_factor)
         x = state.dof[idx]
         csst = state.cs_states[idx]
-        print('site',np.asarray(x))#N,P,T, and site fraction
+        #print('site',np.asarray(csst))#N,P,T, and site fraction
         #print('which',np.asarray(csst))
         # Construct delta_y from Eq. 43 in Sundman 2015
         csst.delta_y[:] = 0
         #print('all=',np.asarray(csst.full_e_matrix),np.asarray(csst.phase_matrix))
         #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
         #print('phase_matrix',np.asarray(csst.phase_matrix))
-        charge_factor = False
-        print('len',len(x),len(csst.phase_matrix[:-1]))
-        if len(x) == (len(csst.phase_matrix[:-1])+1):
-            print('charge_factor')
-            charge_factor = True
         if charge_factor:
             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
         ##print('norm_valence',norm_valence,np.sum(x[3:]))
@@ -902,23 +910,23 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and
             (state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR)
         )
-        if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
-            print('Yes1')
-        if state.largest_y_change[0]:
-            print('Yes2',state.largest_y_change[0])
-        if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
-            print('Yes3')
+        #if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
+            #print('Yes1')
+        #if state.largest_y_change[0]:
+            #print('Yes2',state.largest_y_change[0])
+        #if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
+            #print('Yes3')
 
         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
-            print('phases_changed1',phases_changed)
-            print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
+            #print('phases_changed1',phases_changed)
+            #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
-            print('converged')
+            #print('converged')
             if phases_changed:
-                print('phases_changed')
+                #print('phases_changed')
                 iterations_since_last_phase_change = 0
             else:
-                print('1')
+                #print('1')
                 converged = True
                 break
         iterations_since_last_phase_change += 1
@@ -938,5 +946,5 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     for cs_dof in state.dof[1:]:
         x = np.r_[x, cs_dof[num_statevars:]]
     x = np.r_[x, phase_amt]
-    #print('finalx',converged, x,np.asarray(x))
+    ##print('finalx',converged, x,np.asarray(x))
     return converged, x, np.array(state.chemical_potentials)
