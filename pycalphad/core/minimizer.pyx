@@ -910,20 +910,21 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and
             (state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR)
         )
-        #if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
-            #print('Yes1')
-        #if state.largest_y_change[0]:
-            #print('Yes2',state.largest_y_change[0])
-        #if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
-            #print('Yes3')
+        if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
+            print('Yes1')
+        print('va',state.largest_y_change[0])
+        if state.largest_y_change[0]< ALLOWED_DELTA_Y:
+            print('Yes2',state.largest_y_change[0])
+        if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
+            print('Yes3')
 
         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
             #print('phases_changed1',phases_changed)
             #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
-            #print('converged')
+            print('converged')
             if phases_changed:
-                #print('phases_changed')
+                print('phases_changed')
                 iterations_since_last_phase_change = 0
             else:
                 #print('1')
@@ -946,5 +947,5 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     for cs_dof in state.dof[1:]:
         x = np.r_[x, cs_dof[num_statevars:]]
     x = np.r_[x, phase_amt]
-    ##print('finalx',converged, x,np.asarray(x))
+    print('finalx',converged, x,np.asarray(x))
     return converged, x, np.array(state.chemical_potentials)

@@ -307,7 +307,7 @@ def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_v
         if not iter_solver.ignore_convergence:
             print('ignore_convergence_yes')
             converged = result.converged
-            print('con',converged)
+            print('con_not',converged)
         else:
             converged = True
         if converged:
