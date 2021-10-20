@@ -86,6 +86,7 @@ def lower_convex_hull(global_grid, state_variables, result_array):
     global_grid_Y_values = global_grid.Y
     global_grid_Phase_values = global_grid.Phase
     num_comps = len(result_array.coords['component'])
+    print('num_comps',num_comps)
 
     it = np.nditer(result_array_GM_values, flags=['multi_index'])
     comp_coord_shape = tuple(len(result_array.coords[cond]) for cond in comp_conds)

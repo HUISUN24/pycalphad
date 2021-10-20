@@ -77,7 +77,8 @@ def starting_point(conditions, state_variables, phase_records, grid):
     dependent_comp = set(nonvacant_elements) - specified_elements
     if len(dependent_comp) != 1:
         raise ValueError('Number of dependent components different from one')
-
+    print('compset_phases',conds_as_strings + ['vertex'],
+                          np.empty(grid_shape + (len(nonvacant_elements)+1,), dtype='U%s' % max_phase_name_len))
     ds_vars = {'NP':     (conds_as_strings + ['vertex'], np.empty(grid_shape + (len(nonvacant_elements)+1,))),
                'GM':     (conds_as_strings, np.empty(grid_shape)),
                'MU':     (conds_as_strings + ['component'], np.empty(grid_shape + (len(nonvacant_elements),))),
@@ -97,6 +98,7 @@ def starting_point(conditions, state_variables, phase_records, grid):
         ds_vars.update({str(f_sv): (conds_as_strings, np.empty(grid_shape))})
 
     result = LightDataset(ds_vars, coords=coord_dict, attrs={'engine': 'pycalphad %s' % pycalphad_version})
+    print('result.intial',result.Phase)
     if global_min_enabled:
         result = lower_convex_hull(grid, state_variables, result)
     else:

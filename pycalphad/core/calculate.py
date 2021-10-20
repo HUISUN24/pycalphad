@@ -361,7 +361,11 @@ def calculate(dbf, comps, phases, mode=None, output='GM', fake_points=False, bro
             points = _sample_phase_constitution(mod, sampler_dict[phase_name] or point_sample,
                                                 fixedgrid_dict[phase_name], pdens_dict[phase_name])
         points = np.atleast_2d(points)
-
+        update_points=[]
+        #for k in points:
+         #   if 3*k[0]+2*k[1]+3*k[2]-2*k[4]==0:
+          #      update_points.append(k)
+        #print('update_points',update_points)
         fp = fake_points and (phase_name == sorted(active_phases)[0])
         phase_ds = _compute_phase_values(nonvacant_components, str_statevar_dict,
                                          points, phase_record, output,

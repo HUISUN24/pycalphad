@@ -599,6 +599,7 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     cdef int soln_index_offset = spec.free_chemical_potential_indices.shape[0]  # Chemical potentials handled after solving
     cdef double[::1] new_y, x
     cdef CompsetState csst
+    cdef double ALLOWED_NP = 1e-5
 
     # 1. Step in phase amounts
     # Determine largest allowable step size such that the smallest phase amount is zero
@@ -647,7 +648,7 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     for idx in range(len(state.compsets)):
         #print('num',idx)
         # TODO: Use better dof storage
-        print('compset',idx,state.compsets[idx])
+        print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
         charge_factor = False
         for k in state.compsets[idx].phase_record.components:
             #print('species',k)
@@ -656,6 +657,11 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
                     charge_factor = True
             except:
                 pass;
+        print('idx',idx,np.asarray(state.free_stable_compset_indices))
+        #if idx not in state.free_stable_compset_indices:
+         #   print('not')
+        #if state.compsets[idx].NP < ALLOWED_NP:
+         #   charge_factor = False
         #print('charge_factor',charge_factor)
         x = state.dof[idx]
         csst = state.cs_states[idx]
@@ -866,6 +872,7 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     cdef double ALLOWED_DELTA_Y = 1e-10
     cdef double ALLOWED_DELTA_PHASE_AMT = 1e-10
     cdef double ALLOWED_DELTA_STATEVAR = 1e-5  # changes defined as percent change
+    
 
     if spec.prescribed_elemental_amounts.shape[0] > 0:
         allowed_mass_residual = min(1e-8, np.min(spec.prescribed_elemental_amounts)/10)
@@ -910,21 +917,21 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and
             (state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR)
         )
-        if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
-            print('Yes1')
-        print('va',state.largest_y_change[0])
-        if state.largest_y_change[0]< ALLOWED_DELTA_Y:
-            print('Yes2',state.largest_y_change[0])
-        if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
-            print('Yes3')
+        #if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
+#            print('Yes1')
+#        print('va',state.largest_y_change[0])
+#        if state.largest_y_change[0]< ALLOWED_DELTA_Y:
+#            print('Yes2',state.largest_y_change[0])
+#        if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
+#            print('Yes3')
 
         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
             #print('phases_changed1',phases_changed)
             #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
-            print('converged')
+            #print('converged')
             if phases_changed:
-                print('phases_changed')
+                #print('phases_changed')
                 iterations_since_last_phase_change = 0
             else:
                 #print('1')
@@ -947,5 +954,5 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     for cs_dof in state.dof[1:]:
         x = np.r_[x, cs_dof[num_statevars:]]
     x = np.r_[x, phase_amt]
-    print('finalx',converged, x,np.asarray(x))
+    #print('finalx',converged, x,np.asarray(x))
     return converged, x, np.array(state.chemical_potentials)
