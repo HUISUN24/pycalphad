@@ -42,6 +42,7 @@ def _sample_phase_constitution(model, sampler, fixed_grid, pdens):
     """
     # Eliminate pure vacancy endmembers from the calculation
     import itertools
+    ALLOWED_CHARGE=1E-10
     vacancy_indices = []
     for sublattice in model.constituents:
         subl_va_indices = [idx for idx, spec in enumerate(sorted(set(sublattice))) if spec.number_of_atoms == 0]
@@ -51,25 +52,26 @@ def _sample_phase_constitution(model, sampler, fixed_grid, pdens):
     sublattice_dof = [len(subl) for subl in model.constituents]
     # Add all endmembers to guarantee their presence
     points = endmember_matrix(sublattice_dof, vacancy_indices=vacancy_indices)
+    site_ratios = model.site_ratios
     species_charge=[]
-    for sublattice in model.constituents:
-        for species in sorted(sublattice):
-            species_charge.append(species.charge)
+    for sublattice in range(len(model.constituents)):
+        for species in sorted(model.constituents[sublattice]):
+            species_charge.append(species.charge*site_ratios[sublattice])
     species_charge=np.array(species_charge)
     #species_charge=species_charge.reshape(species_charge.shape[0],1)
-    
+
     Q=np.sum(points*species_charge,axis=1)
     Q_p=[]
     Q_0=[]
     Q_n=[]
     for q in range(len(Q)):
-        if Q[q]>0:
+        if Q[q]>ALLOWED_CHARGE:
             Q_p.append(q)
-        elif Q[q]==0:
+        elif np.abs(Q[q])<ALLOWED_CHARGE:
             Q_0.append(points[q,:])
         else:
             Q_n.append(q)
-    print('Q',Q_n,Q_p,Q_0)  
+    #print('Q',Q_n,Q_p,Q_0)  
     all_comb=itertools.product(Q_p,Q_n)
     Q_value=np.abs(Q)
     update_points=np.asarray(Q_0)
@@ -389,17 +391,11 @@ def calculate(dbf, comps, phases, mode=None, output='GM', fake_points=False, bro
         phase_record = phase_records[phase_name]
         points = points_dict[phase_name]
         if points is None:
-            print('sample',point_sample)
             points = _sample_phase_constitution(mod, sampler_dict[phase_name] or point_sample,
                                                 fixedgrid_dict[phase_name], pdens_dict[phase_name])
         points = np.atleast_2d(points)
         update_points=[]
-        #for k in points:
-         #   if 3*k[0]+2*k[1]+3*k[2]-2*k[4]==0:
-          #      update_points.append(k)
-        #print('update_points',update_points)
         fp = fake_points and (phase_name == sorted(active_phases)[0])
-        print('here')
         phase_ds = _compute_phase_values(nonvacant_components, str_statevar_dict,
                                          points, phase_record, output,
                                          maximum_internal_dof, broadcast=broadcast, parameters=parameters,

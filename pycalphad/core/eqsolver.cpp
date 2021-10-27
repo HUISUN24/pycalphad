@@ -1277,7 +1277,7 @@ typedef void (*__pyx_t_9pycalphad_4core_9phase_rec_math_function_t)(double *, do
 struct __pyx_opt_args_9pycalphad_4core_8eqsolver_update_composition_sets;
 struct __pyx_opt_args_9pycalphad_4core_8eqsolver_solve_and_update;
 
-/* "pycalphad/core/eqsolver.pyx":149
+/* "pycalphad/core/eqsolver.pyx":133
  *     return phases_added
  * 
  * cpdef update_composition_sets(composition_sets, solver_result, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -1289,7 +1289,7 @@ struct __pyx_opt_args_9pycalphad_4core_8eqsolver_update_composition_sets {
   PyObject *remove_metastable;
 };
 
-/* "pycalphad/core/eqsolver.pyx":185
+/* "pycalphad/core/eqsolver.pyx":169
  * 
  * 
  * cpdef solve_and_update(composition_sets, conditions, solver, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -2701,7 +2701,6 @@ static const char __pyx_k_pyx_state[] = "__pyx_state";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_IndexError[] = "IndexError";
 static const char __pyx_k_ValueError[] = "ValueError";
-static const char __pyx_k_components[] = "components";
 static const char __pyx_k_conditions[] = "conditions";
 static const char __pyx_k_conds_keys[] = "conds_keys";
 static const char __pyx_k_iterations[] = "iterations";
@@ -2766,7 +2765,6 @@ static const char __pyx_k_old_phase_length[] = "old_phase_length";
 static const char __pyx_k_removed_compsets[] = "removed_compsets";
 static const char __pyx_k_Adding_metastable[] = "Adding metastable ";
 static const char __pyx_k_add_nearly_stable[] = "add_nearly_stable";
-static const char __pyx_k_adding_phase_name[] = "adding phase name";
 static const char __pyx_k_prop_Phase_values[] = "prop_Phase_values";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_remove_metastable[] = "remove_metastable";
@@ -2858,7 +2856,6 @@ static PyObject *__pyx_n_s__23;
 static PyObject *__pyx_kp_u__3;
 static PyObject *__pyx_n_s_a;
 static PyObject *__pyx_n_s_add_nearly_stable;
-static PyObject *__pyx_kp_u_adding_phase_name;
 static PyObject *__pyx_n_s_allocate_buffer;
 static PyObject *__pyx_n_s_append;
 static PyObject *__pyx_n_s_array;
@@ -2875,7 +2872,6 @@ static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_collections;
 static PyObject *__pyx_n_s_comp_idx;
-static PyObject *__pyx_n_s_components;
 static PyObject *__pyx_n_s_composition_sets;
 static PyObject *__pyx_n_s_compset;
 static PyObject *__pyx_n_s_conditions;
@@ -3168,8 +3164,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_add_new_phases(PyObject *__pyx_v_c
   int __pyx_v_distinct;
   Py_ssize_t __pyx_v_i;
   PyObject *__pyx_v_compset_name = NULL;
-  PyObject *__pyx_v_compset_count = NULL;
-  CYTHON_UNUSED PyObject *__pyx_v_k = NULL;
+  CYTHON_UNUSED PyObject *__pyx_v_compset_count = NULL;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_chemical_potentials;
   __Pyx_Buffer __pyx_pybuffer_chemical_potentials;
   int __pyx_r;
@@ -3768,7 +3763,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  *                 if verbose:
  *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(compset.X)) + ' is not distinct from previously removed phase')             # <<<<<<<<<<<<<<
  *                 continue
- *             #print('largest_df1',driving_forces[i])
+ *             largest_df = driving_forces[i]
  */
           __pyx_t_2 = __Pyx_PyUnicode_ConcatSafe(__pyx_kp_u_Candidate_composition_set, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 52, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
@@ -3827,8 +3822,8 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  *                 if verbose:
  *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(compset.X)) + ' is not distinct from previously removed phase')
  *                 continue             # <<<<<<<<<<<<<<
- *             #print('largest_df1',driving_forces[i])
  *             largest_df = driving_forces[i]
+ *             df_idx = i
  */
         goto __pyx_L3_continue;
 
@@ -3841,12 +3836,12 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":55
+      /* "pycalphad/core/eqsolver.pyx":54
+ *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(compset.X)) + ' is not distinct from previously removed phase')
  *                 continue
- *             #print('largest_df1',driving_forces[i])
  *             largest_df = driving_forces[i]             # <<<<<<<<<<<<<<
  *             df_idx = i
- *     #print('largest_df',largest_df,minimum_df)
+ *     if largest_df > minimum_df:
  */
       __pyx_t_22 = __pyx_v_i;
       __pyx_t_8 = -1;
@@ -3856,16 +3851,16 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       } else if (unlikely(__pyx_t_22 >= __pyx_v_driving_forces.shape[0])) __pyx_t_8 = 0;
       if (unlikely(__pyx_t_8 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_8);
-        __PYX_ERR(0, 55, __pyx_L1_error)
+        __PYX_ERR(0, 54, __pyx_L1_error)
       }
       __pyx_v_largest_df = (*((double *) ( /* dim=0 */ (__pyx_v_driving_forces.data + __pyx_t_22 * __pyx_v_driving_forces.strides[0]) )));
 
-      /* "pycalphad/core/eqsolver.pyx":56
- *             #print('largest_df1',driving_forces[i])
+      /* "pycalphad/core/eqsolver.pyx":55
+ *                 continue
  *             largest_df = driving_forces[i]
  *             df_idx = i             # <<<<<<<<<<<<<<
- *     #print('largest_df',largest_df,minimum_df)
  *     if largest_df > minimum_df:
+ *         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
  */
       __pyx_v_df_idx = __pyx_v_i;
 
@@ -3880,19 +3875,19 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
     __pyx_L3_continue:;
   }
 
-  /* "pycalphad/core/eqsolver.pyx":58
+  /* "pycalphad/core/eqsolver.pyx":56
+ *             largest_df = driving_forces[i]
  *             df_idx = i
- *     #print('largest_df',largest_df,minimum_df)
  *     if largest_df > minimum_df:             # <<<<<<<<<<<<<<
  *         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
- *         #print('largest_df',largest_df,minimum_df)
+ *         df_comp = current_grid_X[df_idx]
  */
   __pyx_t_18 = ((__pyx_v_largest_df > __pyx_v_minimum_df) != 0);
   if (__pyx_t_18) {
 
-    /* "pycalphad/core/eqsolver.pyx":61
+    /* "pycalphad/core/eqsolver.pyx":58
+ *     if largest_df > minimum_df:
  *         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
- *         #print('largest_df',largest_df,minimum_df)
  *         df_comp = current_grid_X[df_idx]             # <<<<<<<<<<<<<<
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]
  *         if df_phase_name == '_FAKE_':
@@ -3909,7 +3904,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 61, __pyx_L1_error)
+            __PYX_ERR(0, 58, __pyx_L1_error)
         }
         __pyx_t_15.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -3923,14 +3918,14 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
     __pyx_t_15.memview = NULL;
     __pyx_t_15.data = NULL;
 
-    /* "pycalphad/core/eqsolver.pyx":62
- *         #print('largest_df',largest_df,minimum_df)
+    /* "pycalphad/core/eqsolver.pyx":59
+ *         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
  *         df_comp = current_grid_X[df_idx]
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]             # <<<<<<<<<<<<<<
  *         if df_phase_name == '_FAKE_':
  *             if verbose:
  */
-    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_current_grid_Phase), __pyx_v_df_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(((PyObject *)__pyx_v_current_grid_Phase), __pyx_v_df_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_9 = __pyx_t_2;
     __Pyx_INCREF(__pyx_t_9);
@@ -3938,18 +3933,18 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
     __Pyx_XDECREF_SET(__pyx_v_df_phase_name, ((PyObject*)__pyx_t_9));
     __pyx_t_9 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":63
+    /* "pycalphad/core/eqsolver.pyx":60
  *         df_comp = current_grid_X[df_idx]
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]
  *         if df_phase_name == '_FAKE_':             # <<<<<<<<<<<<<<
  *             if verbose:
  *                 print('Chemical potentials are poorly conditioned')
  */
-    __pyx_t_18 = (__Pyx_PyUnicode_Equals(__pyx_v_df_phase_name, __pyx_n_u_FAKE, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
+    __pyx_t_18 = (__Pyx_PyUnicode_Equals(__pyx_v_df_phase_name, __pyx_n_u_FAKE, Py_EQ)); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
     __pyx_t_14 = (__pyx_t_18 != 0);
     if (__pyx_t_14) {
 
-      /* "pycalphad/core/eqsolver.pyx":64
+      /* "pycalphad/core/eqsolver.pyx":61
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]
  *         if df_phase_name == '_FAKE_':
  *             if verbose:             # <<<<<<<<<<<<<<
@@ -3959,18 +3954,18 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       __pyx_t_14 = (__pyx_v_verbose != 0);
       if (__pyx_t_14) {
 
-        /* "pycalphad/core/eqsolver.pyx":65
+        /* "pycalphad/core/eqsolver.pyx":62
  *         if df_phase_name == '_FAKE_':
  *             if verbose:
  *                 print('Chemical potentials are poorly conditioned')             # <<<<<<<<<<<<<<
  *             return False
  *         compset_name=[]
  */
-        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 62, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":64
+        /* "pycalphad/core/eqsolver.pyx":61
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]
  *         if df_phase_name == '_FAKE_':
  *             if verbose:             # <<<<<<<<<<<<<<
@@ -3979,7 +3974,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":66
+      /* "pycalphad/core/eqsolver.pyx":63
  *             if verbose:
  *                 print('Chemical potentials are poorly conditioned')
  *             return False             # <<<<<<<<<<<<<<
@@ -3989,7 +3984,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       __pyx_r = 0;
       goto __pyx_L0;
 
-      /* "pycalphad/core/eqsolver.pyx":63
+      /* "pycalphad/core/eqsolver.pyx":60
  *         df_comp = current_grid_X[df_idx]
  *         df_phase_name = <unicode>current_grid_Phase[df_idx]
  *         if df_phase_name == '_FAKE_':             # <<<<<<<<<<<<<<
@@ -3998,19 +3993,19 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":67
+    /* "pycalphad/core/eqsolver.pyx":64
  *                 print('Chemical potentials are poorly conditioned')
  *             return False
  *         compset_name=[]             # <<<<<<<<<<<<<<
  *         for compset in composition_sets:
  *             compset_name.append(compset.phase_record.phase_name)
  */
-    __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 67, __pyx_L1_error)
+    __pyx_t_9 = PyList_New(0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 64, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_v_compset_name = ((PyObject*)__pyx_t_9);
     __pyx_t_9 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":68
+    /* "pycalphad/core/eqsolver.pyx":65
  *             return False
  *         compset_name=[]
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -4021,26 +4016,26 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       __pyx_t_9 = __pyx_v_composition_sets; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
       __pyx_t_17 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 68, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_17 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 68, __pyx_L1_error)
+      __pyx_t_17 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 65, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_17)) {
         if (likely(PyList_CheckExact(__pyx_t_9))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 68, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 68, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -4050,17 +4045,17 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 68, __pyx_L1_error)
+            else __PYX_ERR(0, 65, __pyx_L1_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_2);
       }
-      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 68, __pyx_L1_error)
+      if (!(likely(((__pyx_t_2) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_2, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_DECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":69
+      /* "pycalphad/core/eqsolver.pyx":66
  *         compset_name=[]
  *         for compset in composition_sets:
  *             compset_name.append(compset.phase_record.phase_name)             # <<<<<<<<<<<<<<
@@ -4069,21 +4064,21 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       __pyx_t_2 = __pyx_v_compset->phase_record->phase_name;
       __Pyx_INCREF(__pyx_t_2);
-      __pyx_t_23 = __Pyx_PyList_Append(__pyx_v_compset_name, __pyx_t_2); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 69, __pyx_L1_error)
+      __pyx_t_23 = __Pyx_PyList_Append(__pyx_v_compset_name, __pyx_t_2); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 66, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":70
+      /* "pycalphad/core/eqsolver.pyx":67
  *         for compset in composition_sets:
  *             compset_name.append(compset.phase_record.phase_name)
  *             if compset.phase_record.phase_name != df_phase_name:             # <<<<<<<<<<<<<<
  *                 continue
  *             distinct = False
  */
-      __pyx_t_14 = (__Pyx_PyUnicode_Equals(__pyx_v_compset->phase_record->phase_name, __pyx_v_df_phase_name, Py_NE)); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 70, __pyx_L1_error)
+      __pyx_t_14 = (__Pyx_PyUnicode_Equals(__pyx_v_compset->phase_record->phase_name, __pyx_v_df_phase_name, Py_NE)); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 67, __pyx_L1_error)
       __pyx_t_18 = (__pyx_t_14 != 0);
       if (__pyx_t_18) {
 
-        /* "pycalphad/core/eqsolver.pyx":71
+        /* "pycalphad/core/eqsolver.pyx":68
  *             compset_name.append(compset.phase_record.phase_name)
  *             if compset.phase_record.phase_name != df_phase_name:
  *                 continue             # <<<<<<<<<<<<<<
@@ -4092,7 +4087,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
         goto __pyx_L18_continue;
 
-        /* "pycalphad/core/eqsolver.pyx":70
+        /* "pycalphad/core/eqsolver.pyx":67
  *         for compset in composition_sets:
  *             compset_name.append(compset.phase_record.phase_name)
  *             if compset.phase_record.phase_name != df_phase_name:             # <<<<<<<<<<<<<<
@@ -4101,7 +4096,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":72
+      /* "pycalphad/core/eqsolver.pyx":69
  *             if compset.phase_record.phase_name != df_phase_name:
  *                 continue
  *             distinct = False             # <<<<<<<<<<<<<<
@@ -4110,7 +4105,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       __pyx_v_distinct = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":73
+      /* "pycalphad/core/eqsolver.pyx":70
  *                 continue
  *             distinct = False
  *             for comp_idx in range(df_comp.shape[0]):             # <<<<<<<<<<<<<<
@@ -4122,7 +4117,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_12; __pyx_t_8+=1) {
         __pyx_v_comp_idx = __pyx_t_8;
 
-        /* "pycalphad/core/eqsolver.pyx":74
+        /* "pycalphad/core/eqsolver.pyx":71
  *             distinct = False
  *             for comp_idx in range(df_comp.shape[0]):
  *                 if abs(df_comp[comp_idx] - compset.X[comp_idx]) > COMP_DIFFERENCE_TOL:             # <<<<<<<<<<<<<<
@@ -4137,9 +4132,9 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         } else if (unlikely(__pyx_t_22 >= __pyx_v_df_comp.shape[0])) __pyx_t_19 = 0;
         if (unlikely(__pyx_t_19 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_19);
-          __PYX_ERR(0, 74, __pyx_L1_error)
+          __PYX_ERR(0, 71, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_compset->X.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 74, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_compset->X.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 71, __pyx_L1_error)}
         __pyx_t_13 = __pyx_v_comp_idx;
         __pyx_t_19 = -1;
         if (__pyx_t_13 < 0) {
@@ -4148,20 +4143,20 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         } else if (unlikely(__pyx_t_13 >= __pyx_v_compset->X.shape[0])) __pyx_t_19 = 0;
         if (unlikely(__pyx_t_19 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_19);
-          __PYX_ERR(0, 74, __pyx_L1_error)
+          __PYX_ERR(0, 71, __pyx_L1_error)
         }
-        __pyx_t_2 = PyFloat_FromDouble(fabs(((*((double *) ( /* dim=0 */ (__pyx_v_df_comp.data + __pyx_t_22 * __pyx_v_df_comp.strides[0]) ))) - (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_compset->X.data) + __pyx_t_13)) )))))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __pyx_t_2 = PyFloat_FromDouble(fabs(((*((double *) ( /* dim=0 */ (__pyx_v_df_comp.data + __pyx_t_22 * __pyx_v_df_comp.strides[0]) ))) - (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_compset->X.data) + __pyx_t_13)) )))))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_COMP_DIFFERENCE_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_COMP_DIFFERENCE_TOL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __pyx_t_1 = PyObject_RichCompare(__pyx_t_2, __pyx_t_4, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 74, __pyx_L1_error)
+        __pyx_t_18 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_18 < 0)) __PYX_ERR(0, 71, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         if (__pyx_t_18) {
 
-          /* "pycalphad/core/eqsolver.pyx":75
+          /* "pycalphad/core/eqsolver.pyx":72
  *             for comp_idx in range(df_comp.shape[0]):
  *                 if abs(df_comp[comp_idx] - compset.X[comp_idx]) > COMP_DIFFERENCE_TOL:
  *                     distinct = True             # <<<<<<<<<<<<<<
@@ -4170,7 +4165,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
           __pyx_v_distinct = 1;
 
-          /* "pycalphad/core/eqsolver.pyx":74
+          /* "pycalphad/core/eqsolver.pyx":71
  *             distinct = False
  *             for comp_idx in range(df_comp.shape[0]):
  *                 if abs(df_comp[comp_idx] - compset.X[comp_idx]) > COMP_DIFFERENCE_TOL:             # <<<<<<<<<<<<<<
@@ -4180,7 +4175,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         }
       }
 
-      /* "pycalphad/core/eqsolver.pyx":76
+      /* "pycalphad/core/eqsolver.pyx":73
  *                 if abs(df_comp[comp_idx] - compset.X[comp_idx]) > COMP_DIFFERENCE_TOL:
  *                     distinct = True
  *             if not distinct:             # <<<<<<<<<<<<<<
@@ -4190,7 +4185,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
       __pyx_t_18 = ((!(__pyx_v_distinct != 0)) != 0);
       if (__pyx_t_18) {
 
-        /* "pycalphad/core/eqsolver.pyx":77
+        /* "pycalphad/core/eqsolver.pyx":74
  *                     distinct = True
  *             if not distinct:
  *                 if verbose:             # <<<<<<<<<<<<<<
@@ -4200,24 +4195,24 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         __pyx_t_18 = (__pyx_v_verbose != 0);
         if (__pyx_t_18) {
 
-          /* "pycalphad/core/eqsolver.pyx":78
+          /* "pycalphad/core/eqsolver.pyx":75
  *             if not distinct:
  *                 if verbose:
  *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(df_comp)) + ' is not distinct')             # <<<<<<<<<<<<<<
  *                 return False
  *         compset = CompositionSet(phase_records[df_phase_name])
  */
-          __pyx_t_1 = __Pyx_PyUnicode_ConcatSafe(__pyx_kp_u_Candidate_composition_set, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyUnicode_ConcatSafe(__pyx_kp_u_Candidate_composition_set, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u_at); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u_at); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
-          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_df_comp, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_df_comp, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           __pyx_t_24 = NULL;
           if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
@@ -4232,25 +4227,25 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
           __pyx_t_1 = (__pyx_t_24) ? __Pyx_PyObject_Call2Args(__pyx_t_7, __pyx_t_24, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_t_2);
           __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
           __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+          if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_4, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyUnicode_Concat(__pyx_t_4, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u_is_not_distinct); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_7 = __Pyx_PyUnicode_Concat(__pyx_t_1, __pyx_kp_u_is_not_distinct); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_7);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-          /* "pycalphad/core/eqsolver.pyx":77
+          /* "pycalphad/core/eqsolver.pyx":74
  *                     distinct = True
  *             if not distinct:
  *                 if verbose:             # <<<<<<<<<<<<<<
@@ -4259,7 +4254,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
         }
 
-        /* "pycalphad/core/eqsolver.pyx":79
+        /* "pycalphad/core/eqsolver.pyx":76
  *                 if verbose:
  *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(df_comp)) + ' is not distinct')
  *                 return False             # <<<<<<<<<<<<<<
@@ -4270,7 +4265,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         goto __pyx_L0;
 
-        /* "pycalphad/core/eqsolver.pyx":76
+        /* "pycalphad/core/eqsolver.pyx":73
  *                 if abs(df_comp[comp_idx] - compset.X[comp_idx]) > COMP_DIFFERENCE_TOL:
  *                     distinct = True
  *             if not distinct:             # <<<<<<<<<<<<<<
@@ -4279,7 +4274,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":68
+      /* "pycalphad/core/eqsolver.pyx":65
  *             return False
  *         compset_name=[]
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -4290,22 +4285,22 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
     }
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":80
+    /* "pycalphad/core/eqsolver.pyx":77
  *                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(df_comp)) + ' is not distinct')
  *                 return False
  *         compset = CompositionSet(phase_records[df_phase_name])             # <<<<<<<<<<<<<<
  *         compset.update(current_grid_Y[df_idx, :compset.phase_record.phase_dof], 1e-6,
  *                        state_variables)
  */
-    __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_phase_records, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_phase_records, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), __pyx_t_9); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":81
+    /* "pycalphad/core/eqsolver.pyx":78
  *                 return False
  *         compset = CompositionSet(phase_records[df_phase_name])
  *         compset.update(current_grid_Y[df_idx, :compset.phase_record.phase_dof], 1e-6,             # <<<<<<<<<<<<<<
@@ -4324,7 +4319,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_df_comp, 1);
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 81, __pyx_L1_error)
+            __PYX_ERR(0, 78, __pyx_L1_error)
         }
         __pyx_t_15.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -4344,204 +4339,94 @@ __pyx_t_8 = -1;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 81, __pyx_L1_error)
+    __PYX_ERR(0, 78, __pyx_L1_error)
 }
 
 ((struct __pyx_vtabstruct_9pycalphad_4core_15composition_set_CompositionSet *)__pyx_v_compset->__pyx_vtab)->update(__pyx_v_compset, __pyx_t_15, 1e-6, __pyx_v_state_variables, 0);
 
-    /* "pycalphad/core/eqsolver.pyx":82
+    /* "pycalphad/core/eqsolver.pyx":79
  *         compset = CompositionSet(phase_records[df_phase_name])
  *         compset.update(current_grid_Y[df_idx, :compset.phase_record.phase_dof], 1e-6,
  *                        state_variables)             # <<<<<<<<<<<<<<
  *         compset_count=compset_name.count(df_phase_name)
- *         print('adding phase name',df_phase_name,compset_name,compset_count)
+ *         composition_sets.append(compset)
  */
     __PYX_XDEC_MEMVIEW(&__pyx_t_15, 1);
     __pyx_t_15.memview = NULL;
     __pyx_t_15.data = NULL;
 
-    /* "pycalphad/core/eqsolver.pyx":83
+    /* "pycalphad/core/eqsolver.pyx":80
  *         compset.update(current_grid_Y[df_idx, :compset.phase_record.phase_dof], 1e-6,
  *                        state_variables)
  *         compset_count=compset_name.count(df_phase_name)             # <<<<<<<<<<<<<<
- *         print('adding phase name',df_phase_name,compset_name,compset_count)
- *         #if compset_count==0:
+ *         composition_sets.append(compset)
+ * 
  */
-    __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_count, __pyx_v_compset_name, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_CallUnboundCMethod1(&__pyx_umethod_PyList_Type_count, __pyx_v_compset_name, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 80, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_v_compset_count = __pyx_t_1;
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":84
+    /* "pycalphad/core/eqsolver.pyx":81
  *                        state_variables)
  *         compset_count=compset_name.count(df_phase_name)
- *         print('adding phase name',df_phase_name,compset_name,compset_count)             # <<<<<<<<<<<<<<
- *         #if compset_count==0:
- *          #   print('changed')
- */
-    __pyx_t_1 = PyTuple_New(4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_1);
-    __Pyx_INCREF(__pyx_kp_u_adding_phase_name);
-    __Pyx_GIVEREF(__pyx_kp_u_adding_phase_name);
-    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_kp_u_adding_phase_name);
-    __Pyx_INCREF(__pyx_v_df_phase_name);
-    __Pyx_GIVEREF(__pyx_v_df_phase_name);
-    PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_v_df_phase_name);
-    __Pyx_INCREF(__pyx_v_compset_name);
-    __Pyx_GIVEREF(__pyx_v_compset_name);
-    PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_compset_name);
-    __Pyx_INCREF(__pyx_v_compset_count);
-    __Pyx_GIVEREF(__pyx_v_compset_count);
-    PyTuple_SET_ITEM(__pyx_t_1, 3, __pyx_v_compset_count);
-    __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_1, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_9);
-    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-
-    /* "pycalphad/core/eqsolver.pyx":89
- *           #  composition_sets.append(compset);
- *         #else:
- *         if compset_name:             # <<<<<<<<<<<<<<
- *             for k in phase_records[df_phase_name].components:
- *                 #print('species',k)
- */
-    __pyx_t_18 = (PyList_GET_SIZE(__pyx_v_compset_name) != 0);
-    if (__pyx_t_18) {
-
-      /* "pycalphad/core/eqsolver.pyx":90
- *         #else:
- *         if compset_name:
- *             for k in phase_records[df_phase_name].components:             # <<<<<<<<<<<<<<
- *                 #print('species',k)
- *                 #try:
- */
-      __pyx_t_9 = __Pyx_PyObject_Dict_GetItem(__pyx_v_phase_records, __pyx_v_df_phase_name); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 90, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_components); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (likely(PyList_CheckExact(__pyx_t_1)) || PyTuple_CheckExact(__pyx_t_1)) {
-        __pyx_t_9 = __pyx_t_1; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
-        __pyx_t_17 = NULL;
-      } else {
-        __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 90, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_17 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 90, __pyx_L1_error)
-      }
-      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      for (;;) {
-        if (likely(!__pyx_t_17)) {
-          if (likely(PyList_CheckExact(__pyx_t_9))) {
-            if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
-            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
-            #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            #endif
-          } else {
-            if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
-            #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 90, __pyx_L1_error)
-            #else
-            __pyx_t_1 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_1);
-            #endif
-          }
-        } else {
-          __pyx_t_1 = __pyx_t_17(__pyx_t_9);
-          if (unlikely(!__pyx_t_1)) {
-            PyObject* exc_type = PyErr_Occurred();
-            if (exc_type) {
-              if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 90, __pyx_L1_error)
-            }
-            break;
-          }
-          __Pyx_GOTREF(__pyx_t_1);
-        }
-        __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_1);
-        __pyx_t_1 = 0;
-
-        /* "pycalphad/core/eqsolver.pyx":96
- *                   #      pass;
- *                 #except:
- *                 composition_sets.append(compset);             # <<<<<<<<<<<<<<
- *         #composition_sets.append(compset)
+ *         composition_sets.append(compset)             # <<<<<<<<<<<<<<
  * 
+ *         if verbose:
  */
-        __pyx_t_23 = __Pyx_PyObject_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_23 = __Pyx_PyObject_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_23 == ((int)-1))) __PYX_ERR(0, 81, __pyx_L1_error)
 
-        /* "pycalphad/core/eqsolver.pyx":99
- *         #composition_sets.append(compset)
+    /* "pycalphad/core/eqsolver.pyx":83
+ *         composition_sets.append(compset)
  * 
- *                 if verbose:             # <<<<<<<<<<<<<<
- *                     print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
+ *         if verbose:             # <<<<<<<<<<<<<<
+ *             print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
  *         return True
  */
-        __pyx_t_18 = (__pyx_v_verbose != 0);
-        if (__pyx_t_18) {
+    __pyx_t_18 = (__pyx_v_verbose != 0);
+    if (__pyx_t_18) {
 
-          /* "pycalphad/core/eqsolver.pyx":100
+      /* "pycalphad/core/eqsolver.pyx":84
  * 
- *                 if verbose:
- *                     print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))             # <<<<<<<<<<<<<<
+ *         if verbose:
+ *             print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))             # <<<<<<<<<<<<<<
  *         return True
  *     return False
  */
-          __pyx_t_1 = PyObject_Repr(((PyObject *)__pyx_v_compset)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_7 = PyNumber_Add(__pyx_kp_u_Adding, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = PyNumber_Add(__pyx_t_7, __pyx_kp_u_Driving_force); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_1);
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = PyFloat_FromDouble(__pyx_v_largest_df); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __pyx_t_7 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_7);
-          __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_7); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 100, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-          __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-
-          /* "pycalphad/core/eqsolver.pyx":99
- *         #composition_sets.append(compset)
- * 
- *                 if verbose:             # <<<<<<<<<<<<<<
- *                     print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
- *         return True
- */
-        }
-
-        /* "pycalphad/core/eqsolver.pyx":90
- *         #else:
- *         if compset_name:
- *             for k in phase_records[df_phase_name].components:             # <<<<<<<<<<<<<<
- *                 #print('species',k)
- *                 #try:
- */
-      }
+      __pyx_t_1 = PyObject_Repr(((PyObject *)__pyx_v_compset)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
+      __pyx_t_9 = PyNumber_Add(__pyx_kp_u_Adding, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __pyx_t_1 = PyNumber_Add(__pyx_t_9, __pyx_kp_u_Driving_force); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_9 = PyFloat_FromDouble(__pyx_v_largest_df); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __pyx_t_9 = PyNumber_Add(__pyx_t_1, __pyx_t_7); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_9);
+      __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+      __pyx_t_7 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_9); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 84, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_7);
+      __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":89
- *           #  composition_sets.append(compset);
- *         #else:
- *         if compset_name:             # <<<<<<<<<<<<<<
- *             for k in phase_records[df_phase_name].components:
- *                 #print('species',k)
+      /* "pycalphad/core/eqsolver.pyx":83
+ *         composition_sets.append(compset)
+ * 
+ *         if verbose:             # <<<<<<<<<<<<<<
+ *             print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
+ *         return True
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":101
- *                 if verbose:
- *                     print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
+    /* "pycalphad/core/eqsolver.pyx":85
+ *         if verbose:
+ *             print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
  *         return True             # <<<<<<<<<<<<<<
  *     return False
  * 
@@ -4549,17 +4434,17 @@ __pyx_t_8 = -1;
     __pyx_r = 1;
     goto __pyx_L0;
 
-    /* "pycalphad/core/eqsolver.pyx":58
+    /* "pycalphad/core/eqsolver.pyx":56
+ *             largest_df = driving_forces[i]
  *             df_idx = i
- *     #print('largest_df',largest_df,minimum_df)
  *     if largest_df > minimum_df:             # <<<<<<<<<<<<<<
  *         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
- *         #print('largest_df',largest_df,minimum_df)
+ *         df_comp = current_grid_X[df_idx]
  */
   }
 
-  /* "pycalphad/core/eqsolver.pyx":102
- *                     print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
+  /* "pycalphad/core/eqsolver.pyx":86
+ *             print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
  *         return True
  *     return False             # <<<<<<<<<<<<<<
  * 
@@ -4608,12 +4493,11 @@ __pyx_t_8 = -1;
   __Pyx_XDECREF((PyObject *)__pyx_v_compset);
   __Pyx_XDECREF(__pyx_v_compset_name);
   __Pyx_XDECREF(__pyx_v_compset_count);
-  __Pyx_XDECREF(__pyx_v_k);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "pycalphad/core/eqsolver.pyx":105
+/* "pycalphad/core/eqsolver.pyx":89
  * 
  * @cython.boundscheck(False)
  * cdef int argmax(double* a, int a_shape) nogil:             # <<<<<<<<<<<<<<
@@ -4631,7 +4515,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "pycalphad/core/eqsolver.pyx":107
+  /* "pycalphad/core/eqsolver.pyx":91
  * cdef int argmax(double* a, int a_shape) nogil:
  *     cdef int i
  *     cdef int result = 0             # <<<<<<<<<<<<<<
@@ -4640,7 +4524,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
  */
   __pyx_v_result = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":108
+  /* "pycalphad/core/eqsolver.pyx":92
  *     cdef int i
  *     cdef int result = 0
  *     cdef double highest = -1e30             # <<<<<<<<<<<<<<
@@ -4649,7 +4533,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
  */
   __pyx_v_highest = -1e30;
 
-  /* "pycalphad/core/eqsolver.pyx":109
+  /* "pycalphad/core/eqsolver.pyx":93
  *     cdef int result = 0
  *     cdef double highest = -1e30
  *     for i in range(a_shape):             # <<<<<<<<<<<<<<
@@ -4661,7 +4545,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "pycalphad/core/eqsolver.pyx":110
+    /* "pycalphad/core/eqsolver.pyx":94
  *     cdef double highest = -1e30
  *     for i in range(a_shape):
  *         if a[i] > highest:             # <<<<<<<<<<<<<<
@@ -4671,7 +4555,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
     __pyx_t_4 = (((__pyx_v_a[__pyx_v_i]) > __pyx_v_highest) != 0);
     if (__pyx_t_4) {
 
-      /* "pycalphad/core/eqsolver.pyx":111
+      /* "pycalphad/core/eqsolver.pyx":95
  *     for i in range(a_shape):
  *         if a[i] > highest:
  *             highest = a[i]             # <<<<<<<<<<<<<<
@@ -4680,7 +4564,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
  */
       __pyx_v_highest = (__pyx_v_a[__pyx_v_i]);
 
-      /* "pycalphad/core/eqsolver.pyx":112
+      /* "pycalphad/core/eqsolver.pyx":96
  *         if a[i] > highest:
  *             highest = a[i]
  *             result = i             # <<<<<<<<<<<<<<
@@ -4689,7 +4573,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
  */
       __pyx_v_result = __pyx_v_i;
 
-      /* "pycalphad/core/eqsolver.pyx":110
+      /* "pycalphad/core/eqsolver.pyx":94
  *     cdef double highest = -1e30
  *     for i in range(a_shape):
  *         if a[i] > highest:             # <<<<<<<<<<<<<<
@@ -4699,7 +4583,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
     }
   }
 
-  /* "pycalphad/core/eqsolver.pyx":113
+  /* "pycalphad/core/eqsolver.pyx":97
  *             highest = a[i]
  *             result = i
  *     return result             # <<<<<<<<<<<<<<
@@ -4709,7 +4593,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "pycalphad/core/eqsolver.pyx":105
+  /* "pycalphad/core/eqsolver.pyx":89
  * 
  * @cython.boundscheck(False)
  * cdef int argmax(double* a, int a_shape) nogil:             # <<<<<<<<<<<<<<
@@ -4722,7 +4606,7 @@ static int __pyx_f_9pycalphad_4core_8eqsolver_argmax(double *__pyx_v_a, int __py
   return __pyx_r;
 }
 
-/* "pycalphad/core/eqsolver.pyx":115
+/* "pycalphad/core/eqsolver.pyx":99
  *     return result
  * 
  * def add_nearly_stable(object composition_sets, dict phase_records,             # <<<<<<<<<<<<<<
@@ -4783,47 +4667,47 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_1add_nearly_stable(PyObject
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_phase_records)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 1); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 1); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_grid)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 2); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 2); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_current_idx)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 3); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 3); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_chemical_potentials)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 4); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 4); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state_variables)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 5); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 5); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_minimum_df)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 6); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 6); __PYX_ERR(0, 99, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_verbose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 7); __PYX_ERR(0, 115, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, 7); __PYX_ERR(0, 99, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_nearly_stable") < 0)) __PYX_ERR(0, 115, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "add_nearly_stable") < 0)) __PYX_ERR(0, 99, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 8) {
       goto __pyx_L5_argtuple_error;
@@ -4842,20 +4726,20 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_1add_nearly_stable(PyObject
     __pyx_v_grid = values[2];
     __pyx_v_current_idx = values[3];
     __pyx_v_chemical_potentials = ((PyArrayObject *)values[4]);
-    __pyx_v_state_variables = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_state_variables.memview)) __PYX_ERR(0, 117, __pyx_L3_error)
-    __pyx_v_minimum_df = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_minimum_df == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
-    __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[7]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 117, __pyx_L3_error)
+    __pyx_v_state_variables = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_state_variables.memview)) __PYX_ERR(0, 101, __pyx_L3_error)
+    __pyx_v_minimum_df = __pyx_PyFloat_AsDouble(values[6]); if (unlikely((__pyx_v_minimum_df == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L3_error)
+    __pyx_v_verbose = __Pyx_PyObject_IsTrue(values[7]); if (unlikely((__pyx_v_verbose == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 101, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 115, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("add_nearly_stable", 1, 8, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 99, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.eqsolver.add_nearly_stable", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_phase_records), (&PyDict_Type), 1, "phase_records", 1))) __PYX_ERR(0, 115, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_chemical_potentials), __pyx_ptype_5numpy_ndarray, 1, "chemical_potentials", 0))) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_phase_records), (&PyDict_Type), 1, "phase_records", 1))) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_chemical_potentials), __pyx_ptype_5numpy_ndarray, 1, "chemical_potentials", 0))) __PYX_ERR(0, 100, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(__pyx_self, __pyx_v_composition_sets, __pyx_v_phase_records, __pyx_v_grid, __pyx_v_current_idx, __pyx_v_chemical_potentials, __pyx_v_state_variables, __pyx_v_minimum_df, __pyx_v_verbose);
 
   /* function exit code */
@@ -4913,108 +4797,108 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
   __pyx_pybuffernd_chemical_potentials.rcbuffer = &__pyx_pybuffer_chemical_potentials;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer, (PyObject*)__pyx_v_chemical_potentials, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 115, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer, (PyObject*)__pyx_v_chemical_potentials, &__Pyx_TypeInfo_nn___pyx_t_5numpy_float64_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 99, __pyx_L1_error)
   }
   __pyx_pybuffernd_chemical_potentials.diminfo[0].strides = __pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_chemical_potentials.diminfo[0].shape = __pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer.shape[0];
 
-  /* "pycalphad/core/eqsolver.pyx":119
+  /* "pycalphad/core/eqsolver.pyx":103
  *                       double[::1] state_variables, double minimum_df, bint verbose):
  *     cdef double[::1] driving_forces, driving_forces_for_phase
  *     cdef double[:,::1] current_grid_Y = grid.Y[*current_idx, ...]             # <<<<<<<<<<<<<<
  *     cdef double[:,::1] current_grid_X = grid.X[*current_idx, ...]
  *     cdef double[::1] current_grid_GM = grid.GM[*current_idx, ...]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 119, __pyx_L1_error)
+  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 103, __pyx_L1_error)
   {
     PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2);
-    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 103, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 119, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 103, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_current_grid_Y = __pyx_t_4;
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "pycalphad/core/eqsolver.pyx":120
+  /* "pycalphad/core/eqsolver.pyx":104
  *     cdef double[::1] driving_forces, driving_forces_for_phase
  *     cdef double[:,::1] current_grid_Y = grid.Y[*current_idx, ...]
  *     cdef double[:,::1] current_grid_X = grid.X[*current_idx, ...]             # <<<<<<<<<<<<<<
  *     cdef double[::1] current_grid_GM = grid.GM[*current_idx, ...]
  *     cdef unicode phase_name
  */
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 120, __pyx_L1_error)
+  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
   {
     PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2);
-    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 120, __pyx_L1_error)
+    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_to_MemoryviewSlice_d_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_4.memview)) __PYX_ERR(0, 104, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_current_grid_X = __pyx_t_4;
   __pyx_t_4.memview = NULL;
   __pyx_t_4.data = NULL;
 
-  /* "pycalphad/core/eqsolver.pyx":121
+  /* "pycalphad/core/eqsolver.pyx":105
  *     cdef double[:,::1] current_grid_Y = grid.Y[*current_idx, ...]
  *     cdef double[:,::1] current_grid_X = grid.X[*current_idx, ...]
  *     cdef double[::1] current_grid_GM = grid.GM[*current_idx, ...]             # <<<<<<<<<<<<<<
  *     cdef unicode phase_name
  *     cdef CompositionSet compset = composition_sets[0]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_GM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_GM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = PySequence_List(__pyx_v_current_idx); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 121, __pyx_L1_error)
+  if (__Pyx_ListComp_Append(__pyx_t_2, Py_Ellipsis) < 0) __PYX_ERR(0, 105, __pyx_L1_error)
   {
     PyObject *__pyx_temp = PyList_AsTuple(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_2);
-    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 121, __pyx_L1_error)
+    __pyx_t_2 = __pyx_temp; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 105, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_current_grid_GM = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "pycalphad/core/eqsolver.pyx":123
+  /* "pycalphad/core/eqsolver.pyx":107
  *     cdef double[::1] current_grid_GM = grid.GM[*current_idx, ...]
  *     cdef unicode phase_name
  *     cdef CompositionSet compset = composition_sets[0]             # <<<<<<<<<<<<<<
  *     cdef set entered_phases = {compset.phase_record.phase_name for compset in composition_sets}
  *     cdef PhaseRecord phase_record
  */
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 123, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 123, __pyx_L1_error)
+  if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 107, __pyx_L1_error)
   __pyx_v_compset = ((struct CompositionSetObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":124
+  /* "pycalphad/core/eqsolver.pyx":108
  *     cdef unicode phase_name
  *     cdef CompositionSet compset = composition_sets[0]
  *     cdef set entered_phases = {compset.phase_record.phase_name for compset in composition_sets}             # <<<<<<<<<<<<<<
@@ -5022,32 +4906,32 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  *     cdef int num_statevars = len(compset.phase_record.state_variables)
  */
   { /* enter inner scope */
-    __pyx_t_3 = PySet_New(NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 124, __pyx_L5_error)
+    __pyx_t_3 = PySet_New(NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 108, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (likely(PyList_CheckExact(__pyx_v_composition_sets)) || PyTuple_CheckExact(__pyx_v_composition_sets)) {
       __pyx_t_2 = __pyx_v_composition_sets; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 124, __pyx_L5_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 108, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 124, __pyx_L5_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 108, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_7)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 124, __pyx_L5_error)
+          __pyx_t_1 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L5_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L5_error)
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 124, __pyx_L5_error)
+          __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 108, __pyx_L5_error)
           #else
-          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L5_error)
+          __pyx_t_1 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_1);
           #endif
         }
@@ -5057,16 +4941,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 124, __pyx_L5_error)
+            else __PYX_ERR(0, 108, __pyx_L5_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_1);
       }
-      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 124, __pyx_L5_error)
+      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 108, __pyx_L5_error)
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_1));
       __pyx_t_1 = 0;
-      if (unlikely(PySet_Add(__pyx_t_3, (PyObject*)__pyx_7genexpr__pyx_v_compset->phase_record->phase_name))) __PYX_ERR(0, 124, __pyx_L5_error)
+      if (unlikely(PySet_Add(__pyx_t_3, (PyObject*)__pyx_7genexpr__pyx_v_compset->phase_record->phase_name))) __PYX_ERR(0, 108, __pyx_L5_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_XDECREF((PyObject *)__pyx_7genexpr__pyx_v_compset); __pyx_7genexpr__pyx_v_compset = 0;
@@ -5079,7 +4963,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
   __pyx_v_entered_phases = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":126
+  /* "pycalphad/core/eqsolver.pyx":110
  *     cdef set entered_phases = {compset.phase_record.phase_name for compset in composition_sets}
  *     cdef PhaseRecord phase_record
  *     cdef int num_statevars = len(compset.phase_record.state_variables)             # <<<<<<<<<<<<<<
@@ -5088,11 +4972,11 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
   __pyx_t_3 = __pyx_v_compset->phase_record->state_variables;
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_6 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 126, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 110, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_num_statevars = __pyx_t_6;
 
-  /* "pycalphad/core/eqsolver.pyx":128
+  /* "pycalphad/core/eqsolver.pyx":112
  *     cdef int num_statevars = len(compset.phase_record.state_variables)
  *     cdef int df_idx, minimum_df_idx
  *     cdef bint phases_added = False             # <<<<<<<<<<<<<<
@@ -5101,19 +4985,19 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
   __pyx_v_phases_added = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":129
+  /* "pycalphad/core/eqsolver.pyx":113
  *     cdef int df_idx, minimum_df_idx
  *     cdef bint phases_added = False
  *     driving_forces = np.dot(current_grid_X, chemical_potentials) - current_grid_GM             # <<<<<<<<<<<<<<
  *     # Add unrepresented phases as metastable composition sets
  *     # This should help catch phases around the limit of stability
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_dot); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_current_grid_X, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_current_grid_X, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_8 = NULL;
   __pyx_t_9 = 0;
@@ -5130,7 +5014,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_2, ((PyObject *)__pyx_v_chemical_potentials)};
-    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5139,14 +5023,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
     PyObject *__pyx_temp[3] = {__pyx_t_8, __pyx_t_2, ((PyObject *)__pyx_v_chemical_potentials)};
-    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else
   #endif
   {
-    __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_10 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     if (__pyx_t_8) {
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_8); __pyx_t_8 = NULL;
@@ -5157,24 +5041,24 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
     __Pyx_GIVEREF(((PyObject *)__pyx_v_chemical_potentials));
     PyTuple_SET_ITEM(__pyx_t_10, 1+__pyx_t_9, ((PyObject *)__pyx_v_chemical_potentials));
     __pyx_t_2 = 0;
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 129, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 113, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   }
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_current_grid_GM, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_current_grid_GM, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_10 = PyNumber_Subtract(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_10 = PyNumber_Subtract(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_10, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 129, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_10, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 113, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   __pyx_v_driving_forces = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "pycalphad/core/eqsolver.pyx":132
+  /* "pycalphad/core/eqsolver.pyx":116
  *     # Add unrepresented phases as metastable composition sets
  *     # This should help catch phases around the limit of stability
  *     for phase_name in sorted(phase_records.keys()):             # <<<<<<<<<<<<<<
@@ -5183,46 +5067,46 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
   if (unlikely(__pyx_v_phase_records == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "keys");
-    __PYX_ERR(0, 132, __pyx_L1_error)
+    __PYX_ERR(0, 116, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_phase_records); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_Keys(__pyx_v_phase_records); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_3 = PySequence_List(__pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 116, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_10 = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
-  __pyx_t_11 = PyList_Sort(__pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_11 = PyList_Sort(__pyx_t_10); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 116, __pyx_L1_error)
   if (unlikely(__pyx_t_10 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable");
-    __PYX_ERR(0, 132, __pyx_L1_error)
+    __PYX_ERR(0, 116, __pyx_L1_error)
   }
   __pyx_t_3 = __pyx_t_10; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_10); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __pyx_t_10 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_10); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 116, __pyx_L1_error)
     #else
-    __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 132, __pyx_L1_error)
+    __pyx_t_10 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     #endif
-    if (!(likely(PyUnicode_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 132, __pyx_L1_error)
+    if (!(likely(PyUnicode_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 116, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_phase_name, ((PyObject*)__pyx_t_10));
     __pyx_t_10 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":133
+    /* "pycalphad/core/eqsolver.pyx":117
  *     # This should help catch phases around the limit of stability
  *     for phase_name in sorted(phase_records.keys()):
  *         if phase_name in entered_phases:             # <<<<<<<<<<<<<<
  *             continue
  *         phase_record = phase_records[phase_name]
  */
-    __pyx_t_12 = (__Pyx_PySet_ContainsTF(__pyx_v_phase_name, __pyx_v_entered_phases, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_12 = (__Pyx_PySet_ContainsTF(__pyx_v_phase_name, __pyx_v_entered_phases, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 117, __pyx_L1_error)
     __pyx_t_13 = (__pyx_t_12 != 0);
     if (__pyx_t_13) {
 
-      /* "pycalphad/core/eqsolver.pyx":134
+      /* "pycalphad/core/eqsolver.pyx":118
  *     for phase_name in sorted(phase_records.keys()):
  *         if phase_name in entered_phases:
  *             continue             # <<<<<<<<<<<<<<
@@ -5231,7 +5115,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
       goto __pyx_L9_continue;
 
-      /* "pycalphad/core/eqsolver.pyx":133
+      /* "pycalphad/core/eqsolver.pyx":117
  *     # This should help catch phases around the limit of stability
  *     for phase_name in sorted(phase_records.keys()):
  *         if phase_name in entered_phases:             # <<<<<<<<<<<<<<
@@ -5240,7 +5124,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":135
+    /* "pycalphad/core/eqsolver.pyx":119
  *         if phase_name in entered_phases:
  *             continue
  *         phase_record = phase_records[phase_name]             # <<<<<<<<<<<<<<
@@ -5249,46 +5133,46 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
  */
     if (unlikely(__pyx_v_phase_records == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 135, __pyx_L1_error)
+      __PYX_ERR(0, 119, __pyx_L1_error)
     }
-    __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_phase_records, __pyx_v_phase_name); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 135, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyDict_GetItem(__pyx_v_phase_records, __pyx_v_phase_name); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    if (!(likely(((__pyx_t_10) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_10, __pyx_ptype_9pycalphad_4core_9phase_rec_PhaseRecord))))) __PYX_ERR(0, 135, __pyx_L1_error)
+    if (!(likely(((__pyx_t_10) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_10, __pyx_ptype_9pycalphad_4core_9phase_rec_PhaseRecord))))) __PYX_ERR(0, 119, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_phase_record, ((struct PhaseRecordObject *)__pyx_t_10));
     __pyx_t_10 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":136
+    /* "pycalphad/core/eqsolver.pyx":120
  *             continue
  *         phase_record = phase_records[phase_name]
  *         phase_indices = grid.attrs['phase_indices'][phase_name]             # <<<<<<<<<<<<<<
  *         driving_forces_for_phase = driving_forces[phase_indices.start:phase_indices.stop]
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_attrs); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_attrs); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_u_phase_indices); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Dict_GetItem(__pyx_t_10, __pyx_n_u_phase_indices); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_v_phase_name); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 136, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_v_phase_name); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 120, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_XDECREF_SET(__pyx_v_phase_indices, __pyx_t_10);
     __pyx_t_10 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":137
+    /* "pycalphad/core/eqsolver.pyx":121
  *         phase_record = phase_records[phase_name]
  *         phase_indices = grid.attrs['phase_indices'][phase_name]
  *         driving_forces_for_phase = driving_forces[phase_indices.start:phase_indices.stop]             # <<<<<<<<<<<<<<
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])
  *         if driving_forces_for_phase[minimum_df_idx] >= minimum_df:
  */
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_start); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_start); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_14 = __Pyx_PyIndex_AsSsize_t(__pyx_t_10); if (unlikely((__pyx_t_14 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyIndex_AsSsize_t(__pyx_t_10); if (unlikely((__pyx_t_14 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_stop); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_stop); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_15 = __Pyx_PyIndex_AsSsize_t(__pyx_t_10); if (unlikely((__pyx_t_15 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyIndex_AsSsize_t(__pyx_t_10); if (unlikely((__pyx_t_15 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 121, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
     __pyx_t_5.data = __pyx_v_driving_forces.data;
     __pyx_t_5.memview = __pyx_v_driving_forces.memview;
@@ -5308,7 +5192,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_add_nearly_stable(CYTHON_UN
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 137, __pyx_L1_error)
+    __PYX_ERR(0, 121, __pyx_L1_error)
 }
 
 __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
@@ -5316,7 +5200,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
     __pyx_t_5.memview = NULL;
     __pyx_t_5.data = NULL;
 
-    /* "pycalphad/core/eqsolver.pyx":138
+    /* "pycalphad/core/eqsolver.pyx":122
  *         phase_indices = grid.attrs['phase_indices'][phase_name]
  *         driving_forces_for_phase = driving_forces[phase_indices.start:phase_indices.stop]
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])             # <<<<<<<<<<<<<<
@@ -5331,11 +5215,11 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
     } else if (unlikely(__pyx_t_16 >= __pyx_v_driving_forces_for_phase.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 138, __pyx_L1_error)
+      __PYX_ERR(0, 122, __pyx_L1_error)
     }
     __pyx_v_minimum_df_idx = __pyx_f_9pycalphad_4core_8eqsolver_argmax((&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_driving_forces_for_phase.data) + __pyx_t_16)) )))), (__pyx_v_driving_forces_for_phase.shape[0]));
 
-    /* "pycalphad/core/eqsolver.pyx":139
+    /* "pycalphad/core/eqsolver.pyx":123
  *         driving_forces_for_phase = driving_forces[phase_indices.start:phase_indices.stop]
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])
  *         if driving_forces_for_phase[minimum_df_idx] >= minimum_df:             # <<<<<<<<<<<<<<
@@ -5350,12 +5234,12 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
     } else if (unlikely(__pyx_t_16 >= __pyx_v_driving_forces_for_phase.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 139, __pyx_L1_error)
+      __PYX_ERR(0, 123, __pyx_L1_error)
     }
     __pyx_t_13 = (((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_driving_forces_for_phase.data) + __pyx_t_16)) ))) >= __pyx_v_minimum_df) != 0);
     if (__pyx_t_13) {
 
-      /* "pycalphad/core/eqsolver.pyx":140
+      /* "pycalphad/core/eqsolver.pyx":124
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])
  *         if driving_forces_for_phase[minimum_df_idx] >= minimum_df:
  *             phases_added = True             # <<<<<<<<<<<<<<
@@ -5364,38 +5248,38 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
  */
       __pyx_v_phases_added = 1;
 
-      /* "pycalphad/core/eqsolver.pyx":141
+      /* "pycalphad/core/eqsolver.pyx":125
  *         if driving_forces_for_phase[minimum_df_idx] >= minimum_df:
  *             phases_added = True
  *             df_idx = phase_indices.start + minimum_df_idx             # <<<<<<<<<<<<<<
  *             compset = CompositionSet(phase_record)
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)
  */
-      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_start); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_GetAttrStr(__pyx_v_phase_indices, __pyx_n_s_start); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_minimum_df_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_minimum_df_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_2 = PyNumber_Add(__pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_2 = PyNumber_Add(__pyx_t_10, __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 125, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_df_idx = __pyx_t_9;
 
-      /* "pycalphad/core/eqsolver.pyx":142
+      /* "pycalphad/core/eqsolver.pyx":126
  *             phases_added = True
  *             df_idx = phase_indices.start + minimum_df_idx
  *             compset = CompositionSet(phase_record)             # <<<<<<<<<<<<<<
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)
  *             if verbose:
  */
-      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), ((PyObject *)__pyx_v_phase_record)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 142, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), ((PyObject *)__pyx_v_phase_record)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 126, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_2));
       __pyx_t_2 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":143
+      /* "pycalphad/core/eqsolver.pyx":127
  *             df_idx = phase_indices.start + minimum_df_idx
  *             compset = CompositionSet(phase_record)
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)             # <<<<<<<<<<<<<<
@@ -5414,7 +5298,7 @@ __PYX_XDEC_MEMVIEW(&__pyx_v_driving_forces_for_phase, 1);
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 143, __pyx_L1_error)
+            __PYX_ERR(0, 127, __pyx_L1_error)
         }
         __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -5434,7 +5318,7 @@ __pyx_t_9 = -1;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 143, __pyx_L1_error)
+    __PYX_ERR(0, 127, __pyx_L1_error)
 }
 
 ((struct __pyx_vtabstruct_9pycalphad_4core_15composition_set_CompositionSet *)__pyx_v_compset->__pyx_vtab)->update(__pyx_v_compset, __pyx_t_5, 0.0, __pyx_v_state_variables, 0);
@@ -5442,7 +5326,7 @@ __pyx_t_9 = -1;
       __pyx_t_5.memview = NULL;
       __pyx_t_5.data = NULL;
 
-      /* "pycalphad/core/eqsolver.pyx":144
+      /* "pycalphad/core/eqsolver.pyx":128
  *             compset = CompositionSet(phase_record)
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)
  *             if verbose:             # <<<<<<<<<<<<<<
@@ -5452,19 +5336,19 @@ __pyx_t_9 = -1;
       __pyx_t_13 = (__pyx_v_verbose != 0);
       if (__pyx_t_13) {
 
-        /* "pycalphad/core/eqsolver.pyx":145
+        /* "pycalphad/core/eqsolver.pyx":129
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)
  *             if verbose:
  *                 print('Adding metastable ' + repr(compset) + ' Driving force: ' + str(driving_forces_for_phase[minimum_df_idx]))             # <<<<<<<<<<<<<<
  *             composition_sets.append(compset)
  *     return phases_added
  */
-        __pyx_t_2 = PyObject_Repr(((PyObject *)__pyx_v_compset)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_2 = PyObject_Repr(((PyObject *)__pyx_v_compset)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_1 = PyNumber_Add(__pyx_kp_u_Adding_metastable, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_kp_u_Adding_metastable, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_Driving_force); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_kp_u_Driving_force); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __pyx_t_16 = __pyx_v_minimum_df_idx;
@@ -5475,23 +5359,23 @@ __pyx_t_9 = -1;
         } else if (unlikely(__pyx_t_16 >= __pyx_v_driving_forces_for_phase.shape[0])) __pyx_t_9 = 0;
         if (unlikely(__pyx_t_9 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_9);
-          __PYX_ERR(0, 145, __pyx_L1_error)
+          __PYX_ERR(0, 129, __pyx_L1_error)
         }
-        __pyx_t_1 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_driving_forces_for_phase.data) + __pyx_t_16)) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_1 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_driving_forces_for_phase.data) + __pyx_t_16)) )))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_t_2, __pyx_t_10); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
-        __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 145, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyObject_CallOneArg(__pyx_builtin_print, __pyx_t_1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 129, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":144
+        /* "pycalphad/core/eqsolver.pyx":128
  *             compset = CompositionSet(phase_record)
  *             compset.update(current_grid_Y[df_idx, :phase_record.phase_dof], 0.0, state_variables)
  *             if verbose:             # <<<<<<<<<<<<<<
@@ -5500,16 +5384,16 @@ __pyx_t_9 = -1;
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":146
+      /* "pycalphad/core/eqsolver.pyx":130
  *             if verbose:
  *                 print('Adding metastable ' + repr(compset) + ' Driving force: ' + str(driving_forces_for_phase[minimum_df_idx]))
  *             composition_sets.append(compset)             # <<<<<<<<<<<<<<
  *     return phases_added
  * 
  */
-      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 146, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyObject_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_11 == ((int)-1))) __PYX_ERR(0, 130, __pyx_L1_error)
 
-      /* "pycalphad/core/eqsolver.pyx":139
+      /* "pycalphad/core/eqsolver.pyx":123
  *         driving_forces_for_phase = driving_forces[phase_indices.start:phase_indices.stop]
  *         minimum_df_idx = argmax(&driving_forces_for_phase[0], driving_forces_for_phase.shape[0])
  *         if driving_forces_for_phase[minimum_df_idx] >= minimum_df:             # <<<<<<<<<<<<<<
@@ -5518,7 +5402,7 @@ __pyx_t_9 = -1;
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":132
+    /* "pycalphad/core/eqsolver.pyx":116
  *     # Add unrepresented phases as metastable composition sets
  *     # This should help catch phases around the limit of stability
  *     for phase_name in sorted(phase_records.keys()):             # <<<<<<<<<<<<<<
@@ -5529,7 +5413,7 @@ __pyx_t_9 = -1;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":147
+  /* "pycalphad/core/eqsolver.pyx":131
  *                 print('Adding metastable ' + repr(compset) + ' Driving force: ' + str(driving_forces_for_phase[minimum_df_idx]))
  *             composition_sets.append(compset)
  *     return phases_added             # <<<<<<<<<<<<<<
@@ -5537,13 +5421,13 @@ __pyx_t_9 = -1;
  * cpdef update_composition_sets(composition_sets, solver_result, remove_metastable=True):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_phases_added); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyBool_FromLong(__pyx_v_phases_added); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 131, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "pycalphad/core/eqsolver.pyx":115
+  /* "pycalphad/core/eqsolver.pyx":99
  *     return result
  * 
  * def add_nearly_stable(object composition_sets, dict phase_records,             # <<<<<<<<<<<<<<
@@ -5589,7 +5473,7 @@ __pyx_t_9 = -1;
   return __pyx_r;
 }
 
-/* "pycalphad/core/eqsolver.pyx":149
+/* "pycalphad/core/eqsolver.pyx":133
  *     return phases_added
  * 
  * cpdef update_composition_sets(composition_sets, solver_result, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -5634,45 +5518,45 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     }
   }
 
-  /* "pycalphad/core/eqsolver.pyx":162
+  /* "pycalphad/core/eqsolver.pyx":146
  *     """
  *     cdef CompositionSet compset
  *     x = solver_result.x             # <<<<<<<<<<<<<<
  *     compset = composition_sets[0]
  *     num_compsets = len(composition_sets)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_solver_result, __pyx_n_s_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_solver_result, __pyx_n_s_x); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_x = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":163
+  /* "pycalphad/core/eqsolver.pyx":147
  *     cdef CompositionSet compset
  *     x = solver_result.x
  *     compset = composition_sets[0]             # <<<<<<<<<<<<<<
  *     num_compsets = len(composition_sets)
  *     num_state_variables = len(compset.phase_record.state_variables)
  */
-  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 163, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 147, __pyx_L1_error)
   __pyx_v_compset = ((struct CompositionSetObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":164
+  /* "pycalphad/core/eqsolver.pyx":148
  *     x = solver_result.x
  *     compset = composition_sets[0]
  *     num_compsets = len(composition_sets)             # <<<<<<<<<<<<<<
  *     num_state_variables = len(compset.phase_record.state_variables)
  *     var_offset = num_state_variables
  */
-  __pyx_t_2 = PyObject_Length(__pyx_v_composition_sets); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 164, __pyx_L1_error)
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_v_composition_sets); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_num_compsets = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":165
+  /* "pycalphad/core/eqsolver.pyx":149
  *     compset = composition_sets[0]
  *     num_compsets = len(composition_sets)
  *     num_state_variables = len(compset.phase_record.state_variables)             # <<<<<<<<<<<<<<
@@ -5681,14 +5565,14 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
  */
   __pyx_t_1 = __pyx_v_compset->phase_record->state_variables;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = PyObject_Length(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_num_state_variables = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":166
+  /* "pycalphad/core/eqsolver.pyx":150
  *     num_compsets = len(composition_sets)
  *     num_state_variables = len(compset.phase_record.state_variables)
  *     var_offset = num_state_variables             # <<<<<<<<<<<<<<
@@ -5698,7 +5582,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
   __Pyx_INCREF(__pyx_v_num_state_variables);
   __pyx_v_var_offset = __pyx_v_num_state_variables;
 
-  /* "pycalphad/core/eqsolver.pyx":167
+  /* "pycalphad/core/eqsolver.pyx":151
  *     num_state_variables = len(compset.phase_record.state_variables)
  *     var_offset = num_state_variables
  *     num_vars = sum([compset.phase_record.phase_dof for compset in composition_sets]) + num_compsets + num_state_variables             # <<<<<<<<<<<<<<
@@ -5706,32 +5590,32 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
  *     compsets_to_remove = []
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_composition_sets)) || PyTuple_CheckExact(__pyx_v_composition_sets)) {
       __pyx_t_3 = __pyx_v_composition_sets; __Pyx_INCREF(__pyx_t_3); __pyx_t_2 = 0;
       __pyx_t_4 = NULL;
     } else {
-      __pyx_t_2 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L5_error)
+      __pyx_t_2 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L5_error)
+      __pyx_t_4 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 151, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_4)) {
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L5_error)
+          __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 151, __pyx_L5_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L5_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         } else {
           if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 167, __pyx_L5_error)
+          __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 151, __pyx_L5_error)
           #else
-          __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L5_error)
+          __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_5);
           #endif
         }
@@ -5741,18 +5625,18 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 167, __pyx_L5_error)
+            else __PYX_ERR(0, 151, __pyx_L5_error)
           }
           break;
         }
         __Pyx_GOTREF(__pyx_t_5);
       }
-      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 167, __pyx_L5_error)
+      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 151, __pyx_L5_error)
       __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_5));
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L5_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_8genexpr1__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 151, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 167, __pyx_L5_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 151, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5763,19 +5647,19 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     goto __pyx_L1_error;
     __pyx_L8_exit_scope:;
   } /* exit inner scope */
-  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_builtin_sum, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_num_compsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_1 = PyNumber_Add(__pyx_t_3, __pyx_v_num_compsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_num_state_variables); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_v_num_state_variables); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_num_vars = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":168
+  /* "pycalphad/core/eqsolver.pyx":152
  *     var_offset = num_state_variables
  *     num_vars = sum([compset.phase_record.phase_dof for compset in composition_sets]) + num_compsets + num_state_variables
  *     phase_idx = 0             # <<<<<<<<<<<<<<
@@ -5785,19 +5669,19 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
   __Pyx_INCREF(__pyx_int_0);
   __pyx_v_phase_idx = __pyx_int_0;
 
-  /* "pycalphad/core/eqsolver.pyx":169
+  /* "pycalphad/core/eqsolver.pyx":153
  *     num_vars = sum([compset.phase_record.phase_dof for compset in composition_sets]) + num_compsets + num_state_variables
  *     phase_idx = 0
  *     compsets_to_remove = []             # <<<<<<<<<<<<<<
  *     for compset in composition_sets:
  *         phase_amt = x[num_vars - num_compsets + phase_idx]
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_compsets_to_remove = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":170
+  /* "pycalphad/core/eqsolver.pyx":154
  *     phase_idx = 0
  *     compsets_to_remove = []
  *     for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -5808,26 +5692,26 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     __pyx_t_3 = __pyx_v_composition_sets; __Pyx_INCREF(__pyx_t_3); __pyx_t_2 = 0;
     __pyx_t_4 = NULL;
   } else {
-    __pyx_t_2 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __pyx_t_2 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_composition_sets); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
+    __pyx_t_4 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 154, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_4)) {
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       } else {
         if (__pyx_t_2 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_1); __pyx_t_2++; if (unlikely(0 < 0)) __PYX_ERR(0, 154, __pyx_L1_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 170, __pyx_L1_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
       }
@@ -5837,44 +5721,44 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 170, __pyx_L1_error)
+          else __PYX_ERR(0, 154, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_1);
     }
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 170, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 154, __pyx_L1_error)
     __Pyx_DECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":171
+    /* "pycalphad/core/eqsolver.pyx":155
  *     compsets_to_remove = []
  *     for compset in composition_sets:
  *         phase_amt = x[num_vars - num_compsets + phase_idx]             # <<<<<<<<<<<<<<
  *         # Mark unstable phases for removal
  *         if phase_amt == 0.0 and not compset.fixed:
  */
-    __pyx_t_1 = PyNumber_Subtract(__pyx_v_num_vars, __pyx_v_num_compsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_1 = PyNumber_Subtract(__pyx_v_num_vars, __pyx_v_num_compsets); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_v_phase_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_t_1, __pyx_v_phase_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_x, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 171, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_x, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF_SET(__pyx_v_phase_amt, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":173
+    /* "pycalphad/core/eqsolver.pyx":157
  *         phase_amt = x[num_vars - num_compsets + phase_idx]
  *         # Mark unstable phases for removal
  *         if phase_amt == 0.0 and not compset.fixed:             # <<<<<<<<<<<<<<
  *             compsets_to_remove.append(int(phase_idx))
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],
  */
-    __pyx_t_1 = __Pyx_PyFloat_EqObjC(__pyx_v_phase_amt, __pyx_float_0_0, 0.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFloat_EqObjC(__pyx_v_phase_amt, __pyx_float_0_0, 0.0, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 157, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (__pyx_t_7) {
     } else {
@@ -5886,19 +5770,19 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     __pyx_L12_bool_binop_done:;
     if (__pyx_t_6) {
 
-      /* "pycalphad/core/eqsolver.pyx":174
+      /* "pycalphad/core/eqsolver.pyx":158
  *         # Mark unstable phases for removal
  *         if phase_amt == 0.0 and not compset.fixed:
  *             compsets_to_remove.append(int(phase_idx))             # <<<<<<<<<<<<<<
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],
  *                        phase_amt, x[:num_state_variables])
  */
-      __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 174, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_compsets_to_remove, __pyx_t_1); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_compsets_to_remove, __pyx_t_1); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 158, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":173
+      /* "pycalphad/core/eqsolver.pyx":157
  *         phase_amt = x[num_vars - num_compsets + phase_idx]
  *         # Mark unstable phases for removal
  *         if phase_amt == 0.0 and not compset.fixed:             # <<<<<<<<<<<<<<
@@ -5907,38 +5791,38 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":175
+    /* "pycalphad/core/eqsolver.pyx":159
  *         if phase_amt == 0.0 and not compset.fixed:
  *             compsets_to_remove.append(int(phase_idx))
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],             # <<<<<<<<<<<<<<
  *                        phase_amt, x[:num_state_variables])
  *         var_offset += compset.phase_record.phase_dof
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyNumber_Add(__pyx_v_var_offset, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_Add(__pyx_v_var_offset, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 0, &__pyx_v_var_offset, &__pyx_t_5, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 0, &__pyx_v_var_offset, &__pyx_t_5, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 175, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_9.memview)) __PYX_ERR(0, 159, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":176
+    /* "pycalphad/core/eqsolver.pyx":160
  *             compsets_to_remove.append(int(phase_idx))
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],
  *                        phase_amt, x[:num_state_variables])             # <<<<<<<<<<<<<<
  *         var_offset += compset.phase_record.phase_dof
  *         phase_idx += 1
  */
-    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_v_phase_amt); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
-    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 0, NULL, &__pyx_v_num_state_variables, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_v_phase_amt); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_v_x, 0, 0, NULL, &__pyx_v_num_state_variables, NULL, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 176, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_11.memview)) __PYX_ERR(0, 160, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":175
+    /* "pycalphad/core/eqsolver.pyx":159
  *         if phase_amt == 0.0 and not compset.fixed:
  *             compsets_to_remove.append(int(phase_idx))
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],             # <<<<<<<<<<<<<<
@@ -5953,34 +5837,34 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     __pyx_t_11.memview = NULL;
     __pyx_t_11.data = NULL;
 
-    /* "pycalphad/core/eqsolver.pyx":177
+    /* "pycalphad/core/eqsolver.pyx":161
  *         compset.update(x[var_offset:var_offset + compset.phase_record.phase_dof],
  *                        phase_amt, x[:num_state_variables])
  *         var_offset += compset.phase_record.phase_dof             # <<<<<<<<<<<<<<
  *         phase_idx += 1
  *     if remove_metastable:
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_var_offset, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_5 = PyNumber_InPlaceAdd(__pyx_v_var_offset, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_var_offset, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":178
+    /* "pycalphad/core/eqsolver.pyx":162
  *                        phase_amt, x[:num_state_variables])
  *         var_offset += compset.phase_record.phase_dof
  *         phase_idx += 1             # <<<<<<<<<<<<<<
  *     if remove_metastable:
  *         # Watch removal order here, as the indices of composition_sets are changing!
  */
-    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_phase_idx, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_AddObjC(__pyx_v_phase_idx, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 162, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF_SET(__pyx_v_phase_idx, __pyx_t_5);
     __pyx_t_5 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":170
+    /* "pycalphad/core/eqsolver.pyx":154
  *     phase_idx = 0
  *     compsets_to_remove = []
  *     for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -5990,17 +5874,17 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":179
+  /* "pycalphad/core/eqsolver.pyx":163
  *         var_offset += compset.phase_record.phase_dof
  *         phase_idx += 1
  *     if remove_metastable:             # <<<<<<<<<<<<<<
  *         # Watch removal order here, as the indices of composition_sets are changing!
  *         for idx in reversed(compsets_to_remove):
  */
-  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_remove_metastable); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_v_remove_metastable); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 163, __pyx_L1_error)
   if (__pyx_t_6) {
 
-    /* "pycalphad/core/eqsolver.pyx":181
+    /* "pycalphad/core/eqsolver.pyx":165
  *     if remove_metastable:
  *         # Watch removal order here, as the indices of composition_sets are changing!
  *         for idx in reversed(compsets_to_remove):             # <<<<<<<<<<<<<<
@@ -6012,24 +5896,24 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
       if (__pyx_t_2 < 0) break;
       if (__pyx_t_2 >= PyList_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2--; if (unlikely(0 < 0)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_2); __Pyx_INCREF(__pyx_t_5); __pyx_t_2--; if (unlikely(0 < 0)) __PYX_ERR(0, 165, __pyx_L1_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2--; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_2); __pyx_t_2--; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":182
+      /* "pycalphad/core/eqsolver.pyx":166
  *         # Watch removal order here, as the indices of composition_sets are changing!
  *         for idx in reversed(compsets_to_remove):
  *             del composition_sets[idx]             # <<<<<<<<<<<<<<
  * 
  * 
  */
-      if (unlikely(PyObject_DelItem(__pyx_v_composition_sets, __pyx_v_idx) < 0)) __PYX_ERR(0, 182, __pyx_L1_error)
+      if (unlikely(PyObject_DelItem(__pyx_v_composition_sets, __pyx_v_idx) < 0)) __PYX_ERR(0, 166, __pyx_L1_error)
 
-      /* "pycalphad/core/eqsolver.pyx":181
+      /* "pycalphad/core/eqsolver.pyx":165
  *     if remove_metastable:
  *         # Watch removal order here, as the indices of composition_sets are changing!
  *         for idx in reversed(compsets_to_remove):             # <<<<<<<<<<<<<<
@@ -6039,7 +5923,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":179
+    /* "pycalphad/core/eqsolver.pyx":163
  *         var_offset += compset.phase_record.phase_dof
  *         phase_idx += 1
  *     if remove_metastable:             # <<<<<<<<<<<<<<
@@ -6048,7 +5932,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(PyOb
  */
   }
 
-  /* "pycalphad/core/eqsolver.pyx":149
+  /* "pycalphad/core/eqsolver.pyx":133
  *     return phases_added
  * 
  * cpdef update_composition_sets(composition_sets, solver_result, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -6123,7 +6007,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_3update_composition_sets(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_solver_result)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("update_composition_sets", 0, 2, 3, 1); __PYX_ERR(0, 149, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("update_composition_sets", 0, 2, 3, 1); __PYX_ERR(0, 133, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
@@ -6133,7 +6017,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_3update_composition_sets(Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_composition_sets") < 0)) __PYX_ERR(0, 149, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "update_composition_sets") < 0)) __PYX_ERR(0, 133, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6151,7 +6035,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_3update_composition_sets(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("update_composition_sets", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 149, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("update_composition_sets", 0, 2, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 133, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.eqsolver.update_composition_sets", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6176,7 +6060,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_2update_composition_sets(CY
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.remove_metastable = __pyx_v_remove_metastable;
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(__pyx_v_composition_sets, __pyx_v_solver_result, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(__pyx_v_composition_sets, __pyx_v_solver_result, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6193,7 +6077,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_2update_composition_sets(CY
   return __pyx_r;
 }
 
-/* "pycalphad/core/eqsolver.pyx":185
+/* "pycalphad/core/eqsolver.pyx":169
  * 
  * 
  * cpdef solve_and_update(composition_sets, conditions, solver, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -6223,14 +6107,14 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
     }
   }
 
-  /* "pycalphad/core/eqsolver.pyx":201
+  /* "pycalphad/core/eqsolver.pyx":185
  * 
  *     """
  *     result = solver.solve(composition_sets, conditions)             # <<<<<<<<<<<<<<
  *     update_composition_sets(composition_sets, result, remove_metastable=remove_metastable)
  *     return result
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_solver, __pyx_n_s_solve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_solver, __pyx_n_s_solve); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -6247,7 +6131,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_composition_sets, __pyx_v_conditions};
-    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
@@ -6255,13 +6139,13 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_v_composition_sets, __pyx_v_conditions};
-    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_4, 2+__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else
   #endif
   {
-    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6272,7 +6156,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
     __Pyx_INCREF(__pyx_v_conditions);
     __Pyx_GIVEREF(__pyx_v_conditions);
     PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_conditions);
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 201, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
@@ -6280,7 +6164,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
   __pyx_v_result = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":202
+  /* "pycalphad/core/eqsolver.pyx":186
  *     """
  *     result = solver.solve(composition_sets, conditions)
  *     update_composition_sets(composition_sets, result, remove_metastable=remove_metastable)             # <<<<<<<<<<<<<<
@@ -6289,11 +6173,11 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
  */
   __pyx_t_6.__pyx_n = 1;
   __pyx_t_6.remove_metastable = __pyx_v_remove_metastable;
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(__pyx_v_composition_sets, __pyx_v_result, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_update_composition_sets(__pyx_v_composition_sets, __pyx_v_result, 0, &__pyx_t_6); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 186, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":203
+  /* "pycalphad/core/eqsolver.pyx":187
  *     result = solver.solve(composition_sets, conditions)
  *     update_composition_sets(composition_sets, result, remove_metastable=remove_metastable)
  *     return result             # <<<<<<<<<<<<<<
@@ -6305,7 +6189,7 @@ static PyObject *__pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(PyObject *_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "pycalphad/core/eqsolver.pyx":185
+  /* "pycalphad/core/eqsolver.pyx":169
  * 
  * 
  * cpdef solve_and_update(composition_sets, conditions, solver, remove_metastable=True):             # <<<<<<<<<<<<<<
@@ -6370,13 +6254,13 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_5solve_and_update(PyObject 
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_conditions)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, 1); __PYX_ERR(0, 185, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, 1); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_solver)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, 2); __PYX_ERR(0, 185, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, 2); __PYX_ERR(0, 169, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
@@ -6386,7 +6270,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_5solve_and_update(PyObject 
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "solve_and_update") < 0)) __PYX_ERR(0, 185, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "solve_and_update") < 0)) __PYX_ERR(0, 169, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6406,7 +6290,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_5solve_and_update(PyObject 
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 185, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("solve_and_update", 0, 3, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 169, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.eqsolver.solve_and_update", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6431,7 +6315,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_4solve_and_update(CYTHON_UN
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 1;
   __pyx_t_2.remove_metastable = __pyx_v_remove_metastable;
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_conditions, __pyx_v_solver, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_conditions, __pyx_v_solver, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -6448,7 +6332,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_4solve_and_update(CYTHON_UN
   return __pyx_r;
 }
 
-/* "pycalphad/core/eqsolver.pyx":206
+/* "pycalphad/core/eqsolver.pyx":190
  * 
  * 
  * def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None):             # <<<<<<<<<<<<<<
@@ -6508,31 +6392,31 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_7_solve_eq_at_conditions(Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_phase_records)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 1); __PYX_ERR(0, 206, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 1); __PYX_ERR(0, 190, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_grid)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 2); __PYX_ERR(0, 206, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 2); __PYX_ERR(0, 190, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_conds_keys)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 3); __PYX_ERR(0, 206, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 3); __PYX_ERR(0, 190, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state_variables)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 4); __PYX_ERR(0, 206, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 4); __PYX_ERR(0, 190, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_verbose)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 5); __PYX_ERR(0, 206, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, 5); __PYX_ERR(0, 190, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
@@ -6542,7 +6426,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_7_solve_eq_at_conditions(Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_solve_eq_at_conditions") < 0)) __PYX_ERR(0, 206, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "_solve_eq_at_conditions") < 0)) __PYX_ERR(0, 190, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -6568,7 +6452,7 @@ static PyObject *__pyx_pw_9pycalphad_4core_8eqsolver_7_solve_eq_at_conditions(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 206, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("_solve_eq_at_conditions", 0, 6, 7, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 190, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.eqsolver._solve_eq_at_conditions", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -6666,7 +6550,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
   __pyx_pybuffernd_chemical_potentials.data = NULL;
   __pyx_pybuffernd_chemical_potentials.rcbuffer = &__pyx_pybuffer_chemical_potentials;
 
-  /* "pycalphad/core/eqsolver.pyx":249
+  /* "pycalphad/core/eqsolver.pyx":233
  *     cdef np.ndarray[ndim=1, dtype=np.float64_t] site_fracs, l_multipliers, phase_fracs
  *     cdef np.ndarray[ndim=2, dtype=np.float64_t] constraint_jac
  *     iter_solver = solver if solver is not None else Solver(verbose=verbose)             # <<<<<<<<<<<<<<
@@ -6678,12 +6562,12 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __Pyx_INCREF(__pyx_v_solver);
     __pyx_t_1 = __pyx_v_solver;
   } else {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Solver); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_Solver); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_verbose, __pyx_v_verbose) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_verbose, __pyx_v_verbose) < 0) __PYX_ERR(0, 233, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_empty_tuple, __pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -6693,79 +6577,79 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
   __pyx_v_iter_solver = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":252
+  /* "pycalphad/core/eqsolver.pyx":236
  * 
  *     # Factored out via profiling
  *     prop_MU_values = properties.MU             # <<<<<<<<<<<<<<
  *     prop_NP_values = properties.NP
  *     prop_Phase_values = properties.Phase
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_MU); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_MU); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_MU_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":253
+  /* "pycalphad/core/eqsolver.pyx":237
  *     # Factored out via profiling
  *     prop_MU_values = properties.MU
  *     prop_NP_values = properties.NP             # <<<<<<<<<<<<<<
  *     prop_Phase_values = properties.Phase
  *     prop_X_values = properties.X
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_NP); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_NP); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_NP_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":254
+  /* "pycalphad/core/eqsolver.pyx":238
  *     prop_MU_values = properties.MU
  *     prop_NP_values = properties.NP
  *     prop_Phase_values = properties.Phase             # <<<<<<<<<<<<<<
  *     prop_X_values = properties.X
  *     prop_Y_values = properties.Y
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_Phase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_Phase); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_Phase_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":255
+  /* "pycalphad/core/eqsolver.pyx":239
  *     prop_NP_values = properties.NP
  *     prop_Phase_values = properties.Phase
  *     prop_X_values = properties.X             # <<<<<<<<<<<<<<
  *     prop_Y_values = properties.Y
  *     prop_GM_values = properties.GM
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_X); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 239, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_X_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":256
+  /* "pycalphad/core/eqsolver.pyx":240
  *     prop_Phase_values = properties.Phase
  *     prop_X_values = properties.X
  *     prop_Y_values = properties.Y             # <<<<<<<<<<<<<<
  *     prop_GM_values = properties.GM
  *     str_state_variables = [str(k) for k in state_variables if str(k) in grid.coords.keys()]
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_Y); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_Y_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":257
+  /* "pycalphad/core/eqsolver.pyx":241
  *     prop_X_values = properties.X
  *     prop_Y_values = properties.Y
  *     prop_GM_values = properties.GM             # <<<<<<<<<<<<<<
  *     str_state_variables = [str(k) for k in state_variables if str(k) in grid.coords.keys()]
  *     it = np.nditer(prop_GM_values, flags=['multi_index'])
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_GM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_GM); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_prop_GM_values = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":258
+  /* "pycalphad/core/eqsolver.pyx":242
  *     prop_Y_values = properties.Y
  *     prop_GM_values = properties.GM
  *     str_state_variables = [str(k) for k in state_variables if str(k) in grid.coords.keys()]             # <<<<<<<<<<<<<<
@@ -6773,32 +6657,32 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  * 
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 258, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 242, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_state_variables)) || PyTuple_CheckExact(__pyx_v_state_variables)) {
       __pyx_t_5 = __pyx_v_state_variables; __Pyx_INCREF(__pyx_t_5); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_state_variables); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_6 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_state_variables); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 242, __pyx_L5_error)
     }
     for (;;) {
       if (likely(!__pyx_t_7)) {
         if (likely(PyList_CheckExact(__pyx_t_5))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_5)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 258, __pyx_L5_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 242, __pyx_L5_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L5_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 258, __pyx_L5_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_6); __Pyx_INCREF(__pyx_t_4); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 242, __pyx_L5_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L5_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_5, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L5_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -6808,7 +6692,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 258, __pyx_L5_error)
+            else __PYX_ERR(0, 242, __pyx_L5_error)
           }
           break;
         }
@@ -6816,11 +6700,11 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       }
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_k, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_8genexpr2__pyx_v_k); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_8genexpr2__pyx_v_k); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_coords); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_v_grid, __pyx_n_s_coords); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_keys); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_keys); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_t_8 = NULL;
@@ -6835,17 +6719,17 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       }
       __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_8) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L5_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 258, __pyx_L5_error)
+      __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_t_4, __pyx_t_3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 242, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = (__pyx_t_2 != 0);
       if (__pyx_t_10) {
-        __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_8genexpr2__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 258, __pyx_L5_error)
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(((PyObject *)(&PyUnicode_Type)), __pyx_8genexpr2__pyx_v_k); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 242, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 258, __pyx_L5_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 242, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
     }
@@ -6860,33 +6744,33 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
   __pyx_v_str_state_variables = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":259
+  /* "pycalphad/core/eqsolver.pyx":243
  *     prop_GM_values = properties.GM
  *     str_state_variables = [str(k) for k in state_variables if str(k) in grid.coords.keys()]
  *     it = np.nditer(prop_GM_values, flags=['multi_index'])             # <<<<<<<<<<<<<<
  * 
  *     while not it.finished:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nditer); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nditer); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_prop_GM_values);
   __Pyx_GIVEREF(__pyx_v_prop_GM_values);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_prop_GM_values);
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_INCREF(__pyx_n_u_multi_index);
   __Pyx_GIVEREF(__pyx_n_u_multi_index);
   PyList_SET_ITEM(__pyx_t_4, 0, __pyx_n_u_multi_index);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_flags, __pyx_t_4) < 0) __PYX_ERR(0, 259, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_flags, __pyx_t_4) < 0) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 259, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -6894,7 +6778,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
   __pyx_v_it = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":261
+  /* "pycalphad/core/eqsolver.pyx":245
  *     it = np.nditer(prop_GM_values, flags=['multi_index'])
  * 
  *     while not it.finished:             # <<<<<<<<<<<<<<
@@ -6902,14 +6786,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *         converged = False
  */
   while (1) {
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_finished); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_finished); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 245, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_2 = ((!__pyx_t_10) != 0);
     if (!__pyx_t_2) break;
 
-    /* "pycalphad/core/eqsolver.pyx":263
+    /* "pycalphad/core/eqsolver.pyx":247
  *     while not it.finished:
  *         # A lot of this code relies on cur_conds being ordered!
  *         converged = False             # <<<<<<<<<<<<<<
@@ -6918,7 +6802,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
     __pyx_v_converged = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":264
+    /* "pycalphad/core/eqsolver.pyx":248
  *         # A lot of this code relies on cur_conds being ordered!
  *         converged = False
  *         changed_phases = False             # <<<<<<<<<<<<<<
@@ -6927,37 +6811,37 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
     __pyx_v_changed_phases = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":265
+    /* "pycalphad/core/eqsolver.pyx":249
  *         converged = False
  *         changed_phases = False
  *         cur_conds = OrderedDict(zip(conds_keys,             # <<<<<<<<<<<<<<
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)
  *                                      for a, b in zip(it.multi_index, conds_keys)]))
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_OrderedDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_OrderedDict); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     { /* enter inner scope */
 
-      /* "pycalphad/core/eqsolver.pyx":266
+      /* "pycalphad/core/eqsolver.pyx":250
  *         changed_phases = False
  *         cur_conds = OrderedDict(zip(conds_keys,
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)             # <<<<<<<<<<<<<<
  *                                      for a, b in zip(it.multi_index, conds_keys)]))
  *         # assume 'points' and other dimensions (internal dof, etc.) always follow
  */
-      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 266, __pyx_L14_error)
+      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 250, __pyx_L14_error)
       __Pyx_GOTREF(__pyx_t_1);
 
-      /* "pycalphad/core/eqsolver.pyx":267
+      /* "pycalphad/core/eqsolver.pyx":251
  *         cur_conds = OrderedDict(zip(conds_keys,
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)
  *                                      for a, b in zip(it.multi_index, conds_keys)]))             # <<<<<<<<<<<<<<
  *         # assume 'points' and other dimensions (internal dof, etc.) always follow
  *         curr_idx = [it.multi_index[i] for i, key in enumerate(conds_keys) if key in str_state_variables]
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L14_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L14_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 267, __pyx_L14_error)
+      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 251, __pyx_L14_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_5);
       PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_5);
@@ -6965,16 +6849,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __Pyx_GIVEREF(__pyx_v_conds_keys);
       PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_v_conds_keys);
       __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L14_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L14_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       if (likely(PyList_CheckExact(__pyx_t_5)) || PyTuple_CheckExact(__pyx_t_5)) {
         __pyx_t_9 = __pyx_t_5; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
         __pyx_t_7 = NULL;
       } else {
-        __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 267, __pyx_L14_error)
+        __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 251, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_7 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 267, __pyx_L14_error)
+        __pyx_t_7 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 251, __pyx_L14_error)
       }
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       for (;;) {
@@ -6982,17 +6866,17 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           if (likely(PyList_CheckExact(__pyx_t_9))) {
             if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_5 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_5); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 267, __pyx_L14_error)
+            __pyx_t_5 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_5); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 251, __pyx_L14_error)
             #else
-            __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L14_error)
+            __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_5);
             #endif
           } else {
             if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_5); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 267, __pyx_L14_error)
+            __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_5); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 251, __pyx_L14_error)
             #else
-            __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L14_error)
+            __pyx_t_5 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 251, __pyx_L14_error)
             __Pyx_GOTREF(__pyx_t_5);
             #endif
           }
@@ -7002,7 +6886,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 267, __pyx_L14_error)
+              else __PYX_ERR(0, 251, __pyx_L14_error)
             }
             break;
           }
@@ -7014,7 +6898,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 267, __pyx_L14_error)
+            __PYX_ERR(0, 251, __pyx_L14_error)
           }
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -7027,15 +6911,15 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           __Pyx_INCREF(__pyx_t_8);
           __Pyx_INCREF(__pyx_t_11);
           #else
-          __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 267, __pyx_L14_error)
+          __pyx_t_8 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 251, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 267, __pyx_L14_error)
+          __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 251, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_11);
           #endif
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_12 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 267, __pyx_L14_error)
+          __pyx_t_12 = PyObject_GetIter(__pyx_t_5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 251, __pyx_L14_error)
           __Pyx_GOTREF(__pyx_t_12);
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -7043,7 +6927,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           __Pyx_GOTREF(__pyx_t_8);
           index = 1; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L17_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_11);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 267, __pyx_L14_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 251, __pyx_L14_error)
           __pyx_t_13 = NULL;
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           goto __pyx_L18_unpacking_done;
@@ -7051,7 +6935,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
           __pyx_t_13 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 267, __pyx_L14_error)
+          __PYX_ERR(0, 251, __pyx_L14_error)
           __pyx_L18_unpacking_done:;
         }
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_a, __pyx_t_8);
@@ -7059,49 +6943,49 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_b, __pyx_t_11);
         __pyx_t_11 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":266
+        /* "pycalphad/core/eqsolver.pyx":250
  *         changed_phases = False
  *         cur_conds = OrderedDict(zip(conds_keys,
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)             # <<<<<<<<<<<<<<
  *                                      for a, b in zip(it.multi_index, conds_keys)]))
  *         # assume 'points' and other dimensions (internal dof, etc.) always follow
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_asarray); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_coords); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_coords); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_8genexpr3__pyx_v_b); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_8 = __Pyx_PyObject_GetItem(__pyx_t_5, __pyx_8genexpr3__pyx_v_b); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_8, __pyx_8genexpr3__pyx_v_a); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_8, __pyx_8genexpr3__pyx_v_a); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-        __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_8 = PyTuple_New(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_12);
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_float); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_float); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_14) < 0) __PYX_ERR(0, 266, __pyx_L14_error)
+        if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_dtype, __pyx_t_14) < 0) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L14_error)
+        __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, __pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_14))) __PYX_ERR(0, 266, __pyx_L14_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_14))) __PYX_ERR(0, 250, __pyx_L14_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":267
+        /* "pycalphad/core/eqsolver.pyx":251
  *         cur_conds = OrderedDict(zip(conds_keys,
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)
  *                                      for a, b in zip(it.multi_index, conds_keys)]))             # <<<<<<<<<<<<<<
@@ -7120,14 +7004,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __pyx_L19_exit_scope:;
     } /* exit inner scope */
 
-    /* "pycalphad/core/eqsolver.pyx":265
+    /* "pycalphad/core/eqsolver.pyx":249
  *         converged = False
  *         changed_phases = False
  *         cur_conds = OrderedDict(zip(conds_keys,             # <<<<<<<<<<<<<<
  *                                     [np.asarray(properties.coords[b][a], dtype=np.float_)
  *                                      for a, b in zip(it.multi_index, conds_keys)]))
  */
-    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __Pyx_INCREF(__pyx_v_conds_keys);
     __Pyx_GIVEREF(__pyx_v_conds_keys);
@@ -7135,7 +7019,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __Pyx_GIVEREF(__pyx_t_1);
     PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_1);
     __pyx_t_1 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_zip, __pyx_t_9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __pyx_t_9 = NULL;
@@ -7151,13 +7035,13 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __pyx_t_4 = (__pyx_t_9) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_9, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1);
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 249, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_XDECREF_SET(__pyx_v_cur_conds, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":269
+    /* "pycalphad/core/eqsolver.pyx":253
  *                                      for a, b in zip(it.multi_index, conds_keys)]))
  *         # assume 'points' and other dimensions (internal dof, etc.) always follow
  *         curr_idx = [it.multi_index[i] for i, key in enumerate(conds_keys) if key in str_state_variables]             # <<<<<<<<<<<<<<
@@ -7165,7 +7049,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *         state_variable_values = np.array(state_variable_values)
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L22_error)
+      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 253, __pyx_L22_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_INCREF(__pyx_int_0);
       __pyx_t_3 = __pyx_int_0;
@@ -7173,26 +7057,26 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __pyx_t_1 = __pyx_v_conds_keys; __Pyx_INCREF(__pyx_t_1); __pyx_t_6 = 0;
         __pyx_t_7 = NULL;
       } else {
-        __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_conds_keys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L22_error)
+        __pyx_t_6 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_v_conds_keys); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L22_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 269, __pyx_L22_error)
+        __pyx_t_7 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 253, __pyx_L22_error)
       }
       for (;;) {
         if (likely(!__pyx_t_7)) {
           if (likely(PyList_CheckExact(__pyx_t_1))) {
             if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_1)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_9 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 269, __pyx_L22_error)
+            __pyx_t_9 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 253, __pyx_L22_error)
             #else
-            __pyx_t_9 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 269, __pyx_L22_error)
+            __pyx_t_9 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 253, __pyx_L22_error)
             __Pyx_GOTREF(__pyx_t_9);
             #endif
           } else {
             if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 269, __pyx_L22_error)
+            __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 253, __pyx_L22_error)
             #else
-            __pyx_t_9 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 269, __pyx_L22_error)
+            __pyx_t_9 = PySequence_ITEM(__pyx_t_1, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 253, __pyx_L22_error)
             __Pyx_GOTREF(__pyx_t_9);
             #endif
           }
@@ -7202,7 +7086,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 269, __pyx_L22_error)
+              else __PYX_ERR(0, 253, __pyx_L22_error)
             }
             break;
           }
@@ -7212,20 +7096,20 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __pyx_t_9 = 0;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_i, __pyx_t_3);
-        __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 269, __pyx_L22_error)
+        __pyx_t_9 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 253, __pyx_L22_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3);
         __pyx_t_3 = __pyx_t_9;
         __pyx_t_9 = 0;
-        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_8genexpr4__pyx_v_key, __pyx_v_str_state_variables, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 269, __pyx_L22_error)
+        __pyx_t_2 = (__Pyx_PySequence_ContainsTF(__pyx_8genexpr4__pyx_v_key, __pyx_v_str_state_variables, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 253, __pyx_L22_error)
         __pyx_t_10 = (__pyx_t_2 != 0);
         if (__pyx_t_10) {
-          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 269, __pyx_L22_error)
+          __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 253, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 269, __pyx_L22_error)
+          __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 253, __pyx_L22_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_14))) __PYX_ERR(0, 269, __pyx_L22_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_14))) __PYX_ERR(0, 253, __pyx_L22_error)
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         }
       }
@@ -7243,7 +7127,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __Pyx_XDECREF_SET(__pyx_v_curr_idx, ((PyObject*)__pyx_t_4));
     __pyx_t_4 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":270
+    /* "pycalphad/core/eqsolver.pyx":254
  *         # assume 'points' and other dimensions (internal dof, etc.) always follow
  *         curr_idx = [it.multi_index[i] for i, key in enumerate(conds_keys) if key in str_state_variables]
  *         state_variable_values = [cur_conds[key] for key in str_state_variables]             # <<<<<<<<<<<<<<
@@ -7251,22 +7135,22 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *         # sum of independently specified components
  */
     { /* enter inner scope */
-      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L29_error)
+      __pyx_t_4 = PyList_New(0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 254, __pyx_L29_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_3 = __pyx_v_str_state_variables; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
       for (;;) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 270, __pyx_L29_error)
+        __pyx_t_1 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_1); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 254, __pyx_L29_error)
         #else
-        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L29_error)
+        __pyx_t_1 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_1);
         #endif
         __Pyx_XDECREF_SET(__pyx_8genexpr5__pyx_v_key, __pyx_t_1);
         __pyx_t_1 = 0;
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_cur_conds, __pyx_8genexpr5__pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L29_error)
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_cur_conds, __pyx_8genexpr5__pyx_v_key); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 254, __pyx_L29_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 270, __pyx_L29_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_4, (PyObject*)__pyx_t_1))) __PYX_ERR(0, 254, __pyx_L29_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7280,16 +7164,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __Pyx_XDECREF_SET(__pyx_v_state_variable_values, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":271
+    /* "pycalphad/core/eqsolver.pyx":255
  *         curr_idx = [it.multi_index[i] for i, key in enumerate(conds_keys) if key in str_state_variables]
  *         state_variable_values = [cur_conds[key] for key in str_state_variables]
  *         state_variable_values = np.array(state_variable_values)             # <<<<<<<<<<<<<<
  *         # sum of independently specified components
  *         indep_sum = np.sum([float(val) for i, val in cur_conds.items() if i.startswith('X_')])
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 271, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_array); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_t_3 = NULL;
@@ -7304,33 +7188,33 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     }
     __pyx_t_4 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_3, __pyx_v_state_variable_values) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_v_state_variable_values);
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 271, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_DECREF_SET(__pyx_v_state_variable_values, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":273
+    /* "pycalphad/core/eqsolver.pyx":257
  *         state_variable_values = np.array(state_variable_values)
  *         # sum of independently specified components
  *         indep_sum = np.sum([float(val) for i, val in cur_conds.items() if i.startswith('X_')])             # <<<<<<<<<<<<<<
  *         if indep_sum > 1:
  *             # Sum of independent component mole fractions greater than one
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_sum); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     { /* enter inner scope */
-      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L35_error)
+      __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_6 = 0;
       if (unlikely(__pyx_v_cur_conds == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "items");
-        __PYX_ERR(0, 273, __pyx_L35_error)
+        __PYX_ERR(0, 257, __pyx_L35_error)
       }
-      __pyx_t_9 = __Pyx_dict_iterator(__pyx_v_cur_conds, 0, __pyx_n_s_items, (&__pyx_t_15), (&__pyx_t_16)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 273, __pyx_L35_error)
+      __pyx_t_9 = __Pyx_dict_iterator(__pyx_v_cur_conds, 0, __pyx_n_s_items, (&__pyx_t_15), (&__pyx_t_16)); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 257, __pyx_L35_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_XDECREF(__pyx_t_14);
       __pyx_t_14 = __pyx_t_9;
@@ -7338,14 +7222,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       while (1) {
         __pyx_t_17 = __Pyx_dict_iter_next(__pyx_t_14, __pyx_t_15, &__pyx_t_6, &__pyx_t_9, &__pyx_t_5, NULL, __pyx_t_16);
         if (unlikely(__pyx_t_17 == 0)) break;
-        if (unlikely(__pyx_t_17 == -1)) __PYX_ERR(0, 273, __pyx_L35_error)
+        if (unlikely(__pyx_t_17 == -1)) __PYX_ERR(0, 257, __pyx_L35_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_XDECREF_SET(__pyx_8genexpr6__pyx_v_i, __pyx_t_9);
         __pyx_t_9 = 0;
         __Pyx_XDECREF_SET(__pyx_8genexpr6__pyx_v_val, __pyx_t_5);
         __pyx_t_5 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_i, __pyx_n_s_startswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 273, __pyx_L35_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_8genexpr6__pyx_v_i, __pyx_n_s_startswith); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 257, __pyx_L35_error)
         __Pyx_GOTREF(__pyx_t_9);
         __pyx_t_8 = NULL;
         if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -7359,15 +7243,15 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         }
         __pyx_t_5 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_8, __pyx_n_u_X_2) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_n_u_X_2);
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
-        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 273, __pyx_L35_error)
+        if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L35_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 273, __pyx_L35_error)
+        __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_5); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 257, __pyx_L35_error)
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         if (__pyx_t_10) {
-          __pyx_t_5 = __Pyx_PyNumber_Float(__pyx_8genexpr6__pyx_v_val); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 273, __pyx_L35_error)
+          __pyx_t_5 = __Pyx_PyNumber_Float(__pyx_8genexpr6__pyx_v_val); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 257, __pyx_L35_error)
           __Pyx_GOTREF(__pyx_t_5);
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 273, __pyx_L35_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_5))) __PYX_ERR(0, 257, __pyx_L35_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         }
       }
@@ -7394,14 +7278,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __pyx_t_4 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_14, __pyx_t_1) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_1);
     __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+    if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 273, __pyx_L1_error)
+    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_4); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_indep_sum = __pyx_t_18;
 
-    /* "pycalphad/core/eqsolver.pyx":274
+    /* "pycalphad/core/eqsolver.pyx":258
  *         # sum of independently specified components
  *         indep_sum = np.sum([float(val) for i, val in cur_conds.items() if i.startswith('X_')])
  *         if indep_sum > 1:             # <<<<<<<<<<<<<<
@@ -7411,152 +7295,152 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __pyx_t_10 = ((__pyx_v_indep_sum > 1.0) != 0);
     if (__pyx_t_10) {
 
-      /* "pycalphad/core/eqsolver.pyx":278
+      /* "pycalphad/core/eqsolver.pyx":262
  *             # Skip this condition set
  *             # We silently allow this to make 2-D composition mapping easier
  *             prop_MU_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_NP_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 278, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 278, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":279
+      /* "pycalphad/core/eqsolver.pyx":263
  *             # We silently allow this to make 2-D composition mapping easier
  *             prop_MU_values[it.multi_index] = np.nan
  *             prop_NP_values[it.multi_index + np.index_exp[:]] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_14, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetSlice(__pyx_t_14, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 279, __pyx_L1_error)
+      __pyx_t_14 = PyNumber_Add(__pyx_t_3, __pyx_t_1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_14, __pyx_t_4) < 0)) __PYX_ERR(0, 279, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_14, __pyx_t_4) < 0)) __PYX_ERR(0, 263, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":280
+      /* "pycalphad/core/eqsolver.pyx":264
  *             prop_MU_values[it.multi_index] = np.nan
  *             prop_NP_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''             # <<<<<<<<<<<<<<
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetSlice(__pyx_t_1, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 280, __pyx_L1_error)
+      __pyx_t_1 = PyNumber_Add(__pyx_t_4, __pyx_t_14); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_1, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 280, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_1, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 264, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":281
+      /* "pycalphad/core/eqsolver.pyx":265
  *             prop_NP_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_t_1, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_3, __pyx_t_14) < 0)) __PYX_ERR(0, 281, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_3, __pyx_t_14) < 0)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":282
+      /* "pycalphad/core/eqsolver.pyx":266
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_GM_values[it.multi_index] = np.nan
  *             it.iternext()
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 282, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_14, __pyx_t_3) < 0)) __PYX_ERR(0, 282, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_14, __pyx_t_3) < 0)) __PYX_ERR(0, 266, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":283
+      /* "pycalphad/core/eqsolver.pyx":267
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             it.iternext()
  *             continue
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 283, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 283, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_t_14) < 0)) __PYX_ERR(0, 283, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_t_14) < 0)) __PYX_ERR(0, 267, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":284
+      /* "pycalphad/core/eqsolver.pyx":268
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan
  *             it.iternext()             # <<<<<<<<<<<<<<
  *             continue
  * 
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_iternext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 284, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_iternext); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __pyx_t_4 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
@@ -7570,12 +7454,12 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       }
       __pyx_t_14 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 284, __pyx_L1_error)
+      if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 268, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":285
+      /* "pycalphad/core/eqsolver.pyx":269
  *             prop_GM_values[it.multi_index] = np.nan
  *             it.iternext()
  *             continue             # <<<<<<<<<<<<<<
@@ -7584,7 +7468,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
       goto __pyx_L10_continue;
 
-      /* "pycalphad/core/eqsolver.pyx":274
+      /* "pycalphad/core/eqsolver.pyx":258
  *         # sum of independently specified components
  *         indep_sum = np.sum([float(val) for i, val in cur_conds.items() if i.startswith('X_')])
  *         if indep_sum > 1:             # <<<<<<<<<<<<<<
@@ -7593,31 +7477,31 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":287
+    /* "pycalphad/core/eqsolver.pyx":271
  *             continue
  * 
  *         composition_sets = []             # <<<<<<<<<<<<<<
  *         removed_compsets = []
  *         #print('prop_Phase_values',prop_Phase_values[it.multi_index])
  */
-    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 287, __pyx_L1_error)
+    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 271, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_XDECREF_SET(__pyx_v_composition_sets, ((PyObject*)__pyx_t_14));
     __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":288
+    /* "pycalphad/core/eqsolver.pyx":272
  * 
  *         composition_sets = []
  *         removed_compsets = []             # <<<<<<<<<<<<<<
  *         #print('prop_Phase_values',prop_Phase_values[it.multi_index])
  *         for phase_idx, phase_name in enumerate(prop_Phase_values[it.multi_index]):
  */
-    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 288, __pyx_L1_error)
+    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 272, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_XDECREF_SET(__pyx_v_removed_compsets, ((PyObject*)__pyx_t_14));
     __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":290
+    /* "pycalphad/core/eqsolver.pyx":274
  *         removed_compsets = []
  *         #print('prop_Phase_values',prop_Phase_values[it.multi_index])
  *         for phase_idx, phase_name in enumerate(prop_Phase_values[it.multi_index]):             # <<<<<<<<<<<<<<
@@ -7625,18 +7509,18 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *             if phase_name == '' or phase_name == '_FAKE_':
  */
     __pyx_t_16 = 0;
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_prop_Phase_values, __pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_prop_Phase_values, __pyx_t_14); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (likely(PyList_CheckExact(__pyx_t_3)) || PyTuple_CheckExact(__pyx_t_3)) {
       __pyx_t_14 = __pyx_t_3; __Pyx_INCREF(__pyx_t_14); __pyx_t_15 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_15 = -1; __pyx_t_14 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_15 = -1; __pyx_t_14 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 274, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_7 = Py_TYPE(__pyx_t_14)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 290, __pyx_L1_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_14)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 274, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     for (;;) {
@@ -7644,17 +7528,17 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         if (likely(PyList_CheckExact(__pyx_t_14))) {
           if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_14)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 290, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_15 >= PyTuple_GET_SIZE(__pyx_t_14)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 290, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 274, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 290, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 274, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -7664,7 +7548,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 290, __pyx_L1_error)
+            else __PYX_ERR(0, 274, __pyx_L1_error)
           }
           break;
         }
@@ -7675,25 +7559,25 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __pyx_v_phase_idx = __pyx_t_16;
       __pyx_t_16 = (__pyx_t_16 + 1);
 
-      /* "pycalphad/core/eqsolver.pyx":292
+      /* "pycalphad/core/eqsolver.pyx":276
  *         for phase_idx, phase_name in enumerate(prop_Phase_values[it.multi_index]):
  *             #print('bulid compset',phase_idx, phase_name)
  *             if phase_name == '' or phase_name == '_FAKE_':             # <<<<<<<<<<<<<<
  *                 continue
  *             phase_record = phase_records[phase_name]
  */
-      __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_phase_name, __pyx_kp_u__3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_phase_name, __pyx_kp_u__3, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
       if (!__pyx_t_2) {
       } else {
         __pyx_t_10 = __pyx_t_2;
         goto __pyx_L44_bool_binop_done;
       }
-      __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_phase_name, __pyx_n_u_FAKE, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 292, __pyx_L1_error)
+      __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_phase_name, __pyx_n_u_FAKE, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
       __pyx_t_10 = __pyx_t_2;
       __pyx_L44_bool_binop_done:;
       if (__pyx_t_10) {
 
-        /* "pycalphad/core/eqsolver.pyx":293
+        /* "pycalphad/core/eqsolver.pyx":277
  *             #print('bulid compset',phase_idx, phase_name)
  *             if phase_name == '' or phase_name == '_FAKE_':
  *                 continue             # <<<<<<<<<<<<<<
@@ -7702,7 +7586,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
         goto __pyx_L41_continue;
 
-        /* "pycalphad/core/eqsolver.pyx":292
+        /* "pycalphad/core/eqsolver.pyx":276
  *         for phase_idx, phase_name in enumerate(prop_Phase_values[it.multi_index]):
  *             #print('bulid compset',phase_idx, phase_name)
  *             if phase_name == '' or phase_name == '_FAKE_':             # <<<<<<<<<<<<<<
@@ -7711,41 +7595,41 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":294
+      /* "pycalphad/core/eqsolver.pyx":278
  *             if phase_name == '' or phase_name == '_FAKE_':
  *                 continue
  *             phase_record = phase_records[phase_name]             # <<<<<<<<<<<<<<
  *             sfx = prop_Y_values[it.multi_index + np.index_exp[phase_idx, :phase_record.phase_dof]]
  *             phase_amt = prop_NP_values[it.multi_index + np.index_exp[phase_idx]]
  */
-      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_phase_records, __pyx_v_phase_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 294, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_phase_records, __pyx_v_phase_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_9phase_rec_PhaseRecord))))) __PYX_ERR(0, 294, __pyx_L1_error)
+      if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_9phase_rec_PhaseRecord))))) __PYX_ERR(0, 278, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_phase_record, ((struct PhaseRecordObject *)__pyx_t_3));
       __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":295
+      /* "pycalphad/core/eqsolver.pyx":279
  *                 continue
  *             phase_record = phase_records[phase_name]
  *             sfx = prop_Y_values[it.multi_index + np.index_exp[phase_idx, :phase_record.phase_dof]]             # <<<<<<<<<<<<<<
  *             phase_amt = prop_NP_values[it.multi_index + np.index_exp[phase_idx]]
  *             phase_amt = max(phase_amt, MIN_PHASE_FRACTION)
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_phase_record->phase_dof); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_phase_record->phase_dof); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_9 = PySlice_New(Py_None, __pyx_t_5, Py_None); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_9 = PySlice_New(Py_None, __pyx_t_5, Py_None); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4);
       PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4);
@@ -7753,60 +7637,60 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_9);
       __pyx_t_4 = 0;
       __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_5 = PyNumber_Add(__pyx_t_3, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_prop_Y_values, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 295, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_prop_Y_values, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 279, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_XDECREF_SET(__pyx_v_sfx, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":296
+      /* "pycalphad/core/eqsolver.pyx":280
  *             phase_record = phase_records[phase_name]
  *             sfx = prop_Y_values[it.multi_index + np.index_exp[phase_idx, :phase_record.phase_dof]]
  *             phase_amt = prop_NP_values[it.multi_index + np.index_exp[phase_idx]]             # <<<<<<<<<<<<<<
  *             phase_amt = max(phase_amt, MIN_PHASE_FRACTION)
  *             compset = CompositionSet(phase_record)
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_GetItemInt(__pyx_t_3, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_prop_NP_values, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 296, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_prop_NP_values, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF_SET(__pyx_v_phase_amt, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":297
+      /* "pycalphad/core/eqsolver.pyx":281
  *             sfx = prop_Y_values[it.multi_index + np.index_exp[phase_idx, :phase_record.phase_dof]]
  *             phase_amt = prop_NP_values[it.multi_index + np.index_exp[phase_idx]]
  *             phase_amt = max(phase_amt, MIN_PHASE_FRACTION)             # <<<<<<<<<<<<<<
  *             compset = CompositionSet(phase_record)
  * 
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_MIN_PHASE_FRACTION); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 297, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_MIN_PHASE_FRACTION); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_INCREF(__pyx_v_phase_amt);
       __pyx_t_3 = __pyx_v_phase_amt;
-      __pyx_t_1 = PyObject_RichCompare(__pyx_t_5, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 297, __pyx_L1_error)
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
+      __pyx_t_1 = PyObject_RichCompare(__pyx_t_5, __pyx_t_3, Py_GT); __Pyx_XGOTREF(__pyx_t_1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 281, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 281, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_10) {
         __Pyx_INCREF(__pyx_t_5);
@@ -7823,28 +7707,28 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __Pyx_DECREF_SET(__pyx_v_phase_amt, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":298
+      /* "pycalphad/core/eqsolver.pyx":282
  *             phase_amt = prop_NP_values[it.multi_index + np.index_exp[phase_idx]]
  *             phase_amt = max(phase_amt, MIN_PHASE_FRACTION)
  *             compset = CompositionSet(phase_record)             # <<<<<<<<<<<<<<
  * 
  *             compset.update(sfx, phase_amt, state_variable_values)
  */
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), ((PyObject *)__pyx_v_phase_record)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 298, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet), ((PyObject *)__pyx_v_phase_record)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 282, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":300
+      /* "pycalphad/core/eqsolver.pyx":284
  *             compset = CompositionSet(phase_record)
  * 
  *             compset.update(sfx, phase_amt, state_variable_values)             # <<<<<<<<<<<<<<
  *             composition_sets.append(compset)
  *         chemical_potentials = prop_MU_values[it.multi_index]
  */
-      __pyx_t_19 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_sfx, PyBUF_WRITABLE); if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 300, __pyx_L1_error)
-      __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_v_phase_amt); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 300, __pyx_L1_error)
-      __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_state_variable_values, PyBUF_WRITABLE); if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 300, __pyx_L1_error)
+      __pyx_t_19 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_sfx, PyBUF_WRITABLE); if (unlikely(!__pyx_t_19.memview)) __PYX_ERR(0, 284, __pyx_L1_error)
+      __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_v_phase_amt); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 284, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_state_variable_values, PyBUF_WRITABLE); if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 284, __pyx_L1_error)
       ((struct __pyx_vtabstruct_9pycalphad_4core_15composition_set_CompositionSet *)__pyx_v_compset->__pyx_vtab)->update(__pyx_v_compset, __pyx_t_19, __pyx_t_18, __pyx_t_20, 0);
       __PYX_XDEC_MEMVIEW(&__pyx_t_19, 1);
       __pyx_t_19.memview = NULL;
@@ -7853,16 +7737,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __pyx_t_20.memview = NULL;
       __pyx_t_20.data = NULL;
 
-      /* "pycalphad/core/eqsolver.pyx":301
+      /* "pycalphad/core/eqsolver.pyx":285
  * 
  *             compset.update(sfx, phase_amt, state_variable_values)
  *             composition_sets.append(compset)             # <<<<<<<<<<<<<<
  *         chemical_potentials = prop_MU_values[it.multi_index]
  *         energy = prop_GM_values[it.multi_index]
  */
-      __pyx_t_21 = __Pyx_PyList_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_21 == ((int)-1))) __PYX_ERR(0, 301, __pyx_L1_error)
+      __pyx_t_21 = __Pyx_PyList_Append(__pyx_v_composition_sets, ((PyObject *)__pyx_v_compset)); if (unlikely(__pyx_t_21 == ((int)-1))) __PYX_ERR(0, 285, __pyx_L1_error)
 
-      /* "pycalphad/core/eqsolver.pyx":290
+      /* "pycalphad/core/eqsolver.pyx":274
  *         removed_compsets = []
  *         #print('prop_Phase_values',prop_Phase_values[it.multi_index])
  *         for phase_idx, phase_name in enumerate(prop_Phase_values[it.multi_index]):             # <<<<<<<<<<<<<<
@@ -7873,19 +7757,19 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":302
+    /* "pycalphad/core/eqsolver.pyx":286
  *             compset.update(sfx, phase_amt, state_variable_values)
  *             composition_sets.append(compset)
  *         chemical_potentials = prop_MU_values[it.multi_index]             # <<<<<<<<<<<<<<
  *         energy = prop_GM_values[it.multi_index]
  *         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,
  */
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 286, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_prop_MU_values, __pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_v_prop_MU_values, __pyx_t_14); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 286, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 302, __pyx_L1_error)
+    if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 286, __pyx_L1_error)
     __pyx_t_22 = ((PyArrayObject *)__pyx_t_5);
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -7902,43 +7786,43 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __pyx_t_23 = __pyx_t_24 = __pyx_t_25 = 0;
       }
       __pyx_pybuffernd_chemical_potentials.diminfo[0].strides = __pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_chemical_potentials.diminfo[0].shape = __pyx_pybuffernd_chemical_potentials.rcbuffer->pybuffer.shape[0];
-      if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 302, __pyx_L1_error)
+      if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 286, __pyx_L1_error)
     }
     __pyx_t_22 = 0;
     __Pyx_XDECREF_SET(__pyx_v_chemical_potentials, ((PyArrayObject *)__pyx_t_5));
     __pyx_t_5 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":303
+    /* "pycalphad/core/eqsolver.pyx":287
  *             composition_sets.append(compset)
  *         chemical_potentials = prop_MU_values[it.multi_index]
  *         energy = prop_GM_values[it.multi_index]             # <<<<<<<<<<<<<<
  *         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,
  *                           state_variable_values, -1000, verbose)
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_v_prop_GM_values, __pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 303, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_v_prop_GM_values, __pyx_t_5); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 287, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_XDECREF_SET(__pyx_v_energy, __pyx_t_14);
     __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":304
+    /* "pycalphad/core/eqsolver.pyx":288
  *         chemical_potentials = prop_MU_values[it.multi_index]
  *         energy = prop_GM_values[it.multi_index]
  *         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,             # <<<<<<<<<<<<<<
  *                           state_variable_values, -1000, verbose)
- *         #print('Composition Sets', composition_sets)
+ *         phase_amt_sum = 0.0
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_add_nearly_stable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 304, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_add_nearly_stable); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 288, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
 
-    /* "pycalphad/core/eqsolver.pyx":305
+    /* "pycalphad/core/eqsolver.pyx":289
  *         energy = prop_GM_values[it.multi_index]
  *         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,
  *                           state_variable_values, -1000, verbose)             # <<<<<<<<<<<<<<
- *         #print('Composition Sets', composition_sets)
  *         phase_amt_sum = 0.0
+ *         for compset in composition_sets:
  */
     __pyx_t_9 = NULL;
     __pyx_t_16 = 0;
@@ -7955,7 +7839,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[9] = {__pyx_t_9, __pyx_v_composition_sets, __pyx_v_phase_records, __pyx_v_grid, __pyx_v_curr_idx, ((PyObject *)__pyx_v_chemical_potentials), __pyx_v_state_variable_values, __pyx_int_neg_1000, __pyx_v_verbose};
-      __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_16, 8+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_16, 8+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_14);
     } else
@@ -7963,13 +7847,13 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[9] = {__pyx_t_9, __pyx_v_composition_sets, __pyx_v_phase_records, __pyx_v_grid, __pyx_v_curr_idx, ((PyObject *)__pyx_v_chemical_potentials), __pyx_v_state_variable_values, __pyx_int_neg_1000, __pyx_v_verbose};
-      __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_16, 8+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-__pyx_t_16, 8+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GOTREF(__pyx_t_14);
     } else
     #endif
     {
-      __pyx_t_3 = PyTuple_New(8+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(8+__pyx_t_16); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (__pyx_t_9) {
         __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_t_9); __pyx_t_9 = NULL;
@@ -7998,24 +7882,24 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __Pyx_INCREF(__pyx_v_verbose);
       __Pyx_GIVEREF(__pyx_v_verbose);
       PyTuple_SET_ITEM(__pyx_t_3, 7+__pyx_t_16, __pyx_v_verbose);
-      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 304, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_3, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 288, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":307
+    /* "pycalphad/core/eqsolver.pyx":290
+ *         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,
  *                           state_variable_values, -1000, verbose)
- *         #print('Composition Sets', composition_sets)
  *         phase_amt_sum = 0.0             # <<<<<<<<<<<<<<
  *         for compset in composition_sets:
  *             phase_amt_sum += compset.NP
  */
     __pyx_v_phase_amt_sum = 0.0;
 
-    /* "pycalphad/core/eqsolver.pyx":308
- *         #print('Composition Sets', composition_sets)
+    /* "pycalphad/core/eqsolver.pyx":291
+ *                           state_variable_values, -1000, verbose)
  *         phase_amt_sum = 0.0
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
  *             phase_amt_sum += compset.NP
@@ -8025,16 +7909,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     for (;;) {
       if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_14)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_5); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_5); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 291, __pyx_L1_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 308, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
-      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 308, __pyx_L1_error)
+      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 291, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":309
+      /* "pycalphad/core/eqsolver.pyx":292
  *         phase_amt_sum = 0.0
  *         for compset in composition_sets:
  *             phase_amt_sum += compset.NP             # <<<<<<<<<<<<<<
@@ -8043,8 +7927,8 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
       __pyx_v_phase_amt_sum = (__pyx_v_phase_amt_sum + __pyx_v_compset->NP);
 
-      /* "pycalphad/core/eqsolver.pyx":308
- *         #print('Composition Sets', composition_sets)
+      /* "pycalphad/core/eqsolver.pyx":291
+ *                           state_variable_values, -1000, verbose)
  *         phase_amt_sum = 0.0
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
  *             phase_amt_sum += compset.NP
@@ -8053,7 +7937,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":310
+    /* "pycalphad/core/eqsolver.pyx":293
  *         for compset in composition_sets:
  *             phase_amt_sum += compset.NP
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -8064,16 +7948,16 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     for (;;) {
       if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_14)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_5); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __pyx_t_5 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_5); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 293, __pyx_L1_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 310, __pyx_L1_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 293, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
-      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 310, __pyx_L1_error)
+      if (!(likely(((__pyx_t_5) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_5, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 293, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_5));
       __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":311
+      /* "pycalphad/core/eqsolver.pyx":294
  *             phase_amt_sum += compset.NP
  *         for compset in composition_sets:
  *             compset.NP /= phase_amt_sum             # <<<<<<<<<<<<<<
@@ -8082,11 +7966,11 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
       if (unlikely(__pyx_v_phase_amt_sum == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 311, __pyx_L1_error)
+        __PYX_ERR(0, 294, __pyx_L1_error)
       }
       __pyx_v_compset->NP = (__pyx_v_compset->NP / __pyx_v_phase_amt_sum);
 
-      /* "pycalphad/core/eqsolver.pyx":310
+      /* "pycalphad/core/eqsolver.pyx":293
  *         for compset in composition_sets:
  *             phase_amt_sum += compset.NP
  *         for compset in composition_sets:             # <<<<<<<<<<<<<<
@@ -8096,7 +7980,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     }
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":312
+    /* "pycalphad/core/eqsolver.pyx":295
  *         for compset in composition_sets:
  *             compset.NP /= phase_amt_sum
  *         iterations = 0             # <<<<<<<<<<<<<<
@@ -8106,19 +7990,19 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __Pyx_INCREF(__pyx_int_0);
     __Pyx_XDECREF_SET(__pyx_v_iterations, __pyx_int_0);
 
-    /* "pycalphad/core/eqsolver.pyx":313
+    /* "pycalphad/core/eqsolver.pyx":296
  *             compset.NP /= phase_amt_sum
  *         iterations = 0
  *         history = []             # <<<<<<<<<<<<<<
  *         while (iterations < 10) and (not iter_solver.ignore_convergence):
  *             if len(composition_sets) == 0:
  */
-    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 313, __pyx_L1_error)
+    __pyx_t_14 = PyList_New(0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 296, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_XDECREF_SET(__pyx_v_history, ((PyObject*)__pyx_t_14));
     __pyx_t_14 = 0;
 
-    /* "pycalphad/core/eqsolver.pyx":314
+    /* "pycalphad/core/eqsolver.pyx":297
  *         iterations = 0
  *         history = []
  *         while (iterations < 10) and (not iter_solver.ignore_convergence):             # <<<<<<<<<<<<<<
@@ -8126,35 +8010,35 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *                 changed_phases = False
  */
     while (1) {
-      __pyx_t_14 = PyObject_RichCompare(__pyx_v_iterations, __pyx_int_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 314, __pyx_L1_error)
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_14 = PyObject_RichCompare(__pyx_v_iterations, __pyx_int_10, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 297, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       if (__pyx_t_2) {
       } else {
         __pyx_t_10 = __pyx_t_2;
         goto __pyx_L52_bool_binop_done;
       }
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_iter_solver, __pyx_n_s_ignore_convergence); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_iter_solver, __pyx_n_s_ignore_convergence); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 297, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 314, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 297, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_t_26 = ((!__pyx_t_2) != 0);
       __pyx_t_10 = __pyx_t_26;
       __pyx_L52_bool_binop_done:;
       if (!__pyx_t_10) break;
 
-      /* "pycalphad/core/eqsolver.pyx":315
+      /* "pycalphad/core/eqsolver.pyx":298
  *         history = []
  *         while (iterations < 10) and (not iter_solver.ignore_convergence):
  *             if len(composition_sets) == 0:             # <<<<<<<<<<<<<<
  *                 changed_phases = False
  *                 break
  */
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 315, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 298, __pyx_L1_error)
       __pyx_t_10 = ((__pyx_t_15 == 0) != 0);
       if (__pyx_t_10) {
 
-        /* "pycalphad/core/eqsolver.pyx":316
+        /* "pycalphad/core/eqsolver.pyx":299
  *         while (iterations < 10) and (not iter_solver.ignore_convergence):
  *             if len(composition_sets) == 0:
  *                 changed_phases = False             # <<<<<<<<<<<<<<
@@ -8163,7 +8047,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
         __pyx_v_changed_phases = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":317
+        /* "pycalphad/core/eqsolver.pyx":300
  *             if len(composition_sets) == 0:
  *                 changed_phases = False
  *                 break             # <<<<<<<<<<<<<<
@@ -8172,7 +8056,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
         goto __pyx_L51_break;
 
-        /* "pycalphad/core/eqsolver.pyx":315
+        /* "pycalphad/core/eqsolver.pyx":298
  *         history = []
  *         while (iterations < 10) and (not iter_solver.ignore_convergence):
  *             if len(composition_sets) == 0:             # <<<<<<<<<<<<<<
@@ -8181,83 +8065,83 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":318
+      /* "pycalphad/core/eqsolver.pyx":301
  *                 changed_phases = False
  *                 break
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)             # <<<<<<<<<<<<<<
  * 
  *             chemical_potentials[:] = result.chemical_potentials
  */
-      __pyx_t_14 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_cur_conds, __pyx_v_iter_solver, 0, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 318, __pyx_L1_error)
+      __pyx_t_14 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_cur_conds, __pyx_v_iter_solver, 0, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 301, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_XDECREF_SET(__pyx_v_result, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":320
+      /* "pycalphad/core/eqsolver.pyx":303
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)
  * 
  *             chemical_potentials[:] = result.chemical_potentials             # <<<<<<<<<<<<<<
  *             changed_phases=False
- *             #print('changed_phases',composition_sets, removed_compsets, phase_records,
+ *             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,
  */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_chemical_potentials); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 320, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_chemical_potentials); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_chemical_potentials), __pyx_slice__2, __pyx_t_14) < 0)) __PYX_ERR(0, 320, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_chemical_potentials), __pyx_slice__2, __pyx_t_14) < 0)) __PYX_ERR(0, 303, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":321
+      /* "pycalphad/core/eqsolver.pyx":304
  * 
  *             chemical_potentials[:] = result.chemical_potentials
  *             changed_phases=False             # <<<<<<<<<<<<<<
- *             #print('changed_phases',composition_sets, removed_compsets, phase_records,
- *              #                               grid, curr_idx, chemical_potentials, state_variable_values,
+ *             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,
+ *                                             grid, curr_idx, chemical_potentials, state_variable_values,
  */
       __pyx_v_changed_phases = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":326
- *               #                              1e-4, verbose)
+      /* "pycalphad/core/eqsolver.pyx":306
+ *             changed_phases=False
  *             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,
  *                                             grid, curr_idx, chemical_potentials, state_variable_values,             # <<<<<<<<<<<<<<
  *                                             1e-4, verbose)
  *             iterations += 1
  */
-      __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_state_variable_values, PyBUF_WRITABLE); if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 326, __pyx_L1_error)
+      __pyx_t_20 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_state_variable_values, PyBUF_WRITABLE); if (unlikely(!__pyx_t_20.memview)) __PYX_ERR(0, 306, __pyx_L1_error)
 
-      /* "pycalphad/core/eqsolver.pyx":327
+      /* "pycalphad/core/eqsolver.pyx":307
  *             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,
  *                                             grid, curr_idx, chemical_potentials, state_variable_values,
  *                                             1e-4, verbose)             # <<<<<<<<<<<<<<
  *             iterations += 1
  *             if not changed_phases:
  */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_verbose); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 327, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_verbose); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 307, __pyx_L1_error)
 
-      /* "pycalphad/core/eqsolver.pyx":325
- *              #                               grid, curr_idx, chemical_potentials, state_variable_values,
- *               #                              1e-4, verbose)
+      /* "pycalphad/core/eqsolver.pyx":305
+ *             chemical_potentials[:] = result.chemical_potentials
+ *             changed_phases=False
  *             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,             # <<<<<<<<<<<<<<
  *                                             grid, curr_idx, chemical_potentials, state_variable_values,
  *                                             1e-4, verbose)
  */
-      __pyx_t_26 = __pyx_f_9pycalphad_4core_8eqsolver_add_new_phases(__pyx_v_composition_sets, __pyx_v_removed_compsets, __pyx_v_phase_records, __pyx_v_grid, __pyx_v_curr_idx, ((PyArrayObject *)__pyx_v_chemical_potentials), __pyx_t_20, 1e-4, __pyx_t_10); if (unlikely(__pyx_t_26 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 325, __pyx_L1_error)
+      __pyx_t_26 = __pyx_f_9pycalphad_4core_8eqsolver_add_new_phases(__pyx_v_composition_sets, __pyx_v_removed_compsets, __pyx_v_phase_records, __pyx_v_grid, __pyx_v_curr_idx, ((PyArrayObject *)__pyx_v_chemical_potentials), __pyx_t_20, 1e-4, __pyx_t_10); if (unlikely(__pyx_t_26 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 305, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_20, 1);
       __pyx_t_20.memview = NULL;
       __pyx_t_20.data = NULL;
       __pyx_v_changed_phases = __pyx_t_26;
 
-      /* "pycalphad/core/eqsolver.pyx":328
+      /* "pycalphad/core/eqsolver.pyx":308
  *                                             grid, curr_idx, chemical_potentials, state_variable_values,
  *                                             1e-4, verbose)
  *             iterations += 1             # <<<<<<<<<<<<<<
  *             if not changed_phases:
  *                 break
  */
-      __pyx_t_14 = __Pyx_PyInt_AddObjC(__pyx_v_iterations, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 328, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_AddObjC(__pyx_v_iterations, __pyx_int_1, 1, 1, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 308, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF_SET(__pyx_v_iterations, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":329
+      /* "pycalphad/core/eqsolver.pyx":309
  *                                             1e-4, verbose)
  *             iterations += 1
  *             if not changed_phases:             # <<<<<<<<<<<<<<
@@ -8267,7 +8151,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __pyx_t_26 = ((!(__pyx_v_changed_phases != 0)) != 0);
       if (__pyx_t_26) {
 
-        /* "pycalphad/core/eqsolver.pyx":330
+        /* "pycalphad/core/eqsolver.pyx":310
  *             iterations += 1
  *             if not changed_phases:
  *                 break             # <<<<<<<<<<<<<<
@@ -8276,7 +8160,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
         goto __pyx_L51_break;
 
-        /* "pycalphad/core/eqsolver.pyx":329
+        /* "pycalphad/core/eqsolver.pyx":309
  *                                             1e-4, verbose)
  *             iterations += 1
  *             if not changed_phases:             # <<<<<<<<<<<<<<
@@ -8287,7 +8171,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     }
     __pyx_L51_break:;
 
-    /* "pycalphad/core/eqsolver.pyx":331
+    /* "pycalphad/core/eqsolver.pyx":311
  *             if not changed_phases:
  *                 break
  *         if changed_phases:             # <<<<<<<<<<<<<<
@@ -8297,31 +8181,31 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     __pyx_t_26 = (__pyx_v_changed_phases != 0);
     if (__pyx_t_26) {
 
-      /* "pycalphad/core/eqsolver.pyx":332
+      /* "pycalphad/core/eqsolver.pyx":312
  *                 break
  *         if changed_phases:
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)             # <<<<<<<<<<<<<<
  *             chemical_potentials[:] = result.chemical_potentials
  *         if not iter_solver.ignore_convergence:
  */
-      __pyx_t_14 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_cur_conds, __pyx_v_iter_solver, 0, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 332, __pyx_L1_error)
+      __pyx_t_14 = __pyx_f_9pycalphad_4core_8eqsolver_solve_and_update(__pyx_v_composition_sets, __pyx_v_cur_conds, __pyx_v_iter_solver, 0, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 312, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_XDECREF_SET(__pyx_v_result, __pyx_t_14);
       __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":333
+      /* "pycalphad/core/eqsolver.pyx":313
  *         if changed_phases:
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)
  *             chemical_potentials[:] = result.chemical_potentials             # <<<<<<<<<<<<<<
  *         if not iter_solver.ignore_convergence:
- *             #print('ignore_convergence_yes')
+ *             converged = result.converged
  */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_chemical_potentials); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 333, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_chemical_potentials); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 313, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_chemical_potentials), __pyx_slice__2, __pyx_t_14) < 0)) __PYX_ERR(0, 333, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(((PyObject *)__pyx_v_chemical_potentials), __pyx_slice__2, __pyx_t_14) < 0)) __PYX_ERR(0, 313, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":331
+      /* "pycalphad/core/eqsolver.pyx":311
  *             if not changed_phases:
  *                 break
  *         if changed_phases:             # <<<<<<<<<<<<<<
@@ -8330,84 +8214,84 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
     }
 
-    /* "pycalphad/core/eqsolver.pyx":334
+    /* "pycalphad/core/eqsolver.pyx":314
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)
  *             chemical_potentials[:] = result.chemical_potentials
  *         if not iter_solver.ignore_convergence:             # <<<<<<<<<<<<<<
- *             #print('ignore_convergence_yes')
  *             converged = result.converged
+ *         else:
  */
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_iter_solver, __pyx_n_s_ignore_convergence); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 334, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_iter_solver, __pyx_n_s_ignore_convergence); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_26 < 0)) __PYX_ERR(0, 334, __pyx_L1_error)
+    __pyx_t_26 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_26 < 0)) __PYX_ERR(0, 314, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_10 = ((!__pyx_t_26) != 0);
     if (__pyx_t_10) {
 
-      /* "pycalphad/core/eqsolver.pyx":336
+      /* "pycalphad/core/eqsolver.pyx":315
+ *             chemical_potentials[:] = result.chemical_potentials
  *         if not iter_solver.ignore_convergence:
- *             #print('ignore_convergence_yes')
  *             converged = result.converged             # <<<<<<<<<<<<<<
- *             #print('con_not',converged)
  *         else:
+ *             converged = True
  */
-      if (unlikely(!__pyx_v_result)) { __Pyx_RaiseUnboundLocalError("result"); __PYX_ERR(0, 336, __pyx_L1_error) }
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_converged); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 336, __pyx_L1_error)
+      if (unlikely(!__pyx_v_result)) { __Pyx_RaiseUnboundLocalError("result"); __PYX_ERR(0, 315, __pyx_L1_error) }
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_result, __pyx_n_s_converged); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 336, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely((__pyx_t_10 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 315, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_v_converged = __pyx_t_10;
 
-      /* "pycalphad/core/eqsolver.pyx":334
+      /* "pycalphad/core/eqsolver.pyx":314
  *             result = solve_and_update(composition_sets, cur_conds, iter_solver)
  *             chemical_potentials[:] = result.chemical_potentials
  *         if not iter_solver.ignore_convergence:             # <<<<<<<<<<<<<<
- *             #print('ignore_convergence_yes')
  *             converged = result.converged
+ *         else:
  */
       goto __pyx_L57;
     }
 
-    /* "pycalphad/core/eqsolver.pyx":339
- *             #print('con_not',converged)
+    /* "pycalphad/core/eqsolver.pyx":317
+ *             converged = result.converged
  *         else:
  *             converged = True             # <<<<<<<<<<<<<<
  *         if converged:
- *             #print('converged_yes')
+ *             if verbose:
  */
     /*else*/ {
       __pyx_v_converged = 1;
     }
     __pyx_L57:;
 
-    /* "pycalphad/core/eqsolver.pyx":340
+    /* "pycalphad/core/eqsolver.pyx":318
  *         else:
  *             converged = True
  *         if converged:             # <<<<<<<<<<<<<<
- *             #print('converged_yes')
  *             if verbose:
+ *                 print('Composition Sets', composition_sets)
  */
     __pyx_t_10 = (__pyx_v_converged != 0);
     if (__pyx_t_10) {
 
-      /* "pycalphad/core/eqsolver.pyx":342
+      /* "pycalphad/core/eqsolver.pyx":319
+ *             converged = True
  *         if converged:
- *             #print('converged_yes')
  *             if verbose:             # <<<<<<<<<<<<<<
  *                 print('Composition Sets', composition_sets)
  *             prop_MU_values[it.multi_index] = chemical_potentials
  */
-      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_verbose); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 342, __pyx_L1_error)
+      __pyx_t_10 = __Pyx_PyObject_IsTrue(__pyx_v_verbose); if (unlikely(__pyx_t_10 < 0)) __PYX_ERR(0, 319, __pyx_L1_error)
       if (__pyx_t_10) {
 
-        /* "pycalphad/core/eqsolver.pyx":343
- *             #print('converged_yes')
+        /* "pycalphad/core/eqsolver.pyx":320
+ *         if converged:
  *             if verbose:
  *                 print('Composition Sets', composition_sets)             # <<<<<<<<<<<<<<
  *             prop_MU_values[it.multi_index] = chemical_potentials
  *             prop_Phase_values[it.multi_index] = ''
  */
-        __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 343, __pyx_L1_error)
+        __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_INCREF(__pyx_kp_u_Composition_Sets);
         __Pyx_GIVEREF(__pyx_kp_u_Composition_Sets);
@@ -8415,45 +8299,45 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __Pyx_INCREF(__pyx_v_composition_sets);
         __Pyx_GIVEREF(__pyx_v_composition_sets);
         PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_v_composition_sets);
-        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 343, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_14, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 320, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":342
+        /* "pycalphad/core/eqsolver.pyx":319
+ *             converged = True
  *         if converged:
- *             #print('converged_yes')
  *             if verbose:             # <<<<<<<<<<<<<<
  *                 print('Composition Sets', composition_sets)
  *             prop_MU_values[it.multi_index] = chemical_potentials
  */
       }
 
-      /* "pycalphad/core/eqsolver.pyx":344
+      /* "pycalphad/core/eqsolver.pyx":321
  *             if verbose:
  *                 print('Composition Sets', composition_sets)
  *             prop_MU_values[it.multi_index] = chemical_potentials             # <<<<<<<<<<<<<<
  *             prop_Phase_values[it.multi_index] = ''
  *             prop_NP_values[it.multi_index + np.index_exp[:len(composition_sets)]] = [compset.NP for compset in composition_sets]
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_5, ((PyObject *)__pyx_v_chemical_potentials)) < 0)) __PYX_ERR(0, 344, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_5, ((PyObject *)__pyx_v_chemical_potentials)) < 0)) __PYX_ERR(0, 321, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":345
+      /* "pycalphad/core/eqsolver.pyx":322
  *                 print('Composition Sets', composition_sets)
  *             prop_MU_values[it.multi_index] = chemical_potentials
  *             prop_Phase_values[it.multi_index] = ''             # <<<<<<<<<<<<<<
  *             prop_NP_values[it.multi_index + np.index_exp[:len(composition_sets)]] = [compset.NP for compset in composition_sets]
  *             prop_NP_values[it.multi_index + np.index_exp[len(composition_sets):]] = np.nan
  */
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 345, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 322, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_5, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 345, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_5, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 322, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":346
+      /* "pycalphad/core/eqsolver.pyx":323
  *             prop_MU_values[it.multi_index] = chemical_potentials
  *             prop_Phase_values[it.multi_index] = ''
  *             prop_NP_values[it.multi_index + np.index_exp[:len(composition_sets)]] = [compset.NP for compset in composition_sets]             # <<<<<<<<<<<<<<
@@ -8461,23 +8345,23 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  *             prop_Y_values[it.multi_index] = np.nan
  */
       { /* enter inner scope */
-        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L62_error)
+        __pyx_t_5 = PyList_New(0); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 323, __pyx_L62_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_14 = __pyx_v_composition_sets; __Pyx_INCREF(__pyx_t_14); __pyx_t_15 = 0;
         for (;;) {
           if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_14)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 346, __pyx_L62_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_14, __pyx_t_15); __Pyx_INCREF(__pyx_t_3); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 323, __pyx_L62_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L62_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_14, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L62_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
-          if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 346, __pyx_L62_error)
+          if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 323, __pyx_L62_error)
           __Pyx_XDECREF_SET(__pyx_8genexpr7__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_3));
           __pyx_t_3 = 0;
-          __pyx_t_3 = PyFloat_FromDouble(__pyx_8genexpr7__pyx_v_compset->NP); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L62_error)
+          __pyx_t_3 = PyFloat_FromDouble(__pyx_8genexpr7__pyx_v_compset->NP); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L62_error)
           __Pyx_GOTREF(__pyx_t_3);
-          if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 346, __pyx_L62_error)
+          if (unlikely(__Pyx_ListComp_Append(__pyx_t_5, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 323, __pyx_L62_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         }
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
@@ -8488,111 +8372,111 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         goto __pyx_L1_error;
         __pyx_L65_exit_scope:;
       } /* exit inner scope */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 346, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_9, 0, __pyx_t_15, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 323, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_9, 0, __pyx_t_15, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = PyNumber_Add(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 346, __pyx_L1_error)
+      __pyx_t_9 = PyNumber_Add(__pyx_t_14, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_9, __pyx_t_5) < 0)) __PYX_ERR(0, 346, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_9, __pyx_t_5) < 0)) __PYX_ERR(0, 323, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":347
+      /* "pycalphad/core/eqsolver.pyx":324
  *             prop_Phase_values[it.multi_index] = ''
  *             prop_NP_values[it.multi_index + np.index_exp[:len(composition_sets)]] = [compset.NP for compset in composition_sets]
  *             prop_NP_values[it.multi_index + np.index_exp[len(composition_sets):]] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_X_values[it.multi_index + np.index_exp[:]] = 0
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 347, __pyx_L1_error)
-      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_14, __pyx_t_15, 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 324, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetSlice(__pyx_t_14, __pyx_t_15, 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 347, __pyx_L1_error)
+      __pyx_t_14 = PyNumber_Add(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_14, __pyx_t_9) < 0)) __PYX_ERR(0, 347, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_14, __pyx_t_9) < 0)) __PYX_ERR(0, 324, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":348
+      /* "pycalphad/core/eqsolver.pyx":325
  *             prop_NP_values[it.multi_index + np.index_exp[:len(composition_sets)]] = [compset.NP for compset in composition_sets]
  *             prop_NP_values[it.multi_index + np.index_exp[len(composition_sets):]] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_X_values[it.multi_index + np.index_exp[:]] = 0
  *             prop_GM_values[it.multi_index] = 0
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 348, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 348, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 348, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_9, __pyx_t_14) < 0)) __PYX_ERR(0, 348, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_9, __pyx_t_14) < 0)) __PYX_ERR(0, 325, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":349
+      /* "pycalphad/core/eqsolver.pyx":326
  *             prop_NP_values[it.multi_index + np.index_exp[len(composition_sets):]] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_X_values[it.multi_index + np.index_exp[:]] = 0             # <<<<<<<<<<<<<<
  *             prop_GM_values[it.multi_index] = 0
  *             # Copy out any free state variables (P, T, etc.)
  */
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetSlice(__pyx_t_3, 0, 0, NULL, NULL, &__pyx_slice__2, 0, 0, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = PyNumber_Add(__pyx_t_14, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 349, __pyx_L1_error)
+      __pyx_t_3 = PyNumber_Add(__pyx_t_14, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_3, __pyx_int_0) < 0)) __PYX_ERR(0, 349, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_3, __pyx_int_0) < 0)) __PYX_ERR(0, 326, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":350
+      /* "pycalphad/core/eqsolver.pyx":327
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_X_values[it.multi_index + np.index_exp[:]] = 0
  *             prop_GM_values[it.multi_index] = 0             # <<<<<<<<<<<<<<
  *             # Copy out any free state variables (P, T, etc.)
  *             # All CompositionSets should have equal state variable values, so we copy from the first one
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_int_0) < 0)) __PYX_ERR(0, 350, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_int_0) < 0)) __PYX_ERR(0, 327, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":353
+      /* "pycalphad/core/eqsolver.pyx":330
  *             # Copy out any free state variables (P, T, etc.)
  *             # All CompositionSets should have equal state variable values, so we copy from the first one
  *             for sv_idx, ssv in enumerate(str_state_variables):             # <<<<<<<<<<<<<<
@@ -8605,31 +8489,31 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       for (;;) {
         if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_14 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_15); __Pyx_INCREF(__pyx_t_14); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 353, __pyx_L1_error)
+        __pyx_t_14 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_15); __Pyx_INCREF(__pyx_t_14); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 330, __pyx_L1_error)
         #else
-        __pyx_t_14 = PySequence_ITEM(__pyx_t_9, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 353, __pyx_L1_error)
+        __pyx_t_14 = PySequence_ITEM(__pyx_t_9, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         #endif
         __Pyx_XDECREF_SET(__pyx_v_ssv, __pyx_t_14);
         __pyx_t_14 = 0;
         __Pyx_INCREF(__pyx_t_3);
         __Pyx_XDECREF_SET(__pyx_v_sv_idx, __pyx_t_3);
-        __pyx_t_14 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 353, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyInt_AddObjC(__pyx_t_3, __pyx_int_1, 1, 0, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 330, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_3);
         __pyx_t_3 = __pyx_t_14;
         __pyx_t_14 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":356
+        /* "pycalphad/core/eqsolver.pyx":333
  *                 # If the state variable is listed as a free variable in our results
  *                 # The LightDataset interface is not clear here
  *                 if properties.data_vars.get(ssv, None) is not None:             # <<<<<<<<<<<<<<
  *                     properties.data_vars[ssv][1][it.multi_index] = composition_sets[0].dof[sv_idx]
  *             for phase_idx in range(len(composition_sets)):
  */
-        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_data_vars); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_data_vars); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 356, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 333, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
         __pyx_t_5 = NULL;
@@ -8647,7 +8531,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_ssv, Py_None};
-          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 356, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 333, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
@@ -8655,13 +8539,13 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_1)) {
           PyObject *__pyx_temp[3] = {__pyx_t_5, __pyx_v_ssv, Py_None};
-          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 356, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyCFunction_FastCall(__pyx_t_1, __pyx_temp+1-__pyx_t_16, 2+__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 333, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_14);
         } else
         #endif
         {
-          __pyx_t_4 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 356, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_New(2+__pyx_t_16); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 333, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           if (__pyx_t_5) {
             __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -8672,7 +8556,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
           __Pyx_INCREF(Py_None);
           __Pyx_GIVEREF(Py_None);
           PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_16, Py_None);
-          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 356, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_4, NULL); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 333, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         }
@@ -8682,37 +8566,37 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __pyx_t_26 = (__pyx_t_10 != 0);
         if (__pyx_t_26) {
 
-          /* "pycalphad/core/eqsolver.pyx":357
+          /* "pycalphad/core/eqsolver.pyx":334
  *                 # The LightDataset interface is not clear here
  *                 if properties.data_vars.get(ssv, None) is not None:
  *                     properties.data_vars[ssv][1][it.multi_index] = composition_sets[0].dof[sv_idx]             # <<<<<<<<<<<<<<
  *             for phase_idx in range(len(composition_sets)):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = composition_sets[phase_idx].phase_record.phase_name
  */
-          __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_dof); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-          __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_sv_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_14 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_sv_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_14);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_data_vars); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_properties, __pyx_n_s_data_vars); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_ssv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_ssv); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-          __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_GetItemInt(__pyx_t_4, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 357, __pyx_L1_error)
+          __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_14) < 0)) __PYX_ERR(0, 357, __pyx_L1_error)
+          if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_t_4, __pyx_t_14) < 0)) __PYX_ERR(0, 334, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-          /* "pycalphad/core/eqsolver.pyx":356
+          /* "pycalphad/core/eqsolver.pyx":333
  *                 # If the state variable is listed as a free variable in our results
  *                 # The LightDataset interface is not clear here
  *                 if properties.data_vars.get(ssv, None) is not None:             # <<<<<<<<<<<<<<
@@ -8721,7 +8605,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
  */
         }
 
-        /* "pycalphad/core/eqsolver.pyx":353
+        /* "pycalphad/core/eqsolver.pyx":330
  *             # Copy out any free state variables (P, T, etc.)
  *             # All CompositionSets should have equal state variable values, so we copy from the first one
  *             for sv_idx, ssv in enumerate(str_state_variables):             # <<<<<<<<<<<<<<
@@ -8732,117 +8616,117 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":358
+      /* "pycalphad/core/eqsolver.pyx":335
  *                 if properties.data_vars.get(ssv, None) is not None:
  *                     properties.data_vars[ssv][1][it.multi_index] = composition_sets[0].dof[sv_idx]
  *             for phase_idx in range(len(composition_sets)):             # <<<<<<<<<<<<<<
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = composition_sets[phase_idx].phase_record.phase_name
  *             for phase_idx in range(len(composition_sets), prop_Phase_values.shape[-1]):
  */
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 358, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 335, __pyx_L1_error)
       __pyx_t_6 = __pyx_t_15;
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_6; __pyx_t_16+=1) {
         __pyx_v_phase_idx = __pyx_t_16;
 
-        /* "pycalphad/core/eqsolver.pyx":359
+        /* "pycalphad/core/eqsolver.pyx":336
  *                     properties.data_vars[ssv][1][it.multi_index] = composition_sets[0].dof[sv_idx]
  *             for phase_idx in range(len(composition_sets)):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = composition_sets[phase_idx].phase_record.phase_name             # <<<<<<<<<<<<<<
  *             for phase_idx in range(len(composition_sets), prop_Phase_values.shape[-1]):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = ''
  */
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_phase_record); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_phase_record); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_phase_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_phase_name); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_4, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = PyNumber_Add(__pyx_t_9, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 359, __pyx_L1_error)
+        __pyx_t_4 = PyNumber_Add(__pyx_t_9, __pyx_t_14); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 359, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_4, __pyx_t_3) < 0)) __PYX_ERR(0, 336, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
 
-      /* "pycalphad/core/eqsolver.pyx":360
+      /* "pycalphad/core/eqsolver.pyx":337
  *             for phase_idx in range(len(composition_sets)):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = composition_sets[phase_idx].phase_record.phase_name
  *             for phase_idx in range(len(composition_sets), prop_Phase_values.shape[-1]):             # <<<<<<<<<<<<<<
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = ''
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = np.nan
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_prop_Phase_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 360, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_prop_Phase_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 337, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 360, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_3, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 337, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_27 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_27 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 360, __pyx_L1_error)
+      __pyx_t_27 = __Pyx_PyInt_As_long(__pyx_t_4); if (unlikely((__pyx_t_27 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 337, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 360, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 337, __pyx_L1_error)
       __pyx_t_28 = __pyx_t_27;
       for (__pyx_t_16 = __pyx_t_15; __pyx_t_16 < __pyx_t_28; __pyx_t_16+=1) {
         __pyx_v_phase_idx = __pyx_t_16;
 
-        /* "pycalphad/core/eqsolver.pyx":361
+        /* "pycalphad/core/eqsolver.pyx":338
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = composition_sets[phase_idx].phase_record.phase_name
  *             for phase_idx in range(len(composition_sets), prop_Phase_values.shape[-1]):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = ''             # <<<<<<<<<<<<<<
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = np.nan
  *             var_offset = 0
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 361, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 361, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 361, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 361, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_14, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = PyNumber_Add(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 361, __pyx_L1_error)
+        __pyx_t_14 = PyNumber_Add(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_14, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 361, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_14, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 338, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":362
+        /* "pycalphad/core/eqsolver.pyx":339
  *             for phase_idx in range(len(composition_sets), prop_Phase_values.shape[-1]):
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = ''
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = np.nan             # <<<<<<<<<<<<<<
  *             var_offset = 0
  *             total_comp = np.zeros(prop_X_values.shape[-1])
  */
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_4);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_4);
@@ -8850,20 +8734,20 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
         __Pyx_GIVEREF(__pyx_slice__2);
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_slice__2);
         __pyx_t_4 = 0;
-        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetItem(__pyx_t_9, __pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_14, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 362, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_t_14, __pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 362, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 339, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       }
 
-      /* "pycalphad/core/eqsolver.pyx":363
+      /* "pycalphad/core/eqsolver.pyx":340
  *                 prop_Phase_values[it.multi_index + np.index_exp[phase_idx]] = ''
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = np.nan
  *             var_offset = 0             # <<<<<<<<<<<<<<
@@ -8873,21 +8757,21 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __Pyx_INCREF(__pyx_int_0);
       __Pyx_XDECREF_SET(__pyx_v_var_offset, __pyx_int_0);
 
-      /* "pycalphad/core/eqsolver.pyx":364
+      /* "pycalphad/core/eqsolver.pyx":341
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = np.nan
  *             var_offset = 0
  *             total_comp = np.zeros(prop_X_values.shape[-1])             # <<<<<<<<<<<<<<
  *             for phase_idx in range(len(composition_sets)):
  *                 compset = composition_sets[phase_idx]
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_prop_X_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_prop_X_values, __pyx_n_s_shape); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_1, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 364, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_GetItemInt(__pyx_t_1, -1L, long, 1, __Pyx_PyInt_From_long, 0, 1, 1); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_1 = NULL;
@@ -8903,48 +8787,48 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
       __pyx_t_3 = (__pyx_t_1) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_1, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 364, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 341, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_XDECREF_SET(__pyx_v_total_comp, __pyx_t_3);
       __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":365
+      /* "pycalphad/core/eqsolver.pyx":342
  *             var_offset = 0
  *             total_comp = np.zeros(prop_X_values.shape[-1])
  *             for phase_idx in range(len(composition_sets)):             # <<<<<<<<<<<<<<
  *                 compset = composition_sets[phase_idx]
  *                 prop_Y_values[it.multi_index + np.index_exp[phase_idx, :compset.phase_record.phase_dof]] = \
  */
-      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 365, __pyx_L1_error)
+      __pyx_t_15 = PyList_GET_SIZE(__pyx_v_composition_sets); if (unlikely(__pyx_t_15 == ((Py_ssize_t)-1))) __PYX_ERR(0, 342, __pyx_L1_error)
       __pyx_t_6 = __pyx_t_15;
       for (__pyx_t_16 = 0; __pyx_t_16 < __pyx_t_6; __pyx_t_16+=1) {
         __pyx_v_phase_idx = __pyx_t_16;
 
-        /* "pycalphad/core/eqsolver.pyx":366
+        /* "pycalphad/core/eqsolver.pyx":343
  *             total_comp = np.zeros(prop_X_values.shape[-1])
  *             for phase_idx in range(len(composition_sets)):
  *                 compset = composition_sets[phase_idx]             # <<<<<<<<<<<<<<
  *                 prop_Y_values[it.multi_index + np.index_exp[phase_idx, :compset.phase_record.phase_dof]] = \
  *                     compset.dof[len(compset.phase_record.state_variables):]
  */
-        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 366, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_GetItemInt_List(__pyx_v_composition_sets, __pyx_v_phase_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 343, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 366, __pyx_L1_error)
+        if (!(likely(((__pyx_t_3) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_3, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 343, __pyx_L1_error)
         __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_3));
         __pyx_t_3 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":368
+        /* "pycalphad/core/eqsolver.pyx":345
  *                 compset = composition_sets[phase_idx]
  *                 prop_Y_values[it.multi_index + np.index_exp[phase_idx, :compset.phase_record.phase_dof]] = \
  *                     compset.dof[len(compset.phase_record.state_variables):]             # <<<<<<<<<<<<<<
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = compset.X
  *                 prop_GM_values[it.multi_index] += compset.NP * compset.energy
  */
-        if (unlikely(!__pyx_v_compset->dof.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 368, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_compset->dof.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 345, __pyx_L1_error)}
         __pyx_t_3 = __pyx_v_compset->phase_record->state_variables;
         __Pyx_INCREF(__pyx_t_3);
-        __pyx_t_29 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_29 == ((Py_ssize_t)-1))) __PYX_ERR(0, 368, __pyx_L1_error)
+        __pyx_t_29 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_29 == ((Py_ssize_t)-1))) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_t_20.data = __pyx_v_compset->dof.data;
         __pyx_t_20.memview = __pyx_v_compset->dof.memview;
@@ -8964,37 +8848,37 @@ static PyObject *__pyx_pf_9pycalphad_4core_8eqsolver_6_solve_eq_at_conditions(CY
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 368, __pyx_L1_error)
+    __PYX_ERR(0, 345, __pyx_L1_error)
 }
 
-__pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 368, __pyx_L1_error)
+__pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __PYX_XDEC_MEMVIEW(&__pyx_t_20, 1);
         __pyx_t_20.memview = NULL;
         __pyx_t_20.data = NULL;
 
-        /* "pycalphad/core/eqsolver.pyx":367
+        /* "pycalphad/core/eqsolver.pyx":344
  *             for phase_idx in range(len(composition_sets)):
  *                 compset = composition_sets[phase_idx]
  *                 prop_Y_values[it.multi_index + np.index_exp[phase_idx, :compset.phase_record.phase_dof]] = \             # <<<<<<<<<<<<<<
  *                     compset.dof[len(compset.phase_record.state_variables):]
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = compset.X
  */
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-        __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_14);
-        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_5 = PySlice_New(Py_None, __pyx_t_9, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_5 = PySlice_New(Py_None, __pyx_t_9, Py_None); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_14);
         PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_14);
@@ -9002,38 +8886,38 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __
         PyTuple_SET_ITEM(__pyx_t_9, 1, __pyx_t_5);
         __pyx_t_14 = 0;
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_t_9); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-        __pyx_t_9 = PyNumber_Add(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 367, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_Add(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 367, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 344, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":369
+        /* "pycalphad/core/eqsolver.pyx":346
  *                 prop_Y_values[it.multi_index + np.index_exp[phase_idx, :compset.phase_record.phase_dof]] = \
  *                     compset.dof[len(compset.phase_record.state_variables):]
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = compset.X             # <<<<<<<<<<<<<<
  *                 prop_GM_values[it.multi_index] += compset.NP * compset.energy
  *                 var_offset += compset.phase_record.phase_dof
  */
-        if (unlikely(!__pyx_v_compset->X.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 369, __pyx_L1_error)}
-        __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_compset->X, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 369, __pyx_L1_error)
+        if (unlikely(!__pyx_v_compset->X.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 346, __pyx_L1_error)}
+        __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_v_compset->X, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_index_exp); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_phase_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_5);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_5);
@@ -9041,66 +8925,66 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __
         __Pyx_GIVEREF(__pyx_slice__2);
         PyTuple_SET_ITEM(__pyx_t_1, 1, __pyx_slice__2);
         __pyx_t_5 = 0;
-        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyObject_GetItem(__pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-        __pyx_t_1 = PyNumber_Add(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+        __pyx_t_1 = PyNumber_Add(__pyx_t_9, __pyx_t_5); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 369, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_1, __pyx_t_3) < 0)) __PYX_ERR(0, 346, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":370
+        /* "pycalphad/core/eqsolver.pyx":347
  *                     compset.dof[len(compset.phase_record.state_variables):]
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = compset.X
  *                 prop_GM_values[it.multi_index] += compset.NP * compset.energy             # <<<<<<<<<<<<<<
  *                 var_offset += compset.phase_record.phase_dof
  *         else:
  */
-        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 370, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_prop_GM_values, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyObject_GetItem(__pyx_v_prop_GM_values, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_5 = PyFloat_FromDouble((__pyx_v_compset->NP * __pyx_v_compset->energy)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 370, __pyx_L1_error)
+        __pyx_t_5 = PyFloat_FromDouble((__pyx_v_compset->NP * __pyx_v_compset->energy)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 370, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_t_1, __pyx_t_5); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-        if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 370, __pyx_L1_error)
+        if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-        /* "pycalphad/core/eqsolver.pyx":371
+        /* "pycalphad/core/eqsolver.pyx":348
  *                 prop_X_values[it.multi_index + np.index_exp[phase_idx, :]] = compset.X
  *                 prop_GM_values[it.multi_index] += compset.NP * compset.energy
  *                 var_offset += compset.phase_record.phase_dof             # <<<<<<<<<<<<<<
  *         else:
  *             prop_MU_values[it.multi_index] = np.nan
  */
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 371, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_compset->phase_record->phase_dof); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 348, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_var_offset, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 371, __pyx_L1_error)
+        __pyx_t_9 = PyNumber_InPlaceAdd(__pyx_v_var_offset, __pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 348, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_DECREF_SET(__pyx_v_var_offset, __pyx_t_9);
         __pyx_t_9 = 0;
       }
 
-      /* "pycalphad/core/eqsolver.pyx":340
+      /* "pycalphad/core/eqsolver.pyx":318
  *         else:
  *             converged = True
  *         if converged:             # <<<<<<<<<<<<<<
- *             #print('converged_yes')
  *             if verbose:
+ *                 print('Composition Sets', composition_sets)
  */
       goto __pyx_L58;
     }
 
-    /* "pycalphad/core/eqsolver.pyx":373
+    /* "pycalphad/core/eqsolver.pyx":350
  *                 var_offset += compset.phase_record.phase_dof
  *         else:
  *             prop_MU_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
@@ -9108,110 +8992,110 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __
  *             prop_X_values[it.multi_index] = np.nan
  */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 373, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 373, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 373, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 373, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_MU_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 350, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":374
+      /* "pycalphad/core/eqsolver.pyx":351
  *         else:
  *             prop_MU_values[it.multi_index] = np.nan
  *             prop_NP_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_X_values[it.multi_index] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 374, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 374, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 374, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_NP_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":375
+      /* "pycalphad/core/eqsolver.pyx":352
  *             prop_MU_values[it.multi_index] = np.nan
  *             prop_NP_values[it.multi_index] = np.nan
  *             prop_X_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 375, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 375, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_X_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 352, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":376
+      /* "pycalphad/core/eqsolver.pyx":353
  *             prop_NP_values[it.multi_index] = np.nan
  *             prop_X_values[it.multi_index] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_GM_values[it.multi_index] = np.nan
  *             prop_Phase_values[it.multi_index] = ''
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 376, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_nan); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 376, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 376, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Y_values, __pyx_t_3, __pyx_t_9) < 0)) __PYX_ERR(0, 353, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":377
+      /* "pycalphad/core/eqsolver.pyx":354
  *             prop_X_values[it.multi_index] = np.nan
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Phase_values[it.multi_index] = ''
  *         it.iternext()
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_nan); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 354, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 377, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 377, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_GM_values, __pyx_t_9, __pyx_t_3) < 0)) __PYX_ERR(0, 354, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "pycalphad/core/eqsolver.pyx":378
+      /* "pycalphad/core/eqsolver.pyx":355
  *             prop_Y_values[it.multi_index] = np.nan
  *             prop_GM_values[it.multi_index] = np.nan
  *             prop_Phase_values[it.multi_index] = ''             # <<<<<<<<<<<<<<
  *         it.iternext()
  *     return properties
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 378, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_multi_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_3, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 378, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_prop_Phase_values, __pyx_t_3, __pyx_kp_u__3) < 0)) __PYX_ERR(0, 355, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __pyx_L58:;
 
-    /* "pycalphad/core/eqsolver.pyx":379
+    /* "pycalphad/core/eqsolver.pyx":356
  *             prop_GM_values[it.multi_index] = np.nan
  *             prop_Phase_values[it.multi_index] = ''
  *         it.iternext()             # <<<<<<<<<<<<<<
  *     return properties
  */
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_iternext); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 379, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_it, __pyx_n_s_iternext); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_9))) {
@@ -9225,14 +9109,14 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __
     }
     __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_5) : __Pyx_PyObject_CallNoArg(__pyx_t_9);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 379, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 356, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_L10_continue:;
   }
 
-  /* "pycalphad/core/eqsolver.pyx":380
+  /* "pycalphad/core/eqsolver.pyx":357
  *             prop_Phase_values[it.multi_index] = ''
  *         it.iternext()
  *     return properties             # <<<<<<<<<<<<<<
@@ -9242,7 +9126,7 @@ __pyx_t_3 = __pyx_memoryview_fromslice(__pyx_t_20, 1, (PyObject *(*)(char *)) __
   __pyx_r = __pyx_v_properties;
   goto __pyx_L0;
 
-  /* "pycalphad/core/eqsolver.pyx":206
+  /* "pycalphad/core/eqsolver.pyx":190
  * 
  * 
  * def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None):             # <<<<<<<<<<<<<<
@@ -9641,7 +9525,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":929
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -9653,7 +9537,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":930
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":932
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -9662,7 +9546,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -9671,7 +9555,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":929
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -9683,7 +9567,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -9698,7 +9582,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":934
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":936
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -9707,7 +9591,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -9717,7 +9601,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":936
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":938
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -9728,7 +9612,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -9737,7 +9621,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":939
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -9749,7 +9633,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -9764,7 +9648,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":941
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -9788,7 +9672,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -9804,16 +9688,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 943, __pyx_L3_error)
+      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 945, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -9827,7 +9711,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":946
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -9837,28 +9721,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 944, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 946, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 945, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 947, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 945, __pyx_L5_except_error)
+      __PYX_ERR(1, 947, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -9873,7 +9757,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":941
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -9896,7 +9780,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -9920,7 +9804,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -9936,16 +9820,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 949, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 951, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -9959,7 +9843,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":952
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -9969,28 +9853,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 950, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 952, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 951, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 953, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 951, __pyx_L5_except_error)
+      __PYX_ERR(1, 953, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10005,7 +9889,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -10028,7 +9912,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -10052,7 +9936,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10068,16 +9952,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":957
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 955, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 957, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10091,7 +9975,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":958
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -10101,28 +9985,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 956, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(1, 958, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":957
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":959
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 957, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 959, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(1, 957, __pyx_L5_except_error)
+      __PYX_ERR(1, 959, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -10137,7 +10021,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -10160,7 +10044,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":967
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -10173,7 +10057,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_timedelta64_object", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":979
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":981
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -10183,7 +10067,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":967
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -10197,7 +10081,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":982
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -10210,7 +10094,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_datetime64_object", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":994
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":996
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -10220,7 +10104,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":982
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -10234,7 +10118,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":997
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -10245,7 +10129,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1004
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1006
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -10255,7 +10139,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":997
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -10268,7 +10152,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1007
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -10279,7 +10163,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1011
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1013
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -10289,7 +10173,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1007
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -10302,7 +10186,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1014
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -10313,7 +10197,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1018
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1020
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -10321,7 +10205,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1014
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -24360,7 +24244,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u__3, __pyx_k__3, sizeof(__pyx_k__3), 0, 1, 0, 0},
   {&__pyx_n_s_a, __pyx_k_a, sizeof(__pyx_k_a), 0, 0, 1, 1},
   {&__pyx_n_s_add_nearly_stable, __pyx_k_add_nearly_stable, sizeof(__pyx_k_add_nearly_stable), 0, 0, 1, 1},
-  {&__pyx_kp_u_adding_phase_name, __pyx_k_adding_phase_name, sizeof(__pyx_k_adding_phase_name), 0, 1, 0, 0},
   {&__pyx_n_s_allocate_buffer, __pyx_k_allocate_buffer, sizeof(__pyx_k_allocate_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_append, __pyx_k_append, sizeof(__pyx_k_append), 0, 0, 1, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
@@ -24377,7 +24260,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_collections, __pyx_k_collections, sizeof(__pyx_k_collections), 0, 0, 1, 1},
   {&__pyx_n_s_comp_idx, __pyx_k_comp_idx, sizeof(__pyx_k_comp_idx), 0, 0, 1, 1},
-  {&__pyx_n_s_components, __pyx_k_components, sizeof(__pyx_k_components), 0, 0, 1, 1},
   {&__pyx_n_s_composition_sets, __pyx_k_composition_sets, sizeof(__pyx_k_composition_sets), 0, 0, 1, 1},
   {&__pyx_n_s_compset, __pyx_k_compset, sizeof(__pyx_k_compset), 0, 0, 1, 1},
   {&__pyx_n_s_conditions, __pyx_k_conditions, sizeof(__pyx_k_conditions), 0, 0, 1, 1},
@@ -24559,11 +24441,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 35, __pyx_L1_error)
   __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 52, __pyx_L1_error)
-  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 167, __pyx_L1_error)
-  __pyx_builtin_reversed = __Pyx_GetBuiltinName(__pyx_n_s_reversed); if (!__pyx_builtin_reversed) __PYX_ERR(0, 181, __pyx_L1_error)
-  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 265, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 290, __pyx_L1_error)
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 945, __pyx_L1_error)
+  __pyx_builtin_sum = __Pyx_GetBuiltinName(__pyx_n_s_sum); if (!__pyx_builtin_sum) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_builtin_reversed = __Pyx_GetBuiltinName(__pyx_n_s_reversed); if (!__pyx_builtin_reversed) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_builtin_zip = __Pyx_GetBuiltinName(__pyx_n_s_zip); if (!__pyx_builtin_zip) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(1, 947, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 133, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(2, 148, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(2, 2, __pyx_L1_error)
@@ -24579,47 +24461,47 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pycalphad/core/eqsolver.pyx":65
+  /* "pycalphad/core/eqsolver.pyx":62
  *         if df_phase_name == '_FAKE_':
  *             if verbose:
  *                 print('Chemical potentials are poorly conditioned')             # <<<<<<<<<<<<<<
  *             return False
  *         compset_name=[]
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Chemical_potentials_are_poorly_c); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Chemical_potentials_are_poorly_c); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "pycalphad/core/eqsolver.pyx":279
+  /* "pycalphad/core/eqsolver.pyx":263
  *             # We silently allow this to make 2-D composition mapping easier
  *             prop_MU_values[it.multi_index] = np.nan
  *             prop_NP_values[it.multi_index + np.index_exp[:]] = np.nan             # <<<<<<<<<<<<<<
  *             prop_Phase_values[it.multi_index + np.index_exp[:]] = ''
  *             prop_X_values[it.multi_index + np.index_exp[:]] = np.nan
  */
-  __pyx_slice__2 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(Py_None, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 263, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 945, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(1, 947, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 951, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(1, 953, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
@@ -24804,29 +24686,29 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "pycalphad/core/eqsolver.pyx":115
+  /* "pycalphad/core/eqsolver.pyx":99
  *     return result
  * 
  * def add_nearly_stable(object composition_sets, dict phase_records,             # <<<<<<<<<<<<<<
  *                       object grid, object current_idx, np.ndarray[ndim=1, dtype=np.float64_t] chemical_potentials,
  *                       double[::1] state_variables, double minimum_df, bint verbose):
  */
-  __pyx_tuple__24 = PyTuple_Pack(23, __pyx_n_s_composition_sets, __pyx_n_s_phase_records, __pyx_n_s_grid, __pyx_n_s_current_idx, __pyx_n_s_chemical_potentials, __pyx_n_s_state_variables, __pyx_n_s_minimum_df, __pyx_n_s_verbose, __pyx_n_s_driving_forces, __pyx_n_s_driving_forces_for_phase, __pyx_n_s_current_grid_Y, __pyx_n_s_current_grid_X, __pyx_n_s_current_grid_GM, __pyx_n_s_phase_name, __pyx_n_s_compset, __pyx_n_s_entered_phases, __pyx_n_s_phase_record, __pyx_n_s_num_statevars, __pyx_n_s_df_idx, __pyx_n_s_minimum_df_idx, __pyx_n_s_phases_added, __pyx_n_s_phase_indices, __pyx_n_s_compset); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(23, __pyx_n_s_composition_sets, __pyx_n_s_phase_records, __pyx_n_s_grid, __pyx_n_s_current_idx, __pyx_n_s_chemical_potentials, __pyx_n_s_state_variables, __pyx_n_s_minimum_df, __pyx_n_s_verbose, __pyx_n_s_driving_forces, __pyx_n_s_driving_forces_for_phase, __pyx_n_s_current_grid_Y, __pyx_n_s_current_grid_X, __pyx_n_s_current_grid_GM, __pyx_n_s_phase_name, __pyx_n_s_compset, __pyx_n_s_entered_phases, __pyx_n_s_phase_record, __pyx_n_s_num_statevars, __pyx_n_s_df_idx, __pyx_n_s_minimum_df_idx, __pyx_n_s_phases_added, __pyx_n_s_phase_indices, __pyx_n_s_compset); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(8, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pycalphad_core_eqsolver_pyx, __pyx_n_s_add_nearly_stable, 115, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(8, 0, 23, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pycalphad_core_eqsolver_pyx, __pyx_n_s_add_nearly_stable, 99, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 99, __pyx_L1_error)
 
-  /* "pycalphad/core/eqsolver.pyx":206
+  /* "pycalphad/core/eqsolver.pyx":190
  * 
  * 
  * def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None):             # <<<<<<<<<<<<<<
  *     """
  *         _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None)
  */
-  __pyx_tuple__26 = PyTuple_Pack(74, __pyx_n_s_properties, __pyx_n_s_phase_records, __pyx_n_s_grid, __pyx_n_s_conds_keys, __pyx_n_s_state_variables, __pyx_n_s_verbose, __pyx_n_s_solver, __pyx_n_s_indep_sum, __pyx_n_s_num_phases, __pyx_n_s_num_vars, __pyx_n_s_cur_iter, __pyx_n_s_old_phase_length, __pyx_n_s_new_phase_length, __pyx_n_s_var_idx, __pyx_n_s_dof_idx, __pyx_n_s_comp_idx, __pyx_n_s_phase_idx, __pyx_n_s_sfidx, __pyx_n_s_pfidx, __pyx_n_s_m, __pyx_n_s_n, __pyx_n_s_converged, __pyx_n_s_changed_phases, __pyx_n_s_vmax, __pyx_n_s_minimum_df, __pyx_n_s_phase_record, __pyx_n_s_compset, __pyx_n_s_l_hessian, __pyx_n_s_inv_hess, __pyx_n_s_gradient_term, __pyx_n_s_mass_buf, __pyx_n_s_p_y, __pyx_n_s_l_constraints, __pyx_n_s_step, __pyx_n_s_chemical_potentials, __pyx_n_s_site_fracs, __pyx_n_s_l_multipliers, __pyx_n_s_phase_fracs, __pyx_n_s_constraint_jac, __pyx_n_s_iter_solver, __pyx_n_s_prop_MU_values, __pyx_n_s_prop_NP_values, __pyx_n_s_prop_Phase_values, __pyx_n_s_prop_X_values, __pyx_n_s_prop_Y_values, __pyx_n_s_prop_GM_values, __pyx_n_s_str_state_variables, __pyx_n_s_it, __pyx_n_s_cur_conds, __pyx_n_s_curr_idx, __pyx_n_s_state_variable_values, __pyx_n_s_composition_sets, __pyx_n_s_removed_compsets, __pyx_n_s_phase_name, __pyx_n_s_sfx, __pyx_n_s_phase_amt, __pyx_n_s_energy, __pyx_n_s_phase_amt_sum, __pyx_n_s_iterations, __pyx_n_s_history, __pyx_n_s_result, __pyx_n_s_sv_idx, __pyx_n_s_ssv, __pyx_n_s_var_offset, __pyx_n_s_total_comp, __pyx_n_s_k, __pyx_n_s_a, __pyx_n_s_b, __pyx_n_s_i, __pyx_n_s_key, __pyx_n_s_key, __pyx_n_s_i, __pyx_n_s_val, __pyx_n_s_compset); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(74, __pyx_n_s_properties, __pyx_n_s_phase_records, __pyx_n_s_grid, __pyx_n_s_conds_keys, __pyx_n_s_state_variables, __pyx_n_s_verbose, __pyx_n_s_solver, __pyx_n_s_indep_sum, __pyx_n_s_num_phases, __pyx_n_s_num_vars, __pyx_n_s_cur_iter, __pyx_n_s_old_phase_length, __pyx_n_s_new_phase_length, __pyx_n_s_var_idx, __pyx_n_s_dof_idx, __pyx_n_s_comp_idx, __pyx_n_s_phase_idx, __pyx_n_s_sfidx, __pyx_n_s_pfidx, __pyx_n_s_m, __pyx_n_s_n, __pyx_n_s_converged, __pyx_n_s_changed_phases, __pyx_n_s_vmax, __pyx_n_s_minimum_df, __pyx_n_s_phase_record, __pyx_n_s_compset, __pyx_n_s_l_hessian, __pyx_n_s_inv_hess, __pyx_n_s_gradient_term, __pyx_n_s_mass_buf, __pyx_n_s_p_y, __pyx_n_s_l_constraints, __pyx_n_s_step, __pyx_n_s_chemical_potentials, __pyx_n_s_site_fracs, __pyx_n_s_l_multipliers, __pyx_n_s_phase_fracs, __pyx_n_s_constraint_jac, __pyx_n_s_iter_solver, __pyx_n_s_prop_MU_values, __pyx_n_s_prop_NP_values, __pyx_n_s_prop_Phase_values, __pyx_n_s_prop_X_values, __pyx_n_s_prop_Y_values, __pyx_n_s_prop_GM_values, __pyx_n_s_str_state_variables, __pyx_n_s_it, __pyx_n_s_cur_conds, __pyx_n_s_curr_idx, __pyx_n_s_state_variable_values, __pyx_n_s_composition_sets, __pyx_n_s_removed_compsets, __pyx_n_s_phase_name, __pyx_n_s_sfx, __pyx_n_s_phase_amt, __pyx_n_s_energy, __pyx_n_s_phase_amt_sum, __pyx_n_s_iterations, __pyx_n_s_history, __pyx_n_s_result, __pyx_n_s_sv_idx, __pyx_n_s_ssv, __pyx_n_s_var_offset, __pyx_n_s_total_comp, __pyx_n_s_k, __pyx_n_s_a, __pyx_n_s_b, __pyx_n_s_i, __pyx_n_s_key, __pyx_n_s_key, __pyx_n_s_i, __pyx_n_s_val, __pyx_n_s_compset); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
-  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(7, 0, 74, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pycalphad_core_eqsolver_pyx, __pyx_n_s_solve_eq_at_conditions, 206, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_codeobj__27 = (PyObject*)__Pyx_PyCode_New(7, 0, 74, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__26, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_pycalphad_core_eqsolver_pyx, __pyx_n_s_solve_eq_at_conditions, 190, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__27)) __PYX_ERR(0, 190, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -25381,28 +25263,28 @@ if (!__Pyx_RefNanny) {
   if (__pyx_import_star(__pyx_t_2) < 0) __PYX_ERR(0, 11, __pyx_L1_error);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":115
+  /* "pycalphad/core/eqsolver.pyx":99
  *     return result
  * 
  * def add_nearly_stable(object composition_sets, dict phase_records,             # <<<<<<<<<<<<<<
  *                       object grid, object current_idx, np.ndarray[ndim=1, dtype=np.float64_t] chemical_potentials,
  *                       double[::1] state_variables, double minimum_df, bint verbose):
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9pycalphad_4core_8eqsolver_1add_nearly_stable, NULL, __pyx_n_s_pycalphad_core_eqsolver); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 115, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9pycalphad_4core_8eqsolver_1add_nearly_stable, NULL, __pyx_n_s_pycalphad_core_eqsolver); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_nearly_stable, __pyx_t_2) < 0) __PYX_ERR(0, 115, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_add_nearly_stable, __pyx_t_2) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pycalphad/core/eqsolver.pyx":206
+  /* "pycalphad/core/eqsolver.pyx":190
  * 
  * 
  * def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None):             # <<<<<<<<<<<<<<
  *     """
  *         _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_variables, verbose, solver=None)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9pycalphad_4core_8eqsolver_7_solve_eq_at_conditions, NULL, __pyx_n_s_pycalphad_core_eqsolver); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_9pycalphad_4core_8eqsolver_7_solve_eq_at_conditions, NULL, __pyx_n_s_pycalphad_core_eqsolver); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_solve_eq_at_conditions, __pyx_t_2) < 0) __PYX_ERR(0, 206, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_solve_eq_at_conditions, __pyx_t_2) < 0) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "pycalphad/core/eqsolver.pyx":1

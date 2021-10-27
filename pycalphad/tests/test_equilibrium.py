@@ -700,7 +700,7 @@ def test_eq_associate():
     conds = {v.X('Q'): 0.3, v.T: 500, v.P: 1e5, v.N: 1}
     eq = equilibrium(dbf, ['A', 'Q'], phases, conds)
     assert_allclose(eq.GM.values, -1736.981311)
-def test_charge_balance_constraint():
+def test_charge_balance_constraint_single():
     """Phases with charged species are correctly calculated and charged balanced in equilibrium"""
     alfeo=Database("Al-Fe-O_Lindwall_etal.TDB")
     comps = ['FE', 'AL', 'O', 'VA']
@@ -711,3 +711,17 @@ def test_charge_balance_constraint():
     # Can result in either no phases, or only FLUO phase (incorrect)
     res = equilibrium(alfeo, comps, phases, conds, calc_opts={'pdens':2000}, verbose=True)
     assert_allclose(res.GM.values, -248139.94)
+def test_charge_balance_constraint():
+    """Phases with charged species are correctly calculated and charged balanced in equilibrium"""
+    alfeo=Database("Al-Fe-O_Lindwall_etal.TDB")
+    comps = ['AL', 'FE', 'O', 'VA']
+    phases = list(alfeo.phases.keys())
+    conds = {v.P: 101325, v.N: 1, v.T: 500, v.X('FE'): 0.2, v.X('O'): 0.6}
+    # Higher point density is required for convergence. Lower point densities
+    # Can result in either no phases, or only FLUO phase (incorrect)
+    res = equilibrium(alfeo, comps, phases, conds, calc_opts={'pdens':2000}, verbose=True)
+    #result = calculate(alfeo, comps, phases, P=101325, T=500, output='GM')
+    # Values below checked with Thermo-Calc
+    #print('result',res.GM.values.flat[0])
+    assert np.allclose(res.NP.values.squeeze()[:2], [0.47826862, 0.52173138])
+    assert np.allclose(res.GM.values.flat[0], -257462.33)

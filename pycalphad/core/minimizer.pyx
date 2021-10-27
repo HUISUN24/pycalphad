@@ -510,7 +510,6 @@ cdef class SystemState:
             csst.c_component[:,:] = 0
             csst.moles_normalization = 0
             csst.moles_normalization_grad[:] = 0
-            #print('dof=',spec.num_statevars,np.asarray(csst.grad))
             for i in range(num_phase_dof):
                 for j in range(num_phase_dof):
                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]
@@ -633,106 +632,69 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     # Update state variables in the `x` array
     for idx in range(len(state.compsets)):
         x = state.dof[idx]
-        #print('ori_x',np.asarray(x))
         for statevar_idx in range(state.delta_statevars.shape[0]):
             x[statevar_idx] += state.delta_statevars[statevar_idx]
-        #print('change_x',np.asarray(x))
         # We need real state variable bounds support
 
     # 3. Step in phase internal degrees of freedom
-    #print('compset',state.compsets)
-    print('site',np.asarray(state.free_stable_compset_indices))
-    #state.free_stable_compset_indices=[0,2]
-    #print('dbf',phases)
-    #print('len=',len(state.compsets))
     for idx in range(len(state.compsets)):
-        #print('num',idx)
         # TODO: Use better dof storage
-        print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
+        #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
         charge_factor = False
         for k in state.compsets[idx].phase_record.components:
-            #print('species',k)
             try:
                 if k.charge:
                     charge_factor = True
             except:
                 pass;
-        #print('idx',idx,np.asarray(state.free_stable_compset_indices))
-        #if idx not in state.free_stable_compset_indices:
-         #   print('not')
-        #if state.compsets[idx].NP < ALLOWED_NP:
-         #   charge_factor = False
-        #print('charge_factor',charge_factor)
         x = state.dof[idx]
         csst = state.cs_states[idx]
-        #print('site',np.asarray(csst))#N,P,T, and site fraction
-        #print('which',np.asarray(csst))
+
         # Construct delta_y from Eq. 43 in Sundman 2015
         csst.delta_y[:] = 0
-        #print('all=',np.asarray(csst.full_e_matrix),np.asarray(csst.phase_matrix))
-        #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
-        #print('phase_matrix',np.asarray(csst.phase_matrix))
+
         if charge_factor:
             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
-            print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
+            #print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
             Q=np.sum(np.multiply(x[3:],norm_valence))
-        #print('result=',Q)
+
         # TODO: needs charge balance contribution
         for i in range(csst.delta_y.shape[0]):
-            ##print('i=',i)
+
             csst.delta_y[i] += csst.c_G[i]
             for statevar_idx in range(state.delta_statevars.shape[0]):
                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]
             for chempot_idx in range(state.chemical_potentials.shape[0]):
                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
-            ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
-            #print('pre_results',np.asarray(csst.delta_y))
+
             if charge_factor:
                 norm_valence_i=csst.full_e_matrix[i,-1]
-#            ##print(norm_valence_i)
+           #print(norm_valence_i)
                 csst.delta_y[i] -= norm_valence_i*Q
-            #print('cur_results',np.asarray(csst.delta_y))
-        #x=np.array([1.00000000e+00, 1.01325000e+05, 5.00000000e+02, 3.33333333e-01,
- #7.05834921e-12, 3.33333333e-01, 3.33333342e-01, 1.00000000e+00])
-        #csst.delta_y=np.array([-1.88218330e-10, -7.05829893e-10,  6.58778809e-10,  2.35270579e-10,
-  #1.04223654e-17])
-        #print('csst',np.asarray(csst.delta_y))
         new_y = np.array(x)
         minimum_step_size = 1e-20 * step_size
         while step_size >= minimum_step_size:
-            #print('1')
             exceeded_bounds = False
             for i in range(spec.num_statevars, new_y.shape[0]):
-                #print('all_para',step_size,i,spec.num_statevars,csst.delta_y[i - spec.num_statevars])
                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
-                #print('new_y',new_y[i],np.asarray(new_y))
                 if new_y[i] > 1:
-                    #print('2')
                     if (new_y[i] - 1) > 1e-11:
-                        #print('3')
                         # Allow some tolerance in the name of progress
                         exceeded_bounds = True
                     new_y[i] = 1
                 elif new_y[i] < MIN_SITE_FRACTION:
-                    ####print('boundary',MIN_SITE_FRACTION)
-                    #print('4')
                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:
-                        #print('5')
                         # Allow some tolerance in the name of progress
                         exceeded_bounds = True
                     # Reduce by two orders of magnitude, or MIN_SITE_FRACTION, whichever is larger
                     new_y[i] = max(x[i]/100, MIN_SITE_FRACTION)
             if exceeded_bounds:
-                #print('6')
                 step_size *= 0.5
                 continue
             break
-        #print('new_y_result',np.asarray(new_y))
         state.largest_y_change[0] = 0.0
         for i in range(spec.num_statevars, new_y.shape[0]):
             state.largest_y_change[0] = max(state.largest_y_change[0], abs(x[i] - new_y[i]))
-        #if np.sum(state.largest_y_change)>0.2:
-            #print('new_y_result',np.asarray(x),np.asarray(new_y))
         x[:] = new_y
 
 
@@ -917,24 +879,12 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and
             (state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR)
         )
-        #if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
-#            print('Yes1')
-#        print('va',state.largest_y_change[0])
-#        if state.largest_y_change[0]< ALLOWED_DELTA_Y:
-#            print('Yes2',state.largest_y_change[0])
-#        if state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR:
-#            print('Yes3')
 
         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
-            #print('phases_changed1',phases_changed)
-            #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
-            #print('converged')
             if phases_changed:
-                #print('phases_changed')
                 iterations_since_last_phase_change = 0
             else:
-                #print('1')
                 converged = True
                 break
         iterations_since_last_phase_change += 1
@@ -954,5 +904,4 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     for cs_dof in state.dof[1:]:
         x = np.r_[x, cs_dof[num_statevars:]]
     x = np.r_[x, phase_amt]
-    #print('finalx',converged, x,np.asarray(x))
     return converged, x, np.array(state.chemical_potentials)

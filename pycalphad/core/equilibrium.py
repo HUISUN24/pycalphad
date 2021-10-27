@@ -274,23 +274,10 @@ def equilibrium(dbf, comps, phases, conditions, output=None, model=None,
     grid = calculate(dbf, comps, active_phases, model=models, fake_points=True,
                      phase_records=phase_records, output='GM', parameters=parameters,
                      to_xarray=False, **grid_opts)
-    #print('grid',grid.X,grid.GM)
     coord_dict = str_conds.copy()
     coord_dict['vertex'] = np.arange(len(pure_elements) + 1)  # +1 is to accommodate the degenerate degree of freedom at the invariant reactions
     coord_dict['component'] = pure_elements
     properties = starting_point(conds, state_variables, phase_records, grid)
-    #for i in phase_records['HALITE'].components:
-#        print('species',i)
-#        try:
-#            if i.charge:
-#                print('Yes')
-#        except:
-#            pass;
-    #print('properties',properties, phase_records['HALITE'].components, grid,
-     #                                    list(str_conds.keys()), state_variables,
-      #                                   verbose, solver)
-    #print('properties.phases',properties.Phase)
-    #properties.Phase=np.array([[[[[['HALITE','HALITE','']]]]]])
     properties = _solve_eq_at_conditions(properties, phase_records, grid,
                                          list(str_conds.keys()), state_variables,
                                          verbose, solver=solver)

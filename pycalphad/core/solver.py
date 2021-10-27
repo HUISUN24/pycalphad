@@ -80,7 +80,6 @@ class Solver(SolverBase):
                           chemical_potentials, free_chemical_potential_indices, fixed_chemical_potential_indices,
                           prescribed_element_indices, prescribed_elemental_amounts,
                           free_statevar_indices, fixed_statevar_indices)
-        print('result_x',converged, np.asarray(x), np.asarray(chemical_potentials))
         if self.verbose:
             print('Chemical Potentials', chemical_potentials)
             print(np.asarray(x))

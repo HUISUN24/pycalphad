@@ -2076,13 +2076,6 @@ static PyObject *__Pyx_PyLong_AbsNeg(PyObject *num);
 #define __Pyx_PyNumber_Absolute(x)  PyNumber_Absolute(x)
 #endif
 
-/* PyObjectCallNoArg.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func);
-#else
-#define __Pyx_PyObject_CallNoArg(func) __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL)
-#endif
-
 /* GetTopmostException.proto */
 #if CYTHON_USE_EXC_INFO_STACK
 static _PyErr_StackItem * __Pyx_PyErr_GetTopmostException(PyThreadState *tstate);
@@ -2742,7 +2735,6 @@ int __pyx_module_is_main_pycalphad__core__minimizer = 0;
 /* Implementation of 'pycalphad.core.minimizer' */
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_ValueError;
-static PyObject *__pyx_builtin_print;
 static PyObject *__pyx_builtin_enumerate;
 static PyObject *__pyx_builtin_ImportError;
 static PyObject *__pyx_builtin_TypeError;
@@ -2783,7 +2775,6 @@ static const char __pyx_k_mode[] = "mode";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_ndim[] = "ndim";
 static const char __pyx_k_pack[] = "pack";
-static const char __pyx_k_site[] = "site";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_spec[] = "spec";
 static const char __pyx_k_step[] = "step";
@@ -2799,7 +2790,6 @@ static const char __pyx_k_flags[] = "flags";
 static const char __pyx_k_int32[] = "int32";
 static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_order[] = "order";
-static const char __pyx_k_print[] = "print";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_start[] = "start";
@@ -2813,10 +2803,8 @@ static const char __pyx_k_name_2[] = "__name__";
 static const char __pyx_k_pickle[] = "pickle";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_struct[] = "struct";
-static const char __pyx_k_tolist[] = "tolist";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
-static const char __pyx_k_asarray[] = "asarray";
 static const char __pyx_k_compset[] = "compset";
 static const char __pyx_k_fortran[] = "fortran";
 static const char __pyx_k_memview[] = "memview";
@@ -2845,7 +2833,6 @@ static const char __pyx_k_SystemState[] = "SystemState";
 static const char __pyx_k_logical_and[] = "logical_and";
 static const char __pyx_k_CompsetState[] = "CompsetState";
 static const char __pyx_k_intersection[] = "intersection";
-static const char __pyx_k_norm_valence[] = "norm_valence";
 static const char __pyx_k_phase_record[] = "phase_record";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "stringsource";
@@ -2954,7 +2941,6 @@ static PyObject *__pyx_n_s_all;
 static PyObject *__pyx_n_s_allocate_buffer;
 static PyObject *__pyx_n_s_any;
 static PyObject *__pyx_n_s_array;
-static PyObject *__pyx_n_s_asarray;
 static PyObject *__pyx_n_s_axis;
 static PyObject *__pyx_n_s_base;
 static PyObject *__pyx_n_s_c;
@@ -2964,7 +2950,6 @@ static PyObject *__pyx_n_s_class;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_components;
 static PyObject *__pyx_n_s_compset;
-static PyObject *__pyx_n_u_compset;
 static PyObject *__pyx_n_s_compsets;
 static PyObject *__pyx_kp_s_contiguous_and_direct;
 static PyObject *__pyx_kp_s_contiguous_and_indirect;
@@ -3009,7 +2994,6 @@ static PyObject *__pyx_n_s_ndim;
 static PyObject *__pyx_n_s_new;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_nonzero;
-static PyObject *__pyx_n_u_norm_valence;
 static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_num_components;
 static PyObject *__pyx_n_s_num_statevars;
@@ -3024,7 +3008,6 @@ static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_prescribed_element_indices;
 static PyObject *__pyx_n_s_prescribed_elemental_amounts;
 static PyObject *__pyx_n_s_prescribed_system_amount;
-static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_pycalphad_core_constants;
 static PyObject *__pyx_n_s_pycalphad_core_minimizer;
 static PyObject *__pyx_n_s_pyx_PickleError;
@@ -3047,7 +3030,6 @@ static PyObject *__pyx_kp_u_s;
 static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_shape;
-static PyObject *__pyx_n_u_site;
 static PyObject *__pyx_n_s_size;
 static PyObject *__pyx_n_s_spec;
 static PyObject *__pyx_n_s_start;
@@ -3062,7 +3044,6 @@ static PyObject *__pyx_kp_s_stringsource;
 static PyObject *__pyx_n_s_struct;
 static PyObject *__pyx_n_s_sum;
 static PyObject *__pyx_n_s_test;
-static PyObject *__pyx_n_s_tolist;
 static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
 static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
 static PyObject *__pyx_n_s_unpack;
@@ -12882,7 +12863,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
  *             csst.c_component[:,:] = 0
  *             csst.moles_normalization = 0             # <<<<<<<<<<<<<<
  *             csst.moles_normalization_grad[:] = 0
- *             #print('dof=',spec.num_statevars,np.asarray(csst.grad))
+ *             for i in range(num_phase_dof):
  */
     __pyx_v_csst->moles_normalization = 0.0;
 
@@ -12890,8 +12871,8 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
  *             csst.c_component[:,:] = 0
  *             csst.moles_normalization = 0
  *             csst.moles_normalization_grad[:] = 0             # <<<<<<<<<<<<<<
- *             #print('dof=',spec.num_statevars,np.asarray(csst.grad))
  *             for i in range(num_phase_dof):
+ *                 for j in range(num_phase_dof):
  */
     if (unlikely(!__pyx_v_csst->moles_normalization_grad.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 512, __pyx_L1_error)}
     {
@@ -12907,9 +12888,9 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
         }
     }
 
-    /* "pycalphad/core/minimizer.pyx":514
+    /* "pycalphad/core/minimizer.pyx":513
+ *             csst.moles_normalization = 0
  *             csst.moles_normalization_grad[:] = 0
- *             #print('dof=',spec.num_statevars,np.asarray(csst.grad))
  *             for i in range(num_phase_dof):             # <<<<<<<<<<<<<<
  *                 for j in range(num_phase_dof):
  *                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]
@@ -12919,8 +12900,8 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":515
- *             #print('dof=',spec.num_statevars,np.asarray(csst.grad))
+      /* "pycalphad/core/minimizer.pyx":514
+ *             csst.moles_normalization_grad[:] = 0
  *             for i in range(num_phase_dof):
  *                 for j in range(num_phase_dof):             # <<<<<<<<<<<<<<
  *                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]
@@ -12931,29 +12912,29 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_j = __pyx_t_23;
 
-        /* "pycalphad/core/minimizer.pyx":516
+        /* "pycalphad/core/minimizer.pyx":515
  *             for i in range(num_phase_dof):
  *                 for j in range(num_phase_dof):
  *                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]             # <<<<<<<<<<<<<<
  *             for i in range(num_phase_dof):
  *                 for j in range(num_phase_dof):
  */
-        if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 516, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 515, __pyx_L1_error)}
         __pyx_t_12 = __pyx_v_i;
         __pyx_t_11 = __pyx_v_j;
         if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_csst->full_e_matrix.shape[0];
         if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->full_e_matrix.shape[1];
-        if (unlikely(!__pyx_v_csst->grad.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 516, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->grad.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 515, __pyx_L1_error)}
         __pyx_t_9 = (__pyx_v_spec->num_statevars + __pyx_v_j);
         if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->grad.shape[0];
-        if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 516, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 515, __pyx_L1_error)}
         __pyx_t_13 = __pyx_v_i;
         if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_v_csst->c_G.shape[0];
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->c_G.data) + __pyx_t_13)) )) -= ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->full_e_matrix.data + __pyx_t_12 * __pyx_v_csst->full_e_matrix.strides[0]) )) + __pyx_t_11)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->grad.data) + __pyx_t_9)) ))));
       }
     }
 
-    /* "pycalphad/core/minimizer.pyx":517
+    /* "pycalphad/core/minimizer.pyx":516
  *                 for j in range(num_phase_dof):
  *                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]
  *             for i in range(num_phase_dof):             # <<<<<<<<<<<<<<
@@ -12965,7 +12946,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_i = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":518
+      /* "pycalphad/core/minimizer.pyx":517
  *                     csst.c_G[i] -= csst.full_e_matrix[i, j] * csst.grad[spec.num_statevars+j]
  *             for i in range(num_phase_dof):
  *                 for j in range(num_phase_dof):             # <<<<<<<<<<<<<<
@@ -12977,7 +12958,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_j = __pyx_t_23;
 
-        /* "pycalphad/core/minimizer.pyx":519
+        /* "pycalphad/core/minimizer.pyx":518
  *             for i in range(num_phase_dof):
  *                 for j in range(num_phase_dof):
  *                     for statevar_idx in range(spec.num_statevars):             # <<<<<<<<<<<<<<
@@ -12989,24 +12970,24 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_statevar_idx = __pyx_t_26;
 
-          /* "pycalphad/core/minimizer.pyx":520
+          /* "pycalphad/core/minimizer.pyx":519
  *                 for j in range(num_phase_dof):
  *                     for statevar_idx in range(spec.num_statevars):
  *                         csst.c_statevars[i, statevar_idx] -= csst.full_e_matrix[i, j] * csst.hess[spec.num_statevars + j, statevar_idx]             # <<<<<<<<<<<<<<
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):
  */
-          if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 520, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 519, __pyx_L1_error)}
           __pyx_t_9 = __pyx_v_i;
           __pyx_t_11 = __pyx_v_j;
           if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->full_e_matrix.shape[0];
           if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->full_e_matrix.shape[1];
-          if (unlikely(!__pyx_v_csst->hess.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 520, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->hess.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 519, __pyx_L1_error)}
           __pyx_t_12 = (__pyx_v_spec->num_statevars + __pyx_v_j);
           __pyx_t_13 = __pyx_v_statevar_idx;
           if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_csst->hess.shape[0];
           if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_v_csst->hess.shape[1];
-          if (unlikely(!__pyx_v_csst->c_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 520, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->c_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 519, __pyx_L1_error)}
           __pyx_t_27 = __pyx_v_i;
           __pyx_t_28 = __pyx_v_statevar_idx;
           if (__pyx_t_27 < 0) __pyx_t_27 += __pyx_v_csst->c_statevars.shape[0];
@@ -13016,7 +12997,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       }
     }
 
-    /* "pycalphad/core/minimizer.pyx":521
+    /* "pycalphad/core/minimizer.pyx":520
  *                     for statevar_idx in range(spec.num_statevars):
  *                         csst.c_statevars[i, statevar_idx] -= csst.full_e_matrix[i, j] * csst.hess[spec.num_statevars + j, statevar_idx]
  *             for comp_idx in range(num_components):             # <<<<<<<<<<<<<<
@@ -13028,7 +13009,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_comp_idx = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":522
+      /* "pycalphad/core/minimizer.pyx":521
  *                         csst.c_statevars[i, statevar_idx] -= csst.full_e_matrix[i, j] * csst.hess[spec.num_statevars + j, statevar_idx]
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):             # <<<<<<<<<<<<<<
@@ -13040,7 +13021,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_i = __pyx_t_23;
 
-        /* "pycalphad/core/minimizer.pyx":523
+        /* "pycalphad/core/minimizer.pyx":522
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):
  *                     for j in range(num_phase_dof):             # <<<<<<<<<<<<<<
@@ -13052,24 +13033,24 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
         for (__pyx_t_26 = 0; __pyx_t_26 < __pyx_t_25; __pyx_t_26+=1) {
           __pyx_v_j = __pyx_t_26;
 
-          /* "pycalphad/core/minimizer.pyx":524
+          /* "pycalphad/core/minimizer.pyx":523
  *                 for i in range(num_phase_dof):
  *                     for j in range(num_phase_dof):
  *                         csst.c_component[comp_idx, i] += csst.mass_jac[comp_idx, spec.num_statevars + j] * csst.full_e_matrix[i, j]             # <<<<<<<<<<<<<<
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):
  */
-          if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 524, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 523, __pyx_L1_error)}
           __pyx_t_13 = __pyx_v_comp_idx;
           __pyx_t_12 = (__pyx_v_spec->num_statevars + __pyx_v_j);
           if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_v_csst->mass_jac.shape[0];
           if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_csst->mass_jac.shape[1];
-          if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 524, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 523, __pyx_L1_error)}
           __pyx_t_11 = __pyx_v_i;
           __pyx_t_9 = __pyx_v_j;
           if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->full_e_matrix.shape[0];
           if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->full_e_matrix.shape[1];
-          if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 524, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 523, __pyx_L1_error)}
           __pyx_t_28 = __pyx_v_comp_idx;
           __pyx_t_27 = __pyx_v_i;
           if (__pyx_t_28 < 0) __pyx_t_28 += __pyx_v_csst->c_component.shape[0];
@@ -13079,7 +13060,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       }
     }
 
-    /* "pycalphad/core/minimizer.pyx":525
+    /* "pycalphad/core/minimizer.pyx":524
  *                     for j in range(num_phase_dof):
  *                         csst.c_component[comp_idx, i] += csst.mass_jac[comp_idx, spec.num_statevars + j] * csst.full_e_matrix[i, j]
  *             for comp_idx in range(num_components):             # <<<<<<<<<<<<<<
@@ -13091,7 +13072,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_comp_idx = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":526
+      /* "pycalphad/core/minimizer.pyx":525
  *                         csst.c_component[comp_idx, i] += csst.mass_jac[comp_idx, spec.num_statevars + j] * csst.full_e_matrix[i, j]
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):             # <<<<<<<<<<<<<<
@@ -13103,7 +13084,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_i = __pyx_t_23;
 
-        /* "pycalphad/core/minimizer.pyx":527
+        /* "pycalphad/core/minimizer.pyx":526
  *             for comp_idx in range(num_components):
  *                 for i in range(num_phase_dof):
  *                     mu_c_sum = 0             # <<<<<<<<<<<<<<
@@ -13112,53 +13093,53 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
  */
         __pyx_v_mu_c_sum = 0.0;
 
-        /* "pycalphad/core/minimizer.pyx":528
+        /* "pycalphad/core/minimizer.pyx":527
  *                 for i in range(num_phase_dof):
  *                     mu_c_sum = 0
  *                     for j in range(self.chemical_potentials.shape[0]):             # <<<<<<<<<<<<<<
  *                         mu_c_sum += csst.c_component[j, i] * self.chemical_potentials[j]
  *                     self.delta_ms[idx, comp_idx] += csst.mass_jac[comp_idx, spec.num_statevars + i] * (mu_c_sum + csst.c_G[i])
  */
-        if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 528, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 527, __pyx_L1_error)}
         __pyx_t_17 = (__pyx_v_self->chemical_potentials.shape[0]);
         __pyx_t_18 = __pyx_t_17;
         for (__pyx_t_24 = 0; __pyx_t_24 < __pyx_t_18; __pyx_t_24+=1) {
           __pyx_v_j = __pyx_t_24;
 
-          /* "pycalphad/core/minimizer.pyx":529
+          /* "pycalphad/core/minimizer.pyx":528
  *                     mu_c_sum = 0
  *                     for j in range(self.chemical_potentials.shape[0]):
  *                         mu_c_sum += csst.c_component[j, i] * self.chemical_potentials[j]             # <<<<<<<<<<<<<<
  *                     self.delta_ms[idx, comp_idx] += csst.mass_jac[comp_idx, spec.num_statevars + i] * (mu_c_sum + csst.c_G[i])
  *             for comp_idx in range(num_components):
  */
-          if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 529, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 528, __pyx_L1_error)}
           __pyx_t_9 = __pyx_v_j;
           __pyx_t_11 = __pyx_v_i;
           if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->c_component.shape[0];
           if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->c_component.shape[1];
-          if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 529, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 528, __pyx_L1_error)}
           __pyx_t_12 = __pyx_v_j;
           if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_self->chemical_potentials.shape[0];
           __pyx_v_mu_c_sum = (__pyx_v_mu_c_sum + ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->c_component.data + __pyx_t_9 * __pyx_v_csst->c_component.strides[0]) )) + __pyx_t_11)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->chemical_potentials.data) + __pyx_t_12)) )))));
         }
 
-        /* "pycalphad/core/minimizer.pyx":530
+        /* "pycalphad/core/minimizer.pyx":529
  *                     for j in range(self.chemical_potentials.shape[0]):
  *                         mu_c_sum += csst.c_component[j, i] * self.chemical_potentials[j]
  *                     self.delta_ms[idx, comp_idx] += csst.mass_jac[comp_idx, spec.num_statevars + i] * (mu_c_sum + csst.c_G[i])             # <<<<<<<<<<<<<<
  *             for comp_idx in range(num_components):
  *                 csst.moles_normalization += csst.masses[comp_idx, 0]
  */
-        if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 530, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 529, __pyx_L1_error)}
         __pyx_t_12 = __pyx_v_comp_idx;
         __pyx_t_11 = (__pyx_v_spec->num_statevars + __pyx_v_i);
         if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_csst->mass_jac.shape[0];
         if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->mass_jac.shape[1];
-        if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 530, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 529, __pyx_L1_error)}
         __pyx_t_9 = __pyx_v_i;
         if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->c_G.shape[0];
-        if (unlikely(!__pyx_v_self->delta_ms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 530, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_self->delta_ms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 529, __pyx_L1_error)}
         __pyx_t_13 = __pyx_v_idx;
         __pyx_t_27 = __pyx_v_comp_idx;
         if (__pyx_t_13 < 0) __pyx_t_13 += __pyx_v_self->delta_ms.shape[0];
@@ -13167,7 +13148,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       }
     }
 
-    /* "pycalphad/core/minimizer.pyx":531
+    /* "pycalphad/core/minimizer.pyx":530
  *                         mu_c_sum += csst.c_component[j, i] * self.chemical_potentials[j]
  *                     self.delta_ms[idx, comp_idx] += csst.mass_jac[comp_idx, spec.num_statevars + i] * (mu_c_sum + csst.c_G[i])
  *             for comp_idx in range(num_components):             # <<<<<<<<<<<<<<
@@ -13179,21 +13160,21 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_comp_idx = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":532
+      /* "pycalphad/core/minimizer.pyx":531
  *                     self.delta_ms[idx, comp_idx] += csst.mass_jac[comp_idx, spec.num_statevars + i] * (mu_c_sum + csst.c_G[i])
  *             for comp_idx in range(num_components):
  *                 csst.moles_normalization += csst.masses[comp_idx, 0]             # <<<<<<<<<<<<<<
  *                 for i in range(num_phase_dof+spec.num_statevars):
  *                     csst.moles_normalization_grad[i] += csst.mass_jac[comp_idx, i]
  */
-      if (unlikely(!__pyx_v_csst->masses.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 532, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_csst->masses.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 531, __pyx_L1_error)}
       __pyx_t_9 = __pyx_v_comp_idx;
       __pyx_t_11 = 0;
       if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->masses.shape[0];
       if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->masses.shape[1];
       __pyx_v_csst->moles_normalization = (__pyx_v_csst->moles_normalization + (*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->masses.data + __pyx_t_9 * __pyx_v_csst->masses.strides[0]) )) + __pyx_t_11)) ))));
 
-      /* "pycalphad/core/minimizer.pyx":533
+      /* "pycalphad/core/minimizer.pyx":532
  *             for comp_idx in range(num_components):
  *                 csst.moles_normalization += csst.masses[comp_idx, 0]
  *                 for i in range(num_phase_dof+spec.num_statevars):             # <<<<<<<<<<<<<<
@@ -13205,19 +13186,19 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_i = __pyx_t_23;
 
-        /* "pycalphad/core/minimizer.pyx":534
+        /* "pycalphad/core/minimizer.pyx":533
  *                 csst.moles_normalization += csst.masses[comp_idx, 0]
  *                 for i in range(num_phase_dof+spec.num_statevars):
  *                     csst.moles_normalization_grad[i] += csst.mass_jac[comp_idx, i]             # <<<<<<<<<<<<<<
  * 
  *     cdef double[::1] driving_forces(self):
  */
-        if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 534, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->mass_jac.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 533, __pyx_L1_error)}
         __pyx_t_11 = __pyx_v_comp_idx;
         __pyx_t_9 = __pyx_v_i;
         if (__pyx_t_11 < 0) __pyx_t_11 += __pyx_v_csst->mass_jac.shape[0];
         if (__pyx_t_9 < 0) __pyx_t_9 += __pyx_v_csst->mass_jac.shape[1];
-        if (unlikely(!__pyx_v_csst->moles_normalization_grad.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 534, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->moles_normalization_grad.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 533, __pyx_L1_error)}
         __pyx_t_12 = __pyx_v_i;
         if (__pyx_t_12 < 0) __pyx_t_12 += __pyx_v_csst->moles_normalization_grad.shape[0];
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->moles_normalization_grad.data) + __pyx_t_12)) )) += (*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->mass_jac.data + __pyx_t_11 * __pyx_v_csst->mass_jac.strides[0]) )) + __pyx_t_9)) )));
@@ -13248,7 +13229,7 @@ __pyx_t_5.strides[0] = __pyx_v_csst->mass_jac.strides[1];
   __Pyx_RefNannyFinishContext();
 }
 
-/* "pycalphad/core/minimizer.pyx":536
+/* "pycalphad/core/minimizer.pyx":535
  *                     csst.moles_normalization_grad[i] += csst.mass_jac[comp_idx, i]
  * 
  *     cdef double[::1] driving_forces(self):             # <<<<<<<<<<<<<<
@@ -13283,24 +13264,24 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("driving_forces", 0);
 
-  /* "pycalphad/core/minimizer.pyx":540
+  /* "pycalphad/core/minimizer.pyx":539
  *         cdef CompositionSet compset
  *         cdef double[::1] x
  *         cdef int num_components = self.chemical_potentials.shape[0]             # <<<<<<<<<<<<<<
  *         # This needs to be done per mole of atoms, not per formula unit, since we compare phases to each other
  *         self._driving_forces[:] = 0
  */
-  if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 540, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 539, __pyx_L1_error)}
   __pyx_v_num_components = (__pyx_v_self->chemical_potentials.shape[0]);
 
-  /* "pycalphad/core/minimizer.pyx":542
+  /* "pycalphad/core/minimizer.pyx":541
  *         cdef int num_components = self.chemical_potentials.shape[0]
  *         # This needs to be done per mole of atoms, not per formula unit, since we compare phases to each other
  *         self._driving_forces[:] = 0             # <<<<<<<<<<<<<<
  *         for idx in range(len(self.compsets)):
  *             compset = self.compsets[idx]
  */
-  if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 542, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 541, __pyx_L1_error)}
   {
       double __pyx_temp_scalar = 0.0;
       {
@@ -13314,7 +13295,7 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
       }
   }
 
-  /* "pycalphad/core/minimizer.pyx":543
+  /* "pycalphad/core/minimizer.pyx":542
  *         # This needs to be done per mole of atoms, not per formula unit, since we compare phases to each other
  *         self._driving_forces[:] = 0
  *         for idx in range(len(self.compsets)):             # <<<<<<<<<<<<<<
@@ -13325,15 +13306,15 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
   __Pyx_INCREF(__pyx_t_1);
   if (unlikely(__pyx_t_1 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 543, __pyx_L1_error)
+    __PYX_ERR(0, 542, __pyx_L1_error)
   }
-  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 543, __pyx_L1_error)
+  __pyx_t_2 = PyList_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 542, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_idx = __pyx_t_4;
 
-    /* "pycalphad/core/minimizer.pyx":544
+    /* "pycalphad/core/minimizer.pyx":543
  *         self._driving_forces[:] = 0
  *         for idx in range(len(self.compsets)):
  *             compset = self.compsets[idx]             # <<<<<<<<<<<<<<
@@ -13342,31 +13323,31 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
  */
     if (unlikely(__pyx_v_self->compsets == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 544, __pyx_L1_error)
+      __PYX_ERR(0, 543, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 544, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_self->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 544, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":545
+    /* "pycalphad/core/minimizer.pyx":544
  *         for idx in range(len(self.compsets)):
  *             compset = self.compsets[idx]
  *             x = self.dof[idx]             # <<<<<<<<<<<<<<
  *             for comp_idx in range(num_components):
  *                 compset.phase_record.mass_obj(self._phase_amounts_per_mole_atoms[idx, comp_idx, :], x, comp_idx)
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 545, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_self->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 544, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 545, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 544, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
     __pyx_v_x = __pyx_t_5;
     __pyx_t_5.memview = NULL;
     __pyx_t_5.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":546
+    /* "pycalphad/core/minimizer.pyx":545
  *             compset = self.compsets[idx]
  *             x = self.dof[idx]
  *             for comp_idx in range(num_components):             # <<<<<<<<<<<<<<
@@ -13378,14 +13359,14 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
     for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
       __pyx_v_comp_idx = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":547
+      /* "pycalphad/core/minimizer.pyx":546
  *             x = self.dof[idx]
  *             for comp_idx in range(num_components):
  *                 compset.phase_record.mass_obj(self._phase_amounts_per_mole_atoms[idx, comp_idx, :], x, comp_idx)             # <<<<<<<<<<<<<<
  *                 self._driving_forces[idx] += self.chemical_potentials[comp_idx] * self._phase_amounts_per_mole_atoms[idx, comp_idx, 0]
  *             compset.phase_record.obj(self._phase_energies_per_mole_atoms[idx, :], x)
  */
-      if (unlikely(!__pyx_v_self->_phase_amounts_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 547, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_self->_phase_amounts_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 546, __pyx_L1_error)}
       __pyx_t_5.data = __pyx_v_self->_phase_amounts_per_mole_atoms.data;
       __pyx_t_5.memview = __pyx_v_self->_phase_amounts_per_mole_atoms.memview;
       __PYX_INC_MEMVIEW(&__pyx_t_5, 0);
@@ -13398,7 +13379,7 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 547, __pyx_L1_error)
+            __PYX_ERR(0, 546, __pyx_L1_error)
         }
         __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -13412,7 +13393,7 @@ static __Pyx_memviewslice __pyx_f_9pycalphad_4core_9minimizer_11SystemState_driv
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 1)");
-            __PYX_ERR(0, 547, __pyx_L1_error)
+            __PYX_ERR(0, 546, __pyx_L1_error)
         }
         __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -13426,14 +13407,14 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_amounts_per_mole_atoms.strides[2];
       __pyx_t_5.memview = NULL;
       __pyx_t_5.data = NULL;
 
-      /* "pycalphad/core/minimizer.pyx":548
+      /* "pycalphad/core/minimizer.pyx":547
  *             for comp_idx in range(num_components):
  *                 compset.phase_record.mass_obj(self._phase_amounts_per_mole_atoms[idx, comp_idx, :], x, comp_idx)
  *                 self._driving_forces[idx] += self.chemical_potentials[comp_idx] * self._phase_amounts_per_mole_atoms[idx, comp_idx, 0]             # <<<<<<<<<<<<<<
  *             compset.phase_record.obj(self._phase_energies_per_mole_atoms[idx, :], x)
  *             self._driving_forces[idx] -= self._phase_energies_per_mole_atoms[idx, 0]
  */
-      if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 548, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_self->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 547, __pyx_L1_error)}
       __pyx_t_9 = __pyx_v_comp_idx;
       __pyx_t_10 = -1;
       if (__pyx_t_9 < 0) {
@@ -13442,9 +13423,9 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_amounts_per_mole_atoms.strides[2];
       } else if (unlikely(__pyx_t_9 >= __pyx_v_self->chemical_potentials.shape[0])) __pyx_t_10 = 0;
       if (unlikely(__pyx_t_10 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_10);
-        __PYX_ERR(0, 548, __pyx_L1_error)
+        __PYX_ERR(0, 547, __pyx_L1_error)
       }
-      if (unlikely(!__pyx_v_self->_phase_amounts_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 548, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_self->_phase_amounts_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 547, __pyx_L1_error)}
       __pyx_t_11 = __pyx_v_idx;
       __pyx_t_12 = __pyx_v_comp_idx;
       __pyx_t_13 = 0;
@@ -13463,9 +13444,9 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_amounts_per_mole_atoms.strides[2];
       } else if (unlikely(__pyx_t_13 >= __pyx_v_self->_phase_amounts_per_mole_atoms.shape[2])) __pyx_t_10 = 2;
       if (unlikely(__pyx_t_10 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_10);
-        __PYX_ERR(0, 548, __pyx_L1_error)
+        __PYX_ERR(0, 547, __pyx_L1_error)
       }
-      if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 548, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 547, __pyx_L1_error)}
       __pyx_t_14 = __pyx_v_idx;
       __pyx_t_10 = -1;
       if (__pyx_t_14 < 0) {
@@ -13474,19 +13455,19 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_amounts_per_mole_atoms.strides[2];
       } else if (unlikely(__pyx_t_14 >= __pyx_v_self->_driving_forces.shape[0])) __pyx_t_10 = 0;
       if (unlikely(__pyx_t_10 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_10);
-        __PYX_ERR(0, 548, __pyx_L1_error)
+        __PYX_ERR(0, 547, __pyx_L1_error)
       }
       *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->_driving_forces.data) + __pyx_t_14)) )) += ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->chemical_potentials.data) + __pyx_t_9)) ))) * (*((double *) ( /* dim=2 */ ((char *) (((double *) ( /* dim=1 */ (( /* dim=0 */ (__pyx_v_self->_phase_amounts_per_mole_atoms.data + __pyx_t_11 * __pyx_v_self->_phase_amounts_per_mole_atoms.strides[0]) ) + __pyx_t_12 * __pyx_v_self->_phase_amounts_per_mole_atoms.strides[1]) )) + __pyx_t_13)) ))));
     }
 
-    /* "pycalphad/core/minimizer.pyx":549
+    /* "pycalphad/core/minimizer.pyx":548
  *                 compset.phase_record.mass_obj(self._phase_amounts_per_mole_atoms[idx, comp_idx, :], x, comp_idx)
  *                 self._driving_forces[idx] += self.chemical_potentials[comp_idx] * self._phase_amounts_per_mole_atoms[idx, comp_idx, 0]
  *             compset.phase_record.obj(self._phase_energies_per_mole_atoms[idx, :], x)             # <<<<<<<<<<<<<<
  *             self._driving_forces[idx] -= self._phase_energies_per_mole_atoms[idx, 0]
  *         return self._driving_forces
  */
-    if (unlikely(!__pyx_v_self->_phase_energies_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 549, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_self->_phase_energies_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 548, __pyx_L1_error)}
     __pyx_t_5.data = __pyx_v_self->_phase_energies_per_mole_atoms.data;
     __pyx_t_5.memview = __pyx_v_self->_phase_energies_per_mole_atoms.memview;
     __PYX_INC_MEMVIEW(&__pyx_t_5, 0);
@@ -13499,7 +13480,7 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_amounts_per_mole_atoms.strides[2];
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 549, __pyx_L1_error)
+            __PYX_ERR(0, 548, __pyx_L1_error)
         }
         __pyx_t_5.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -13513,14 +13494,14 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_energies_per_mole_atoms.strides[1];
     __pyx_t_5.memview = NULL;
     __pyx_t_5.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":550
+    /* "pycalphad/core/minimizer.pyx":549
  *                 self._driving_forces[idx] += self.chemical_potentials[comp_idx] * self._phase_amounts_per_mole_atoms[idx, comp_idx, 0]
  *             compset.phase_record.obj(self._phase_energies_per_mole_atoms[idx, :], x)
  *             self._driving_forces[idx] -= self._phase_energies_per_mole_atoms[idx, 0]             # <<<<<<<<<<<<<<
  *         return self._driving_forces
  * 
  */
-    if (unlikely(!__pyx_v_self->_phase_energies_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 550, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_self->_phase_energies_per_mole_atoms.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 549, __pyx_L1_error)}
     __pyx_t_13 = __pyx_v_idx;
     __pyx_t_12 = 0;
     __pyx_t_6 = -1;
@@ -13534,9 +13515,9 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_energies_per_mole_atoms.strides[1];
     } else if (unlikely(__pyx_t_12 >= __pyx_v_self->_phase_energies_per_mole_atoms.shape[1])) __pyx_t_6 = 1;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 550, __pyx_L1_error)
+      __PYX_ERR(0, 549, __pyx_L1_error)
     }
-    if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 550, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 549, __pyx_L1_error)}
     __pyx_t_11 = __pyx_v_idx;
     __pyx_t_6 = -1;
     if (__pyx_t_11 < 0) {
@@ -13545,24 +13526,24 @@ __pyx_t_5.strides[0] = __pyx_v_self->_phase_energies_per_mole_atoms.strides[1];
     } else if (unlikely(__pyx_t_11 >= __pyx_v_self->_driving_forces.shape[0])) __pyx_t_6 = 0;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 550, __pyx_L1_error)
+      __PYX_ERR(0, 549, __pyx_L1_error)
     }
     *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_self->_driving_forces.data) + __pyx_t_11)) )) -= (*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_self->_phase_energies_per_mole_atoms.data + __pyx_t_13 * __pyx_v_self->_phase_energies_per_mole_atoms.strides[0]) )) + __pyx_t_12)) )));
   }
 
-  /* "pycalphad/core/minimizer.pyx":551
+  /* "pycalphad/core/minimizer.pyx":550
  *             compset.phase_record.obj(self._phase_energies_per_mole_atoms[idx, :], x)
  *             self._driving_forces[idx] -= self._phase_energies_per_mole_atoms[idx, 0]
  *         return self._driving_forces             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 551, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_self->_driving_forces.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 550, __pyx_L1_error)}
   __PYX_INC_MEMVIEW(&__pyx_v_self->_driving_forces, 0);
   __pyx_r = __pyx_v_self->_driving_forces;
   goto __pyx_L0;
 
-  /* "pycalphad/core/minimizer.pyx":536
+  /* "pycalphad/core/minimizer.pyx":535
  *                     csst.moles_normalization_grad[i] += csst.mass_jac[comp_idx, i]
  * 
  *     cdef double[::1] driving_forces(self):             # <<<<<<<<<<<<<<
@@ -14031,7 +14012,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_11SystemState_8__setstate_
   return __pyx_r;
 }
 
-/* "pycalphad/core/minimizer.pyx":554
+/* "pycalphad/core/minimizer.pyx":553
  * 
  * 
  * cpdef solve_state(SystemSpecification spec, SystemState state):             # <<<<<<<<<<<<<<
@@ -14073,7 +14054,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("solve_state", 0);
 
-  /* "pycalphad/core/minimizer.pyx":559
+  /* "pycalphad/core/minimizer.pyx":558
  *     cdef int chempot_idx, comp_idx, num_stable_phases, num_fixed_phases, num_fixed_components, num_free_variables
  * 
  *     state.recompute(spec)             # <<<<<<<<<<<<<<
@@ -14082,56 +14063,56 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  */
   ((struct __pyx_vtabstruct_9pycalphad_4core_9minimizer_SystemState *)__pyx_v_state->__pyx_vtab)->recompute(__pyx_v_state, __pyx_v_spec);
 
-  /* "pycalphad/core/minimizer.pyx":561
+  /* "pycalphad/core/minimizer.pyx":560
  *     state.recompute(spec)
  * 
  *     num_stable_phases = state.free_stable_compset_indices.shape[0]             # <<<<<<<<<<<<<<
  *     num_fixed_phases = spec.fixed_stable_compset_indices.shape[0]
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 561, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 560, __pyx_L1_error)}
   __pyx_v_num_stable_phases = (__pyx_v_state->free_stable_compset_indices.shape[0]);
 
-  /* "pycalphad/core/minimizer.pyx":562
+  /* "pycalphad/core/minimizer.pyx":561
  * 
  *     num_stable_phases = state.free_stable_compset_indices.shape[0]
  *     num_fixed_phases = spec.fixed_stable_compset_indices.shape[0]             # <<<<<<<<<<<<<<
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)
  *     num_free_variables = spec.free_chemical_potential_indices.shape[0] + num_stable_phases + \
  */
-  if (unlikely(!__pyx_v_spec->fixed_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 562, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->fixed_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 561, __pyx_L1_error)}
   __pyx_v_num_fixed_phases = (__pyx_v_spec->fixed_stable_compset_indices.shape[0]);
 
-  /* "pycalphad/core/minimizer.pyx":563
+  /* "pycalphad/core/minimizer.pyx":562
  *     num_stable_phases = state.free_stable_compset_indices.shape[0]
  *     num_fixed_phases = spec.fixed_stable_compset_indices.shape[0]
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)             # <<<<<<<<<<<<<<
  *     num_free_variables = spec.free_chemical_potential_indices.shape[0] + num_stable_phases + \
  *                          spec.free_statevar_indices.shape[0]
  */
-  if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 563, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 562, __pyx_L1_error)}
   __pyx_t_1 = __Pyx_MemoryView_Len(__pyx_v_spec->prescribed_elemental_amounts); 
   __pyx_v_num_fixed_components = __pyx_t_1;
 
-  /* "pycalphad/core/minimizer.pyx":564
+  /* "pycalphad/core/minimizer.pyx":563
  *     num_fixed_phases = spec.fixed_stable_compset_indices.shape[0]
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)
  *     num_free_variables = spec.free_chemical_potential_indices.shape[0] + num_stable_phases + \             # <<<<<<<<<<<<<<
  *                          spec.free_statevar_indices.shape[0]
  * 
  */
-  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 564, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 563, __pyx_L1_error)}
 
-  /* "pycalphad/core/minimizer.pyx":565
+  /* "pycalphad/core/minimizer.pyx":564
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)
  *     num_free_variables = spec.free_chemical_potential_indices.shape[0] + num_stable_phases + \
  *                          spec.free_statevar_indices.shape[0]             # <<<<<<<<<<<<<<
  * 
  *     equilibrium_matrix = np.zeros((num_stable_phases + num_fixed_phases + num_fixed_components + 1, num_free_variables), order='F')
  */
-  if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 565, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 564, __pyx_L1_error)}
 
-  /* "pycalphad/core/minimizer.pyx":564
+  /* "pycalphad/core/minimizer.pyx":563
  *     num_fixed_phases = spec.fixed_stable_compset_indices.shape[0]
  *     num_fixed_components = len(spec.prescribed_elemental_amounts)
  *     num_free_variables = spec.free_chemical_potential_indices.shape[0] + num_stable_phases + \             # <<<<<<<<<<<<<<
@@ -14140,23 +14121,23 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  */
   __pyx_v_num_free_variables = (((__pyx_v_spec->free_chemical_potential_indices.shape[0]) + __pyx_v_num_stable_phases) + (__pyx_v_spec->free_statevar_indices.shape[0]));
 
-  /* "pycalphad/core/minimizer.pyx":567
+  /* "pycalphad/core/minimizer.pyx":566
  *                          spec.free_statevar_indices.shape[0]
  * 
  *     equilibrium_matrix = np.zeros((num_stable_phases + num_fixed_phases + num_fixed_components + 1, num_free_variables), order='F')             # <<<<<<<<<<<<<<
  *     equilibrium_soln = np.zeros(num_stable_phases + num_fixed_phases + num_fixed_components + 1)
  *     # TODO: can we move this error check outside?
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_zeros); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_long((((__pyx_v_num_stable_phases + __pyx_v_num_fixed_phases) + __pyx_v_num_fixed_components) + 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_long((((__pyx_v_num_stable_phases + __pyx_v_num_fixed_phases) + __pyx_v_num_fixed_components) + 1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_num_free_variables); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_num_free_variables); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_2);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_2);
@@ -14164,38 +14145,38 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_4);
   __pyx_t_2 = 0;
   __pyx_t_4 = 0;
-  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_4 = PyTuple_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_GIVEREF(__pyx_t_5);
   PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_order, __pyx_n_u_F) < 0) __PYX_ERR(0, 567, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_n_s_order, __pyx_n_u_F) < 0) __PYX_ERR(0, 566, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dcd__double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 567, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_dcd__double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 566, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_equilibrium_matrix = __pyx_t_6;
   __pyx_t_6.memview = NULL;
   __pyx_t_6.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":568
+  /* "pycalphad/core/minimizer.pyx":567
  * 
  *     equilibrium_matrix = np.zeros((num_stable_phases + num_fixed_phases + num_fixed_components + 1, num_free_variables), order='F')
  *     equilibrium_soln = np.zeros(num_stable_phases + num_fixed_phases + num_fixed_components + 1)             # <<<<<<<<<<<<<<
  *     # TODO: can we move this error check outside?
  *     if (num_stable_phases + num_fixed_phases + num_fixed_components + 1) != num_free_variables:
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_zeros); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = __Pyx_PyInt_From_long((((__pyx_v_num_stable_phases + __pyx_v_num_fixed_phases) + __pyx_v_num_fixed_components) + 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyInt_From_long((((__pyx_v_num_stable_phases + __pyx_v_num_fixed_phases) + __pyx_v_num_fixed_components) + 1)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -14210,16 +14191,16 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   __pyx_t_2 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_3, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 568, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 568, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_2, PyBUF_WRITABLE); if (unlikely(!__pyx_t_7.memview)) __PYX_ERR(0, 567, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_equilibrium_soln = __pyx_t_7;
   __pyx_t_7.memview = NULL;
   __pyx_t_7.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":570
+  /* "pycalphad/core/minimizer.pyx":569
  *     equilibrium_soln = np.zeros(num_stable_phases + num_fixed_phases + num_fixed_components + 1)
  *     # TODO: can we move this error check outside?
  *     if (num_stable_phases + num_fixed_phases + num_fixed_components + 1) != num_free_variables:             # <<<<<<<<<<<<<<
@@ -14229,20 +14210,20 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   __pyx_t_8 = (((((__pyx_v_num_stable_phases + __pyx_v_num_fixed_phases) + __pyx_v_num_fixed_components) + 1) != __pyx_v_num_free_variables) != 0);
   if (unlikely(__pyx_t_8)) {
 
-    /* "pycalphad/core/minimizer.pyx":571
+    /* "pycalphad/core/minimizer.pyx":570
  *     # TODO: can we move this error check outside?
  *     if (num_stable_phases + num_fixed_phases + num_fixed_components + 1) != num_free_variables:
  *         raise ValueError('Conditions do not obey Gibbs Phase Rule')             # <<<<<<<<<<<<<<
  * 
  *     equilibrium_matrix[:,:] = 0
  */
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 571, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 570, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_Raise(__pyx_t_2, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __PYX_ERR(0, 571, __pyx_L1_error)
+    __PYX_ERR(0, 570, __pyx_L1_error)
 
-    /* "pycalphad/core/minimizer.pyx":570
+    /* "pycalphad/core/minimizer.pyx":569
  *     equilibrium_soln = np.zeros(num_stable_phases + num_fixed_phases + num_fixed_components + 1)
  *     # TODO: can we move this error check outside?
  *     if (num_stable_phases + num_fixed_phases + num_fixed_components + 1) != num_free_variables:             # <<<<<<<<<<<<<<
@@ -14251,7 +14232,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  */
   }
 
-  /* "pycalphad/core/minimizer.pyx":573
+  /* "pycalphad/core/minimizer.pyx":572
  *         raise ValueError('Conditions do not obey Gibbs Phase Rule')
  * 
  *     equilibrium_matrix[:,:] = 0             # <<<<<<<<<<<<<<
@@ -14271,7 +14252,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
       }
   }
 
-  /* "pycalphad/core/minimizer.pyx":574
+  /* "pycalphad/core/minimizer.pyx":573
  * 
  *     equilibrium_matrix[:,:] = 0
  *     equilibrium_soln[:] = 0             # <<<<<<<<<<<<<<
@@ -14291,7 +14272,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
       }
   }
 
-  /* "pycalphad/core/minimizer.pyx":575
+  /* "pycalphad/core/minimizer.pyx":574
  *     equilibrium_matrix[:,:] = 0
  *     equilibrium_soln[:] = 0
  *     fill_equilibrium_system(equilibrium_matrix, equilibrium_soln, spec, state)             # <<<<<<<<<<<<<<
@@ -14300,7 +14281,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  */
   __pyx_f_9pycalphad_4core_9minimizer_fill_equilibrium_system(__pyx_v_equilibrium_matrix, __pyx_v_equilibrium_soln, __pyx_v_spec, __pyx_v_state);
 
-  /* "pycalphad/core/minimizer.pyx":577
+  /* "pycalphad/core/minimizer.pyx":576
  *     fill_equilibrium_system(equilibrium_matrix, equilibrium_soln, spec, state)
  * 
  *     lstsq(&equilibrium_matrix[0,0], equilibrium_matrix.shape[0], equilibrium_matrix.shape[1],             # <<<<<<<<<<<<<<
@@ -14320,10 +14301,10 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   } else if (unlikely(__pyx_t_10 >= __pyx_v_equilibrium_matrix.shape[1])) __pyx_t_11 = 1;
   if (unlikely(__pyx_t_11 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_11);
-    __PYX_ERR(0, 577, __pyx_L1_error)
+    __PYX_ERR(0, 576, __pyx_L1_error)
   }
 
-  /* "pycalphad/core/minimizer.pyx":578
+  /* "pycalphad/core/minimizer.pyx":577
  * 
  *     lstsq(&equilibrium_matrix[0,0], equilibrium_matrix.shape[0], equilibrium_matrix.shape[1],
  *           &equilibrium_soln[0], -1)             # <<<<<<<<<<<<<<
@@ -14338,10 +14319,10 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
   } else if (unlikely(__pyx_t_12 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_11 = 0;
   if (unlikely(__pyx_t_11 != -1)) {
     __Pyx_RaiseBufferIndexError(__pyx_t_11);
-    __PYX_ERR(0, 578, __pyx_L1_error)
+    __PYX_ERR(0, 577, __pyx_L1_error)
   }
 
-  /* "pycalphad/core/minimizer.pyx":577
+  /* "pycalphad/core/minimizer.pyx":576
  *     fill_equilibrium_system(equilibrium_matrix, equilibrium_soln, spec, state)
  * 
  *     lstsq(&equilibrium_matrix[0,0], equilibrium_matrix.shape[0], equilibrium_matrix.shape[1],             # <<<<<<<<<<<<<<
@@ -14350,27 +14331,27 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  */
   __pyx_f_9pycalphad_4core_9minimizer_lstsq((&(*((double *) ( /* dim=1 */ (( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_matrix.data) + __pyx_t_9)) ) + __pyx_t_10 * __pyx_v_equilibrium_matrix.strides[1]) )))), (__pyx_v_equilibrium_matrix.shape[0]), (__pyx_v_equilibrium_matrix.shape[1]), (&(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_12)) )))), -1.0);
 
-  /* "pycalphad/core/minimizer.pyx":581
+  /* "pycalphad/core/minimizer.pyx":580
  * 
  *     # set the chemical potentials from the solution
  *     for i in range(spec.free_chemical_potential_indices.shape[0]):             # <<<<<<<<<<<<<<
  *         chempot_idx = spec.free_chemical_potential_indices[i]
  *         state.chemical_potentials[chempot_idx] = equilibrium_soln[i]
  */
-  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 581, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 580, __pyx_L1_error)}
   __pyx_t_13 = (__pyx_v_spec->free_chemical_potential_indices.shape[0]);
   __pyx_t_14 = __pyx_t_13;
   for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
     __pyx_v_i = __pyx_t_15;
 
-    /* "pycalphad/core/minimizer.pyx":582
+    /* "pycalphad/core/minimizer.pyx":581
  *     # set the chemical potentials from the solution
  *     for i in range(spec.free_chemical_potential_indices.shape[0]):
  *         chempot_idx = spec.free_chemical_potential_indices[i]             # <<<<<<<<<<<<<<
  *         state.chemical_potentials[chempot_idx] = equilibrium_soln[i]
  * 
  */
-    if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 582, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 581, __pyx_L1_error)}
     __pyx_t_12 = __pyx_v_i;
     __pyx_t_11 = -1;
     if (__pyx_t_12 < 0) {
@@ -14379,11 +14360,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_12 >= __pyx_v_spec->free_chemical_potential_indices.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 582, __pyx_L1_error)
+      __PYX_ERR(0, 581, __pyx_L1_error)
     }
     __pyx_v_chempot_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_spec->free_chemical_potential_indices.data) + __pyx_t_12)) )));
 
-    /* "pycalphad/core/minimizer.pyx":583
+    /* "pycalphad/core/minimizer.pyx":582
  *     for i in range(spec.free_chemical_potential_indices.shape[0]):
  *         chempot_idx = spec.free_chemical_potential_indices[i]
  *         state.chemical_potentials[chempot_idx] = equilibrium_soln[i]             # <<<<<<<<<<<<<<
@@ -14398,9 +14379,9 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_12 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 583, __pyx_L1_error)
+      __PYX_ERR(0, 582, __pyx_L1_error)
     }
-    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 583, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 582, __pyx_L1_error)}
     __pyx_t_10 = __pyx_v_chempot_idx;
     __pyx_t_11 = -1;
     if (__pyx_t_10 < 0) {
@@ -14409,32 +14390,32 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_10 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_11 = 0;
     if (unlikely(__pyx_t_11 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_11);
-      __PYX_ERR(0, 583, __pyx_L1_error)
+      __PYX_ERR(0, 582, __pyx_L1_error)
     }
     *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_10)) )) = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_12)) )));
   }
 
-  /* "pycalphad/core/minimizer.pyx":586
+  /* "pycalphad/core/minimizer.pyx":585
  * 
  *     # Force some chemical potentials to adopt their fixed values
  *     for chempot_idx in range(spec.fixed_chemical_potential_indices.shape[0]):             # <<<<<<<<<<<<<<
  *         comp_idx = spec.fixed_chemical_potential_indices[chempot_idx]
  *         state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  */
-  if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 586, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 585, __pyx_L1_error)}
   __pyx_t_13 = (__pyx_v_spec->fixed_chemical_potential_indices.shape[0]);
   __pyx_t_14 = __pyx_t_13;
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_14; __pyx_t_11+=1) {
     __pyx_v_chempot_idx = __pyx_t_11;
 
-    /* "pycalphad/core/minimizer.pyx":587
+    /* "pycalphad/core/minimizer.pyx":586
  *     # Force some chemical potentials to adopt their fixed values
  *     for chempot_idx in range(spec.fixed_chemical_potential_indices.shape[0]):
  *         comp_idx = spec.fixed_chemical_potential_indices[chempot_idx]             # <<<<<<<<<<<<<<
  *         state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  * 
  */
-    if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 587, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 586, __pyx_L1_error)}
     __pyx_t_12 = __pyx_v_chempot_idx;
     __pyx_t_16 = -1;
     if (__pyx_t_12 < 0) {
@@ -14443,18 +14424,18 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_12 >= __pyx_v_spec->fixed_chemical_potential_indices.shape[0])) __pyx_t_16 = 0;
     if (unlikely(__pyx_t_16 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_16);
-      __PYX_ERR(0, 587, __pyx_L1_error)
+      __PYX_ERR(0, 586, __pyx_L1_error)
     }
     __pyx_v_comp_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_spec->fixed_chemical_potential_indices.data) + __pyx_t_12)) )));
 
-    /* "pycalphad/core/minimizer.pyx":588
+    /* "pycalphad/core/minimizer.pyx":587
  *     for chempot_idx in range(spec.fixed_chemical_potential_indices.shape[0]):
  *         comp_idx = spec.fixed_chemical_potential_indices[chempot_idx]
  *         state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]             # <<<<<<<<<<<<<<
  * 
  *     return equilibrium_soln
  */
-    if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 588, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 587, __pyx_L1_error)}
     __pyx_t_12 = __pyx_v_comp_idx;
     __pyx_t_16 = -1;
     if (__pyx_t_12 < 0) {
@@ -14463,9 +14444,9 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_12 >= __pyx_v_spec->initial_chemical_potentials.shape[0])) __pyx_t_16 = 0;
     if (unlikely(__pyx_t_16 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_16);
-      __PYX_ERR(0, 588, __pyx_L1_error)
+      __PYX_ERR(0, 587, __pyx_L1_error)
     }
-    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 588, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 587, __pyx_L1_error)}
     __pyx_t_10 = __pyx_v_comp_idx;
     __pyx_t_16 = -1;
     if (__pyx_t_10 < 0) {
@@ -14474,12 +14455,12 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
     } else if (unlikely(__pyx_t_10 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_16 = 0;
     if (unlikely(__pyx_t_16 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_16);
-      __PYX_ERR(0, 588, __pyx_L1_error)
+      __PYX_ERR(0, 587, __pyx_L1_error)
     }
     *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_10)) )) = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_spec->initial_chemical_potentials.data) + __pyx_t_12)) )));
   }
 
-  /* "pycalphad/core/minimizer.pyx":590
+  /* "pycalphad/core/minimizer.pyx":589
  *         state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  * 
  *     return equilibrium_soln             # <<<<<<<<<<<<<<
@@ -14487,13 +14468,13 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_solve_state(struct __pyx_ob
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_equilibrium_soln, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 590, __pyx_L1_error)
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_equilibrium_soln, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 589, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "pycalphad/core/minimizer.pyx":554
+  /* "pycalphad/core/minimizer.pyx":553
  * 
  * 
  * cpdef solve_state(SystemSpecification spec, SystemState state):             # <<<<<<<<<<<<<<
@@ -14553,11 +14534,11 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_1solve_state(PyObject *__p
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("solve_state", 1, 2, 2, 1); __PYX_ERR(0, 554, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("solve_state", 1, 2, 2, 1); __PYX_ERR(0, 553, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "solve_state") < 0)) __PYX_ERR(0, 554, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "solve_state") < 0)) __PYX_ERR(0, 553, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -14570,14 +14551,14 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_1solve_state(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("solve_state", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 554, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("solve_state", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 553, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.minimizer.solve_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_spec), __pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification, 1, "spec", 0))) __PYX_ERR(0, 554, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_9pycalphad_4core_9minimizer_SystemState, 1, "state", 0))) __PYX_ERR(0, 554, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_spec), __pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification, 1, "spec", 0))) __PYX_ERR(0, 553, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_9pycalphad_4core_9minimizer_SystemState, 1, "state", 0))) __PYX_ERR(0, 553, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pycalphad_4core_9minimizer_solve_state(__pyx_self, __pyx_v_spec, __pyx_v_state);
 
   /* function exit code */
@@ -14598,7 +14579,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_solve_state(CYTHON_UNUSED 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("solve_state", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_solve_state(__pyx_v_spec, __pyx_v_state, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_solve_state(__pyx_v_spec, __pyx_v_state, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 553, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -14615,7 +14596,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_solve_state(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "pycalphad/core/minimizer.pyx":594
+/* "pycalphad/core/minimizer.pyx":593
  * 
  * # TODO: should we store equilibrium_soln in the state(?)
  * cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equilibrium_soln, double step_size):             # <<<<<<<<<<<<<<
@@ -14662,36 +14643,35 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
   Py_ssize_t __pyx_t_15;
   Py_ssize_t __pyx_t_16;
   int __pyx_t_17;
-  PyObject *__pyx_t_18 = NULL;
+  PyObject *(*__pyx_t_18)(PyObject *);
   PyObject *__pyx_t_19 = NULL;
   PyObject *__pyx_t_20 = NULL;
   PyObject *__pyx_t_21 = NULL;
   PyObject *__pyx_t_22 = NULL;
-  PyObject *(*__pyx_t_23)(PyObject *);
+  PyObject *__pyx_t_23 = NULL;
   PyObject *__pyx_t_24 = NULL;
   PyObject *__pyx_t_25 = NULL;
-  PyObject *__pyx_t_26 = NULL;
+  Py_ssize_t __pyx_t_26;
   Py_ssize_t __pyx_t_27;
-  Py_ssize_t __pyx_t_28;
-  int __pyx_t_29;
+  int __pyx_t_28;
+  Py_ssize_t __pyx_t_29;
   Py_ssize_t __pyx_t_30;
-  Py_ssize_t __pyx_t_31;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("advance_state", 0);
 
-  /* "pycalphad/core/minimizer.pyx":599
+  /* "pycalphad/core/minimizer.pyx":598
  *     cdef double minimum_step_size, psc, phase_amt_step_size
  *     cdef int i, idx, compset_idx, statevar_idx, chempot_idx
  *     cdef int soln_index_offset = spec.free_chemical_potential_indices.shape[0]  # Chemical potentials handled after solving             # <<<<<<<<<<<<<<
  *     cdef double[::1] new_y, x
  *     cdef CompsetState csst
  */
-  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 599, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->free_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 598, __pyx_L1_error)}
   __pyx_v_soln_index_offset = (__pyx_v_spec->free_chemical_potential_indices.shape[0]);
 
-  /* "pycalphad/core/minimizer.pyx":605
+  /* "pycalphad/core/minimizer.pyx":604
  *     # 1. Step in phase amounts
  *     # Determine largest allowable step size such that the smallest phase amount is zero
  *     phase_amt_step_size = step_size             # <<<<<<<<<<<<<<
@@ -14700,27 +14680,27 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  */
   __pyx_v_phase_amt_step_size = __pyx_v_step_size;
 
-  /* "pycalphad/core/minimizer.pyx":606
+  /* "pycalphad/core/minimizer.pyx":605
  *     # Determine largest allowable step size such that the smallest phase amount is zero
  *     phase_amt_step_size = step_size
  *     for i in range(state.free_stable_compset_indices.shape[0]):             # <<<<<<<<<<<<<<
  *         compset_idx = state.free_stable_compset_indices[i]
  *         if state.phase_amt[compset_idx] + equilibrium_soln[soln_index_offset + i] < 0:
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 606, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 605, __pyx_L1_error)}
   __pyx_t_1 = (__pyx_v_state->free_stable_compset_indices.shape[0]);
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "pycalphad/core/minimizer.pyx":607
+    /* "pycalphad/core/minimizer.pyx":606
  *     phase_amt_step_size = step_size
  *     for i in range(state.free_stable_compset_indices.shape[0]):
  *         compset_idx = state.free_stable_compset_indices[i]             # <<<<<<<<<<<<<<
  *         if state.phase_amt[compset_idx] + equilibrium_soln[soln_index_offset + i] < 0:
  *             # Assuming:
  */
-    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 607, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 606, __pyx_L1_error)}
     __pyx_t_4 = __pyx_v_i;
     __pyx_t_5 = -1;
     if (__pyx_t_4 < 0) {
@@ -14729,18 +14709,18 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_4 >= __pyx_v_state->free_stable_compset_indices.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 607, __pyx_L1_error)
+      __PYX_ERR(0, 606, __pyx_L1_error)
     }
     __pyx_v_compset_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_state->free_stable_compset_indices.data) + __pyx_t_4)) )));
 
-    /* "pycalphad/core/minimizer.pyx":608
+    /* "pycalphad/core/minimizer.pyx":607
  *     for i in range(state.free_stable_compset_indices.shape[0]):
  *         compset_idx = state.free_stable_compset_indices[i]
  *         if state.phase_amt[compset_idx] + equilibrium_soln[soln_index_offset + i] < 0:             # <<<<<<<<<<<<<<
  *             # Assuming:
  *             # 1. NP>0 (the phase would not be a free_stable_compset if not) and
  */
-    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 608, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 607, __pyx_L1_error)}
     __pyx_t_4 = __pyx_v_compset_idx;
     __pyx_t_5 = -1;
     if (__pyx_t_4 < 0) {
@@ -14749,7 +14729,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_4 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 608, __pyx_L1_error)
+      __PYX_ERR(0, 607, __pyx_L1_error)
     }
     __pyx_t_6 = (__pyx_v_soln_index_offset + __pyx_v_i);
     __pyx_t_5 = -1;
@@ -14759,19 +14739,19 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 608, __pyx_L1_error)
+      __PYX_ERR(0, 607, __pyx_L1_error)
     }
     __pyx_t_7 = ((((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_4)) ))) + (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_6)) )))) < 0.0) != 0);
     if (__pyx_t_7) {
 
-      /* "pycalphad/core/minimizer.pyx":613
+      /* "pycalphad/core/minimizer.pyx":612
  *             # 2. delta_NP<0 (must be true if assumption #1 is true and this condition is true)
  *             # The largest allowable step size satisfies the equation: (NP + step_size * delta_NP = 0)
  *             phase_amt_step_size = min(phase_amt_step_size, -state.phase_amt[compset_idx] / equilibrium_soln[soln_index_offset + i])             # <<<<<<<<<<<<<<
  *     # Update the phase amounts using the largest allowable step size
  *     state.largest_phase_amt_change[0] = 0
  */
-      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 613, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 612, __pyx_L1_error)}
       __pyx_t_6 = __pyx_v_compset_idx;
       __pyx_t_5 = -1;
       if (__pyx_t_6 < 0) {
@@ -14780,7 +14760,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       } else if (unlikely(__pyx_t_6 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_5 = 0;
       if (unlikely(__pyx_t_5 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_5);
-        __PYX_ERR(0, 613, __pyx_L1_error)
+        __PYX_ERR(0, 612, __pyx_L1_error)
       }
       __pyx_t_8 = (-(*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_6)) ))));
       __pyx_t_6 = (__pyx_v_soln_index_offset + __pyx_v_i);
@@ -14791,12 +14771,12 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       } else if (unlikely(__pyx_t_6 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_5 = 0;
       if (unlikely(__pyx_t_5 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_5);
-        __PYX_ERR(0, 613, __pyx_L1_error)
+        __PYX_ERR(0, 612, __pyx_L1_error)
       }
       __pyx_t_9 = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_6)) )));
       if (unlikely(__pyx_t_9 == 0)) {
         PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-        __PYX_ERR(0, 613, __pyx_L1_error)
+        __PYX_ERR(0, 612, __pyx_L1_error)
       }
       __pyx_t_10 = (__pyx_t_8 / __pyx_t_9);
       __pyx_t_9 = __pyx_v_phase_amt_step_size;
@@ -14807,7 +14787,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       }
       __pyx_v_phase_amt_step_size = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":608
+      /* "pycalphad/core/minimizer.pyx":607
  *     for i in range(state.free_stable_compset_indices.shape[0]):
  *         compset_idx = state.free_stable_compset_indices[i]
  *         if state.phase_amt[compset_idx] + equilibrium_soln[soln_index_offset + i] < 0:             # <<<<<<<<<<<<<<
@@ -14817,7 +14797,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     }
   }
 
-  /* "pycalphad/core/minimizer.pyx":615
+  /* "pycalphad/core/minimizer.pyx":614
  *             phase_amt_step_size = min(phase_amt_step_size, -state.phase_amt[compset_idx] / equilibrium_soln[soln_index_offset + i])
  *     # Update the phase amounts using the largest allowable step size
  *     state.largest_phase_amt_change[0] = 0             # <<<<<<<<<<<<<<
@@ -14826,27 +14806,27 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  */
   (__pyx_v_state->largest_phase_amt_change[0]) = 0.0;
 
-  /* "pycalphad/core/minimizer.pyx":616
+  /* "pycalphad/core/minimizer.pyx":615
  *     # Update the phase amounts using the largest allowable step size
  *     state.largest_phase_amt_change[0] = 0
  *     for i in range(state.free_stable_compset_indices.shape[0]):             # <<<<<<<<<<<<<<
  *         compset_idx = state.free_stable_compset_indices[i]
  *         state.phase_amt[compset_idx] += phase_amt_step_size * equilibrium_soln[soln_index_offset + i]
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 616, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 615, __pyx_L1_error)}
   __pyx_t_1 = (__pyx_v_state->free_stable_compset_indices.shape[0]);
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "pycalphad/core/minimizer.pyx":617
+    /* "pycalphad/core/minimizer.pyx":616
  *     state.largest_phase_amt_change[0] = 0
  *     for i in range(state.free_stable_compset_indices.shape[0]):
  *         compset_idx = state.free_stable_compset_indices[i]             # <<<<<<<<<<<<<<
  *         state.phase_amt[compset_idx] += phase_amt_step_size * equilibrium_soln[soln_index_offset + i]
  *         state.largest_phase_amt_change[0] = max(state.largest_phase_amt_change[0], abs(phase_amt_step_size * equilibrium_soln[soln_index_offset + i]))
  */
-    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 617, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 616, __pyx_L1_error)}
     __pyx_t_6 = __pyx_v_i;
     __pyx_t_5 = -1;
     if (__pyx_t_6 < 0) {
@@ -14855,11 +14835,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_state->free_stable_compset_indices.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 617, __pyx_L1_error)
+      __PYX_ERR(0, 616, __pyx_L1_error)
     }
     __pyx_v_compset_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_state->free_stable_compset_indices.data) + __pyx_t_6)) )));
 
-    /* "pycalphad/core/minimizer.pyx":618
+    /* "pycalphad/core/minimizer.pyx":617
  *     for i in range(state.free_stable_compset_indices.shape[0]):
  *         compset_idx = state.free_stable_compset_indices[i]
  *         state.phase_amt[compset_idx] += phase_amt_step_size * equilibrium_soln[soln_index_offset + i]             # <<<<<<<<<<<<<<
@@ -14874,9 +14854,9 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 618, __pyx_L1_error)
+      __PYX_ERR(0, 617, __pyx_L1_error)
     }
-    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 618, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 617, __pyx_L1_error)}
     __pyx_t_4 = __pyx_v_compset_idx;
     __pyx_t_5 = -1;
     if (__pyx_t_4 < 0) {
@@ -14885,11 +14865,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_4 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 618, __pyx_L1_error)
+      __PYX_ERR(0, 617, __pyx_L1_error)
     }
     *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_4)) )) += (__pyx_v_phase_amt_step_size * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_6)) ))));
 
-    /* "pycalphad/core/minimizer.pyx":619
+    /* "pycalphad/core/minimizer.pyx":618
  *         compset_idx = state.free_stable_compset_indices[i]
  *         state.phase_amt[compset_idx] += phase_amt_step_size * equilibrium_soln[soln_index_offset + i]
  *         state.largest_phase_amt_change[0] = max(state.largest_phase_amt_change[0], abs(phase_amt_step_size * equilibrium_soln[soln_index_offset + i]))             # <<<<<<<<<<<<<<
@@ -14904,7 +14884,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 619, __pyx_L1_error)
+      __PYX_ERR(0, 618, __pyx_L1_error)
     }
     __pyx_t_8 = fabs((__pyx_v_phase_amt_step_size * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_6)) )))));
     __pyx_t_10 = (__pyx_v_state->largest_phase_amt_change[0]);
@@ -14916,17 +14896,17 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     (__pyx_v_state->largest_phase_amt_change[0]) = __pyx_t_9;
   }
 
-  /* "pycalphad/core/minimizer.pyx":620
+  /* "pycalphad/core/minimizer.pyx":619
  *         state.phase_amt[compset_idx] += phase_amt_step_size * equilibrium_soln[soln_index_offset + i]
  *         state.largest_phase_amt_change[0] = max(state.largest_phase_amt_change[0], abs(phase_amt_step_size * equilibrium_soln[soln_index_offset + i]))
  *     soln_index_offset += state.free_stable_compset_indices.shape[0]             # <<<<<<<<<<<<<<
  * 
  *     # 2. Step in state variables
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 620, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 619, __pyx_L1_error)}
   __pyx_v_soln_index_offset = (__pyx_v_soln_index_offset + (__pyx_v_state->free_stable_compset_indices.shape[0]));
 
-  /* "pycalphad/core/minimizer.pyx":623
+  /* "pycalphad/core/minimizer.pyx":622
  * 
  *     # 2. Step in state variables
  *     state.largest_statevar_change[0] = 0             # <<<<<<<<<<<<<<
@@ -14935,14 +14915,14 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  */
   (__pyx_v_state->largest_statevar_change[0]) = 0.0;
 
-  /* "pycalphad/core/minimizer.pyx":624
+  /* "pycalphad/core/minimizer.pyx":623
  *     # 2. Step in state variables
  *     state.largest_statevar_change[0] = 0
  *     state.delta_statevars[:] = 0             # <<<<<<<<<<<<<<
  *     for i in range(spec.free_statevar_indices.shape[0]):
  *         statevar_idx = spec.free_statevar_indices[i]
  */
-  if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 624, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 623, __pyx_L1_error)}
   {
       double __pyx_temp_scalar = 0.0;
       {
@@ -14956,27 +14936,27 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       }
   }
 
-  /* "pycalphad/core/minimizer.pyx":625
+  /* "pycalphad/core/minimizer.pyx":624
  *     state.largest_statevar_change[0] = 0
  *     state.delta_statevars[:] = 0
  *     for i in range(spec.free_statevar_indices.shape[0]):             # <<<<<<<<<<<<<<
  *         statevar_idx = spec.free_statevar_indices[i]
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]
  */
-  if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 625, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 624, __pyx_L1_error)}
   __pyx_t_1 = (__pyx_v_spec->free_statevar_indices.shape[0]);
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "pycalphad/core/minimizer.pyx":626
+    /* "pycalphad/core/minimizer.pyx":625
  *     state.delta_statevars[:] = 0
  *     for i in range(spec.free_statevar_indices.shape[0]):
  *         statevar_idx = spec.free_statevar_indices[i]             # <<<<<<<<<<<<<<
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]
  *         if state.dof[0][statevar_idx] == 0:
  */
-    if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 626, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_spec->free_statevar_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 625, __pyx_L1_error)}
     __pyx_t_6 = __pyx_v_i;
     __pyx_t_5 = -1;
     if (__pyx_t_6 < 0) {
@@ -14985,11 +14965,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_spec->free_statevar_indices.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 626, __pyx_L1_error)
+      __PYX_ERR(0, 625, __pyx_L1_error)
     }
     __pyx_v_statevar_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_spec->free_statevar_indices.data) + __pyx_t_6)) )));
 
-    /* "pycalphad/core/minimizer.pyx":627
+    /* "pycalphad/core/minimizer.pyx":626
  *     for i in range(spec.free_statevar_indices.shape[0]):
  *         statevar_idx = spec.free_statevar_indices[i]
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]             # <<<<<<<<<<<<<<
@@ -15004,9 +14984,9 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_6 >= __pyx_v_equilibrium_soln.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 627, __pyx_L1_error)
+      __PYX_ERR(0, 626, __pyx_L1_error)
     }
-    if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 627, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 626, __pyx_L1_error)}
     __pyx_t_4 = __pyx_v_statevar_idx;
     __pyx_t_5 = -1;
     if (__pyx_t_4 < 0) {
@@ -15015,46 +14995,46 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     } else if (unlikely(__pyx_t_4 >= __pyx_v_state->delta_statevars.shape[0])) __pyx_t_5 = 0;
     if (unlikely(__pyx_t_5 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 627, __pyx_L1_error)
+      __PYX_ERR(0, 626, __pyx_L1_error)
     }
     *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_4)) )) = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_equilibrium_soln.data) + __pyx_t_6)) )));
 
-    /* "pycalphad/core/minimizer.pyx":628
+    /* "pycalphad/core/minimizer.pyx":627
  *         statevar_idx = spec.free_statevar_indices[i]
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]
  *         if state.dof[0][statevar_idx] == 0:             # <<<<<<<<<<<<<<
  *             psc = np.inf
  *         else:
  */
-    __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 628, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 627, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_statevar_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 628, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_statevar_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 627, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __pyx_t_11 = __Pyx_PyInt_EqObjC(__pyx_t_12, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 628, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_EqObjC(__pyx_t_12, __pyx_int_0, 0, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 627, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 628, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 627, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     if (__pyx_t_7) {
 
-      /* "pycalphad/core/minimizer.pyx":629
+      /* "pycalphad/core/minimizer.pyx":628
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]
  *         if state.dof[0][statevar_idx] == 0:
  *             psc = np.inf             # <<<<<<<<<<<<<<
  *         else:
  *             psc = abs(state.delta_statevars[statevar_idx] / state.dof[0][statevar_idx])
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 629, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 628, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_inf); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 629, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_inf); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 628, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_12); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 629, __pyx_L1_error)
+      __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_12); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 628, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_v_psc = __pyx_t_9;
 
-      /* "pycalphad/core/minimizer.pyx":628
+      /* "pycalphad/core/minimizer.pyx":627
  *         statevar_idx = spec.free_statevar_indices[i]
  *         state.delta_statevars[statevar_idx] = equilibrium_soln[soln_index_offset + i]
  *         if state.dof[0][statevar_idx] == 0:             # <<<<<<<<<<<<<<
@@ -15064,7 +15044,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       goto __pyx_L10;
     }
 
-    /* "pycalphad/core/minimizer.pyx":631
+    /* "pycalphad/core/minimizer.pyx":630
  *             psc = np.inf
  *         else:
  *             psc = abs(state.delta_statevars[statevar_idx] / state.dof[0][statevar_idx])             # <<<<<<<<<<<<<<
@@ -15072,7 +15052,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  *     # Update state variables in the `x` array
  */
     /*else*/ {
-      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 631, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 630, __pyx_L1_error)}
       __pyx_t_6 = __pyx_v_statevar_idx;
       __pyx_t_5 = -1;
       if (__pyx_t_6 < 0) {
@@ -15081,29 +15061,29 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       } else if (unlikely(__pyx_t_6 >= __pyx_v_state->delta_statevars.shape[0])) __pyx_t_5 = 0;
       if (unlikely(__pyx_t_5 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_5);
-        __PYX_ERR(0, 631, __pyx_L1_error)
+        __PYX_ERR(0, 630, __pyx_L1_error)
       }
-      __pyx_t_12 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_12 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_statevar_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_GetItemInt(__pyx_t_11, __pyx_v_statevar_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = __Pyx_PyNumber_Divide(__pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_11 = __Pyx_PyNumber_Divide(__pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_PyNumber_Absolute(__pyx_t_11); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyNumber_Absolute(__pyx_t_11); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_13); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 631, __pyx_L1_error)
+      __pyx_t_9 = __pyx_PyFloat_AsDouble(__pyx_t_13); if (unlikely((__pyx_t_9 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 630, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __pyx_v_psc = __pyx_t_9;
     }
     __pyx_L10:;
 
-    /* "pycalphad/core/minimizer.pyx":632
+    /* "pycalphad/core/minimizer.pyx":631
  *         else:
  *             psc = abs(state.delta_statevars[statevar_idx] / state.dof[0][statevar_idx])
  *         state.largest_statevar_change[0] = max(state.largest_statevar_change[0], psc)             # <<<<<<<<<<<<<<
@@ -15120,62 +15100,62 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
     (__pyx_v_state->largest_statevar_change[0]) = __pyx_t_10;
   }
 
-  /* "pycalphad/core/minimizer.pyx":634
+  /* "pycalphad/core/minimizer.pyx":633
  *         state.largest_statevar_change[0] = max(state.largest_statevar_change[0], psc)
  *     # Update state variables in the `x` array
  *     for idx in range(len(state.compsets)):             # <<<<<<<<<<<<<<
  *         x = state.dof[idx]
- *         #print('ori_x',np.asarray(x))
+ *         for statevar_idx in range(state.delta_statevars.shape[0]):
  */
   __pyx_t_13 = __pyx_v_state->compsets;
   __Pyx_INCREF(__pyx_t_13);
   if (unlikely(__pyx_t_13 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 634, __pyx_L1_error)
+    __PYX_ERR(0, 633, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_t_13); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 634, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_t_13); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 633, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_idx = __pyx_t_3;
 
-    /* "pycalphad/core/minimizer.pyx":635
+    /* "pycalphad/core/minimizer.pyx":634
  *     # Update state variables in the `x` array
  *     for idx in range(len(state.compsets)):
  *         x = state.dof[idx]             # <<<<<<<<<<<<<<
- *         #print('ori_x',np.asarray(x))
  *         for statevar_idx in range(state.delta_statevars.shape[0]):
+ *             x[statevar_idx] += state.delta_statevars[statevar_idx]
  */
-    __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_state->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 635, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_state->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 634, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 635, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 634, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
     __pyx_v_x = __pyx_t_14;
     __pyx_t_14.memview = NULL;
     __pyx_t_14.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":637
+    /* "pycalphad/core/minimizer.pyx":635
+ *     for idx in range(len(state.compsets)):
  *         x = state.dof[idx]
- *         #print('ori_x',np.asarray(x))
  *         for statevar_idx in range(state.delta_statevars.shape[0]):             # <<<<<<<<<<<<<<
  *             x[statevar_idx] += state.delta_statevars[statevar_idx]
- *         #print('change_x',np.asarray(x))
+ *         # We need real state variable bounds support
  */
-    if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 637, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 635, __pyx_L1_error)}
     __pyx_t_15 = (__pyx_v_state->delta_statevars.shape[0]);
     __pyx_t_16 = __pyx_t_15;
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_16; __pyx_t_5+=1) {
       __pyx_v_statevar_idx = __pyx_t_5;
 
-      /* "pycalphad/core/minimizer.pyx":638
- *         #print('ori_x',np.asarray(x))
+      /* "pycalphad/core/minimizer.pyx":636
+ *         x = state.dof[idx]
  *         for statevar_idx in range(state.delta_statevars.shape[0]):
  *             x[statevar_idx] += state.delta_statevars[statevar_idx]             # <<<<<<<<<<<<<<
- *         #print('change_x',np.asarray(x))
  *         # We need real state variable bounds support
+ * 
  */
-      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 638, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 636, __pyx_L1_error)}
       __pyx_t_6 = __pyx_v_statevar_idx;
       __pyx_t_17 = -1;
       if (__pyx_t_6 < 0) {
@@ -15184,7 +15164,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       } else if (unlikely(__pyx_t_6 >= __pyx_v_state->delta_statevars.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 638, __pyx_L1_error)
+        __PYX_ERR(0, 636, __pyx_L1_error)
       }
       __pyx_t_4 = __pyx_v_statevar_idx;
       __pyx_t_17 = -1;
@@ -15194,240 +15174,105 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       } else if (unlikely(__pyx_t_4 >= __pyx_v_x.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 638, __pyx_L1_error)
+        __PYX_ERR(0, 636, __pyx_L1_error)
       }
       *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_4)) )) += (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_6)) )));
     }
   }
 
-  /* "pycalphad/core/minimizer.pyx":644
+  /* "pycalphad/core/minimizer.pyx":640
+ * 
  *     # 3. Step in phase internal degrees of freedom
- *     #print('compset',state.compsets)
- *     print('site',np.asarray(state.free_stable_compset_indices))             # <<<<<<<<<<<<<<
- *     #state.free_stable_compset_indices=[0,2]
- *     #print('dbf',phases)
- */
-  __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_asarray); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 644, __pyx_L1_error)}
-  __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_11);
-  __pyx_t_18 = NULL;
-  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
-    __pyx_t_18 = PyMethod_GET_SELF(__pyx_t_12);
-    if (likely(__pyx_t_18)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
-      __Pyx_INCREF(__pyx_t_18);
-      __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_12, function);
-    }
-  }
-  __pyx_t_13 = (__pyx_t_18) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_18, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11);
-  __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-  __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-  if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_12);
-  __Pyx_INCREF(__pyx_n_u_site);
-  __Pyx_GIVEREF(__pyx_n_u_site);
-  PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_n_u_site);
-  __Pyx_GIVEREF(__pyx_t_13);
-  PyTuple_SET_ITEM(__pyx_t_12, 1, __pyx_t_13);
-  __pyx_t_13 = 0;
-  __pyx_t_13 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_12, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_13);
-  __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-  __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-
-  /* "pycalphad/core/minimizer.pyx":648
- *     #print('dbf',phases)
- *     #print('len=',len(state.compsets))
  *     for idx in range(len(state.compsets)):             # <<<<<<<<<<<<<<
- *         #print('num',idx)
  *         # TODO: Use better dof storage
+ *         #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
  */
   __pyx_t_13 = __pyx_v_state->compsets;
   __Pyx_INCREF(__pyx_t_13);
   if (unlikely(__pyx_t_13 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 648, __pyx_L1_error)
+    __PYX_ERR(0, 640, __pyx_L1_error)
   }
-  __pyx_t_1 = PyList_GET_SIZE(__pyx_t_13); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 648, __pyx_L1_error)
+  __pyx_t_1 = PyList_GET_SIZE(__pyx_t_13); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 640, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __pyx_t_2 = __pyx_t_1;
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_idx = __pyx_t_3;
 
-    /* "pycalphad/core/minimizer.pyx":651
- *         #print('num',idx)
+    /* "pycalphad/core/minimizer.pyx":643
  *         # TODO: Use better dof storage
- *         print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())             # <<<<<<<<<<<<<<
- *         charge_factor = False
- *         for k in state.compsets[idx].phase_record.components:
- */
-    __pyx_t_13 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_13);
-    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 651, __pyx_L1_error)}
-    __pyx_t_6 = __pyx_v_idx;
-    __pyx_t_5 = -1;
-    if (__pyx_t_6 < 0) {
-      __pyx_t_6 += __pyx_v_state->phase_amt.shape[0];
-      if (unlikely(__pyx_t_6 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_6 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
-      __PYX_ERR(0, 651, __pyx_L1_error)
-    }
-    __pyx_t_12 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_12);
-    if (unlikely(__pyx_v_state->compsets == Py_None)) {
-      PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 651, __pyx_L1_error)
-    }
-    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
-    __Pyx_GetModuleGlobalName(__pyx_t_20, __pyx_n_s_np); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_20);
-    __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_20, __pyx_n_s_asarray); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-    __pyx_t_20 = __Pyx_GetItemInt(__pyx_v_state->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_20);
-    __pyx_t_22 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_21))) {
-      __pyx_t_22 = PyMethod_GET_SELF(__pyx_t_21);
-      if (likely(__pyx_t_22)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_21);
-        __Pyx_INCREF(__pyx_t_22);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_21, function);
-      }
-    }
-    __pyx_t_19 = (__pyx_t_22) ? __Pyx_PyObject_Call2Args(__pyx_t_21, __pyx_t_22, __pyx_t_20) : __Pyx_PyObject_CallOneArg(__pyx_t_21, __pyx_t_20);
-    __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
-    __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
-    if (unlikely(!__pyx_t_19)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_19);
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_19, __pyx_n_s_tolist); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    __Pyx_DECREF(__pyx_t_19); __pyx_t_19 = 0;
-    __pyx_t_19 = NULL;
-    if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_21))) {
-      __pyx_t_19 = PyMethod_GET_SELF(__pyx_t_21);
-      if (likely(__pyx_t_19)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_21);
-        __Pyx_INCREF(__pyx_t_19);
-        __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_21, function);
-      }
-    }
-    __pyx_t_18 = (__pyx_t_19) ? __Pyx_PyObject_CallOneArg(__pyx_t_21, __pyx_t_19) : __Pyx_PyObject_CallNoArg(__pyx_t_21);
-    __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
-    if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_18);
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    __pyx_t_21 = PyTuple_New(5); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    __Pyx_INCREF(__pyx_n_u_compset);
-    __Pyx_GIVEREF(__pyx_n_u_compset);
-    PyTuple_SET_ITEM(__pyx_t_21, 0, __pyx_n_u_compset);
-    __Pyx_GIVEREF(__pyx_t_13);
-    PyTuple_SET_ITEM(__pyx_t_21, 1, __pyx_t_13);
-    __Pyx_GIVEREF(__pyx_t_12);
-    PyTuple_SET_ITEM(__pyx_t_21, 2, __pyx_t_12);
-    __Pyx_GIVEREF(__pyx_t_11);
-    PyTuple_SET_ITEM(__pyx_t_21, 3, __pyx_t_11);
-    __Pyx_GIVEREF(__pyx_t_18);
-    PyTuple_SET_ITEM(__pyx_t_21, 4, __pyx_t_18);
-    __pyx_t_13 = 0;
-    __pyx_t_12 = 0;
-    __pyx_t_11 = 0;
-    __pyx_t_18 = 0;
-    __pyx_t_18 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_21, NULL); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 651, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_18);
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-
-    /* "pycalphad/core/minimizer.pyx":652
- *         # TODO: Use better dof storage
- *         print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
+ *         #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
  *         charge_factor = False             # <<<<<<<<<<<<<<
  *         for k in state.compsets[idx].phase_record.components:
- *             #print('species',k)
+ *             try:
  */
     __pyx_v_charge_factor = 0;
 
-    /* "pycalphad/core/minimizer.pyx":653
- *         print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
+    /* "pycalphad/core/minimizer.pyx":644
+ *         #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
  *         charge_factor = False
  *         for k in state.compsets[idx].phase_record.components:             # <<<<<<<<<<<<<<
- *             #print('species',k)
  *             try:
+ *                 if k.charge:
  */
     if (unlikely(__pyx_v_state->compsets == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 653, __pyx_L1_error)
+      __PYX_ERR(0, 644, __pyx_L1_error)
     }
-    __pyx_t_18 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 653, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_18);
-    __pyx_t_21 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_phase_record); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 653, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-    __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_21, __pyx_n_s_components); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 653, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_18);
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-    if (likely(PyList_CheckExact(__pyx_t_18)) || PyTuple_CheckExact(__pyx_t_18)) {
-      __pyx_t_21 = __pyx_t_18; __Pyx_INCREF(__pyx_t_21); __pyx_t_15 = 0;
-      __pyx_t_23 = NULL;
+    __pyx_t_13 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_13);
+    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_phase_record); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 644, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_components); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_13);
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+    if (likely(PyList_CheckExact(__pyx_t_13)) || PyTuple_CheckExact(__pyx_t_13)) {
+      __pyx_t_11 = __pyx_t_13; __Pyx_INCREF(__pyx_t_11); __pyx_t_15 = 0;
+      __pyx_t_18 = NULL;
     } else {
-      __pyx_t_15 = -1; __pyx_t_21 = PyObject_GetIter(__pyx_t_18); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 653, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_21);
-      __pyx_t_23 = Py_TYPE(__pyx_t_21)->tp_iternext; if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 653, __pyx_L1_error)
+      __pyx_t_15 = -1; __pyx_t_11 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 644, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_18 = Py_TYPE(__pyx_t_11)->tp_iternext; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 644, __pyx_L1_error)
     }
-    __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
     for (;;) {
-      if (likely(!__pyx_t_23)) {
-        if (likely(PyList_CheckExact(__pyx_t_21))) {
-          if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_21)) break;
+      if (likely(!__pyx_t_18)) {
+        if (likely(PyList_CheckExact(__pyx_t_11))) {
+          if (__pyx_t_15 >= PyList_GET_SIZE(__pyx_t_11)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_18 = PyList_GET_ITEM(__pyx_t_21, __pyx_t_15); __Pyx_INCREF(__pyx_t_18); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 653, __pyx_L1_error)
+          __pyx_t_13 = PyList_GET_ITEM(__pyx_t_11, __pyx_t_15); __Pyx_INCREF(__pyx_t_13); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 644, __pyx_L1_error)
           #else
-          __pyx_t_18 = PySequence_ITEM(__pyx_t_21, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 653, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_18);
+          __pyx_t_13 = PySequence_ITEM(__pyx_t_11, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_13);
           #endif
         } else {
-          if (__pyx_t_15 >= PyTuple_GET_SIZE(__pyx_t_21)) break;
+          if (__pyx_t_15 >= PyTuple_GET_SIZE(__pyx_t_11)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_18 = PyTuple_GET_ITEM(__pyx_t_21, __pyx_t_15); __Pyx_INCREF(__pyx_t_18); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 653, __pyx_L1_error)
+          __pyx_t_13 = PyTuple_GET_ITEM(__pyx_t_11, __pyx_t_15); __Pyx_INCREF(__pyx_t_13); __pyx_t_15++; if (unlikely(0 < 0)) __PYX_ERR(0, 644, __pyx_L1_error)
           #else
-          __pyx_t_18 = PySequence_ITEM(__pyx_t_21, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 653, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_18);
+          __pyx_t_13 = PySequence_ITEM(__pyx_t_11, __pyx_t_15); __pyx_t_15++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 644, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_13);
           #endif
         }
       } else {
-        __pyx_t_18 = __pyx_t_23(__pyx_t_21);
-        if (unlikely(!__pyx_t_18)) {
+        __pyx_t_13 = __pyx_t_18(__pyx_t_11);
+        if (unlikely(!__pyx_t_13)) {
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 653, __pyx_L1_error)
+            else __PYX_ERR(0, 644, __pyx_L1_error)
           }
           break;
         }
-        __Pyx_GOTREF(__pyx_t_18);
+        __Pyx_GOTREF(__pyx_t_13);
       }
-      __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_18);
-      __pyx_t_18 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_k, __pyx_t_13);
+      __pyx_t_13 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":655
+      /* "pycalphad/core/minimizer.pyx":645
+ *         charge_factor = False
  *         for k in state.compsets[idx].phase_record.components:
- *             #print('species',k)
  *             try:             # <<<<<<<<<<<<<<
  *                 if k.charge:
  *                     charge_factor = True
@@ -15435,26 +15280,26 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
       {
         __Pyx_PyThreadState_declare
         __Pyx_PyThreadState_assign
-        __Pyx_ExceptionSave(&__pyx_t_24, &__pyx_t_25, &__pyx_t_26);
-        __Pyx_XGOTREF(__pyx_t_24);
-        __Pyx_XGOTREF(__pyx_t_25);
-        __Pyx_XGOTREF(__pyx_t_26);
+        __Pyx_ExceptionSave(&__pyx_t_19, &__pyx_t_20, &__pyx_t_21);
+        __Pyx_XGOTREF(__pyx_t_19);
+        __Pyx_XGOTREF(__pyx_t_20);
+        __Pyx_XGOTREF(__pyx_t_21);
         /*try:*/ {
 
-          /* "pycalphad/core/minimizer.pyx":656
- *             #print('species',k)
+          /* "pycalphad/core/minimizer.pyx":646
+ *         for k in state.compsets[idx].phase_record.components:
  *             try:
  *                 if k.charge:             # <<<<<<<<<<<<<<
  *                     charge_factor = True
  *             except:
  */
-          __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_v_k, __pyx_n_s_charge); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 656, __pyx_L19_error)
-          __Pyx_GOTREF(__pyx_t_18);
-          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_18); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 656, __pyx_L19_error)
-          __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+          __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_v_k, __pyx_n_s_charge); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 646, __pyx_L19_error)
+          __Pyx_GOTREF(__pyx_t_13);
+          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 646, __pyx_L19_error)
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           if (__pyx_t_7) {
 
-            /* "pycalphad/core/minimizer.pyx":657
+            /* "pycalphad/core/minimizer.pyx":647
  *             try:
  *                 if k.charge:
  *                     charge_factor = True             # <<<<<<<<<<<<<<
@@ -15463,8 +15308,8 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  */
             __pyx_v_charge_factor = 1;
 
-            /* "pycalphad/core/minimizer.pyx":656
- *             #print('species',k)
+            /* "pycalphad/core/minimizer.pyx":646
+ *         for k in state.compsets[idx].phase_record.components:
  *             try:
  *                 if k.charge:             # <<<<<<<<<<<<<<
  *                     charge_factor = True
@@ -15472,98 +15317,93 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
  */
           }
 
-          /* "pycalphad/core/minimizer.pyx":655
+          /* "pycalphad/core/minimizer.pyx":645
+ *         charge_factor = False
  *         for k in state.compsets[idx].phase_record.components:
- *             #print('species',k)
  *             try:             # <<<<<<<<<<<<<<
  *                 if k.charge:
  *                     charge_factor = True
  */
         }
-        __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
-        __Pyx_XDECREF(__pyx_t_25); __pyx_t_25 = 0;
-        __Pyx_XDECREF(__pyx_t_26); __pyx_t_26 = 0;
+        __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
+        __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
+        __Pyx_XDECREF(__pyx_t_21); __pyx_t_21 = 0;
         goto __pyx_L26_try_end;
         __pyx_L19_error:;
-        __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
         __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
         __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
-        __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
-        __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
-        __Pyx_XDECREF(__pyx_t_20); __pyx_t_20 = 0;
-        __Pyx_XDECREF(__pyx_t_22); __pyx_t_22 = 0;
 
-        /* "pycalphad/core/minimizer.pyx":658
+        /* "pycalphad/core/minimizer.pyx":648
  *                 if k.charge:
  *                     charge_factor = True
  *             except:             # <<<<<<<<<<<<<<
  *                 pass;
- *         #print('idx',idx,np.asarray(state.free_stable_compset_indices))
+ *         x = state.dof[idx]
  */
         /*except:*/ {
           __Pyx_ErrRestore(0,0,0);
           goto __pyx_L20_exception_handled;
         }
         __pyx_L20_exception_handled:;
-        __Pyx_XGIVEREF(__pyx_t_24);
-        __Pyx_XGIVEREF(__pyx_t_25);
-        __Pyx_XGIVEREF(__pyx_t_26);
-        __Pyx_ExceptionReset(__pyx_t_24, __pyx_t_25, __pyx_t_26);
+        __Pyx_XGIVEREF(__pyx_t_19);
+        __Pyx_XGIVEREF(__pyx_t_20);
+        __Pyx_XGIVEREF(__pyx_t_21);
+        __Pyx_ExceptionReset(__pyx_t_19, __pyx_t_20, __pyx_t_21);
         __pyx_L26_try_end:;
       }
 
-      /* "pycalphad/core/minimizer.pyx":653
- *         print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
+      /* "pycalphad/core/minimizer.pyx":644
+ *         #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
  *         charge_factor = False
  *         for k in state.compsets[idx].phase_record.components:             # <<<<<<<<<<<<<<
- *             #print('species',k)
  *             try:
+ *                 if k.charge:
  */
     }
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":666
- *          #   charge_factor = False
- *         #print('charge_factor',charge_factor)
+    /* "pycalphad/core/minimizer.pyx":650
+ *             except:
+ *                 pass;
  *         x = state.dof[idx]             # <<<<<<<<<<<<<<
  *         csst = state.cs_states[idx]
- *         #print('site',np.asarray(csst))#N,P,T, and site fraction
+ * 
  */
-    __pyx_t_21 = __Pyx_GetItemInt(__pyx_v_state->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 666, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_21, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 666, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+    __pyx_t_11 = __Pyx_GetItemInt(__pyx_v_state->dof, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 650, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_11, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 650, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
     __pyx_v_x = __pyx_t_14;
     __pyx_t_14.memview = NULL;
     __pyx_t_14.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":667
- *         #print('charge_factor',charge_factor)
+    /* "pycalphad/core/minimizer.pyx":651
+ *                 pass;
  *         x = state.dof[idx]
  *         csst = state.cs_states[idx]             # <<<<<<<<<<<<<<
- *         #print('site',np.asarray(csst))#N,P,T, and site fraction
- *         #print('which',np.asarray(csst))
+ * 
+ *         # Construct delta_y from Eq. 43 in Sundman 2015
  */
     if (unlikely(__pyx_v_state->cs_states == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 667, __pyx_L1_error)
+      __PYX_ERR(0, 651, __pyx_L1_error)
     }
-    __pyx_t_21 = __Pyx_GetItemInt_List(__pyx_v_state->cs_states, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 667, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
-    if (!(likely(((__pyx_t_21) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_21, __pyx_ptype_9pycalphad_4core_9minimizer_CompsetState))))) __PYX_ERR(0, 667, __pyx_L1_error)
-    __Pyx_XDECREF_SET(__pyx_v_csst, ((struct __pyx_obj_9pycalphad_4core_9minimizer_CompsetState *)__pyx_t_21));
-    __pyx_t_21 = 0;
+    __pyx_t_11 = __Pyx_GetItemInt_List(__pyx_v_state->cs_states, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 651, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    if (!(likely(((__pyx_t_11) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_11, __pyx_ptype_9pycalphad_4core_9minimizer_CompsetState))))) __PYX_ERR(0, 651, __pyx_L1_error)
+    __Pyx_XDECREF_SET(__pyx_v_csst, ((struct __pyx_obj_9pycalphad_4core_9minimizer_CompsetState *)__pyx_t_11));
+    __pyx_t_11 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":671
- *         #print('which',np.asarray(csst))
+    /* "pycalphad/core/minimizer.pyx":654
+ * 
  *         # Construct delta_y from Eq. 43 in Sundman 2015
  *         csst.delta_y[:] = 0             # <<<<<<<<<<<<<<
- *         #print('all=',np.asarray(csst.full_e_matrix),np.asarray(csst.phase_matrix))
- *         #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
+ * 
+ *         if charge_factor:
  */
-    if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 671, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 654, __pyx_L1_error)}
     {
         double __pyx_temp_scalar = 0.0;
         {
@@ -15577,25 +15417,25 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
         }
     }
 
-    /* "pycalphad/core/minimizer.pyx":675
- *         #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
- *         #print('phase_matrix',np.asarray(csst.phase_matrix))
+    /* "pycalphad/core/minimizer.pyx":656
+ *         csst.delta_y[:] = 0
+ * 
  *         if charge_factor:             # <<<<<<<<<<<<<<
  *             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
- *             print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
+ *             #print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
  */
     __pyx_t_7 = (__pyx_v_charge_factor != 0);
     if (__pyx_t_7) {
 
-      /* "pycalphad/core/minimizer.pyx":676
- *         #print('phase_matrix',np.asarray(csst.phase_matrix))
+      /* "pycalphad/core/minimizer.pyx":657
+ * 
  *         if charge_factor:
  *             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]             # <<<<<<<<<<<<<<
- *             print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
+ *             #print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
  *             Q=np.sum(np.multiply(x[3:],norm_valence))
  */
-      if (unlikely(!__pyx_v_csst->phase_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 676, __pyx_L1_error)}
-      if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 676, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_csst->phase_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 657, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 657, __pyx_L1_error)}
       __pyx_t_14.data = __pyx_v_csst->phase_matrix.data;
       __pyx_t_14.memview = __pyx_v_csst->phase_matrix.memview;
       __PYX_INC_MEMVIEW(&__pyx_t_14, 0);
@@ -15608,7 +15448,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_advance_state(struct __pyx_
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 676, __pyx_L1_error)
+            __PYX_ERR(0, 657, __pyx_L1_error)
         }
         __pyx_t_14.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -15628,153 +15468,34 @@ __pyx_t_5 = -1;
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 676, __pyx_L1_error)
+    __PYX_ERR(0, 657, __pyx_L1_error)
 }
 
-__pyx_t_21 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 676, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_21);
+__pyx_t_11 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 657, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
       __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
       __pyx_t_14.memview = NULL;
       __pyx_t_14.data = NULL;
-      __Pyx_XDECREF_SET(__pyx_v_norm_valence, __pyx_t_21);
-      __pyx_t_21 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_norm_valence, __pyx_t_11);
+      __pyx_t_11 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":677
- *         if charge_factor:
+      /* "pycalphad/core/minimizer.pyx":659
  *             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
- *             print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))             # <<<<<<<<<<<<<<
- *             Q=np.sum(np.multiply(x[3:],norm_valence))
- *         #print('result=',Q)
- */
-      __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_np); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_asarray); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
-      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_sum); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_13);
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __pyx_t_14.data = __pyx_v_x.data;
-      __pyx_t_14.memview = __pyx_v_x.memview;
-      __PYX_INC_MEMVIEW(&__pyx_t_14, 0);
-      __pyx_t_5 = -1;
-      if (unlikely(__pyx_memoryview_slice_memviewslice(
-    &__pyx_t_14,
-    __pyx_v_x.shape[0], __pyx_v_x.strides[0], __pyx_v_x.suboffsets[0],
-    0,
-    0,
-    &__pyx_t_5,
-    3,
-    0,
-    0,
-    1,
-    0,
-    0,
-    1) < 0))
-{
-    __PYX_ERR(0, 677, __pyx_L1_error)
-}
-
-__pyx_t_12 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
-      __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
-      __pyx_t_14.memview = NULL;
-      __pyx_t_14.data = NULL;
-      __pyx_t_19 = NULL;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
-        __pyx_t_19 = PyMethod_GET_SELF(__pyx_t_13);
-        if (likely(__pyx_t_19)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_13);
-          __Pyx_INCREF(__pyx_t_19);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_13, function);
-        }
-      }
-      __pyx_t_18 = (__pyx_t_19) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_19, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_12);
-      __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
-      __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = NULL;
-      __pyx_t_5 = 0;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
-        __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_11);
-        if (likely(__pyx_t_13)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
-          __Pyx_INCREF(__pyx_t_13);
-          __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_11, function);
-          __pyx_t_5 = 1;
-        }
-      }
-      #if CYTHON_FAST_PYCALL
-      if (PyFunction_Check(__pyx_t_11)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_13, __pyx_v_norm_valence, __pyx_t_18};
-        __pyx_t_21 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 677, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __Pyx_GOTREF(__pyx_t_21);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      } else
-      #endif
-      #if CYTHON_FAST_PYCCALL
-      if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_13, __pyx_v_norm_valence, __pyx_t_18};
-        __pyx_t_21 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 677, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-        __Pyx_GOTREF(__pyx_t_21);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      } else
-      #endif
-      {
-        __pyx_t_12 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 677, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_12);
-        if (__pyx_t_13) {
-          __Pyx_GIVEREF(__pyx_t_13); PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_13); __pyx_t_13 = NULL;
-        }
-        __Pyx_INCREF(__pyx_v_norm_valence);
-        __Pyx_GIVEREF(__pyx_v_norm_valence);
-        PyTuple_SET_ITEM(__pyx_t_12, 0+__pyx_t_5, __pyx_v_norm_valence);
-        __Pyx_GIVEREF(__pyx_t_18);
-        PyTuple_SET_ITEM(__pyx_t_12, 1+__pyx_t_5, __pyx_t_18);
-        __pyx_t_18 = 0;
-        __pyx_t_21 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_12, NULL); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 677, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_21);
-        __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      }
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __pyx_t_11 = PyTuple_New(2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __Pyx_INCREF(__pyx_n_u_norm_valence);
-      __Pyx_GIVEREF(__pyx_n_u_norm_valence);
-      PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_n_u_norm_valence);
-      __Pyx_GIVEREF(__pyx_t_21);
-      PyTuple_SET_ITEM(__pyx_t_11, 1, __pyx_t_21);
-      __pyx_t_21 = 0;
-      __pyx_t_21 = __Pyx_PyObject_Call(__pyx_builtin_print, __pyx_t_11, NULL); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 677, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_21);
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-
-      /* "pycalphad/core/minimizer.pyx":678
- *             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
- *             print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
+ *             #print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
  *             Q=np.sum(np.multiply(x[3:],norm_valence))             # <<<<<<<<<<<<<<
- *         #print('result=',Q)
+ * 
  *         # TODO: needs charge balance contribution
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_np); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 678, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_11, __pyx_n_s_sum); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 678, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_12);
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_18, __pyx_n_s_np); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 678, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
-      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_18, __pyx_n_s_multiply); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 678, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 659, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_sum); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_12);
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+      __Pyx_GetModuleGlobalName(__pyx_t_22, __pyx_n_s_np); if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_22);
+      __pyx_t_23 = __Pyx_PyObject_GetAttrStr(__pyx_t_22, __pyx_n_s_multiply); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_23);
+      __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       __pyx_t_14.data = __pyx_v_x.data;
       __pyx_t_14.memview = __pyx_v_x.memview;
       __PYX_INC_MEMVIEW(&__pyx_t_14, 0);
@@ -15793,110 +15514,110 @@ __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 678, __pyx_L1_error)
+    __PYX_ERR(0, 659, __pyx_L1_error)
 }
 
-__pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 678, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_18);
+__pyx_t_22 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_22)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_22);
       __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
       __pyx_t_14.memview = NULL;
       __pyx_t_14.data = NULL;
-      __pyx_t_19 = NULL;
+      __pyx_t_24 = NULL;
       __pyx_t_5 = 0;
-      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
-        __pyx_t_19 = PyMethod_GET_SELF(__pyx_t_13);
-        if (likely(__pyx_t_19)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_13);
-          __Pyx_INCREF(__pyx_t_19);
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_23))) {
+        __pyx_t_24 = PyMethod_GET_SELF(__pyx_t_23);
+        if (likely(__pyx_t_24)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_23);
+          __Pyx_INCREF(__pyx_t_24);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_13, function);
+          __Pyx_DECREF_SET(__pyx_t_23, function);
           __pyx_t_5 = 1;
         }
       }
       #if CYTHON_FAST_PYCALL
-      if (PyFunction_Check(__pyx_t_13)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_19, __pyx_t_18, __pyx_v_norm_valence};
-        __pyx_t_11 = __Pyx_PyFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 678, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      if (PyFunction_Check(__pyx_t_23)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_24, __pyx_t_22, __pyx_v_norm_valence};
+        __pyx_t_13 = __Pyx_PyFunction_FastCall(__pyx_t_23, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 659, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+        __Pyx_GOTREF(__pyx_t_13);
+        __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       } else
       #endif
       #if CYTHON_FAST_PYCCALL
-      if (__Pyx_PyFastCFunction_Check(__pyx_t_13)) {
-        PyObject *__pyx_temp[3] = {__pyx_t_19, __pyx_t_18, __pyx_v_norm_valence};
-        __pyx_t_11 = __Pyx_PyCFunction_FastCall(__pyx_t_13, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 678, __pyx_L1_error)
-        __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_23)) {
+        PyObject *__pyx_temp[3] = {__pyx_t_24, __pyx_t_22, __pyx_v_norm_valence};
+        __pyx_t_13 = __Pyx_PyCFunction_FastCall(__pyx_t_23, __pyx_temp+1-__pyx_t_5, 2+__pyx_t_5); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 659, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_24); __pyx_t_24 = 0;
+        __Pyx_GOTREF(__pyx_t_13);
+        __Pyx_DECREF(__pyx_t_22); __pyx_t_22 = 0;
       } else
       #endif
       {
-        __pyx_t_20 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_20)) __PYX_ERR(0, 678, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_20);
-        if (__pyx_t_19) {
-          __Pyx_GIVEREF(__pyx_t_19); PyTuple_SET_ITEM(__pyx_t_20, 0, __pyx_t_19); __pyx_t_19 = NULL;
+        __pyx_t_25 = PyTuple_New(2+__pyx_t_5); if (unlikely(!__pyx_t_25)) __PYX_ERR(0, 659, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_25);
+        if (__pyx_t_24) {
+          __Pyx_GIVEREF(__pyx_t_24); PyTuple_SET_ITEM(__pyx_t_25, 0, __pyx_t_24); __pyx_t_24 = NULL;
         }
-        __Pyx_GIVEREF(__pyx_t_18);
-        PyTuple_SET_ITEM(__pyx_t_20, 0+__pyx_t_5, __pyx_t_18);
+        __Pyx_GIVEREF(__pyx_t_22);
+        PyTuple_SET_ITEM(__pyx_t_25, 0+__pyx_t_5, __pyx_t_22);
         __Pyx_INCREF(__pyx_v_norm_valence);
         __Pyx_GIVEREF(__pyx_v_norm_valence);
-        PyTuple_SET_ITEM(__pyx_t_20, 1+__pyx_t_5, __pyx_v_norm_valence);
-        __pyx_t_18 = 0;
-        __pyx_t_11 = __Pyx_PyObject_Call(__pyx_t_13, __pyx_t_20, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 678, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_11);
-        __Pyx_DECREF(__pyx_t_20); __pyx_t_20 = 0;
+        PyTuple_SET_ITEM(__pyx_t_25, 1+__pyx_t_5, __pyx_v_norm_valence);
+        __pyx_t_22 = 0;
+        __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_23, __pyx_t_25, NULL); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 659, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_13);
+        __Pyx_DECREF(__pyx_t_25); __pyx_t_25 = 0;
       }
-      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = NULL;
+      __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
+      __pyx_t_23 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_12))) {
-        __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_12);
-        if (likely(__pyx_t_13)) {
+        __pyx_t_23 = PyMethod_GET_SELF(__pyx_t_12);
+        if (likely(__pyx_t_23)) {
           PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_12);
-          __Pyx_INCREF(__pyx_t_13);
+          __Pyx_INCREF(__pyx_t_23);
           __Pyx_INCREF(function);
           __Pyx_DECREF_SET(__pyx_t_12, function);
         }
       }
-      __pyx_t_21 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_13, __pyx_t_11) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11);
-      __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 678, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_21);
+      __pyx_t_11 = (__pyx_t_23) ? __Pyx_PyObject_Call2Args(__pyx_t_12, __pyx_t_23, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_13);
+      __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
+      __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+      if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 659, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      __Pyx_XDECREF_SET(__pyx_v_Q, __pyx_t_21);
-      __pyx_t_21 = 0;
+      __Pyx_XDECREF_SET(__pyx_v_Q, __pyx_t_11);
+      __pyx_t_11 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":675
- *         #print('why',np.asarray(csst.phase_matrix[0:csst.delta_y.shape[0],-1]),np.asarray(csst.phase_matrix[-1,0:csst.delta_y.shape[0]]))
- *         #print('phase_matrix',np.asarray(csst.phase_matrix))
+      /* "pycalphad/core/minimizer.pyx":656
+ *         csst.delta_y[:] = 0
+ * 
  *         if charge_factor:             # <<<<<<<<<<<<<<
  *             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
- *             print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
+ *             #print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":681
- *         #print('result=',Q)
+    /* "pycalphad/core/minimizer.pyx":662
+ * 
  *         # TODO: needs charge balance contribution
  *         for i in range(csst.delta_y.shape[0]):             # <<<<<<<<<<<<<<
- *             ##print('i=',i)
+ * 
  *             csst.delta_y[i] += csst.c_G[i]
  */
-    if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 681, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 662, __pyx_L1_error)}
     __pyx_t_15 = (__pyx_v_csst->delta_y.shape[0]);
     __pyx_t_16 = __pyx_t_15;
     for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_16; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "pycalphad/core/minimizer.pyx":683
+      /* "pycalphad/core/minimizer.pyx":664
  *         for i in range(csst.delta_y.shape[0]):
- *             ##print('i=',i)
+ * 
  *             csst.delta_y[i] += csst.c_G[i]             # <<<<<<<<<<<<<<
  *             for statevar_idx in range(state.delta_statevars.shape[0]):
  *                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]
  */
-      if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 683, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_csst->c_G.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 664, __pyx_L1_error)}
       __pyx_t_6 = __pyx_v_i;
       __pyx_t_17 = -1;
       if (__pyx_t_6 < 0) {
@@ -15905,9 +15626,9 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
       } else if (unlikely(__pyx_t_6 >= __pyx_v_csst->c_G.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 683, __pyx_L1_error)
+        __PYX_ERR(0, 664, __pyx_L1_error)
       }
-      if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 683, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 664, __pyx_L1_error)}
       __pyx_t_4 = __pyx_v_i;
       __pyx_t_17 = -1;
       if (__pyx_t_4 < 0) {
@@ -15916,150 +15637,150 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
       } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 683, __pyx_L1_error)
+        __PYX_ERR(0, 664, __pyx_L1_error)
       }
       *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_4)) )) += (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->c_G.data) + __pyx_t_6)) )));
 
-      /* "pycalphad/core/minimizer.pyx":684
- *             ##print('i=',i)
+      /* "pycalphad/core/minimizer.pyx":665
+ * 
  *             csst.delta_y[i] += csst.c_G[i]
  *             for statevar_idx in range(state.delta_statevars.shape[0]):             # <<<<<<<<<<<<<<
  *                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]
  *             for chempot_idx in range(state.chemical_potentials.shape[0]):
  */
-      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 684, __pyx_L1_error)}
-      __pyx_t_27 = (__pyx_v_state->delta_statevars.shape[0]);
-      __pyx_t_28 = __pyx_t_27;
-      for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_28; __pyx_t_17+=1) {
+      if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 665, __pyx_L1_error)}
+      __pyx_t_26 = (__pyx_v_state->delta_statevars.shape[0]);
+      __pyx_t_27 = __pyx_t_26;
+      for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_27; __pyx_t_17+=1) {
         __pyx_v_statevar_idx = __pyx_t_17;
 
-        /* "pycalphad/core/minimizer.pyx":685
+        /* "pycalphad/core/minimizer.pyx":666
  *             csst.delta_y[i] += csst.c_G[i]
  *             for statevar_idx in range(state.delta_statevars.shape[0]):
  *                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]             # <<<<<<<<<<<<<<
  *             for chempot_idx in range(state.chemical_potentials.shape[0]):
  *                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
  */
-        if (unlikely(!__pyx_v_csst->c_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 685, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->c_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 666, __pyx_L1_error)}
         __pyx_t_6 = __pyx_v_i;
         __pyx_t_4 = __pyx_v_statevar_idx;
-        __pyx_t_29 = -1;
+        __pyx_t_28 = -1;
         if (__pyx_t_6 < 0) {
           __pyx_t_6 += __pyx_v_csst->c_statevars.shape[0];
-          if (unlikely(__pyx_t_6 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_6 >= __pyx_v_csst->c_statevars.shape[0])) __pyx_t_29 = 0;
+          if (unlikely(__pyx_t_6 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_6 >= __pyx_v_csst->c_statevars.shape[0])) __pyx_t_28 = 0;
         if (__pyx_t_4 < 0) {
           __pyx_t_4 += __pyx_v_csst->c_statevars.shape[1];
-          if (unlikely(__pyx_t_4 < 0)) __pyx_t_29 = 1;
-        } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->c_statevars.shape[1])) __pyx_t_29 = 1;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 685, __pyx_L1_error)
+          if (unlikely(__pyx_t_4 < 0)) __pyx_t_28 = 1;
+        } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->c_statevars.shape[1])) __pyx_t_28 = 1;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 666, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 685, __pyx_L1_error)}
-        __pyx_t_30 = __pyx_v_statevar_idx;
-        __pyx_t_29 = -1;
+        if (unlikely(!__pyx_v_state->delta_statevars.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 666, __pyx_L1_error)}
+        __pyx_t_29 = __pyx_v_statevar_idx;
+        __pyx_t_28 = -1;
+        if (__pyx_t_29 < 0) {
+          __pyx_t_29 += __pyx_v_state->delta_statevars.shape[0];
+          if (unlikely(__pyx_t_29 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_29 >= __pyx_v_state->delta_statevars.shape[0])) __pyx_t_28 = 0;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 666, __pyx_L1_error)
+        }
+        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 666, __pyx_L1_error)}
+        __pyx_t_30 = __pyx_v_i;
+        __pyx_t_28 = -1;
         if (__pyx_t_30 < 0) {
-          __pyx_t_30 += __pyx_v_state->delta_statevars.shape[0];
-          if (unlikely(__pyx_t_30 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_30 >= __pyx_v_state->delta_statevars.shape[0])) __pyx_t_29 = 0;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 685, __pyx_L1_error)
+          __pyx_t_30 += __pyx_v_csst->delta_y.shape[0];
+          if (unlikely(__pyx_t_30 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_30 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_28 = 0;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 666, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 685, __pyx_L1_error)}
-        __pyx_t_31 = __pyx_v_i;
-        __pyx_t_29 = -1;
-        if (__pyx_t_31 < 0) {
-          __pyx_t_31 += __pyx_v_csst->delta_y.shape[0];
-          if (unlikely(__pyx_t_31 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_31 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_29 = 0;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 685, __pyx_L1_error)
-        }
-        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_31)) )) += ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->c_statevars.data + __pyx_t_6 * __pyx_v_csst->c_statevars.strides[0]) )) + __pyx_t_4)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_30)) ))));
+        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_30)) )) += ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->c_statevars.data + __pyx_t_6 * __pyx_v_csst->c_statevars.strides[0]) )) + __pyx_t_4)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->delta_statevars.data) + __pyx_t_29)) ))));
       }
 
-      /* "pycalphad/core/minimizer.pyx":686
+      /* "pycalphad/core/minimizer.pyx":667
  *             for statevar_idx in range(state.delta_statevars.shape[0]):
  *                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]
  *             for chempot_idx in range(state.chemical_potentials.shape[0]):             # <<<<<<<<<<<<<<
  *                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
- *             ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
+ * 
  */
-      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 686, __pyx_L1_error)}
-      __pyx_t_27 = (__pyx_v_state->chemical_potentials.shape[0]);
-      __pyx_t_28 = __pyx_t_27;
-      for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_28; __pyx_t_17+=1) {
+      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 667, __pyx_L1_error)}
+      __pyx_t_26 = (__pyx_v_state->chemical_potentials.shape[0]);
+      __pyx_t_27 = __pyx_t_26;
+      for (__pyx_t_17 = 0; __pyx_t_17 < __pyx_t_27; __pyx_t_17+=1) {
         __pyx_v_chempot_idx = __pyx_t_17;
 
-        /* "pycalphad/core/minimizer.pyx":687
+        /* "pycalphad/core/minimizer.pyx":668
  *                 csst.delta_y[i] += csst.c_statevars[i, statevar_idx] * state.delta_statevars[statevar_idx]
  *             for chempot_idx in range(state.chemical_potentials.shape[0]):
  *                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]             # <<<<<<<<<<<<<<
- *             ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
- *             #print('pre_results',np.asarray(csst.delta_y))
+ * 
+ *             if charge_factor:
  */
-        if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 687, __pyx_L1_error)}
-        __pyx_t_30 = __pyx_v_chempot_idx;
+        if (unlikely(!__pyx_v_csst->c_component.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 668, __pyx_L1_error)}
+        __pyx_t_29 = __pyx_v_chempot_idx;
         __pyx_t_4 = __pyx_v_i;
-        __pyx_t_29 = -1;
-        if (__pyx_t_30 < 0) {
-          __pyx_t_30 += __pyx_v_csst->c_component.shape[0];
-          if (unlikely(__pyx_t_30 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_30 >= __pyx_v_csst->c_component.shape[0])) __pyx_t_29 = 0;
+        __pyx_t_28 = -1;
+        if (__pyx_t_29 < 0) {
+          __pyx_t_29 += __pyx_v_csst->c_component.shape[0];
+          if (unlikely(__pyx_t_29 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_29 >= __pyx_v_csst->c_component.shape[0])) __pyx_t_28 = 0;
         if (__pyx_t_4 < 0) {
           __pyx_t_4 += __pyx_v_csst->c_component.shape[1];
-          if (unlikely(__pyx_t_4 < 0)) __pyx_t_29 = 1;
-        } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->c_component.shape[1])) __pyx_t_29 = 1;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 687, __pyx_L1_error)
+          if (unlikely(__pyx_t_4 < 0)) __pyx_t_28 = 1;
+        } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->c_component.shape[1])) __pyx_t_28 = 1;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 668, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 687, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 668, __pyx_L1_error)}
         __pyx_t_6 = __pyx_v_chempot_idx;
-        __pyx_t_29 = -1;
+        __pyx_t_28 = -1;
         if (__pyx_t_6 < 0) {
           __pyx_t_6 += __pyx_v_state->chemical_potentials.shape[0];
-          if (unlikely(__pyx_t_6 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_6 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_29 = 0;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 687, __pyx_L1_error)
+          if (unlikely(__pyx_t_6 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_6 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_28 = 0;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 668, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 687, __pyx_L1_error)}
-        __pyx_t_31 = __pyx_v_i;
-        __pyx_t_29 = -1;
-        if (__pyx_t_31 < 0) {
-          __pyx_t_31 += __pyx_v_csst->delta_y.shape[0];
-          if (unlikely(__pyx_t_31 < 0)) __pyx_t_29 = 0;
-        } else if (unlikely(__pyx_t_31 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_29 = 0;
-        if (unlikely(__pyx_t_29 != -1)) {
-          __Pyx_RaiseBufferIndexError(__pyx_t_29);
-          __PYX_ERR(0, 687, __pyx_L1_error)
+        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 668, __pyx_L1_error)}
+        __pyx_t_30 = __pyx_v_i;
+        __pyx_t_28 = -1;
+        if (__pyx_t_30 < 0) {
+          __pyx_t_30 += __pyx_v_csst->delta_y.shape[0];
+          if (unlikely(__pyx_t_30 < 0)) __pyx_t_28 = 0;
+        } else if (unlikely(__pyx_t_30 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_28 = 0;
+        if (unlikely(__pyx_t_28 != -1)) {
+          __Pyx_RaiseBufferIndexError(__pyx_t_28);
+          __PYX_ERR(0, 668, __pyx_L1_error)
         }
-        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_31)) )) += ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->c_component.data + __pyx_t_30 * __pyx_v_csst->c_component.strides[0]) )) + __pyx_t_4)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_6)) ))));
+        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_30)) )) += ((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->c_component.data + __pyx_t_29 * __pyx_v_csst->c_component.strides[0]) )) + __pyx_t_4)) ))) * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_6)) ))));
       }
 
-      /* "pycalphad/core/minimizer.pyx":690
- *             ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
- *             #print('pre_results',np.asarray(csst.delta_y))
+      /* "pycalphad/core/minimizer.pyx":670
+ *                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
+ * 
  *             if charge_factor:             # <<<<<<<<<<<<<<
  *                 norm_valence_i=csst.full_e_matrix[i,-1]
- * #            ##print(norm_valence_i)
+ *            #print(norm_valence_i)
  */
       __pyx_t_7 = (__pyx_v_charge_factor != 0);
       if (__pyx_t_7) {
 
-        /* "pycalphad/core/minimizer.pyx":691
- *             #print('pre_results',np.asarray(csst.delta_y))
+        /* "pycalphad/core/minimizer.pyx":671
+ * 
  *             if charge_factor:
  *                 norm_valence_i=csst.full_e_matrix[i,-1]             # <<<<<<<<<<<<<<
- * #            ##print(norm_valence_i)
+ *            #print(norm_valence_i)
  *                 csst.delta_y[i] -= norm_valence_i*Q
  */
-        if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 691, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->full_e_matrix.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 671, __pyx_L1_error)}
         __pyx_t_6 = __pyx_v_i;
         __pyx_t_4 = -1L;
         __pyx_t_17 = -1;
@@ -16073,26 +15794,26 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->full_e_matrix.shape[1])) __pyx_t_17 = 1;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 691, __pyx_L1_error)
+          __PYX_ERR(0, 671, __pyx_L1_error)
         }
-        __pyx_t_21 = PyFloat_FromDouble((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->full_e_matrix.data + __pyx_t_6 * __pyx_v_csst->full_e_matrix.strides[0]) )) + __pyx_t_4)) )))); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 691, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_21);
-        __Pyx_XDECREF_SET(__pyx_v_norm_valence_i, __pyx_t_21);
-        __pyx_t_21 = 0;
+        __pyx_t_11 = PyFloat_FromDouble((*((double *) ( /* dim=1 */ ((char *) (((double *) ( /* dim=0 */ (__pyx_v_csst->full_e_matrix.data + __pyx_t_6 * __pyx_v_csst->full_e_matrix.strides[0]) )) + __pyx_t_4)) )))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 671, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __Pyx_XDECREF_SET(__pyx_v_norm_valence_i, __pyx_t_11);
+        __pyx_t_11 = 0;
 
-        /* "pycalphad/core/minimizer.pyx":693
+        /* "pycalphad/core/minimizer.pyx":673
  *                 norm_valence_i=csst.full_e_matrix[i,-1]
- * #            ##print(norm_valence_i)
+ *            #print(norm_valence_i)
  *                 csst.delta_y[i] -= norm_valence_i*Q             # <<<<<<<<<<<<<<
- *             #print('cur_results',np.asarray(csst.delta_y))
- *         #x=np.array([1.00000000e+00, 1.01325000e+05, 5.00000000e+02, 3.33333333e-01,
+ *         new_y = np.array(x)
+ *         minimum_step_size = 1e-20 * step_size
  */
-        if (unlikely(!__pyx_v_Q)) { __Pyx_RaiseUnboundLocalError("Q"); __PYX_ERR(0, 693, __pyx_L1_error) }
-        __pyx_t_21 = PyNumber_Multiply(__pyx_v_norm_valence_i, __pyx_v_Q); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 693, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_21);
-        __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_21); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 693, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 693, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_Q)) { __Pyx_RaiseUnboundLocalError("Q"); __PYX_ERR(0, 673, __pyx_L1_error) }
+        __pyx_t_11 = PyNumber_Multiply(__pyx_v_norm_valence_i, __pyx_v_Q); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 673, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_11);
+        __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_11); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 673, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 673, __pyx_L1_error)}
         __pyx_t_4 = __pyx_v_i;
         __pyx_t_17 = -1;
         if (__pyx_t_4 < 0) {
@@ -16101,104 +15822,104 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_4 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 693, __pyx_L1_error)
+          __PYX_ERR(0, 673, __pyx_L1_error)
         }
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_4)) )) -= __pyx_t_10;
 
-        /* "pycalphad/core/minimizer.pyx":690
- *             ##print('a=',np.asarray(csst.phase_matrix[i,-1]),np.asarray(x[3+i:4+i]))
- *             #print('pre_results',np.asarray(csst.delta_y))
+        /* "pycalphad/core/minimizer.pyx":670
+ *                 csst.delta_y[i] += csst.c_component[chempot_idx, i] * state.chemical_potentials[chempot_idx]
+ * 
  *             if charge_factor:             # <<<<<<<<<<<<<<
  *                 norm_valence_i=csst.full_e_matrix[i,-1]
- * #            ##print(norm_valence_i)
+ *            #print(norm_valence_i)
  */
       }
     }
 
-    /* "pycalphad/core/minimizer.pyx":700
- *   #1.04223654e-17])
- *         #print('csst',np.asarray(csst.delta_y))
+    /* "pycalphad/core/minimizer.pyx":674
+ *            #print(norm_valence_i)
+ *                 csst.delta_y[i] -= norm_valence_i*Q
  *         new_y = np.array(x)             # <<<<<<<<<<<<<<
  *         minimum_step_size = 1e-20 * step_size
  *         while step_size >= minimum_step_size:
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 700, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_np); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_array); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 700, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_12, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 674, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 700, __pyx_L1_error)
+    __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
-    __pyx_t_13 = NULL;
-    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_11))) {
-      __pyx_t_13 = PyMethod_GET_SELF(__pyx_t_11);
-      if (likely(__pyx_t_13)) {
-        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
-        __Pyx_INCREF(__pyx_t_13);
+    __pyx_t_23 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
+      __pyx_t_23 = PyMethod_GET_SELF(__pyx_t_13);
+      if (likely(__pyx_t_23)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_13);
+        __Pyx_INCREF(__pyx_t_23);
         __Pyx_INCREF(function);
-        __Pyx_DECREF_SET(__pyx_t_11, function);
+        __Pyx_DECREF_SET(__pyx_t_13, function);
       }
     }
-    __pyx_t_21 = (__pyx_t_13) ? __Pyx_PyObject_Call2Args(__pyx_t_11, __pyx_t_13, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_12);
-    __Pyx_XDECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __pyx_t_11 = (__pyx_t_23) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_23, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_12);
+    __Pyx_XDECREF(__pyx_t_23); __pyx_t_23 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 700, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_21);
+    if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 674, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_11, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 674, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-    __pyx_t_14 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_21, PyBUF_WRITABLE); if (unlikely(!__pyx_t_14.memview)) __PYX_ERR(0, 700, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_new_y, 1);
     __pyx_v_new_y = __pyx_t_14;
     __pyx_t_14.memview = NULL;
     __pyx_t_14.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":701
- *         #print('csst',np.asarray(csst.delta_y))
+    /* "pycalphad/core/minimizer.pyx":675
+ *                 csst.delta_y[i] -= norm_valence_i*Q
  *         new_y = np.array(x)
  *         minimum_step_size = 1e-20 * step_size             # <<<<<<<<<<<<<<
  *         while step_size >= minimum_step_size:
- *             #print('1')
+ *             exceeded_bounds = False
  */
     __pyx_v_minimum_step_size = (1e-20 * __pyx_v_step_size);
 
-    /* "pycalphad/core/minimizer.pyx":702
+    /* "pycalphad/core/minimizer.pyx":676
  *         new_y = np.array(x)
  *         minimum_step_size = 1e-20 * step_size
  *         while step_size >= minimum_step_size:             # <<<<<<<<<<<<<<
- *             #print('1')
  *             exceeded_bounds = False
+ *             for i in range(spec.num_statevars, new_y.shape[0]):
  */
     while (1) {
       __pyx_t_7 = ((__pyx_v_step_size >= __pyx_v_minimum_step_size) != 0);
       if (!__pyx_t_7) break;
 
-      /* "pycalphad/core/minimizer.pyx":704
+      /* "pycalphad/core/minimizer.pyx":677
+ *         minimum_step_size = 1e-20 * step_size
  *         while step_size >= minimum_step_size:
- *             #print('1')
  *             exceeded_bounds = False             # <<<<<<<<<<<<<<
  *             for i in range(spec.num_statevars, new_y.shape[0]):
- *                 #print('all_para',step_size,i,spec.num_statevars,csst.delta_y[i - spec.num_statevars])
+ *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
  */
       __pyx_v_exceeded_bounds = 0;
 
-      /* "pycalphad/core/minimizer.pyx":705
- *             #print('1')
+      /* "pycalphad/core/minimizer.pyx":678
+ *         while step_size >= minimum_step_size:
  *             exceeded_bounds = False
  *             for i in range(spec.num_statevars, new_y.shape[0]):             # <<<<<<<<<<<<<<
- *                 #print('all_para',step_size,i,spec.num_statevars,csst.delta_y[i - spec.num_statevars])
  *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
+ *                 if new_y[i] > 1:
  */
       __pyx_t_15 = (__pyx_v_new_y.shape[0]);
       __pyx_t_16 = __pyx_t_15;
       for (__pyx_t_5 = __pyx_v_spec->num_statevars; __pyx_t_5 < __pyx_t_16; __pyx_t_5+=1) {
         __pyx_v_i = __pyx_t_5;
 
-        /* "pycalphad/core/minimizer.pyx":707
+        /* "pycalphad/core/minimizer.pyx":679
+ *             exceeded_bounds = False
  *             for i in range(spec.num_statevars, new_y.shape[0]):
- *                 #print('all_para',step_size,i,spec.num_statevars,csst.delta_y[i - spec.num_statevars])
  *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]             # <<<<<<<<<<<<<<
- *                 #print('new_y',new_y[i],np.asarray(new_y))
  *                 if new_y[i] > 1:
+ *                     if (new_y[i] - 1) > 1e-11:
  */
         __pyx_t_4 = __pyx_v_i;
         __pyx_t_17 = -1;
@@ -16208,9 +15929,9 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_4 >= __pyx_v_x.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 707, __pyx_L1_error)
+          __PYX_ERR(0, 679, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 707, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_csst->delta_y.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 679, __pyx_L1_error)}
         __pyx_t_6 = (__pyx_v_i - __pyx_v_spec->num_statevars);
         __pyx_t_17 = -1;
         if (__pyx_t_6 < 0) {
@@ -16219,26 +15940,26 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_6 >= __pyx_v_csst->delta_y.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 707, __pyx_L1_error)
+          __PYX_ERR(0, 679, __pyx_L1_error)
         }
-        __pyx_t_30 = __pyx_v_i;
+        __pyx_t_29 = __pyx_v_i;
         __pyx_t_17 = -1;
-        if (__pyx_t_30 < 0) {
-          __pyx_t_30 += __pyx_v_new_y.shape[0];
-          if (unlikely(__pyx_t_30 < 0)) __pyx_t_17 = 0;
-        } else if (unlikely(__pyx_t_30 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
+        if (__pyx_t_29 < 0) {
+          __pyx_t_29 += __pyx_v_new_y.shape[0];
+          if (unlikely(__pyx_t_29 < 0)) __pyx_t_17 = 0;
+        } else if (unlikely(__pyx_t_29 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 707, __pyx_L1_error)
+          __PYX_ERR(0, 679, __pyx_L1_error)
         }
-        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_30)) )) = ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_4)) ))) + (__pyx_v_step_size * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_6)) )))));
+        *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_29)) )) = ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_4)) ))) + (__pyx_v_step_size * (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_csst->delta_y.data) + __pyx_t_6)) )))));
 
-        /* "pycalphad/core/minimizer.pyx":709
+        /* "pycalphad/core/minimizer.pyx":680
+ *             for i in range(spec.num_statevars, new_y.shape[0]):
  *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
- *                 #print('new_y',new_y[i],np.asarray(new_y))
  *                 if new_y[i] > 1:             # <<<<<<<<<<<<<<
- *                     #print('2')
  *                     if (new_y[i] - 1) > 1e-11:
+ *                         # Allow some tolerance in the name of progress
  */
         __pyx_t_6 = __pyx_v_i;
         __pyx_t_17 = -1;
@@ -16248,17 +15969,17 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 709, __pyx_L1_error)
+          __PYX_ERR(0, 680, __pyx_L1_error)
         }
         __pyx_t_7 = (((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) ))) > 1.0) != 0);
         if (__pyx_t_7) {
 
-          /* "pycalphad/core/minimizer.pyx":711
+          /* "pycalphad/core/minimizer.pyx":681
+ *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
  *                 if new_y[i] > 1:
- *                     #print('2')
  *                     if (new_y[i] - 1) > 1e-11:             # <<<<<<<<<<<<<<
- *                         #print('3')
  *                         # Allow some tolerance in the name of progress
+ *                         exceeded_bounds = True
  */
           __pyx_t_6 = __pyx_v_i;
           __pyx_t_17 = -1;
@@ -16268,13 +15989,13 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
           if (unlikely(__pyx_t_17 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_17);
-            __PYX_ERR(0, 711, __pyx_L1_error)
+            __PYX_ERR(0, 681, __pyx_L1_error)
           }
           __pyx_t_7 = ((((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) ))) - 1.0) > 1e-11) != 0);
           if (__pyx_t_7) {
 
-            /* "pycalphad/core/minimizer.pyx":714
- *                         #print('3')
+            /* "pycalphad/core/minimizer.pyx":683
+ *                     if (new_y[i] - 1) > 1e-11:
  *                         # Allow some tolerance in the name of progress
  *                         exceeded_bounds = True             # <<<<<<<<<<<<<<
  *                     new_y[i] = 1
@@ -16282,21 +16003,21 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
  */
             __pyx_v_exceeded_bounds = 1;
 
-            /* "pycalphad/core/minimizer.pyx":711
+            /* "pycalphad/core/minimizer.pyx":681
+ *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
  *                 if new_y[i] > 1:
- *                     #print('2')
  *                     if (new_y[i] - 1) > 1e-11:             # <<<<<<<<<<<<<<
- *                         #print('3')
  *                         # Allow some tolerance in the name of progress
+ *                         exceeded_bounds = True
  */
           }
 
-          /* "pycalphad/core/minimizer.pyx":715
+          /* "pycalphad/core/minimizer.pyx":684
  *                         # Allow some tolerance in the name of progress
  *                         exceeded_bounds = True
  *                     new_y[i] = 1             # <<<<<<<<<<<<<<
  *                 elif new_y[i] < MIN_SITE_FRACTION:
- *                     ####print('boundary',MIN_SITE_FRACTION)
+ *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:
  */
           __pyx_t_6 = __pyx_v_i;
           __pyx_t_17 = -1;
@@ -16306,26 +16027,26 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
           if (unlikely(__pyx_t_17 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_17);
-            __PYX_ERR(0, 715, __pyx_L1_error)
+            __PYX_ERR(0, 684, __pyx_L1_error)
           }
           *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )) = 1.0;
 
-          /* "pycalphad/core/minimizer.pyx":709
+          /* "pycalphad/core/minimizer.pyx":680
+ *             for i in range(spec.num_statevars, new_y.shape[0]):
  *                 new_y[i] = x[i] + step_size * csst.delta_y[i - spec.num_statevars]
- *                 #print('new_y',new_y[i],np.asarray(new_y))
  *                 if new_y[i] > 1:             # <<<<<<<<<<<<<<
- *                     #print('2')
  *                     if (new_y[i] - 1) > 1e-11:
+ *                         # Allow some tolerance in the name of progress
  */
           goto __pyx_L40;
         }
 
-        /* "pycalphad/core/minimizer.pyx":716
+        /* "pycalphad/core/minimizer.pyx":685
  *                         exceeded_bounds = True
  *                     new_y[i] = 1
  *                 elif new_y[i] < MIN_SITE_FRACTION:             # <<<<<<<<<<<<<<
- *                     ####print('boundary',MIN_SITE_FRACTION)
- *                     #print('4')
+ *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:
+ *                         # Allow some tolerance in the name of progress
  */
         __pyx_t_6 = __pyx_v_i;
         __pyx_t_17 = -1;
@@ -16335,27 +16056,27 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 716, __pyx_L1_error)
+          __PYX_ERR(0, 685, __pyx_L1_error)
         }
-        __pyx_t_21 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 716, __pyx_L1_error)
-        __Pyx_GOTREF(__pyx_t_21);
-        __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 716, __pyx_L1_error)
+        __pyx_t_11 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 685, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        __pyx_t_12 = PyObject_RichCompare(__pyx_t_21, __pyx_t_11, Py_LT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 716, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
+        __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 685, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_13);
+        __pyx_t_12 = PyObject_RichCompare(__pyx_t_11, __pyx_t_13, Py_LT); __Pyx_XGOTREF(__pyx_t_12); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 685, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 716, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+        __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_12); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 685, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         if (__pyx_t_7) {
 
-          /* "pycalphad/core/minimizer.pyx":719
- *                     ####print('boundary',MIN_SITE_FRACTION)
- *                     #print('4')
+          /* "pycalphad/core/minimizer.pyx":686
+ *                     new_y[i] = 1
+ *                 elif new_y[i] < MIN_SITE_FRACTION:
  *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:             # <<<<<<<<<<<<<<
- *                         #print('5')
  *                         # Allow some tolerance in the name of progress
+ *                         exceeded_bounds = True
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 719, __pyx_L1_error)
+          __Pyx_GetModuleGlobalName(__pyx_t_12, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 686, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
           __pyx_t_6 = __pyx_v_i;
           __pyx_t_17 = -1;
@@ -16365,22 +16086,22 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
           if (unlikely(__pyx_t_17 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_17);
-            __PYX_ERR(0, 719, __pyx_L1_error)
+            __PYX_ERR(0, 686, __pyx_L1_error)
           }
-          __pyx_t_11 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 719, __pyx_L1_error)
+          __pyx_t_13 = PyFloat_FromDouble((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )))); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 686, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_13);
+          __pyx_t_11 = PyNumber_Subtract(__pyx_t_12, __pyx_t_13); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 686, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_21 = PyNumber_Subtract(__pyx_t_12, __pyx_t_11); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 719, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_21);
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          __pyx_t_13 = PyObject_RichCompare(__pyx_t_11, __pyx_float_1eneg_11, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 686, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          __pyx_t_11 = PyObject_RichCompare(__pyx_t_21, __pyx_float_1eneg_11, Py_GT); __Pyx_XGOTREF(__pyx_t_11); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 719, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
-          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_11); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 719, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 686, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
           if (__pyx_t_7) {
 
-            /* "pycalphad/core/minimizer.pyx":722
- *                         #print('5')
+            /* "pycalphad/core/minimizer.pyx":688
+ *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:
  *                         # Allow some tolerance in the name of progress
  *                         exceeded_bounds = True             # <<<<<<<<<<<<<<
  *                     # Reduce by two orders of magnitude, or MIN_SITE_FRACTION, whichever is larger
@@ -16388,24 +16109,24 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
  */
             __pyx_v_exceeded_bounds = 1;
 
-            /* "pycalphad/core/minimizer.pyx":719
- *                     ####print('boundary',MIN_SITE_FRACTION)
- *                     #print('4')
+            /* "pycalphad/core/minimizer.pyx":686
+ *                     new_y[i] = 1
+ *                 elif new_y[i] < MIN_SITE_FRACTION:
  *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:             # <<<<<<<<<<<<<<
- *                         #print('5')
  *                         # Allow some tolerance in the name of progress
+ *                         exceeded_bounds = True
  */
           }
 
-          /* "pycalphad/core/minimizer.pyx":724
+          /* "pycalphad/core/minimizer.pyx":690
  *                         exceeded_bounds = True
  *                     # Reduce by two orders of magnitude, or MIN_SITE_FRACTION, whichever is larger
  *                     new_y[i] = max(x[i]/100, MIN_SITE_FRACTION)             # <<<<<<<<<<<<<<
  *             if exceeded_bounds:
- *                 #print('6')
+ *                 step_size *= 0.5
  */
-          __Pyx_GetModuleGlobalName(__pyx_t_11, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 724, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_11);
+          __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_MIN_SITE_FRACTION); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 690, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_13);
           __pyx_t_6 = __pyx_v_i;
           __pyx_t_17 = -1;
           if (__pyx_t_6 < 0) {
@@ -16414,27 +16135,27 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_6 >= __pyx_v_x.shape[0])) __pyx_t_17 = 0;
           if (unlikely(__pyx_t_17 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_17);
-            __PYX_ERR(0, 724, __pyx_L1_error)
+            __PYX_ERR(0, 690, __pyx_L1_error)
           }
           __pyx_t_10 = ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_6)) ))) / 100.0);
-          __pyx_t_12 = PyFloat_FromDouble(__pyx_t_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 724, __pyx_L1_error)
+          __pyx_t_12 = PyFloat_FromDouble(__pyx_t_10); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 690, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_12);
-          __pyx_t_13 = PyObject_RichCompare(__pyx_t_11, __pyx_t_12, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 724, __pyx_L1_error)
+          __pyx_t_23 = PyObject_RichCompare(__pyx_t_13, __pyx_t_12, Py_GT); __Pyx_XGOTREF(__pyx_t_23); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 690, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_13); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          __pyx_t_7 = __Pyx_PyObject_IsTrue(__pyx_t_23); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 690, __pyx_L1_error)
+          __Pyx_DECREF(__pyx_t_23); __pyx_t_23 = 0;
           if (__pyx_t_7) {
-            __Pyx_INCREF(__pyx_t_11);
-            __pyx_t_21 = __pyx_t_11;
+            __Pyx_INCREF(__pyx_t_13);
+            __pyx_t_11 = __pyx_t_13;
           } else {
-            __pyx_t_13 = PyFloat_FromDouble(__pyx_t_10); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 724, __pyx_L1_error)
-            __Pyx_GOTREF(__pyx_t_13);
-            __pyx_t_21 = __pyx_t_13;
-            __pyx_t_13 = 0;
+            __pyx_t_23 = PyFloat_FromDouble(__pyx_t_10); if (unlikely(!__pyx_t_23)) __PYX_ERR(0, 690, __pyx_L1_error)
+            __Pyx_GOTREF(__pyx_t_23);
+            __pyx_t_11 = __pyx_t_23;
+            __pyx_t_23 = 0;
           }
+          __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
+          __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_11); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 690, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
-          __pyx_t_10 = __pyx_PyFloat_AsDouble(__pyx_t_21); if (unlikely((__pyx_t_10 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 724, __pyx_L1_error)
-          __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
           __pyx_t_6 = __pyx_v_i;
           __pyx_t_17 = -1;
           if (__pyx_t_6 < 0) {
@@ -16443,97 +16164,97 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_6 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
           if (unlikely(__pyx_t_17 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_17);
-            __PYX_ERR(0, 724, __pyx_L1_error)
+            __PYX_ERR(0, 690, __pyx_L1_error)
           }
           *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_6)) )) = __pyx_t_10;
 
-          /* "pycalphad/core/minimizer.pyx":716
+          /* "pycalphad/core/minimizer.pyx":685
  *                         exceeded_bounds = True
  *                     new_y[i] = 1
  *                 elif new_y[i] < MIN_SITE_FRACTION:             # <<<<<<<<<<<<<<
- *                     ####print('boundary',MIN_SITE_FRACTION)
- *                     #print('4')
+ *                     if (MIN_SITE_FRACTION - new_y[i]) > 1e-11:
+ *                         # Allow some tolerance in the name of progress
  */
         }
         __pyx_L40:;
       }
 
-      /* "pycalphad/core/minimizer.pyx":725
+      /* "pycalphad/core/minimizer.pyx":691
  *                     # Reduce by two orders of magnitude, or MIN_SITE_FRACTION, whichever is larger
  *                     new_y[i] = max(x[i]/100, MIN_SITE_FRACTION)
  *             if exceeded_bounds:             # <<<<<<<<<<<<<<
- *                 #print('6')
  *                 step_size *= 0.5
+ *                 continue
  */
       __pyx_t_7 = (__pyx_v_exceeded_bounds != 0);
       if (__pyx_t_7) {
 
-        /* "pycalphad/core/minimizer.pyx":727
+        /* "pycalphad/core/minimizer.pyx":692
+ *                     new_y[i] = max(x[i]/100, MIN_SITE_FRACTION)
  *             if exceeded_bounds:
- *                 #print('6')
  *                 step_size *= 0.5             # <<<<<<<<<<<<<<
  *                 continue
  *             break
  */
         __pyx_v_step_size = (__pyx_v_step_size * 0.5);
 
-        /* "pycalphad/core/minimizer.pyx":728
- *                 #print('6')
+        /* "pycalphad/core/minimizer.pyx":693
+ *             if exceeded_bounds:
  *                 step_size *= 0.5
  *                 continue             # <<<<<<<<<<<<<<
  *             break
- *         #print('new_y_result',np.asarray(new_y))
+ *         state.largest_y_change[0] = 0.0
  */
         goto __pyx_L36_continue;
 
-        /* "pycalphad/core/minimizer.pyx":725
+        /* "pycalphad/core/minimizer.pyx":691
  *                     # Reduce by two orders of magnitude, or MIN_SITE_FRACTION, whichever is larger
  *                     new_y[i] = max(x[i]/100, MIN_SITE_FRACTION)
  *             if exceeded_bounds:             # <<<<<<<<<<<<<<
- *                 #print('6')
  *                 step_size *= 0.5
+ *                 continue
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":729
+      /* "pycalphad/core/minimizer.pyx":694
  *                 step_size *= 0.5
  *                 continue
  *             break             # <<<<<<<<<<<<<<
- *         #print('new_y_result',np.asarray(new_y))
  *         state.largest_y_change[0] = 0.0
+ *         for i in range(spec.num_statevars, new_y.shape[0]):
  */
       goto __pyx_L37_break;
       __pyx_L36_continue:;
     }
     __pyx_L37_break:;
 
-    /* "pycalphad/core/minimizer.pyx":731
+    /* "pycalphad/core/minimizer.pyx":695
+ *                 continue
  *             break
- *         #print('new_y_result',np.asarray(new_y))
  *         state.largest_y_change[0] = 0.0             # <<<<<<<<<<<<<<
  *         for i in range(spec.num_statevars, new_y.shape[0]):
  *             state.largest_y_change[0] = max(state.largest_y_change[0], abs(x[i] - new_y[i]))
  */
     (__pyx_v_state->largest_y_change[0]) = 0.0;
 
-    /* "pycalphad/core/minimizer.pyx":732
- *         #print('new_y_result',np.asarray(new_y))
+    /* "pycalphad/core/minimizer.pyx":696
+ *             break
  *         state.largest_y_change[0] = 0.0
  *         for i in range(spec.num_statevars, new_y.shape[0]):             # <<<<<<<<<<<<<<
  *             state.largest_y_change[0] = max(state.largest_y_change[0], abs(x[i] - new_y[i]))
- *         #if np.sum(state.largest_y_change)>0.2:
+ *         x[:] = new_y
  */
     __pyx_t_15 = (__pyx_v_new_y.shape[0]);
     __pyx_t_16 = __pyx_t_15;
     for (__pyx_t_5 = __pyx_v_spec->num_statevars; __pyx_t_5 < __pyx_t_16; __pyx_t_5+=1) {
       __pyx_v_i = __pyx_t_5;
 
-      /* "pycalphad/core/minimizer.pyx":733
+      /* "pycalphad/core/minimizer.pyx":697
  *         state.largest_y_change[0] = 0.0
  *         for i in range(spec.num_statevars, new_y.shape[0]):
  *             state.largest_y_change[0] = max(state.largest_y_change[0], abs(x[i] - new_y[i]))             # <<<<<<<<<<<<<<
- *         #if np.sum(state.largest_y_change)>0.2:
- *             #print('new_y_result',np.asarray(x),np.asarray(new_y))
+ *         x[:] = new_y
+ * 
  */
       __pyx_t_6 = __pyx_v_i;
       __pyx_t_17 = -1;
@@ -16543,7 +16264,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
       } else if (unlikely(__pyx_t_6 >= __pyx_v_x.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 733, __pyx_L1_error)
+        __PYX_ERR(0, 697, __pyx_L1_error)
       }
       __pyx_t_4 = __pyx_v_i;
       __pyx_t_17 = -1;
@@ -16553,7 +16274,7 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
       } else if (unlikely(__pyx_t_4 >= __pyx_v_new_y.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 733, __pyx_L1_error)
+        __PYX_ERR(0, 697, __pyx_L1_error)
       }
       __pyx_t_10 = fabs(((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_x.data) + __pyx_t_6)) ))) - (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_new_y.data) + __pyx_t_4)) )))));
       __pyx_t_9 = (__pyx_v_state->largest_y_change[0]);
@@ -16565,17 +16286,17 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
       (__pyx_v_state->largest_y_change[0]) = __pyx_t_8;
     }
 
-    /* "pycalphad/core/minimizer.pyx":736
- *         #if np.sum(state.largest_y_change)>0.2:
- *             #print('new_y_result',np.asarray(x),np.asarray(new_y))
+    /* "pycalphad/core/minimizer.pyx":698
+ *         for i in range(spec.num_statevars, new_y.shape[0]):
+ *             state.largest_y_change[0] = max(state.largest_y_change[0], abs(x[i] - new_y[i]))
  *         x[:] = new_y             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_new_y, __pyx_v_x, 1, 1, 0) < 0)) __PYX_ERR(0, 736, __pyx_L1_error)
+    if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_new_y, __pyx_v_x, 1, 1, 0) < 0)) __PYX_ERR(0, 698, __pyx_L1_error)
   }
 
-  /* "pycalphad/core/minimizer.pyx":594
+  /* "pycalphad/core/minimizer.pyx":593
  * 
  * # TODO: should we store equilibrium_soln in the state(?)
  * cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equilibrium_soln, double step_size):             # <<<<<<<<<<<<<<
@@ -16591,11 +16312,10 @@ __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_t_14, 1, (PyObject *(*)(char *)) _
   __Pyx_XDECREF(__pyx_t_12);
   __Pyx_XDECREF(__pyx_t_13);
   __PYX_XDEC_MEMVIEW(&__pyx_t_14, 1);
-  __Pyx_XDECREF(__pyx_t_18);
-  __Pyx_XDECREF(__pyx_t_19);
-  __Pyx_XDECREF(__pyx_t_20);
-  __Pyx_XDECREF(__pyx_t_21);
   __Pyx_XDECREF(__pyx_t_22);
+  __Pyx_XDECREF(__pyx_t_23);
+  __Pyx_XDECREF(__pyx_t_24);
+  __Pyx_XDECREF(__pyx_t_25);
   __Pyx_AddTraceback("pycalphad.core.minimizer.advance_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
@@ -16651,23 +16371,23 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_3advance_state(PyObject *_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_state)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 1); __PYX_ERR(0, 594, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 1); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_equilibrium_soln)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 2); __PYX_ERR(0, 594, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 2); __PYX_ERR(0, 593, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_step_size)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 3); __PYX_ERR(0, 594, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, 3); __PYX_ERR(0, 593, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "advance_state") < 0)) __PYX_ERR(0, 594, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "advance_state") < 0)) __PYX_ERR(0, 593, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
       goto __pyx_L5_argtuple_error;
@@ -16679,19 +16399,19 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_3advance_state(PyObject *_
     }
     __pyx_v_spec = ((struct __pyx_obj_9pycalphad_4core_9minimizer_SystemSpecification *)values[0]);
     __pyx_v_state = ((struct __pyx_obj_9pycalphad_4core_9minimizer_SystemState *)values[1]);
-    __pyx_v_equilibrium_soln = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_equilibrium_soln.memview)) __PYX_ERR(0, 594, __pyx_L3_error)
-    __pyx_v_step_size = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_step_size == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 594, __pyx_L3_error)
+    __pyx_v_equilibrium_soln = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[2], PyBUF_WRITABLE); if (unlikely(!__pyx_v_equilibrium_soln.memview)) __PYX_ERR(0, 593, __pyx_L3_error)
+    __pyx_v_step_size = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_step_size == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 593, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 594, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("advance_state", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 593, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.minimizer.advance_state", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_spec), __pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification, 1, "spec", 0))) __PYX_ERR(0, 594, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_9pycalphad_4core_9minimizer_SystemState, 1, "state", 0))) __PYX_ERR(0, 594, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_spec), __pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification, 1, "spec", 0))) __PYX_ERR(0, 593, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_state), __pyx_ptype_9pycalphad_4core_9minimizer_SystemState, 1, "state", 0))) __PYX_ERR(0, 593, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pycalphad_4core_9minimizer_2advance_state(__pyx_self, __pyx_v_spec, __pyx_v_state, __pyx_v_equilibrium_soln, __pyx_v_step_size);
 
   /* function exit code */
@@ -16712,8 +16432,8 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_2advance_state(CYTHON_UNUS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("advance_state", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_equilibrium_soln.memview)) { __Pyx_RaiseUnboundLocalError("equilibrium_soln"); __PYX_ERR(0, 594, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_advance_state(__pyx_v_spec, __pyx_v_state, __pyx_v_equilibrium_soln, __pyx_v_step_size, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 594, __pyx_L1_error)
+  if (unlikely(!__pyx_v_equilibrium_soln.memview)) { __Pyx_RaiseUnboundLocalError("equilibrium_soln"); __PYX_ERR(0, 593, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_advance_state(__pyx_v_spec, __pyx_v_state, __pyx_v_equilibrium_soln, __pyx_v_step_size, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -16731,7 +16451,7 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_2advance_state(CYTHON_UNUS
   return __pyx_r;
 }
 
-/* "pycalphad/core/minimizer.pyx":740
+/* "pycalphad/core/minimizer.pyx":702
  * 
  * 
  * cdef bint remove_and_consolidate_phases(SystemSpecification spec, SystemState state):             # <<<<<<<<<<<<<<
@@ -16784,7 +16504,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("remove_and_consolidate_phases", 0);
 
-  /* "pycalphad/core/minimizer.pyx":747
+  /* "pycalphad/core/minimizer.pyx":709
  *     cdef int i, j, idx, idx2, cp_idx, comp_idx, dof_idx, phase_idx
  *     cdef CompositionSet compset, compset2
  *     cdef bint phases_changed = False             # <<<<<<<<<<<<<<
@@ -16793,39 +16513,39 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
   __pyx_v_phases_changed = 0;
 
-  /* "pycalphad/core/minimizer.pyx":749
+  /* "pycalphad/core/minimizer.pyx":711
  *     cdef bint phases_changed = False
  * 
  *     compset_indices_to_remove = set()             # <<<<<<<<<<<<<<
  *     for i in range(len(state.free_stable_compset_indices)):
  *         idx = state.free_stable_compset_indices[i]
  */
-  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 749, __pyx_L1_error)
+  __pyx_t_1 = PySet_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 711, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_compset_indices_to_remove = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":750
+  /* "pycalphad/core/minimizer.pyx":712
  * 
  *     compset_indices_to_remove = set()
  *     for i in range(len(state.free_stable_compset_indices)):             # <<<<<<<<<<<<<<
  *         idx = state.free_stable_compset_indices[i]
  *         compset = state.compsets[idx]
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 750, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 712, __pyx_L1_error)}
   __pyx_t_2 = __Pyx_MemoryView_Len(__pyx_v_state->free_stable_compset_indices); 
   __pyx_t_3 = __pyx_t_2;
   for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
     __pyx_v_i = __pyx_t_4;
 
-    /* "pycalphad/core/minimizer.pyx":751
+    /* "pycalphad/core/minimizer.pyx":713
  *     compset_indices_to_remove = set()
  *     for i in range(len(state.free_stable_compset_indices)):
  *         idx = state.free_stable_compset_indices[i]             # <<<<<<<<<<<<<<
  *         compset = state.compsets[idx]
  *         if compset.fixed:
  */
-    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 751, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 713, __pyx_L1_error)}
     __pyx_t_5 = __pyx_v_i;
     __pyx_t_6 = -1;
     if (__pyx_t_5 < 0) {
@@ -16834,11 +16554,11 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
     } else if (unlikely(__pyx_t_5 >= __pyx_v_state->free_stable_compset_indices.shape[0])) __pyx_t_6 = 0;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 751, __pyx_L1_error)
+      __PYX_ERR(0, 713, __pyx_L1_error)
     }
     __pyx_v_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_state->free_stable_compset_indices.data) + __pyx_t_5)) )));
 
-    /* "pycalphad/core/minimizer.pyx":752
+    /* "pycalphad/core/minimizer.pyx":714
  *     for i in range(len(state.free_stable_compset_indices)):
  *         idx = state.free_stable_compset_indices[i]
  *         compset = state.compsets[idx]             # <<<<<<<<<<<<<<
@@ -16847,15 +16567,15 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
     if (unlikely(__pyx_v_state->compsets == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 752, __pyx_L1_error)
+      __PYX_ERR(0, 714, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 752, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 714, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 752, __pyx_L1_error)
+    if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 714, __pyx_L1_error)
     __Pyx_XDECREF_SET(__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_1));
     __pyx_t_1 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":753
+    /* "pycalphad/core/minimizer.pyx":715
  *         idx = state.free_stable_compset_indices[i]
  *         compset = state.compsets[idx]
  *         if compset.fixed:             # <<<<<<<<<<<<<<
@@ -16865,7 +16585,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
     __pyx_t_7 = (__pyx_v_compset->fixed != 0);
     if (__pyx_t_7) {
 
-      /* "pycalphad/core/minimizer.pyx":754
+      /* "pycalphad/core/minimizer.pyx":716
  *         compset = state.compsets[idx]
  *         if compset.fixed:
  *             continue             # <<<<<<<<<<<<<<
@@ -16874,7 +16594,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       goto __pyx_L3_continue;
 
-      /* "pycalphad/core/minimizer.pyx":753
+      /* "pycalphad/core/minimizer.pyx":715
  *         idx = state.free_stable_compset_indices[i]
  *         compset = state.compsets[idx]
  *         if compset.fixed:             # <<<<<<<<<<<<<<
@@ -16883,21 +16603,21 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":755
+    /* "pycalphad/core/minimizer.pyx":717
  *         if compset.fixed:
  *             continue
  *         if idx in compset_indices_to_remove:             # <<<<<<<<<<<<<<
  *             continue
  *         # Remove unstable phases
  */
-    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 755, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = (__Pyx_PySet_ContainsTF(__pyx_t_1, __pyx_v_compset_indices_to_remove, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 755, __pyx_L1_error)
+    __pyx_t_7 = (__Pyx_PySet_ContainsTF(__pyx_t_1, __pyx_v_compset_indices_to_remove, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 717, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_8 = (__pyx_t_7 != 0);
     if (__pyx_t_8) {
 
-      /* "pycalphad/core/minimizer.pyx":756
+      /* "pycalphad/core/minimizer.pyx":718
  *             continue
  *         if idx in compset_indices_to_remove:
  *             continue             # <<<<<<<<<<<<<<
@@ -16906,7 +16626,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       goto __pyx_L3_continue;
 
-      /* "pycalphad/core/minimizer.pyx":755
+      /* "pycalphad/core/minimizer.pyx":717
  *         if compset.fixed:
  *             continue
  *         if idx in compset_indices_to_remove:             # <<<<<<<<<<<<<<
@@ -16915,14 +16635,14 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":758
+    /* "pycalphad/core/minimizer.pyx":720
  *             continue
  *         # Remove unstable phases
  *         if state.phase_amt[idx] < 1e-10:             # <<<<<<<<<<<<<<
  *             compset_indices_to_remove.add(idx)
  *             state.phase_amt[idx] = 0
  */
-    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 758, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 720, __pyx_L1_error)}
     __pyx_t_5 = __pyx_v_idx;
     __pyx_t_6 = -1;
     if (__pyx_t_5 < 0) {
@@ -16931,31 +16651,31 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
     } else if (unlikely(__pyx_t_5 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_6 = 0;
     if (unlikely(__pyx_t_6 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_6);
-      __PYX_ERR(0, 758, __pyx_L1_error)
+      __PYX_ERR(0, 720, __pyx_L1_error)
     }
     __pyx_t_8 = (((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_5)) ))) < 1e-10) != 0);
     if (__pyx_t_8) {
 
-      /* "pycalphad/core/minimizer.pyx":759
+      /* "pycalphad/core/minimizer.pyx":721
  *         # Remove unstable phases
  *         if state.phase_amt[idx] < 1e-10:
  *             compset_indices_to_remove.add(idx)             # <<<<<<<<<<<<<<
  *             state.phase_amt[idx] = 0
  *             continue
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 759, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 721, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PySet_Add(__pyx_v_compset_indices_to_remove, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 759, __pyx_L1_error)
+      __pyx_t_9 = PySet_Add(__pyx_v_compset_indices_to_remove, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 721, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":760
+      /* "pycalphad/core/minimizer.pyx":722
  *         if state.phase_amt[idx] < 1e-10:
  *             compset_indices_to_remove.add(idx)
  *             state.phase_amt[idx] = 0             # <<<<<<<<<<<<<<
  *             continue
  *         for j in range(len(state.free_stable_compset_indices)):
  */
-      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 760, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 722, __pyx_L1_error)}
       __pyx_t_5 = __pyx_v_idx;
       __pyx_t_6 = -1;
       if (__pyx_t_5 < 0) {
@@ -16964,11 +16684,11 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
       } else if (unlikely(__pyx_t_5 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_6 = 0;
       if (unlikely(__pyx_t_6 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_6);
-        __PYX_ERR(0, 760, __pyx_L1_error)
+        __PYX_ERR(0, 722, __pyx_L1_error)
       }
       *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_5)) )) = 0.0;
 
-      /* "pycalphad/core/minimizer.pyx":761
+      /* "pycalphad/core/minimizer.pyx":723
  *             compset_indices_to_remove.add(idx)
  *             state.phase_amt[idx] = 0
  *             continue             # <<<<<<<<<<<<<<
@@ -16977,7 +16697,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       goto __pyx_L3_continue;
 
-      /* "pycalphad/core/minimizer.pyx":758
+      /* "pycalphad/core/minimizer.pyx":720
  *             continue
  *         # Remove unstable phases
  *         if state.phase_amt[idx] < 1e-10:             # <<<<<<<<<<<<<<
@@ -16986,27 +16706,27 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":762
+    /* "pycalphad/core/minimizer.pyx":724
  *             state.phase_amt[idx] = 0
  *             continue
  *         for j in range(len(state.free_stable_compset_indices)):             # <<<<<<<<<<<<<<
  *             idx2 = state.free_stable_compset_indices[j]
  *             compset2 = state.compsets[idx2]
  */
-    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 762, __pyx_L1_error)}
+    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 724, __pyx_L1_error)}
     __pyx_t_10 = __Pyx_MemoryView_Len(__pyx_v_state->free_stable_compset_indices); 
     __pyx_t_11 = __pyx_t_10;
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_11; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
 
-      /* "pycalphad/core/minimizer.pyx":763
+      /* "pycalphad/core/minimizer.pyx":725
  *             continue
  *         for j in range(len(state.free_stable_compset_indices)):
  *             idx2 = state.free_stable_compset_indices[j]             # <<<<<<<<<<<<<<
  *             compset2 = state.compsets[idx2]
  *             if idx == idx2:
  */
-      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 763, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 725, __pyx_L1_error)}
       __pyx_t_5 = __pyx_v_j;
       __pyx_t_12 = -1;
       if (__pyx_t_5 < 0) {
@@ -17015,11 +16735,11 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
       } else if (unlikely(__pyx_t_5 >= __pyx_v_state->free_stable_compset_indices.shape[0])) __pyx_t_12 = 0;
       if (unlikely(__pyx_t_12 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_12);
-        __PYX_ERR(0, 763, __pyx_L1_error)
+        __PYX_ERR(0, 725, __pyx_L1_error)
       }
       __pyx_v_idx2 = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_state->free_stable_compset_indices.data) + __pyx_t_5)) )));
 
-      /* "pycalphad/core/minimizer.pyx":764
+      /* "pycalphad/core/minimizer.pyx":726
  *         for j in range(len(state.free_stable_compset_indices)):
  *             idx2 = state.free_stable_compset_indices[j]
  *             compset2 = state.compsets[idx2]             # <<<<<<<<<<<<<<
@@ -17028,15 +16748,15 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       if (unlikely(__pyx_v_state->compsets == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 764, __pyx_L1_error)
+        __PYX_ERR(0, 726, __pyx_L1_error)
       }
-      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 764, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_state->compsets, __pyx_v_idx2, int, 1, __Pyx_PyInt_From_int, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 764, __pyx_L1_error)
+      if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_XDECREF_SET(__pyx_v_compset2, ((struct CompositionSetObject *)__pyx_t_1));
       __pyx_t_1 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":765
+      /* "pycalphad/core/minimizer.pyx":727
  *             idx2 = state.free_stable_compset_indices[j]
  *             compset2 = state.compsets[idx2]
  *             if idx == idx2:             # <<<<<<<<<<<<<<
@@ -17046,7 +16766,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
       __pyx_t_8 = ((__pyx_v_idx == __pyx_v_idx2) != 0);
       if (__pyx_t_8) {
 
-        /* "pycalphad/core/minimizer.pyx":766
+        /* "pycalphad/core/minimizer.pyx":728
  *             compset2 = state.compsets[idx2]
  *             if idx == idx2:
  *                 continue             # <<<<<<<<<<<<<<
@@ -17055,7 +16775,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
         goto __pyx_L8_continue;
 
-        /* "pycalphad/core/minimizer.pyx":765
+        /* "pycalphad/core/minimizer.pyx":727
  *             idx2 = state.free_stable_compset_indices[j]
  *             compset2 = state.compsets[idx2]
  *             if idx == idx2:             # <<<<<<<<<<<<<<
@@ -17064,7 +16784,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":767
+      /* "pycalphad/core/minimizer.pyx":729
  *             if idx == idx2:
  *                 continue
  *             if compset2.fixed:             # <<<<<<<<<<<<<<
@@ -17074,7 +16794,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
       __pyx_t_8 = (__pyx_v_compset2->fixed != 0);
       if (__pyx_t_8) {
 
-        /* "pycalphad/core/minimizer.pyx":768
+        /* "pycalphad/core/minimizer.pyx":730
  *                 continue
  *             if compset2.fixed:
  *                 continue             # <<<<<<<<<<<<<<
@@ -17083,7 +16803,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
         goto __pyx_L8_continue;
 
-        /* "pycalphad/core/minimizer.pyx":767
+        /* "pycalphad/core/minimizer.pyx":729
  *             if idx == idx2:
  *                 continue
  *             if compset2.fixed:             # <<<<<<<<<<<<<<
@@ -17092,18 +16812,18 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":769
+      /* "pycalphad/core/minimizer.pyx":731
  *             if compset2.fixed:
  *                 continue
  *             if compset.phase_record.phase_name != compset2.phase_record.phase_name:             # <<<<<<<<<<<<<<
  *                 continue
  *             if idx2 in compset_indices_to_remove:
  */
-      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_compset->phase_record->phase_name, __pyx_v_compset2->phase_record->phase_name, Py_NE)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 769, __pyx_L1_error)
+      __pyx_t_8 = (__Pyx_PyUnicode_Equals(__pyx_v_compset->phase_record->phase_name, __pyx_v_compset2->phase_record->phase_name, Py_NE)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 731, __pyx_L1_error)
       __pyx_t_7 = (__pyx_t_8 != 0);
       if (__pyx_t_7) {
 
-        /* "pycalphad/core/minimizer.pyx":770
+        /* "pycalphad/core/minimizer.pyx":732
  *                 continue
  *             if compset.phase_record.phase_name != compset2.phase_record.phase_name:
  *                 continue             # <<<<<<<<<<<<<<
@@ -17112,7 +16832,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
         goto __pyx_L8_continue;
 
-        /* "pycalphad/core/minimizer.pyx":769
+        /* "pycalphad/core/minimizer.pyx":731
  *             if compset2.fixed:
  *                 continue
  *             if compset.phase_record.phase_name != compset2.phase_record.phase_name:             # <<<<<<<<<<<<<<
@@ -17121,21 +16841,21 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":771
+      /* "pycalphad/core/minimizer.pyx":733
  *             if compset.phase_record.phase_name != compset2.phase_record.phase_name:
  *                 continue
  *             if idx2 in compset_indices_to_remove:             # <<<<<<<<<<<<<<
  *                 continue
  *             # Detect if these compsets describe the same internal configuration inside a miscibility gap
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 771, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 733, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_7 = (__Pyx_PySet_ContainsTF(__pyx_t_1, __pyx_v_compset_indices_to_remove, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
+      __pyx_t_7 = (__Pyx_PySet_ContainsTF(__pyx_t_1, __pyx_v_compset_indices_to_remove, Py_EQ)); if (unlikely(__pyx_t_7 < 0)) __PYX_ERR(0, 733, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       __pyx_t_8 = (__pyx_t_7 != 0);
       if (__pyx_t_8) {
 
-        /* "pycalphad/core/minimizer.pyx":772
+        /* "pycalphad/core/minimizer.pyx":734
  *                 continue
  *             if idx2 in compset_indices_to_remove:
  *                 continue             # <<<<<<<<<<<<<<
@@ -17144,7 +16864,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
         goto __pyx_L8_continue;
 
-        /* "pycalphad/core/minimizer.pyx":771
+        /* "pycalphad/core/minimizer.pyx":733
  *             if compset.phase_record.phase_name != compset2.phase_record.phase_name:
  *                 continue
  *             if idx2 in compset_indices_to_remove:             # <<<<<<<<<<<<<<
@@ -17153,24 +16873,24 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":774
+      /* "pycalphad/core/minimizer.pyx":736
  *                 continue
  *             # Detect if these compsets describe the same internal configuration inside a miscibility gap
  *             compset_distances = np.abs(np.array(state.phase_compositions[idx]) - np.array(state.phase_compositions[idx2]))             # <<<<<<<<<<<<<<
  *             if np.all(compset_distances < 1e-4):
  *                 compset_indices_to_remove.add(idx2)
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
-      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_abs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_abs); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 774, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 736, __pyx_L1_error)}
       __pyx_t_17.data = __pyx_v_state->phase_compositions.data;
       __pyx_t_17.memview = __pyx_v_state->phase_compositions.memview;
       __PYX_INC_MEMVIEW(&__pyx_t_17, 0);
@@ -17183,7 +16903,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(str
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 774, __pyx_L1_error)
+            __PYX_ERR(0, 736, __pyx_L1_error)
         }
         __pyx_t_17.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -17192,7 +16912,7 @@ __pyx_t_17.shape[0] = __pyx_v_state->phase_compositions.shape[1];
 __pyx_t_17.strides[0] = __pyx_v_state->phase_compositions.strides[1];
     __pyx_t_17.suboffsets[0] = -1;
 
-__pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 774, __pyx_L1_error)
+__pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __PYX_XDEC_MEMVIEW(&__pyx_t_17, 1);
       __pyx_t_17.memview = NULL;
@@ -17210,15 +16930,15 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       __pyx_t_13 = (__pyx_t_18) ? __Pyx_PyObject_Call2Args(__pyx_t_16, __pyx_t_18, __pyx_t_15) : __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_15);
       __Pyx_XDECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 774, __pyx_L1_error)
+      if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
-      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_array); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 774, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 736, __pyx_L1_error)}
       __pyx_t_17.data = __pyx_v_state->phase_compositions.data;
       __pyx_t_17.memview = __pyx_v_state->phase_compositions.memview;
       __PYX_INC_MEMVIEW(&__pyx_t_17, 0);
@@ -17231,7 +16951,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         if (unlikely(!__Pyx_is_valid_index(__pyx_tmp_idx, __pyx_tmp_shape))) {
             PyErr_SetString(PyExc_IndexError,
                             "Index out of bounds (axis 0)");
-            __PYX_ERR(0, 774, __pyx_L1_error)
+            __PYX_ERR(0, 736, __pyx_L1_error)
         }
         __pyx_t_17.data += __pyx_tmp_idx * __pyx_tmp_stride;
 }
@@ -17240,7 +16960,7 @@ __pyx_t_17.shape[0] = __pyx_v_state->phase_compositions.shape[1];
 __pyx_t_17.strides[0] = __pyx_v_state->phase_compositions.strides[1];
     __pyx_t_17.suboffsets[0] = -1;
 
-__pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 774, __pyx_L1_error)
+__pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
       __PYX_XDEC_MEMVIEW(&__pyx_t_17, 1);
       __pyx_t_17.memview = NULL;
@@ -17258,10 +16978,10 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       __pyx_t_16 = (__pyx_t_19) ? __Pyx_PyObject_Call2Args(__pyx_t_18, __pyx_t_19, __pyx_t_15) : __Pyx_PyObject_CallOneArg(__pyx_t_18, __pyx_t_15);
       __Pyx_XDECREF(__pyx_t_19); __pyx_t_19 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 774, __pyx_L1_error)
+      if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      __pyx_t_18 = PyNumber_Subtract(__pyx_t_13, __pyx_t_16); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 774, __pyx_L1_error)
+      __pyx_t_18 = PyNumber_Subtract(__pyx_t_13, __pyx_t_16); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
@@ -17278,25 +16998,25 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       __pyx_t_1 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_16, __pyx_t_18) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_18);
       __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 774, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 736, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_XDECREF_SET(__pyx_v_compset_distances, __pyx_t_1);
       __pyx_t_1 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":775
+      /* "pycalphad/core/minimizer.pyx":737
  *             # Detect if these compsets describe the same internal configuration inside a miscibility gap
  *             compset_distances = np.abs(np.array(state.phase_compositions[idx]) - np.array(state.phase_compositions[idx2]))
  *             if np.all(compset_distances < 1e-4):             # <<<<<<<<<<<<<<
  *                 compset_indices_to_remove.add(idx2)
  *                 if idx not in spec.fixed_stable_compset_indices:
  */
-      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 775, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 737, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_all); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 775, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_all); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 737, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = PyObject_RichCompare(__pyx_v_compset_distances, __pyx_float_1eneg_4, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 775, __pyx_L1_error)
+      __pyx_t_14 = PyObject_RichCompare(__pyx_v_compset_distances, __pyx_float_1eneg_4, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 737, __pyx_L1_error)
       __pyx_t_16 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_18))) {
         __pyx_t_16 = PyMethod_GET_SELF(__pyx_t_18);
@@ -17310,44 +17030,44 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       __pyx_t_1 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_18, __pyx_t_16, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_18, __pyx_t_14);
       __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 775, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 737, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
-      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 775, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 737, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       if (__pyx_t_8) {
 
-        /* "pycalphad/core/minimizer.pyx":776
+        /* "pycalphad/core/minimizer.pyx":738
  *             compset_distances = np.abs(np.array(state.phase_compositions[idx]) - np.array(state.phase_compositions[idx2]))
  *             if np.all(compset_distances < 1e-4):
  *                 compset_indices_to_remove.add(idx2)             # <<<<<<<<<<<<<<
  *                 if idx not in spec.fixed_stable_compset_indices:
  *                     # ensure that the consolidated phase is stable
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 776, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 738, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_9 = PySet_Add(__pyx_v_compset_indices_to_remove, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 776, __pyx_L1_error)
+        __pyx_t_9 = PySet_Add(__pyx_v_compset_indices_to_remove, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 738, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "pycalphad/core/minimizer.pyx":777
+        /* "pycalphad/core/minimizer.pyx":739
  *             if np.all(compset_distances < 1e-4):
  *                 compset_indices_to_remove.add(idx2)
  *                 if idx not in spec.fixed_stable_compset_indices:             # <<<<<<<<<<<<<<
  *                     # ensure that the consolidated phase is stable
  *                     state.phase_amt[idx] = max(state.phase_amt[idx] + state.phase_amt[idx2], 1e-8)
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 777, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 739, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(!__pyx_v_spec->fixed_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 777, __pyx_L1_error)}
-        __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_v_spec->fixed_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 777, __pyx_L1_error)
+        if (unlikely(!__pyx_v_spec->fixed_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 739, __pyx_L1_error)}
+        __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_v_spec->fixed_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 739, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_18);
-        __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_t_18, Py_NE)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 777, __pyx_L1_error)
+        __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_t_1, __pyx_t_18, Py_NE)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 739, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         __pyx_t_7 = (__pyx_t_8 != 0);
         if (__pyx_t_7) {
 
-          /* "pycalphad/core/minimizer.pyx":779
+          /* "pycalphad/core/minimizer.pyx":741
  *                 if idx not in spec.fixed_stable_compset_indices:
  *                     # ensure that the consolidated phase is stable
  *                     state.phase_amt[idx] = max(state.phase_amt[idx] + state.phase_amt[idx2], 1e-8)             # <<<<<<<<<<<<<<
@@ -17355,7 +17075,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
  *     if len(compset_indices_to_remove) > 0:
  */
           __pyx_t_20 = 1e-8;
-          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 779, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 741, __pyx_L1_error)}
           __pyx_t_5 = __pyx_v_idx;
           __pyx_t_12 = -1;
           if (__pyx_t_5 < 0) {
@@ -17364,9 +17084,9 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_5 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_12 = 0;
           if (unlikely(__pyx_t_12 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_12);
-            __PYX_ERR(0, 779, __pyx_L1_error)
+            __PYX_ERR(0, 741, __pyx_L1_error)
           }
-          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 779, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 741, __pyx_L1_error)}
           __pyx_t_21 = __pyx_v_idx2;
           __pyx_t_12 = -1;
           if (__pyx_t_21 < 0) {
@@ -17375,7 +17095,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_21 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_12 = 0;
           if (unlikely(__pyx_t_12 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_12);
-            __PYX_ERR(0, 779, __pyx_L1_error)
+            __PYX_ERR(0, 741, __pyx_L1_error)
           }
           __pyx_t_22 = ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_5)) ))) + (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_21)) ))));
           if (((__pyx_t_20 > __pyx_t_22) != 0)) {
@@ -17383,7 +17103,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           } else {
             __pyx_t_23 = __pyx_t_22;
           }
-          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 779, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 741, __pyx_L1_error)}
           __pyx_t_21 = __pyx_v_idx;
           __pyx_t_12 = -1;
           if (__pyx_t_21 < 0) {
@@ -17392,11 +17112,11 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           } else if (unlikely(__pyx_t_21 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_12 = 0;
           if (unlikely(__pyx_t_12 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_12);
-            __PYX_ERR(0, 779, __pyx_L1_error)
+            __PYX_ERR(0, 741, __pyx_L1_error)
           }
           *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_21)) )) = __pyx_t_23;
 
-          /* "pycalphad/core/minimizer.pyx":777
+          /* "pycalphad/core/minimizer.pyx":739
  *             if np.all(compset_distances < 1e-4):
  *                 compset_indices_to_remove.add(idx2)
  *                 if idx not in spec.fixed_stable_compset_indices:             # <<<<<<<<<<<<<<
@@ -17405,14 +17125,14 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
  */
         }
 
-        /* "pycalphad/core/minimizer.pyx":780
+        /* "pycalphad/core/minimizer.pyx":742
  *                     # ensure that the consolidated phase is stable
  *                     state.phase_amt[idx] = max(state.phase_amt[idx] + state.phase_amt[idx2], 1e-8)
  *                 state.phase_amt[idx2] = 0             # <<<<<<<<<<<<<<
  *     if len(compset_indices_to_remove) > 0:
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:
  */
-        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 780, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 742, __pyx_L1_error)}
         __pyx_t_21 = __pyx_v_idx2;
         __pyx_t_12 = -1;
         if (__pyx_t_21 < 0) {
@@ -17421,11 +17141,11 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_21 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_12 = 0;
         if (unlikely(__pyx_t_12 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_12);
-          __PYX_ERR(0, 780, __pyx_L1_error)
+          __PYX_ERR(0, 742, __pyx_L1_error)
         }
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_21)) )) = 0.0;
 
-        /* "pycalphad/core/minimizer.pyx":775
+        /* "pycalphad/core/minimizer.pyx":737
  *             # Detect if these compsets describe the same internal configuration inside a miscibility gap
  *             compset_distances = np.abs(np.array(state.phase_compositions[idx]) - np.array(state.phase_compositions[idx2]))
  *             if np.all(compset_distances < 1e-4):             # <<<<<<<<<<<<<<
@@ -17438,47 +17158,47 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
     __pyx_L3_continue:;
   }
 
-  /* "pycalphad/core/minimizer.pyx":781
+  /* "pycalphad/core/minimizer.pyx":743
  *                     state.phase_amt[idx] = max(state.phase_amt[idx] + state.phase_amt[idx2], 1e-8)
  *                 state.phase_amt[idx2] = 0
  *     if len(compset_indices_to_remove) > 0:             # <<<<<<<<<<<<<<
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:
  *             # Do not allow all phases to leave the system
  */
-  __pyx_t_3 = PySet_GET_SIZE(__pyx_v_compset_indices_to_remove); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 781, __pyx_L1_error)
+  __pyx_t_3 = PySet_GET_SIZE(__pyx_v_compset_indices_to_remove); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 743, __pyx_L1_error)
   __pyx_t_7 = ((__pyx_t_3 > 0) != 0);
   if (__pyx_t_7) {
 
-    /* "pycalphad/core/minimizer.pyx":782
+    /* "pycalphad/core/minimizer.pyx":744
  *                 state.phase_amt[idx2] = 0
  *     if len(compset_indices_to_remove) > 0:
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:             # <<<<<<<<<<<<<<
  *             # Do not allow all phases to leave the system
  *             for phase_idx in state.free_stable_compset_indices:
  */
-    __pyx_t_3 = PySet_GET_SIZE(__pyx_v_compset_indices_to_remove); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 782, __pyx_L1_error)
-    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 782, __pyx_L1_error)}
+    __pyx_t_3 = PySet_GET_SIZE(__pyx_v_compset_indices_to_remove); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 744, __pyx_L1_error)
+    if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 744, __pyx_L1_error)}
     __pyx_t_2 = __Pyx_MemoryView_Len(__pyx_v_state->free_stable_compset_indices); 
     __pyx_t_7 = (((__pyx_t_3 - __pyx_t_2) == 0) != 0);
     if (__pyx_t_7) {
 
-      /* "pycalphad/core/minimizer.pyx":784
+      /* "pycalphad/core/minimizer.pyx":746
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:
  *             # Do not allow all phases to leave the system
  *             for phase_idx in state.free_stable_compset_indices:             # <<<<<<<<<<<<<<
  *                 state.phase_amt[phase_idx] = 1
  *             state.chemical_potentials[:] = 0
  */
-      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 784, __pyx_L1_error)}
-      __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 784, __pyx_L1_error)
+      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 746, __pyx_L1_error)}
+      __pyx_t_18 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 746, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       if (likely(PyList_CheckExact(__pyx_t_18)) || PyTuple_CheckExact(__pyx_t_18)) {
         __pyx_t_1 = __pyx_t_18; __Pyx_INCREF(__pyx_t_1); __pyx_t_3 = 0;
         __pyx_t_24 = NULL;
       } else {
-        __pyx_t_3 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_18); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 784, __pyx_L1_error)
+        __pyx_t_3 = -1; __pyx_t_1 = PyObject_GetIter(__pyx_t_18); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 746, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_24 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 784, __pyx_L1_error)
+        __pyx_t_24 = Py_TYPE(__pyx_t_1)->tp_iternext; if (unlikely(!__pyx_t_24)) __PYX_ERR(0, 746, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       for (;;) {
@@ -17486,17 +17206,17 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           if (likely(PyList_CheckExact(__pyx_t_1))) {
             if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_1)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_18 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_18); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 784, __pyx_L1_error)
+            __pyx_t_18 = PyList_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_18); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 746, __pyx_L1_error)
             #else
-            __pyx_t_18 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 784, __pyx_L1_error)
+            __pyx_t_18 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 746, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_18);
             #endif
           } else {
             if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_1)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_18 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_18); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 784, __pyx_L1_error)
+            __pyx_t_18 = PyTuple_GET_ITEM(__pyx_t_1, __pyx_t_3); __Pyx_INCREF(__pyx_t_18); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(0, 746, __pyx_L1_error)
             #else
-            __pyx_t_18 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 784, __pyx_L1_error)
+            __pyx_t_18 = PySequence_ITEM(__pyx_t_1, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 746, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_18);
             #endif
           }
@@ -17506,24 +17226,24 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 784, __pyx_L1_error)
+              else __PYX_ERR(0, 746, __pyx_L1_error)
             }
             break;
           }
           __Pyx_GOTREF(__pyx_t_18);
         }
-        __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_18); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 784, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_As_int(__pyx_t_18); if (unlikely((__pyx_t_4 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 746, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
         __pyx_v_phase_idx = __pyx_t_4;
 
-        /* "pycalphad/core/minimizer.pyx":785
+        /* "pycalphad/core/minimizer.pyx":747
  *             # Do not allow all phases to leave the system
  *             for phase_idx in state.free_stable_compset_indices:
  *                 state.phase_amt[phase_idx] = 1             # <<<<<<<<<<<<<<
  *             state.chemical_potentials[:] = 0
  *             # Force some chemical potentials to adopt their fixed values
  */
-        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 785, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 747, __pyx_L1_error)}
         __pyx_t_21 = __pyx_v_phase_idx;
         __pyx_t_4 = -1;
         if (__pyx_t_21 < 0) {
@@ -17532,11 +17252,11 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_21 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_4 = 0;
         if (unlikely(__pyx_t_4 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_4);
-          __PYX_ERR(0, 785, __pyx_L1_error)
+          __PYX_ERR(0, 747, __pyx_L1_error)
         }
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_21)) )) = 1.0;
 
-        /* "pycalphad/core/minimizer.pyx":784
+        /* "pycalphad/core/minimizer.pyx":746
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:
  *             # Do not allow all phases to leave the system
  *             for phase_idx in state.free_stable_compset_indices:             # <<<<<<<<<<<<<<
@@ -17546,14 +17266,14 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       }
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":786
+      /* "pycalphad/core/minimizer.pyx":748
  *             for phase_idx in state.free_stable_compset_indices:
  *                 state.phase_amt[phase_idx] = 1
  *             state.chemical_potentials[:] = 0             # <<<<<<<<<<<<<<
  *             # Force some chemical potentials to adopt their fixed values
  *             for cp_idx in range(spec.fixed_chemical_potential_indices.shape[0]):
  */
-      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 786, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 748, __pyx_L1_error)}
       {
           double __pyx_temp_scalar = 0.0;
           {
@@ -17567,27 +17287,27 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
           }
       }
 
-      /* "pycalphad/core/minimizer.pyx":788
+      /* "pycalphad/core/minimizer.pyx":750
  *             state.chemical_potentials[:] = 0
  *             # Force some chemical potentials to adopt their fixed values
  *             for cp_idx in range(spec.fixed_chemical_potential_indices.shape[0]):             # <<<<<<<<<<<<<<
  *                 comp_idx = spec.fixed_chemical_potential_indices[cp_idx]
  *                 state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  */
-      if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 788, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 750, __pyx_L1_error)}
       __pyx_t_3 = (__pyx_v_spec->fixed_chemical_potential_indices.shape[0]);
       __pyx_t_11 = __pyx_t_3;
       for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_11; __pyx_t_4+=1) {
         __pyx_v_cp_idx = __pyx_t_4;
 
-        /* "pycalphad/core/minimizer.pyx":789
+        /* "pycalphad/core/minimizer.pyx":751
  *             # Force some chemical potentials to adopt their fixed values
  *             for cp_idx in range(spec.fixed_chemical_potential_indices.shape[0]):
  *                 comp_idx = spec.fixed_chemical_potential_indices[cp_idx]             # <<<<<<<<<<<<<<
  *                 state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  *         else:
  */
-        if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 789, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_spec->fixed_chemical_potential_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 751, __pyx_L1_error)}
         __pyx_t_21 = __pyx_v_cp_idx;
         __pyx_t_6 = -1;
         if (__pyx_t_21 < 0) {
@@ -17596,18 +17316,18 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_21 >= __pyx_v_spec->fixed_chemical_potential_indices.shape[0])) __pyx_t_6 = 0;
         if (unlikely(__pyx_t_6 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_6);
-          __PYX_ERR(0, 789, __pyx_L1_error)
+          __PYX_ERR(0, 751, __pyx_L1_error)
         }
         __pyx_v_comp_idx = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_spec->fixed_chemical_potential_indices.data) + __pyx_t_21)) )));
 
-        /* "pycalphad/core/minimizer.pyx":790
+        /* "pycalphad/core/minimizer.pyx":752
  *             for cp_idx in range(spec.fixed_chemical_potential_indices.shape[0]):
  *                 comp_idx = spec.fixed_chemical_potential_indices[cp_idx]
  *                 state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]             # <<<<<<<<<<<<<<
  *         else:
  *             state.free_stable_compset_indices = np.array(sorted(set(state.free_stable_compset_indices) - compset_indices_to_remove), dtype=np.int32)
  */
-        if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 790, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 752, __pyx_L1_error)}
         __pyx_t_21 = __pyx_v_comp_idx;
         __pyx_t_6 = -1;
         if (__pyx_t_21 < 0) {
@@ -17616,9 +17336,9 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_21 >= __pyx_v_spec->initial_chemical_potentials.shape[0])) __pyx_t_6 = 0;
         if (unlikely(__pyx_t_6 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_6);
-          __PYX_ERR(0, 790, __pyx_L1_error)
+          __PYX_ERR(0, 752, __pyx_L1_error)
         }
-        if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 790, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 752, __pyx_L1_error)}
         __pyx_t_5 = __pyx_v_comp_idx;
         __pyx_t_6 = -1;
         if (__pyx_t_5 < 0) {
@@ -17627,12 +17347,12 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
         } else if (unlikely(__pyx_t_5 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_6 = 0;
         if (unlikely(__pyx_t_6 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_6);
-          __PYX_ERR(0, 790, __pyx_L1_error)
+          __PYX_ERR(0, 752, __pyx_L1_error)
         }
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_5)) )) = (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_spec->initial_chemical_potentials.data) + __pyx_t_21)) )));
       }
 
-      /* "pycalphad/core/minimizer.pyx":782
+      /* "pycalphad/core/minimizer.pyx":744
  *                 state.phase_amt[idx2] = 0
  *     if len(compset_indices_to_remove) > 0:
  *         if len(compset_indices_to_remove) - len(state.free_stable_compset_indices) == 0:             # <<<<<<<<<<<<<<
@@ -17642,7 +17362,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
       goto __pyx_L17;
     }
 
-    /* "pycalphad/core/minimizer.pyx":792
+    /* "pycalphad/core/minimizer.pyx":754
  *                 state.chemical_potentials[comp_idx] = spec.initial_chemical_potentials[comp_idx]
  *         else:
  *             state.free_stable_compset_indices = np.array(sorted(set(state.free_stable_compset_indices) - compset_indices_to_remove), dtype=np.int32)             # <<<<<<<<<<<<<<
@@ -17650,53 +17370,53 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
  *     return phases_changed
  */
     /*else*/ {
-      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_18 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_18)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_18);
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 792, __pyx_L1_error)}
-      __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 792, __pyx_L1_error)
+      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 754, __pyx_L1_error)}
+      __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_16 = PySet_New(__pyx_t_14); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_16 = PySet_New(__pyx_t_14); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      __pyx_t_14 = PyNumber_Subtract(__pyx_t_16, __pyx_v_compset_indices_to_remove); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_14 = PyNumber_Subtract(__pyx_t_16, __pyx_v_compset_indices_to_remove); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-      __pyx_t_16 = PySequence_List(__pyx_t_14); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_16 = PySequence_List(__pyx_t_14); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __pyx_t_1 = ((PyObject*)__pyx_t_16);
       __pyx_t_16 = 0;
-      __pyx_t_9 = PyList_Sort(__pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 792, __pyx_L1_error)
-      __pyx_t_16 = PyTuple_New(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_9 = PyList_Sort(__pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 754, __pyx_L1_error)
+      __pyx_t_16 = PyTuple_New(1); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __Pyx_GIVEREF(__pyx_t_1);
       PyTuple_SET_ITEM(__pyx_t_16, 0, __pyx_t_1);
       __pyx_t_1 = 0;
-      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int32); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_int32); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_13) < 0) __PYX_ERR(0, 792, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_13) < 0) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-      __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_16, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_13 = __Pyx_PyObject_Call(__pyx_t_18, __pyx_t_16, __pyx_t_1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_13);
       __Pyx_DECREF(__pyx_t_18); __pyx_t_18 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-      __pyx_t_25 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_25.memview)) __PYX_ERR(0, 792, __pyx_L1_error)
+      __pyx_t_25 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_25.memview)) __PYX_ERR(0, 754, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
       __PYX_XDEC_MEMVIEW(&__pyx_v_state->free_stable_compset_indices, 0);
       __pyx_v_state->free_stable_compset_indices = __pyx_t_25;
       __pyx_t_25.memview = NULL;
       __pyx_t_25.data = NULL;
 
-      /* "pycalphad/core/minimizer.pyx":793
+      /* "pycalphad/core/minimizer.pyx":755
  *         else:
  *             state.free_stable_compset_indices = np.array(sorted(set(state.free_stable_compset_indices) - compset_indices_to_remove), dtype=np.int32)
  *             phases_changed = True             # <<<<<<<<<<<<<<
@@ -17707,7 +17427,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
     }
     __pyx_L17:;
 
-    /* "pycalphad/core/minimizer.pyx":781
+    /* "pycalphad/core/minimizer.pyx":743
  *                     state.phase_amt[idx] = max(state.phase_amt[idx] + state.phase_amt[idx2], 1e-8)
  *                 state.phase_amt[idx2] = 0
  *     if len(compset_indices_to_remove) > 0:             # <<<<<<<<<<<<<<
@@ -17716,7 +17436,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
  */
   }
 
-  /* "pycalphad/core/minimizer.pyx":794
+  /* "pycalphad/core/minimizer.pyx":756
  *             state.free_stable_compset_indices = np.array(sorted(set(state.free_stable_compset_indices) - compset_indices_to_remove), dtype=np.int32)
  *             phases_changed = True
  *     return phases_changed             # <<<<<<<<<<<<<<
@@ -17726,7 +17446,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
   __pyx_r = __pyx_v_phases_changed;
   goto __pyx_L0;
 
-  /* "pycalphad/core/minimizer.pyx":740
+  /* "pycalphad/core/minimizer.pyx":702
  * 
  * 
  * cdef bint remove_and_consolidate_phases(SystemSpecification spec, SystemState state):             # <<<<<<<<<<<<<<
@@ -17756,7 +17476,7 @@ __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_t_17, 1, (PyObject *(*)(char *)) _
   return __pyx_r;
 }
 
-/* "pycalphad/core/minimizer.pyx":796
+/* "pycalphad/core/minimizer.pyx":758
  *     return phases_changed
  * 
  * cdef bint change_phases(SystemSpecification spec, SystemState state, int[::1] metastable_phase_iterations, int[::1] times_compset_removed):             # <<<<<<<<<<<<<<
@@ -17804,64 +17524,64 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("change_phases", 0);
 
-  /* "pycalphad/core/minimizer.pyx":798
+  /* "pycalphad/core/minimizer.pyx":760
  * cdef bint change_phases(SystemSpecification spec, SystemState state, int[::1] metastable_phase_iterations, int[::1] times_compset_removed):
  *     cdef int idx
  *     cdef double[::1] driving_forces = state.driving_forces()             # <<<<<<<<<<<<<<
  *     phase_amt = state.phase_amt
  *     current_free_stable_compset_indices = state.free_stable_compset_indices
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9pycalphad_4core_9minimizer_SystemState *)__pyx_v_state->__pyx_vtab)->driving_forces(__pyx_v_state); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 798, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9pycalphad_4core_9minimizer_SystemState *)__pyx_v_state->__pyx_vtab)->driving_forces(__pyx_v_state); if (unlikely(!__pyx_t_1.memview)) __PYX_ERR(0, 760, __pyx_L1_error)
   __pyx_v_driving_forces = __pyx_t_1;
   __pyx_t_1.memview = NULL;
   __pyx_t_1.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":799
+  /* "pycalphad/core/minimizer.pyx":761
  *     cdef int idx
  *     cdef double[::1] driving_forces = state.driving_forces()
  *     phase_amt = state.phase_amt             # <<<<<<<<<<<<<<
  *     current_free_stable_compset_indices = state.free_stable_compset_indices
  *     compsets_to_remove = set(current_free_stable_compset_indices).intersection(set(np.nonzero(np.array(phase_amt) < 1e-9)[0]))
  */
-  if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 799, __pyx_L1_error)}
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_state->phase_amt, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 799, __pyx_L1_error)
+  if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 761, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_state->phase_amt, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 761, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_phase_amt = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":800
+  /* "pycalphad/core/minimizer.pyx":762
  *     cdef double[::1] driving_forces = state.driving_forces()
  *     phase_amt = state.phase_amt
  *     current_free_stable_compset_indices = state.free_stable_compset_indices             # <<<<<<<<<<<<<<
  *     compsets_to_remove = set(current_free_stable_compset_indices).intersection(set(np.nonzero(np.array(phase_amt) < 1e-9)[0]))
  *     # Only add phases with positive driving force which have been metastable for at least 5 iterations, which have been removed fewer than 4 times
  */
-  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 800, __pyx_L1_error)}
-  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 800, __pyx_L1_error)
+  if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 762, __pyx_L1_error)}
+  __pyx_t_2 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 762, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_current_free_stable_compset_indices = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":801
+  /* "pycalphad/core/minimizer.pyx":763
  *     phase_amt = state.phase_amt
  *     current_free_stable_compset_indices = state.free_stable_compset_indices
  *     compsets_to_remove = set(current_free_stable_compset_indices).intersection(set(np.nonzero(np.array(phase_amt) < 1e-9)[0]))             # <<<<<<<<<<<<<<
  *     # Only add phases with positive driving force which have been metastable for at least 5 iterations, which have been removed fewer than 4 times
  *     newly_metastable_compsets = set(np.nonzero((np.array(metastable_phase_iterations) < 5))[0]) - \
  */
-  __pyx_t_3 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_intersection); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_intersection); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_7, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   __pyx_t_7 = NULL;
@@ -17876,10 +17596,10 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   }
   __pyx_t_5 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_7, __pyx_v_phase_amt) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_v_phase_amt);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
-  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 801, __pyx_L1_error)
+  if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyObject_RichCompare(__pyx_t_5, __pyx_float_1eneg_9, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_8 = PyObject_RichCompare(__pyx_t_5, __pyx_float_1eneg_9, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -17894,13 +17614,13 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_5, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_8);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 801, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_GetItemInt(__pyx_t_3, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(__pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __pyx_t_6 = NULL;
@@ -17916,30 +17636,30 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_2 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
   __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 801, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 763, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_compsets_to_remove = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":803
+  /* "pycalphad/core/minimizer.pyx":765
  *     compsets_to_remove = set(current_free_stable_compset_indices).intersection(set(np.nonzero(np.array(phase_amt) < 1e-9)[0]))
  *     # Only add phases with positive driving force which have been metastable for at least 5 iterations, which have been removed fewer than 4 times
  *     newly_metastable_compsets = set(np.nonzero((np.array(metastable_phase_iterations) < 5))[0]) - \             # <<<<<<<<<<<<<<
  *                                 set(current_free_stable_compset_indices)
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_array); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_metastable_phase_iterations, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_6 = __pyx_memoryview_fromslice(__pyx_v_metastable_phase_iterations, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
@@ -17954,10 +17674,10 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_4 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_8, __pyx_t_5, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_6);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 803, __pyx_L1_error)
+  if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PyObject_RichCompare(__pyx_t_4, __pyx_int_5, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_8 = PyObject_RichCompare(__pyx_t_4, __pyx_int_5, Py_LT); __Pyx_XGOTREF(__pyx_t_8); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -17972,58 +17692,58 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_8) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 803, __pyx_L1_error)
+  if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_GetItemInt(__pyx_t_2, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PySet_New(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_2 = PySet_New(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":804
+  /* "pycalphad/core/minimizer.pyx":766
  *     # Only add phases with positive driving force which have been metastable for at least 5 iterations, which have been removed fewer than 4 times
  *     newly_metastable_compsets = set(np.nonzero((np.array(metastable_phase_iterations) < 5))[0]) - \
  *                                 set(current_free_stable_compset_indices)             # <<<<<<<<<<<<<<
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)
  *     compsets_to_add = set((np.nonzero(add_criteria)[0])) - newly_metastable_compsets
  */
-  __pyx_t_3 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 804, __pyx_L1_error)
+  __pyx_t_3 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 766, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "pycalphad/core/minimizer.pyx":803
+  /* "pycalphad/core/minimizer.pyx":765
  *     compsets_to_remove = set(current_free_stable_compset_indices).intersection(set(np.nonzero(np.array(phase_amt) < 1e-9)[0]))
  *     # Only add phases with positive driving force which have been metastable for at least 5 iterations, which have been removed fewer than 4 times
  *     newly_metastable_compsets = set(np.nonzero((np.array(metastable_phase_iterations) < 5))[0]) - \             # <<<<<<<<<<<<<<
  *                                 set(current_free_stable_compset_indices)
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)
  */
-  __pyx_t_8 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 803, __pyx_L1_error)
+  __pyx_t_8 = PyNumber_Subtract(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 765, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_newly_metastable_compsets = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":805
+  /* "pycalphad/core/minimizer.pyx":767
  *     newly_metastable_compsets = set(np.nonzero((np.array(metastable_phase_iterations) < 5))[0]) - \
  *                                 set(current_free_stable_compset_indices)
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)             # <<<<<<<<<<<<<<
  *     compsets_to_add = set((np.nonzero(add_criteria)[0])) - newly_metastable_compsets
  *     max_allowed_to_add = spec.max_num_free_stable_phases + len(compsets_to_remove) - len(current_free_stable_compset_indices)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_logical_and); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_logical_and); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_driving_forces, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_driving_forces, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -18038,17 +17758,17 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_3 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_6, __pyx_t_5, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 805, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-  __pyx_t_6 = PyObject_RichCompare(__pyx_t_3, __pyx_float_1eneg_5, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(__pyx_t_3, __pyx_float_1eneg_5, Py_GT); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_array); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_times_compset_removed, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_4 = __pyx_memoryview_fromslice(__pyx_v_times_compset_removed, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_7 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -18063,10 +17783,10 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_t_3 = (__pyx_t_7) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_7, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4);
   __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 805, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_int_4, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 805, __pyx_L1_error)
+  __pyx_t_5 = PyObject_RichCompare(__pyx_t_3, __pyx_int_4, Py_LT); __Pyx_XGOTREF(__pyx_t_5); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_3 = NULL;
   __pyx_t_9 = 0;
@@ -18083,7 +17803,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   #if CYTHON_FAST_PYCALL
   if (PyFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_6, __pyx_t_5};
-    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 805, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 767, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -18093,7 +17813,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   #if CYTHON_FAST_PYCCALL
   if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
     PyObject *__pyx_temp[3] = {__pyx_t_3, __pyx_t_6, __pyx_t_5};
-    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 805, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-__pyx_t_9, 2+__pyx_t_9); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 767, __pyx_L1_error)
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
@@ -18101,7 +17821,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   } else
   #endif
   {
-    __pyx_t_4 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 805, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2+__pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 767, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (__pyx_t_3) {
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -18112,7 +17832,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     PyTuple_SET_ITEM(__pyx_t_4, 1+__pyx_t_9, __pyx_t_5);
     __pyx_t_6 = 0;
     __pyx_t_5 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 805, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 767, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -18120,16 +17840,16 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_v_add_criteria = __pyx_t_8;
   __pyx_t_8 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":806
+  /* "pycalphad/core/minimizer.pyx":768
  *                                 set(current_free_stable_compset_indices)
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)
  *     compsets_to_add = set((np.nonzero(add_criteria)[0])) - newly_metastable_compsets             # <<<<<<<<<<<<<<
  *     max_allowed_to_add = spec.max_num_free_stable_phases + len(compsets_to_remove) - len(current_free_stable_compset_indices)
  *     # We must obey the Gibbs phase rule
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_nonzero); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -18144,44 +17864,44 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   }
   __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_v_add_criteria) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_add_criteria);
   __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 806, __pyx_L1_error)
+  if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_8 = PySet_New(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_8 = PySet_New(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = PyNumber_Subtract(__pyx_t_8, __pyx_v_newly_metastable_compsets); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 806, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Subtract(__pyx_t_8, __pyx_v_newly_metastable_compsets); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 768, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_compsets_to_add = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":807
+  /* "pycalphad/core/minimizer.pyx":769
  *     add_criteria = np.logical_and(np.array(driving_forces) > 1e-5, np.array(times_compset_removed) < 4)
  *     compsets_to_add = set((np.nonzero(add_criteria)[0])) - newly_metastable_compsets
  *     max_allowed_to_add = spec.max_num_free_stable_phases + len(compsets_to_remove) - len(current_free_stable_compset_indices)             # <<<<<<<<<<<<<<
  *     # We must obey the Gibbs phase rule
  *     if len(compsets_to_add) > 0:
  */
-  __pyx_t_10 = PyObject_Length(__pyx_v_compsets_to_remove); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 807, __pyx_L1_error)
-  __pyx_t_11 = PyObject_Length(__pyx_v_current_free_stable_compset_indices); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 807, __pyx_L1_error)
+  __pyx_t_10 = PyObject_Length(__pyx_v_compsets_to_remove); if (unlikely(__pyx_t_10 == ((Py_ssize_t)-1))) __PYX_ERR(0, 769, __pyx_L1_error)
+  __pyx_t_11 = PyObject_Length(__pyx_v_current_free_stable_compset_indices); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 769, __pyx_L1_error)
   __pyx_v_max_allowed_to_add = ((__pyx_v_spec->max_num_free_stable_phases + __pyx_t_10) - __pyx_t_11);
 
-  /* "pycalphad/core/minimizer.pyx":809
+  /* "pycalphad/core/minimizer.pyx":771
  *     max_allowed_to_add = spec.max_num_free_stable_phases + len(compsets_to_remove) - len(current_free_stable_compset_indices)
  *     # We must obey the Gibbs phase rule
  *     if len(compsets_to_add) > 0:             # <<<<<<<<<<<<<<
  *         if max_allowed_to_add < 1:
  *             # We are at the maximum number of allowed phases, yet there is still positive driving force
  */
-  __pyx_t_11 = PyObject_Length(__pyx_v_compsets_to_add); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 809, __pyx_L1_error)
+  __pyx_t_11 = PyObject_Length(__pyx_v_compsets_to_add); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 771, __pyx_L1_error)
   __pyx_t_12 = ((__pyx_t_11 > 0) != 0);
   if (__pyx_t_12) {
 
-    /* "pycalphad/core/minimizer.pyx":810
+    /* "pycalphad/core/minimizer.pyx":772
  *     # We must obey the Gibbs phase rule
  *     if len(compsets_to_add) > 0:
  *         if max_allowed_to_add < 1:             # <<<<<<<<<<<<<<
@@ -18191,54 +17911,54 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     __pyx_t_12 = ((__pyx_v_max_allowed_to_add < 1) != 0);
     if (__pyx_t_12) {
 
-      /* "pycalphad/core/minimizer.pyx":813
+      /* "pycalphad/core/minimizer.pyx":775
  *             # We are at the maximum number of allowed phases, yet there is still positive driving force
  *             # Destabilize one phase and add only one phase
  *             possible_phases_to_destabilize = set(current_free_stable_compset_indices) - compsets_to_add - compsets_to_remove             # <<<<<<<<<<<<<<
  *             # Arbitrarily pick the lowest index to destabilize
  *             idx_to_remove = sorted(possible_phases_to_destabilize)[0]
  */
-      __pyx_t_4 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 813, __pyx_L1_error)
+      __pyx_t_4 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 775, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_8 = PyNumber_Subtract(__pyx_t_4, __pyx_v_compsets_to_add); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 813, __pyx_L1_error)
+      __pyx_t_8 = PyNumber_Subtract(__pyx_t_4, __pyx_v_compsets_to_add); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 775, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      __pyx_t_4 = PyNumber_Subtract(__pyx_t_8, __pyx_v_compsets_to_remove); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 813, __pyx_L1_error)
+      __pyx_t_4 = PyNumber_Subtract(__pyx_t_8, __pyx_v_compsets_to_remove); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 775, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       __pyx_v_possible_phases_to_destabilize = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":815
+      /* "pycalphad/core/minimizer.pyx":777
  *             possible_phases_to_destabilize = set(current_free_stable_compset_indices) - compsets_to_add - compsets_to_remove
  *             # Arbitrarily pick the lowest index to destabilize
  *             idx_to_remove = sorted(possible_phases_to_destabilize)[0]             # <<<<<<<<<<<<<<
  *             compsets_to_remove.add(idx_to_remove)
  *             phase_amt[idx_to_remove] = 0
  */
-      __pyx_t_8 = PySequence_List(__pyx_v_possible_phases_to_destabilize); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 815, __pyx_L1_error)
+      __pyx_t_8 = PySequence_List(__pyx_v_possible_phases_to_destabilize); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 777, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __pyx_t_4 = ((PyObject*)__pyx_t_8);
       __pyx_t_8 = 0;
-      __pyx_t_13 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 815, __pyx_L1_error)
+      __pyx_t_13 = PyList_Sort(__pyx_t_4); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 777, __pyx_L1_error)
       if (unlikely(__pyx_t_4 == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 815, __pyx_L1_error)
+        __PYX_ERR(0, 777, __pyx_L1_error)
       }
-      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 815, __pyx_L1_error)
+      __pyx_t_8 = __Pyx_GetItemInt_List(__pyx_t_4, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 777, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_v_idx_to_remove = __pyx_t_8;
       __pyx_t_8 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":816
+      /* "pycalphad/core/minimizer.pyx":778
  *             # Arbitrarily pick the lowest index to destabilize
  *             idx_to_remove = sorted(possible_phases_to_destabilize)[0]
  *             compsets_to_remove.add(idx_to_remove)             # <<<<<<<<<<<<<<
  *             phase_amt[idx_to_remove] = 0
  *             # TODO: This should be ordered by driving force
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_compsets_to_remove, __pyx_n_s_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 816, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_compsets_to_remove, __pyx_n_s_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 778, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_2 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -18252,47 +17972,47 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
       }
       __pyx_t_8 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_2, __pyx_v_idx_to_remove) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_idx_to_remove);
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 816, __pyx_L1_error)
+      if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 778, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":817
+      /* "pycalphad/core/minimizer.pyx":779
  *             idx_to_remove = sorted(possible_phases_to_destabilize)[0]
  *             compsets_to_remove.add(idx_to_remove)
  *             phase_amt[idx_to_remove] = 0             # <<<<<<<<<<<<<<
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = {sorted(compsets_to_add)[0]}
  */
-      if (unlikely(PyObject_SetItem(__pyx_v_phase_amt, __pyx_v_idx_to_remove, __pyx_int_0) < 0)) __PYX_ERR(0, 817, __pyx_L1_error)
+      if (unlikely(PyObject_SetItem(__pyx_v_phase_amt, __pyx_v_idx_to_remove, __pyx_int_0) < 0)) __PYX_ERR(0, 779, __pyx_L1_error)
 
-      /* "pycalphad/core/minimizer.pyx":819
+      /* "pycalphad/core/minimizer.pyx":781
  *             phase_amt[idx_to_remove] = 0
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = {sorted(compsets_to_add)[0]}             # <<<<<<<<<<<<<<
  *         elif max_allowed_to_add < len(compsets_to_add):
  *             # Only add a number of phases within the limit
  */
-      __pyx_t_4 = PySequence_List(__pyx_v_compsets_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 819, __pyx_L1_error)
+      __pyx_t_4 = PySequence_List(__pyx_v_compsets_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 781, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_8 = ((PyObject*)__pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 819, __pyx_L1_error)
+      __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 781, __pyx_L1_error)
       if (unlikely(__pyx_t_8 == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 819, __pyx_L1_error)
+        __PYX_ERR(0, 781, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 819, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt_List(__pyx_t_8, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 781, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PySet_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 819, __pyx_L1_error)
+      __pyx_t_8 = PySet_New(0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 781, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      if (PySet_Add(__pyx_t_8, __pyx_t_4) < 0) __PYX_ERR(0, 819, __pyx_L1_error)
+      if (PySet_Add(__pyx_t_8, __pyx_t_4) < 0) __PYX_ERR(0, 781, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF_SET(__pyx_v_compsets_to_add, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":810
+      /* "pycalphad/core/minimizer.pyx":772
  *     # We must obey the Gibbs phase rule
  *     if len(compsets_to_add) > 0:
  *         if max_allowed_to_add < 1:             # <<<<<<<<<<<<<<
@@ -18302,43 +18022,43 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
       goto __pyx_L4;
     }
 
-    /* "pycalphad/core/minimizer.pyx":820
+    /* "pycalphad/core/minimizer.pyx":782
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = {sorted(compsets_to_add)[0]}
  *         elif max_allowed_to_add < len(compsets_to_add):             # <<<<<<<<<<<<<<
  *             # Only add a number of phases within the limit
  *             # TODO: This should be ordered by driving force
  */
-    __pyx_t_11 = PyObject_Length(__pyx_v_compsets_to_add); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 820, __pyx_L1_error)
+    __pyx_t_11 = PyObject_Length(__pyx_v_compsets_to_add); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 782, __pyx_L1_error)
     __pyx_t_12 = ((__pyx_v_max_allowed_to_add < __pyx_t_11) != 0);
     if (__pyx_t_12) {
 
-      /* "pycalphad/core/minimizer.pyx":823
+      /* "pycalphad/core/minimizer.pyx":785
  *             # Only add a number of phases within the limit
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = set(sorted(compsets_to_add)[:max_allowed_to_add])             # <<<<<<<<<<<<<<
  *     new_free_stable_compset_indices = np.array(sorted((set(current_free_stable_compset_indices) - compsets_to_remove)
  *                                                       | compsets_to_add
  */
-      __pyx_t_4 = PySequence_List(__pyx_v_compsets_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 823, __pyx_L1_error)
+      __pyx_t_4 = PySequence_List(__pyx_v_compsets_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 785, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_8 = ((PyObject*)__pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 823, __pyx_L1_error)
+      __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 785, __pyx_L1_error)
       if (unlikely(__pyx_t_8 == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 823, __pyx_L1_error)
+        __PYX_ERR(0, 785, __pyx_L1_error)
       }
-      __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_t_8, 0, __pyx_v_max_allowed_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 823, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyList_GetSlice(__pyx_t_8, 0, __pyx_v_max_allowed_to_add); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 785, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __pyx_t_8 = PySet_New(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 823, __pyx_L1_error)
+      __pyx_t_8 = PySet_New(__pyx_t_4); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 785, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF_SET(__pyx_v_compsets_to_add, __pyx_t_8);
       __pyx_t_8 = 0;
 
-      /* "pycalphad/core/minimizer.pyx":820
+      /* "pycalphad/core/minimizer.pyx":782
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = {sorted(compsets_to_add)[0]}
  *         elif max_allowed_to_add < len(compsets_to_add):             # <<<<<<<<<<<<<<
@@ -18348,7 +18068,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     }
     __pyx_L4:;
 
-    /* "pycalphad/core/minimizer.pyx":809
+    /* "pycalphad/core/minimizer.pyx":771
  *     max_allowed_to_add = spec.max_num_free_stable_phases + len(compsets_to_remove) - len(current_free_stable_compset_indices)
  *     # We must obey the Gibbs phase rule
  *     if len(compsets_to_add) > 0:             # <<<<<<<<<<<<<<
@@ -18357,79 +18077,79 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
  */
   }
 
-  /* "pycalphad/core/minimizer.pyx":824
+  /* "pycalphad/core/minimizer.pyx":786
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = set(sorted(compsets_to_add)[:max_allowed_to_add])
  *     new_free_stable_compset_indices = np.array(sorted((set(current_free_stable_compset_indices) - compsets_to_remove)             # <<<<<<<<<<<<<<
  *                                                       | compsets_to_add
  *                                                       ),
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_8, __pyx_n_s_np); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_8, __pyx_n_s_array); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_2 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_2 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_2, __pyx_v_compsets_to_remove); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_2, __pyx_v_compsets_to_remove); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":825
+  /* "pycalphad/core/minimizer.pyx":787
  *             compsets_to_add = set(sorted(compsets_to_add)[:max_allowed_to_add])
  *     new_free_stable_compset_indices = np.array(sorted((set(current_free_stable_compset_indices) - compsets_to_remove)
  *                                                       | compsets_to_add             # <<<<<<<<<<<<<<
  *                                                       ),
  *                                                dtype=np.int32)
  */
-  __pyx_t_2 = PyNumber_Or(__pyx_t_5, __pyx_v_compsets_to_add); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 825, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Or(__pyx_t_5, __pyx_v_compsets_to_add); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 787, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":824
+  /* "pycalphad/core/minimizer.pyx":786
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = set(sorted(compsets_to_add)[:max_allowed_to_add])
  *     new_free_stable_compset_indices = np.array(sorted((set(current_free_stable_compset_indices) - compsets_to_remove)             # <<<<<<<<<<<<<<
  *                                                       | compsets_to_add
  *                                                       ),
  */
-  __pyx_t_5 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_5 = PySequence_List(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_8 = ((PyObject*)__pyx_t_5);
   __pyx_t_5 = 0;
-  __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 824, __pyx_L1_error)
-  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_13 = PyList_Sort(__pyx_t_8); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 786, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_GIVEREF(__pyx_t_8);
   PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_8);
   __pyx_t_8 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":827
+  /* "pycalphad/core/minimizer.pyx":789
  *                                                       | compsets_to_add
  *                                                       ),
  *                                                dtype=np.int32)             # <<<<<<<<<<<<<<
  *     removed_compset_indices = set(current_free_stable_compset_indices) - set(new_free_stable_compset_indices)
  *     for idx in removed_compset_indices:
  */
-  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 789, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 789, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_int32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 789, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 827, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_8, __pyx_n_s_dtype, __pyx_t_6) < 0) __PYX_ERR(0, 789, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":824
+  /* "pycalphad/core/minimizer.pyx":786
  *             # TODO: This should be ordered by driving force
  *             compsets_to_add = set(sorted(compsets_to_add)[:max_allowed_to_add])
  *     new_free_stable_compset_indices = np.array(sorted((set(current_free_stable_compset_indices) - compsets_to_remove)             # <<<<<<<<<<<<<<
  *                                                       | compsets_to_add
  *                                                       ),
  */
-  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, __pyx_t_8); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 786, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -18437,25 +18157,25 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_v_new_free_stable_compset_indices = __pyx_t_6;
   __pyx_t_6 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":828
+  /* "pycalphad/core/minimizer.pyx":790
  *                                                       ),
  *                                                dtype=np.int32)
  *     removed_compset_indices = set(current_free_stable_compset_indices) - set(new_free_stable_compset_indices)             # <<<<<<<<<<<<<<
  *     for idx in removed_compset_indices:
  *         times_compset_removed[idx] += 1
  */
-  __pyx_t_6 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 828, __pyx_L1_error)
+  __pyx_t_6 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 790, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
-  __pyx_t_8 = PySet_New(__pyx_v_new_free_stable_compset_indices); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 828, __pyx_L1_error)
+  __pyx_t_8 = PySet_New(__pyx_v_new_free_stable_compset_indices); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 790, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_5 = PyNumber_Subtract(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 828, __pyx_L1_error)
+  __pyx_t_5 = PyNumber_Subtract(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 790, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   __pyx_v_removed_compset_indices = __pyx_t_5;
   __pyx_t_5 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":829
+  /* "pycalphad/core/minimizer.pyx":791
  *                                                dtype=np.int32)
  *     removed_compset_indices = set(current_free_stable_compset_indices) - set(new_free_stable_compset_indices)
  *     for idx in removed_compset_indices:             # <<<<<<<<<<<<<<
@@ -18466,26 +18186,26 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     __pyx_t_5 = __pyx_v_removed_compset_indices; __Pyx_INCREF(__pyx_t_5); __pyx_t_11 = 0;
     __pyx_t_14 = NULL;
   } else {
-    __pyx_t_11 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_removed_compset_indices); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 829, __pyx_L1_error)
+    __pyx_t_11 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_removed_compset_indices); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 791, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_14 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 829, __pyx_L1_error)
+    __pyx_t_14 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 791, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_14)) {
       if (likely(PyList_CheckExact(__pyx_t_5))) {
         if (__pyx_t_11 >= PyList_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_11); __Pyx_INCREF(__pyx_t_8); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_8 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_11); __Pyx_INCREF(__pyx_t_8); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 791, __pyx_L1_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 791, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
       } else {
         if (__pyx_t_11 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_11); __Pyx_INCREF(__pyx_t_8); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_11); __Pyx_INCREF(__pyx_t_8); __pyx_t_11++; if (unlikely(0 < 0)) __PYX_ERR(0, 791, __pyx_L1_error)
         #else
-        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_8 = PySequence_ITEM(__pyx_t_5, __pyx_t_11); __pyx_t_11++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 791, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         #endif
       }
@@ -18495,17 +18215,17 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 829, __pyx_L1_error)
+          else __PYX_ERR(0, 791, __pyx_L1_error)
         }
         break;
       }
       __Pyx_GOTREF(__pyx_t_8);
     }
-    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 829, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_As_int(__pyx_t_8); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 791, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_v_idx = __pyx_t_9;
 
-    /* "pycalphad/core/minimizer.pyx":830
+    /* "pycalphad/core/minimizer.pyx":792
  *     removed_compset_indices = set(current_free_stable_compset_indices) - set(new_free_stable_compset_indices)
  *     for idx in removed_compset_indices:
  *         times_compset_removed[idx] += 1             # <<<<<<<<<<<<<<
@@ -18520,11 +18240,11 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     } else if (unlikely(__pyx_t_15 >= __pyx_v_times_compset_removed.shape[0])) __pyx_t_9 = 0;
     if (unlikely(__pyx_t_9 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_9);
-      __PYX_ERR(0, 830, __pyx_L1_error)
+      __PYX_ERR(0, 792, __pyx_L1_error)
     }
     *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_times_compset_removed.data) + __pyx_t_15)) )) += 1;
 
-    /* "pycalphad/core/minimizer.pyx":829
+    /* "pycalphad/core/minimizer.pyx":791
  *                                                dtype=np.int32)
  *     removed_compset_indices = set(current_free_stable_compset_indices) - set(new_free_stable_compset_indices)
  *     for idx in removed_compset_indices:             # <<<<<<<<<<<<<<
@@ -18534,7 +18254,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":831
+  /* "pycalphad/core/minimizer.pyx":793
  *     for idx in removed_compset_indices:
  *         times_compset_removed[idx] += 1
  *     for idx in range(len(state.compsets)):             # <<<<<<<<<<<<<<
@@ -18545,36 +18265,36 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __Pyx_INCREF(__pyx_t_5);
   if (unlikely(__pyx_t_5 == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 831, __pyx_L1_error)
+    __PYX_ERR(0, 793, __pyx_L1_error)
   }
-  __pyx_t_11 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 831, __pyx_L1_error)
+  __pyx_t_11 = PyList_GET_SIZE(__pyx_t_5); if (unlikely(__pyx_t_11 == ((Py_ssize_t)-1))) __PYX_ERR(0, 793, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_10 = __pyx_t_11;
   for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_10; __pyx_t_9+=1) {
     __pyx_v_idx = __pyx_t_9;
 
-    /* "pycalphad/core/minimizer.pyx":832
+    /* "pycalphad/core/minimizer.pyx":794
  *         times_compset_removed[idx] += 1
  *     for idx in range(len(state.compsets)):
  *         if idx in new_free_stable_compset_indices:             # <<<<<<<<<<<<<<
  *             # Force some amount of newly stable phases
  *             if state.phase_amt[idx] < 1e-10:
  */
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 832, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 794, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_t_5, __pyx_v_new_free_stable_compset_indices, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 832, __pyx_L1_error)
+    __pyx_t_12 = (__Pyx_PySequence_ContainsTF(__pyx_t_5, __pyx_v_new_free_stable_compset_indices, Py_EQ)); if (unlikely(__pyx_t_12 < 0)) __PYX_ERR(0, 794, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __pyx_t_16 = (__pyx_t_12 != 0);
     if (__pyx_t_16) {
 
-      /* "pycalphad/core/minimizer.pyx":834
+      /* "pycalphad/core/minimizer.pyx":796
  *         if idx in new_free_stable_compset_indices:
  *             # Force some amount of newly stable phases
  *             if state.phase_amt[idx] < 1e-10:             # <<<<<<<<<<<<<<
  *                 state.phase_amt[idx] = 1e-10
  *         # Force unstable phase amounts to zero
  */
-      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 834, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 796, __pyx_L1_error)}
       __pyx_t_15 = __pyx_v_idx;
       __pyx_t_17 = -1;
       if (__pyx_t_15 < 0) {
@@ -18583,19 +18303,19 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
       } else if (unlikely(__pyx_t_15 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 834, __pyx_L1_error)
+        __PYX_ERR(0, 796, __pyx_L1_error)
       }
       __pyx_t_16 = (((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_15)) ))) < 1e-10) != 0);
       if (__pyx_t_16) {
 
-        /* "pycalphad/core/minimizer.pyx":835
+        /* "pycalphad/core/minimizer.pyx":797
  *             # Force some amount of newly stable phases
  *             if state.phase_amt[idx] < 1e-10:
  *                 state.phase_amt[idx] = 1e-10             # <<<<<<<<<<<<<<
  *         # Force unstable phase amounts to zero
  *         else:
  */
-        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 835, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 797, __pyx_L1_error)}
         __pyx_t_15 = __pyx_v_idx;
         __pyx_t_17 = -1;
         if (__pyx_t_15 < 0) {
@@ -18604,11 +18324,11 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
         } else if (unlikely(__pyx_t_15 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_17 = 0;
         if (unlikely(__pyx_t_17 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_17);
-          __PYX_ERR(0, 835, __pyx_L1_error)
+          __PYX_ERR(0, 797, __pyx_L1_error)
         }
         *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_15)) )) = 1e-10;
 
-        /* "pycalphad/core/minimizer.pyx":834
+        /* "pycalphad/core/minimizer.pyx":796
  *         if idx in new_free_stable_compset_indices:
  *             # Force some amount of newly stable phases
  *             if state.phase_amt[idx] < 1e-10:             # <<<<<<<<<<<<<<
@@ -18617,7 +18337,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
  */
       }
 
-      /* "pycalphad/core/minimizer.pyx":832
+      /* "pycalphad/core/minimizer.pyx":794
  *         times_compset_removed[idx] += 1
  *     for idx in range(len(state.compsets)):
  *         if idx in new_free_stable_compset_indices:             # <<<<<<<<<<<<<<
@@ -18627,7 +18347,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
       goto __pyx_L9;
     }
 
-    /* "pycalphad/core/minimizer.pyx":838
+    /* "pycalphad/core/minimizer.pyx":800
  *         # Force unstable phase amounts to zero
  *         else:
  *             state.phase_amt[idx] = 0             # <<<<<<<<<<<<<<
@@ -18635,7 +18355,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
  *     if set(current_free_stable_compset_indices) == set(new_free_stable_compset_indices):
  */
     /*else*/ {
-      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 838, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 800, __pyx_L1_error)}
       __pyx_t_15 = __pyx_v_idx;
       __pyx_t_17 = -1;
       if (__pyx_t_15 < 0) {
@@ -18644,45 +18364,45 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
       } else if (unlikely(__pyx_t_15 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_17 = 0;
       if (unlikely(__pyx_t_17 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_17);
-        __PYX_ERR(0, 838, __pyx_L1_error)
+        __PYX_ERR(0, 800, __pyx_L1_error)
       }
       *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_15)) )) = 0.0;
     }
     __pyx_L9:;
   }
 
-  /* "pycalphad/core/minimizer.pyx":839
+  /* "pycalphad/core/minimizer.pyx":801
  *         else:
  *             state.phase_amt[idx] = 0
  *     state.free_stable_compset_indices = new_free_stable_compset_indices             # <<<<<<<<<<<<<<
  *     if set(current_free_stable_compset_indices) == set(new_free_stable_compset_indices):
  *         # feasible system, and no phases to add or remove
  */
-  __pyx_t_18 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_new_free_stable_compset_indices, PyBUF_WRITABLE); if (unlikely(!__pyx_t_18.memview)) __PYX_ERR(0, 839, __pyx_L1_error)
+  __pyx_t_18 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_v_new_free_stable_compset_indices, PyBUF_WRITABLE); if (unlikely(!__pyx_t_18.memview)) __PYX_ERR(0, 801, __pyx_L1_error)
   __PYX_XDEC_MEMVIEW(&__pyx_v_state->free_stable_compset_indices, 0);
   __pyx_v_state->free_stable_compset_indices = __pyx_t_18;
   __pyx_t_18.memview = NULL;
   __pyx_t_18.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":840
+  /* "pycalphad/core/minimizer.pyx":802
  *             state.phase_amt[idx] = 0
  *     state.free_stable_compset_indices = new_free_stable_compset_indices
  *     if set(current_free_stable_compset_indices) == set(new_free_stable_compset_indices):             # <<<<<<<<<<<<<<
  *         # feasible system, and no phases to add or remove
  *         phases_changed = False
  */
-  __pyx_t_5 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_5 = PySet_New(__pyx_v_current_free_stable_compset_indices); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 802, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_8 = PySet_New(__pyx_v_new_free_stable_compset_indices); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_8 = PySet_New(__pyx_v_new_free_stable_compset_indices); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 802, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_8, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_6 = PyObject_RichCompare(__pyx_t_5, __pyx_t_8, Py_EQ); __Pyx_XGOTREF(__pyx_t_6); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 802, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 840, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_IsTrue(__pyx_t_6); if (unlikely(__pyx_t_16 < 0)) __PYX_ERR(0, 802, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   if (__pyx_t_16) {
 
-    /* "pycalphad/core/minimizer.pyx":842
+    /* "pycalphad/core/minimizer.pyx":804
  *     if set(current_free_stable_compset_indices) == set(new_free_stable_compset_indices):
  *         # feasible system, and no phases to add or remove
  *         phases_changed = False             # <<<<<<<<<<<<<<
@@ -18691,7 +18411,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
  */
     __pyx_v_phases_changed = 0;
 
-    /* "pycalphad/core/minimizer.pyx":840
+    /* "pycalphad/core/minimizer.pyx":802
  *             state.phase_amt[idx] = 0
  *     state.free_stable_compset_indices = new_free_stable_compset_indices
  *     if set(current_free_stable_compset_indices) == set(new_free_stable_compset_indices):             # <<<<<<<<<<<<<<
@@ -18701,7 +18421,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
     goto __pyx_L11;
   }
 
-  /* "pycalphad/core/minimizer.pyx":844
+  /* "pycalphad/core/minimizer.pyx":806
  *         phases_changed = False
  *     else:
  *         phases_changed = True             # <<<<<<<<<<<<<<
@@ -18713,7 +18433,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   }
   __pyx_L11:;
 
-  /* "pycalphad/core/minimizer.pyx":845
+  /* "pycalphad/core/minimizer.pyx":807
  *     else:
  *         phases_changed = True
  *     return phases_changed             # <<<<<<<<<<<<<<
@@ -18723,7 +18443,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   __pyx_r = __pyx_v_phases_changed;
   goto __pyx_L0;
 
-  /* "pycalphad/core/minimizer.pyx":796
+  /* "pycalphad/core/minimizer.pyx":758
  *     return phases_changed
  * 
  * cdef bint change_phases(SystemSpecification spec, SystemState state, int[::1] metastable_phase_iterations, int[::1] times_compset_removed):             # <<<<<<<<<<<<<<
@@ -18760,7 +18480,7 @@ static int __pyx_f_9pycalphad_4core_9minimizer_change_phases(struct __pyx_obj_9p
   return __pyx_r;
 }
 
-/* "pycalphad/core/minimizer.pyx":848
+/* "pycalphad/core/minimizer.pyx":810
  * 
  * 
  * cpdef find_solution(list compsets, int num_statevars, int num_components,             # <<<<<<<<<<<<<<
@@ -18833,19 +18553,19 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_solution", 0);
 
-  /* "pycalphad/core/minimizer.pyx":857
+  /* "pycalphad/core/minimizer.pyx":819
  *     cdef double allowed_mass_residual, largest_chemical_potential_difference, step_size
  *     cdef double[::1] x, eq_soln
  *     cdef double[::1] previous_chemical_potentials = np.empty(num_components)             # <<<<<<<<<<<<<<
  *     cdef int[::1] fixed_stable_compset_indices = np.array([i for i, compset in enumerate(compsets) if compset.fixed], dtype=np.int32)
  *     cdef int[::1] metastable_phase_iterations = np.zeros(len(compsets), dtype=np.int32)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_2, __pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_empty); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_num_components); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_num_components); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_4 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
@@ -18860,50 +18580,50 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __pyx_t_1 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_t_2) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2);
   __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_1, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_previous_chemical_potentials = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":858
+  /* "pycalphad/core/minimizer.pyx":820
  *     cdef double[::1] x, eq_soln
  *     cdef double[::1] previous_chemical_potentials = np.empty(num_components)
  *     cdef int[::1] fixed_stable_compset_indices = np.array([i for i, compset in enumerate(compsets) if compset.fixed], dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int[::1] metastable_phase_iterations = np.zeros(len(compsets), dtype=np.int32)
  *     cdef int[::1] times_compset_removed = np.zeros(len(compsets), dtype=np.int32)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_array); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   { /* enter inner scope */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 858, __pyx_L5_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 820, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6 = 0;
     __pyx_t_2 = __pyx_v_compsets; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 858, __pyx_L5_error)
+      __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_4); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 820, __pyx_L5_error)
       #else
-      __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 858, __pyx_L5_error)
+      __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 820, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_4);
       #endif
-      if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 858, __pyx_L5_error)
+      if (!(likely(((__pyx_t_4) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_4, __pyx_ptype_9pycalphad_4core_15composition_set_CompositionSet))))) __PYX_ERR(0, 820, __pyx_L5_error)
       __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_compset, ((struct CompositionSetObject *)__pyx_t_4));
       __pyx_t_4 = 0;
       __pyx_8genexpr4__pyx_v_i = __pyx_t_6;
       __pyx_t_6 = (__pyx_t_6 + 1);
       __pyx_t_8 = (__pyx_8genexpr4__pyx_v_compset->fixed != 0);
       if (__pyx_t_8) {
-        __pyx_t_4 = PyInt_FromSsize_t(__pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 858, __pyx_L5_error)
+        __pyx_t_4 = PyInt_FromSsize_t(__pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 820, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_4);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 858, __pyx_L5_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_4))) __PYX_ERR(0, 820, __pyx_L5_error)
         __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       }
     }
@@ -18915,120 +18635,120 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     goto __pyx_L1_error;
     __pyx_L9_exit_scope:;
   } /* exit inner scope */
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_int32); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 858, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_dtype, __pyx_t_9) < 0) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_2, __pyx_t_1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_9, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 820, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_fixed_stable_compset_indices = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":859
+  /* "pycalphad/core/minimizer.pyx":821
  *     cdef double[::1] previous_chemical_potentials = np.empty(num_components)
  *     cdef int[::1] fixed_stable_compset_indices = np.array([i for i, compset in enumerate(compsets) if compset.fixed], dtype=np.int32)
  *     cdef int[::1] metastable_phase_iterations = np.zeros(len(compsets), dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef int[::1] times_compset_removed = np.zeros(len(compsets), dtype=np.int32)
  *     cdef bint converged = False
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_9, __pyx_n_s_np); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_t_9, __pyx_n_s_zeros); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   if (unlikely(__pyx_v_compsets == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 859, __pyx_L1_error)
+    __PYX_ERR(0, 821, __pyx_L1_error)
   }
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_compsets); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 859, __pyx_L1_error)
-  __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_compsets); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 821, __pyx_L1_error)
+  __pyx_t_9 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_int32); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 859, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_dtype, __pyx_t_4) < 0) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 859, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_4, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 821, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_metastable_phase_iterations = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":860
+  /* "pycalphad/core/minimizer.pyx":822
  *     cdef int[::1] fixed_stable_compset_indices = np.array([i for i, compset in enumerate(compsets) if compset.fixed], dtype=np.int32)
  *     cdef int[::1] metastable_phase_iterations = np.zeros(len(compsets), dtype=np.int32)
  *     cdef int[::1] times_compset_removed = np.zeros(len(compsets), dtype=np.int32)             # <<<<<<<<<<<<<<
  *     cdef bint converged = False
  *     cdef bint phases_changed
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_zeros); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if (unlikely(__pyx_v_compsets == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 860, __pyx_L1_error)
+    __PYX_ERR(0, 822, __pyx_L1_error)
   }
-  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_compsets); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 860, __pyx_L1_error)
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_6 = PyList_GET_SIZE(__pyx_v_compsets); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 822, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_4);
   PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_t_4);
   __pyx_t_4 = 0;
-  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_int32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 860, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_4, __pyx_n_s_dtype, __pyx_t_3) < 0) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_2, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_10 = __Pyx_PyObject_to_MemoryviewSlice_dc_int(__pyx_t_3, PyBUF_WRITABLE); if (unlikely(!__pyx_t_10.memview)) __PYX_ERR(0, 822, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_v_times_compset_removed = __pyx_t_10;
   __pyx_t_10.memview = NULL;
   __pyx_t_10.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":861
+  /* "pycalphad/core/minimizer.pyx":823
  *     cdef int[::1] metastable_phase_iterations = np.zeros(len(compsets), dtype=np.int32)
  *     cdef int[::1] times_compset_removed = np.zeros(len(compsets), dtype=np.int32)
  *     cdef bint converged = False             # <<<<<<<<<<<<<<
@@ -19037,84 +18757,84 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_converged = 0;
 
-  /* "pycalphad/core/minimizer.pyx":863
+  /* "pycalphad/core/minimizer.pyx":825
  *     cdef bint converged = False
  *     cdef bint phases_changed
  *     cdef SystemSpecification spec = SystemSpecification(num_statevars, num_components, prescribed_system_amount,             # <<<<<<<<<<<<<<
  *                                                         initial_chemical_potentials, prescribed_elemental_amounts,
  *                                                         prescribed_element_indices,
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_num_statevars); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_num_statevars); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_num_components); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_num_components); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_prescribed_system_amount); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_v_prescribed_system_amount); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
 
-  /* "pycalphad/core/minimizer.pyx":864
+  /* "pycalphad/core/minimizer.pyx":826
  *     cdef bint phases_changed
  *     cdef SystemSpecification spec = SystemSpecification(num_statevars, num_components, prescribed_system_amount,
  *                                                         initial_chemical_potentials, prescribed_elemental_amounts,             # <<<<<<<<<<<<<<
  *                                                         prescribed_element_indices,
  *                                                         free_chemical_potential_indices, free_statevar_indices,
  */
-  __pyx_t_9 = __pyx_memoryview_fromslice(__pyx_v_initial_chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 864, __pyx_L1_error)
+  __pyx_t_9 = __pyx_memoryview_fromslice(__pyx_v_initial_chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 864, __pyx_L1_error)
+  __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_v_prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 826, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
 
-  /* "pycalphad/core/minimizer.pyx":865
+  /* "pycalphad/core/minimizer.pyx":827
  *     cdef SystemSpecification spec = SystemSpecification(num_statevars, num_components, prescribed_system_amount,
  *                                                         initial_chemical_potentials, prescribed_elemental_amounts,
  *                                                         prescribed_element_indices,             # <<<<<<<<<<<<<<
  *                                                         free_chemical_potential_indices, free_statevar_indices,
  *                                                         fixed_chemical_potential_indices, fixed_statevar_indices,
  */
-  __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_prescribed_element_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 865, __pyx_L1_error)
+  __pyx_t_11 = __pyx_memoryview_fromslice(__pyx_v_prescribed_element_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 827, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
 
-  /* "pycalphad/core/minimizer.pyx":866
+  /* "pycalphad/core/minimizer.pyx":828
  *                                                         initial_chemical_potentials, prescribed_elemental_amounts,
  *                                                         prescribed_element_indices,
  *                                                         free_chemical_potential_indices, free_statevar_indices,             # <<<<<<<<<<<<<<
  *                                                         fixed_chemical_potential_indices, fixed_statevar_indices,
  *                                                         fixed_stable_compset_indices)
  */
-  __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_free_chemical_potential_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 866, __pyx_L1_error)
+  __pyx_t_12 = __pyx_memoryview_fromslice(__pyx_v_free_chemical_potential_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 828, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_12);
-  __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_free_statevar_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 866, __pyx_L1_error)
+  __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_free_statevar_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 828, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
 
-  /* "pycalphad/core/minimizer.pyx":867
+  /* "pycalphad/core/minimizer.pyx":829
  *                                                         prescribed_element_indices,
  *                                                         free_chemical_potential_indices, free_statevar_indices,
  *                                                         fixed_chemical_potential_indices, fixed_statevar_indices,             # <<<<<<<<<<<<<<
  *                                                         fixed_stable_compset_indices)
  *     cdef SystemState state = SystemState(spec, compsets)
  */
-  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_fixed_chemical_potential_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 867, __pyx_L1_error)
+  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_fixed_chemical_potential_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 829, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_fixed_statevar_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 867, __pyx_L1_error)
+  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_fixed_statevar_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 829, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
 
-  /* "pycalphad/core/minimizer.pyx":868
+  /* "pycalphad/core/minimizer.pyx":830
  *                                                         free_chemical_potential_indices, free_statevar_indices,
  *                                                         fixed_chemical_potential_indices, fixed_statevar_indices,
  *                                                         fixed_stable_compset_indices)             # <<<<<<<<<<<<<<
  *     cdef SystemState state = SystemState(spec, compsets)
  * 
  */
-  __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_fixed_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 868, __pyx_L1_error)
+  __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_fixed_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 830, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
 
-  /* "pycalphad/core/minimizer.pyx":863
+  /* "pycalphad/core/minimizer.pyx":825
  *     cdef bint converged = False
  *     cdef bint phases_changed
  *     cdef SystemSpecification spec = SystemSpecification(num_statevars, num_components, prescribed_system_amount,             # <<<<<<<<<<<<<<
  *                                                         initial_chemical_potentials, prescribed_elemental_amounts,
  *                                                         prescribed_element_indices,
  */
-  __pyx_t_17 = PyTuple_New(11); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_t_17 = PyTuple_New(11); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __Pyx_GIVEREF(__pyx_t_3);
   PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_3);
@@ -19149,20 +18869,20 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __pyx_t_14 = 0;
   __pyx_t_15 = 0;
   __pyx_t_16 = 0;
-  __pyx_t_16 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification), __pyx_t_17, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 863, __pyx_L1_error)
+  __pyx_t_16 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9pycalphad_4core_9minimizer_SystemSpecification), __pyx_t_17, NULL); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
   __pyx_v_spec = ((struct __pyx_obj_9pycalphad_4core_9minimizer_SystemSpecification *)__pyx_t_16);
   __pyx_t_16 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":869
+  /* "pycalphad/core/minimizer.pyx":831
  *                                                         fixed_chemical_potential_indices, fixed_statevar_indices,
  *                                                         fixed_stable_compset_indices)
  *     cdef SystemState state = SystemState(spec, compsets)             # <<<<<<<<<<<<<<
  * 
  *     # convergence criteria
  */
-  __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 869, __pyx_L1_error)
+  __pyx_t_16 = PyTuple_New(2); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __Pyx_INCREF(((PyObject *)__pyx_v_spec));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_spec));
@@ -19170,13 +18890,13 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __Pyx_INCREF(__pyx_v_compsets);
   __Pyx_GIVEREF(__pyx_v_compsets);
   PyTuple_SET_ITEM(__pyx_t_16, 1, __pyx_v_compsets);
-  __pyx_t_17 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9pycalphad_4core_9minimizer_SystemState), __pyx_t_16, NULL); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 869, __pyx_L1_error)
+  __pyx_t_17 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_9pycalphad_4core_9minimizer_SystemState), __pyx_t_16, NULL); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 831, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   __pyx_v_state = ((struct __pyx_obj_9pycalphad_4core_9minimizer_SystemState *)__pyx_t_17);
   __pyx_t_17 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":872
+  /* "pycalphad/core/minimizer.pyx":834
  * 
  *     # convergence criteria
  *     cdef double ALLOWED_DELTA_Y = 1e-10             # <<<<<<<<<<<<<<
@@ -19185,7 +18905,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_ALLOWED_DELTA_Y = 1e-10;
 
-  /* "pycalphad/core/minimizer.pyx":873
+  /* "pycalphad/core/minimizer.pyx":835
  *     # convergence criteria
  *     cdef double ALLOWED_DELTA_Y = 1e-10
  *     cdef double ALLOWED_DELTA_PHASE_AMT = 1e-10             # <<<<<<<<<<<<<<
@@ -19194,7 +18914,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_ALLOWED_DELTA_PHASE_AMT = 1e-10;
 
-  /* "pycalphad/core/minimizer.pyx":874
+  /* "pycalphad/core/minimizer.pyx":836
  *     cdef double ALLOWED_DELTA_Y = 1e-10
  *     cdef double ALLOWED_DELTA_PHASE_AMT = 1e-10
  *     cdef double ALLOWED_DELTA_STATEVAR = 1e-5  # changes defined as percent change             # <<<<<<<<<<<<<<
@@ -19203,31 +18923,31 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_ALLOWED_DELTA_STATEVAR = 1e-5;
 
-  /* "pycalphad/core/minimizer.pyx":877
+  /* "pycalphad/core/minimizer.pyx":839
  * 
  * 
  *     if spec.prescribed_elemental_amounts.shape[0] > 0:             # <<<<<<<<<<<<<<
  *         allowed_mass_residual = min(1e-8, np.min(spec.prescribed_elemental_amounts)/10)
  *         # Also adjust mass residual if we are near the edge of composition space
  */
-  if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 877, __pyx_L1_error)}
+  if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 839, __pyx_L1_error)}
   __pyx_t_8 = (((__pyx_v_spec->prescribed_elemental_amounts.shape[0]) > 0) != 0);
   if (__pyx_t_8) {
 
-    /* "pycalphad/core/minimizer.pyx":878
+    /* "pycalphad/core/minimizer.pyx":840
  * 
  *     if spec.prescribed_elemental_amounts.shape[0] > 0:
  *         allowed_mass_residual = min(1e-8, np.min(spec.prescribed_elemental_amounts)/10)             # <<<<<<<<<<<<<<
  *         # Also adjust mass residual if we are near the edge of composition space
  *         allowed_mass_residual = min(allowed_mass_residual, (1-np.sum(spec.prescribed_elemental_amounts))/10)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_min); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_min); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 878, __pyx_L1_error)}
-    __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_spec->prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 878, __pyx_L1_error)
+    if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 840, __pyx_L1_error)}
+    __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_spec->prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __pyx_t_14 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_15))) {
@@ -19242,47 +18962,47 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_17 = (__pyx_t_14) ? __Pyx_PyObject_Call2Args(__pyx_t_15, __pyx_t_14, __pyx_t_16) : __Pyx_PyObject_CallOneArg(__pyx_t_15, __pyx_t_16);
     __Pyx_XDECREF(__pyx_t_14); __pyx_t_14 = 0;
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 878, __pyx_L1_error)
+    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __pyx_t_15 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_17, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_15 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_17, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
     __pyx_t_18 = 1e-8;
-    __pyx_t_16 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_16 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
-    __pyx_t_14 = PyObject_RichCompare(__pyx_t_15, __pyx_t_16, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_14 = PyObject_RichCompare(__pyx_t_15, __pyx_t_16, Py_LT); __Pyx_XGOTREF(__pyx_t_14); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     if (__pyx_t_8) {
       __Pyx_INCREF(__pyx_t_15);
       __pyx_t_17 = __pyx_t_15;
     } else {
-      __pyx_t_14 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 878, __pyx_L1_error)
+      __pyx_t_14 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 840, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
       __pyx_t_17 = __pyx_t_14;
       __pyx_t_14 = 0;
     }
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_17); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 878, __pyx_L1_error)
+    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_17); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 840, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
     __pyx_v_allowed_mass_residual = __pyx_t_18;
 
-    /* "pycalphad/core/minimizer.pyx":880
+    /* "pycalphad/core/minimizer.pyx":842
  *         allowed_mass_residual = min(1e-8, np.min(spec.prescribed_elemental_amounts)/10)
  *         # Also adjust mass residual if we are near the edge of composition space
  *         allowed_mass_residual = min(allowed_mass_residual, (1-np.sum(spec.prescribed_elemental_amounts))/10)             # <<<<<<<<<<<<<<
  *     else:
  *         allowed_mass_residual = 1e-8
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_sum); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_sum); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 880, __pyx_L1_error)}
-    __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_spec->prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 880, __pyx_L1_error)
+    if (unlikely(!__pyx_v_spec->prescribed_elemental_amounts.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 842, __pyx_L1_error)}
+    __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_spec->prescribed_elemental_amounts, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __pyx_t_16 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_14))) {
@@ -19297,37 +19017,37 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_17 = (__pyx_t_16) ? __Pyx_PyObject_Call2Args(__pyx_t_14, __pyx_t_16, __pyx_t_15) : __Pyx_PyObject_CallOneArg(__pyx_t_14, __pyx_t_15);
     __Pyx_XDECREF(__pyx_t_16); __pyx_t_16 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 880, __pyx_L1_error)
+    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_17, 1, 0, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyInt_SubtractCObj(__pyx_int_1, __pyx_t_17, 1, 0, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-    __pyx_t_17 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_14, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyInt_TrueDivideObjC(__pyx_t_14, __pyx_int_10, 10, 0, 0); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_18 = __pyx_v_allowed_mass_residual;
-    __pyx_t_15 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_15 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_16 = PyObject_RichCompare(__pyx_t_17, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_16 = PyObject_RichCompare(__pyx_t_17, __pyx_t_15, Py_LT); __Pyx_XGOTREF(__pyx_t_16); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_IsTrue(__pyx_t_16); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     if (__pyx_t_8) {
       __Pyx_INCREF(__pyx_t_17);
       __pyx_t_14 = __pyx_t_17;
     } else {
-      __pyx_t_16 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 880, __pyx_L1_error)
+      __pyx_t_16 = PyFloat_FromDouble(__pyx_t_18); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 842, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __pyx_t_14 = __pyx_t_16;
       __pyx_t_16 = 0;
     }
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_14); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 880, __pyx_L1_error)
+    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_14); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 842, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_v_allowed_mass_residual = __pyx_t_18;
 
-    /* "pycalphad/core/minimizer.pyx":877
+    /* "pycalphad/core/minimizer.pyx":839
  * 
  * 
  *     if spec.prescribed_elemental_amounts.shape[0] > 0:             # <<<<<<<<<<<<<<
@@ -19337,7 +19057,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     goto __pyx_L10;
   }
 
-  /* "pycalphad/core/minimizer.pyx":882
+  /* "pycalphad/core/minimizer.pyx":844
  *         allowed_mass_residual = min(allowed_mass_residual, (1-np.sum(spec.prescribed_elemental_amounts))/10)
  *     else:
  *         allowed_mass_residual = 1e-8             # <<<<<<<<<<<<<<
@@ -19349,7 +19069,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   }
   __pyx_L10:;
 
-  /* "pycalphad/core/minimizer.pyx":883
+  /* "pycalphad/core/minimizer.pyx":845
  *     else:
  *         allowed_mass_residual = 1e-8
  *     state.mass_residual = 1e10             # <<<<<<<<<<<<<<
@@ -19358,7 +19078,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_state->mass_residual = 1e10;
 
-  /* "pycalphad/core/minimizer.pyx":884
+  /* "pycalphad/core/minimizer.pyx":846
  *         allowed_mass_residual = 1e-8
  *     state.mass_residual = 1e10
  *     iterations_since_last_phase_change = 0             # <<<<<<<<<<<<<<
@@ -19367,7 +19087,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_iterations_since_last_phase_change = 0;
 
-  /* "pycalphad/core/minimizer.pyx":885
+  /* "pycalphad/core/minimizer.pyx":847
  *     state.mass_residual = 1e10
  *     iterations_since_last_phase_change = 0
  *     step_size = 1.0             # <<<<<<<<<<<<<<
@@ -19376,7 +19096,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
   __pyx_v_step_size = 1.0;
 
-  /* "pycalphad/core/minimizer.pyx":886
+  /* "pycalphad/core/minimizer.pyx":848
  *     iterations_since_last_phase_change = 0
  *     step_size = 1.0
  *     for iteration in range(1000):             # <<<<<<<<<<<<<<
@@ -19386,7 +19106,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   for (__pyx_t_19 = 0; __pyx_t_19 < 0x3E8; __pyx_t_19+=1) {
     __pyx_v_iteration = __pyx_t_19;
 
-    /* "pycalphad/core/minimizer.pyx":887
+    /* "pycalphad/core/minimizer.pyx":849
  *     step_size = 1.0
  *     for iteration in range(1000):
  *         state.iteration = iteration             # <<<<<<<<<<<<<<
@@ -19395,7 +19115,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
     __pyx_v_state->iteration = __pyx_v_iteration;
 
-    /* "pycalphad/core/minimizer.pyx":888
+    /* "pycalphad/core/minimizer.pyx":850
  *     for iteration in range(1000):
  *         state.iteration = iteration
  *         if (state.mass_residual > 10) and (np.any(np.abs(state.chemical_potentials) > 1.0e10)):             # <<<<<<<<<<<<<<
@@ -19408,18 +19128,18 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       __pyx_t_8 = __pyx_t_20;
       goto __pyx_L14_bool_binop_done;
     }
-    __Pyx_GetModuleGlobalName(__pyx_t_17, __pyx_n_s_np); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_17, __pyx_n_s_np); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
-    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_any); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_17, __pyx_n_s_any); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_abs); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_abs); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 888, __pyx_L1_error)}
-    __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_state->chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 888, __pyx_L1_error)
+    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 850, __pyx_L1_error)}
+    __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_state->chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __pyx_t_12 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
@@ -19434,10 +19154,10 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_17 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_12, __pyx_t_15) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_15);
     __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
     __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 888, __pyx_L1_error)
+    if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    __pyx_t_13 = PyObject_RichCompare(__pyx_t_17, __pyx_float_1_0e10, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __pyx_t_13 = PyObject_RichCompare(__pyx_t_17, __pyx_float_1_0e10, Py_GT); __Pyx_XGOTREF(__pyx_t_13); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
     __pyx_t_17 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_16))) {
@@ -19452,32 +19172,32 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_14 = (__pyx_t_17) ? __Pyx_PyObject_Call2Args(__pyx_t_16, __pyx_t_17, __pyx_t_13) : __Pyx_PyObject_CallOneArg(__pyx_t_16, __pyx_t_13);
     __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 888, __pyx_L1_error)
+    if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 888, __pyx_L1_error)
+    __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_t_14); if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 850, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_8 = __pyx_t_20;
     __pyx_L14_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "pycalphad/core/minimizer.pyx":889
+      /* "pycalphad/core/minimizer.pyx":851
  *         state.iteration = iteration
  *         if (state.mass_residual > 10) and (np.any(np.abs(state.chemical_potentials) > 1.0e10)):
  *             state.chemical_potentials[:] = spec.initial_chemical_potentials             # <<<<<<<<<<<<<<
  * 
  *         previous_chemical_potentials[:] = state.chemical_potentials[:]
  */
-      if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 889, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_spec->initial_chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 851, __pyx_L1_error)}
       __pyx_t_5 = __pyx_v_spec->initial_chemical_potentials;
       __PYX_INC_MEMVIEW(&__pyx_t_5, 1);
-      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 889, __pyx_L1_error)}
-      if (unlikely(__pyx_memoryview_copy_contents(__pyx_t_5, __pyx_v_state->chemical_potentials, 1, 1, 0) < 0)) __PYX_ERR(0, 889, __pyx_L1_error)
+      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 851, __pyx_L1_error)}
+      if (unlikely(__pyx_memoryview_copy_contents(__pyx_t_5, __pyx_v_state->chemical_potentials, 1, 1, 0) < 0)) __PYX_ERR(0, 851, __pyx_L1_error)
       __PYX_XDEC_MEMVIEW(&__pyx_t_5, 1);
       __pyx_t_5.memview = NULL;
       __pyx_t_5.data = NULL;
 
-      /* "pycalphad/core/minimizer.pyx":888
+      /* "pycalphad/core/minimizer.pyx":850
  *     for iteration in range(1000):
  *         state.iteration = iteration
  *         if (state.mass_residual > 10) and (np.any(np.abs(state.chemical_potentials) > 1.0e10)):             # <<<<<<<<<<<<<<
@@ -19486,63 +19206,63 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":891
+    /* "pycalphad/core/minimizer.pyx":853
  *             state.chemical_potentials[:] = spec.initial_chemical_potentials
  * 
  *         previous_chemical_potentials[:] = state.chemical_potentials[:]             # <<<<<<<<<<<<<<
  * 
  *         eq_soln = solve_state(spec, state)
  */
-    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 891, __pyx_L1_error)}
-    if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_state->chemical_potentials, __pyx_v_previous_chemical_potentials, 1, 1, 0) < 0)) __PYX_ERR(0, 891, __pyx_L1_error)
+    if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 853, __pyx_L1_error)}
+    if (unlikely(__pyx_memoryview_copy_contents(__pyx_v_state->chemical_potentials, __pyx_v_previous_chemical_potentials, 1, 1, 0) < 0)) __PYX_ERR(0, 853, __pyx_L1_error)
 
-    /* "pycalphad/core/minimizer.pyx":893
+    /* "pycalphad/core/minimizer.pyx":855
  *         previous_chemical_potentials[:] = state.chemical_potentials[:]
  * 
  *         eq_soln = solve_state(spec, state)             # <<<<<<<<<<<<<<
  * 
  *         advance_state(spec, state, eq_soln, step_size)
  */
-    __pyx_t_14 = __pyx_f_9pycalphad_4core_9minimizer_solve_state(__pyx_v_spec, __pyx_v_state, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 893, __pyx_L1_error)
+    __pyx_t_14 = __pyx_f_9pycalphad_4core_9minimizer_solve_state(__pyx_v_spec, __pyx_v_state, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 855, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_14, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 893, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_14, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 855, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_eq_soln, 1);
     __pyx_v_eq_soln = __pyx_t_5;
     __pyx_t_5.memview = NULL;
     __pyx_t_5.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":895
+    /* "pycalphad/core/minimizer.pyx":857
  *         eq_soln = solve_state(spec, state)
  * 
  *         advance_state(spec, state, eq_soln, step_size)             # <<<<<<<<<<<<<<
  * 
  *         # In most cases, the chemical potentials should be decreasing and the
  */
-    __pyx_t_14 = __pyx_f_9pycalphad_4core_9minimizer_advance_state(__pyx_v_spec, __pyx_v_state, __pyx_v_eq_soln, __pyx_v_step_size, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 895, __pyx_L1_error)
+    __pyx_t_14 = __pyx_f_9pycalphad_4core_9minimizer_advance_state(__pyx_v_spec, __pyx_v_state, __pyx_v_eq_soln, __pyx_v_step_size, 0); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 857, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":902
+    /* "pycalphad/core/minimizer.pyx":864
  *         # chemical potentials _increase_ by more than 1 J. It may make more sense to
  *         # adjust the condition based on the absolute value of the differences.
  *         largest_chemical_potential_difference = -np.inf             # <<<<<<<<<<<<<<
  *         for comp_idx in range(num_components):
  *             largest_chemical_potential_difference = max(largest_chemical_potential_difference, state.chemical_potentials[comp_idx] - previous_chemical_potentials[comp_idx])
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 902, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
-    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_inf); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 902, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_inf); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_14 = PyNumber_Negative(__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 902, __pyx_L1_error)
+    __pyx_t_14 = PyNumber_Negative(__pyx_t_16); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_14); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 902, __pyx_L1_error)
+    __pyx_t_18 = __pyx_PyFloat_AsDouble(__pyx_t_14); if (unlikely((__pyx_t_18 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 864, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_v_largest_chemical_potential_difference = __pyx_t_18;
 
-    /* "pycalphad/core/minimizer.pyx":903
+    /* "pycalphad/core/minimizer.pyx":865
  *         # adjust the condition based on the absolute value of the differences.
  *         largest_chemical_potential_difference = -np.inf
  *         for comp_idx in range(num_components):             # <<<<<<<<<<<<<<
@@ -19554,14 +19274,14 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
       __pyx_v_comp_idx = __pyx_t_23;
 
-      /* "pycalphad/core/minimizer.pyx":904
+      /* "pycalphad/core/minimizer.pyx":866
  *         largest_chemical_potential_difference = -np.inf
  *         for comp_idx in range(num_components):
  *             largest_chemical_potential_difference = max(largest_chemical_potential_difference, state.chemical_potentials[comp_idx] - previous_chemical_potentials[comp_idx])             # <<<<<<<<<<<<<<
  * 
  *         if ((state.mass_residual > 1e-2) and (largest_chemical_potential_difference > 1.0)) or (iteration == 0):
  */
-      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 904, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 866, __pyx_L1_error)}
       __pyx_t_24 = __pyx_v_comp_idx;
       __pyx_t_25 = -1;
       if (__pyx_t_24 < 0) {
@@ -19570,7 +19290,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       } else if (unlikely(__pyx_t_24 >= __pyx_v_state->chemical_potentials.shape[0])) __pyx_t_25 = 0;
       if (unlikely(__pyx_t_25 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_25);
-        __PYX_ERR(0, 904, __pyx_L1_error)
+        __PYX_ERR(0, 866, __pyx_L1_error)
       }
       __pyx_t_26 = __pyx_v_comp_idx;
       __pyx_t_25 = -1;
@@ -19580,7 +19300,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       } else if (unlikely(__pyx_t_26 >= __pyx_v_previous_chemical_potentials.shape[0])) __pyx_t_25 = 0;
       if (unlikely(__pyx_t_25 != -1)) {
         __Pyx_RaiseBufferIndexError(__pyx_t_25);
-        __PYX_ERR(0, 904, __pyx_L1_error)
+        __PYX_ERR(0, 866, __pyx_L1_error)
       }
       __pyx_t_18 = ((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->chemical_potentials.data) + __pyx_t_24)) ))) - (*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_previous_chemical_potentials.data) + __pyx_t_26)) ))));
       __pyx_t_27 = __pyx_v_largest_chemical_potential_difference;
@@ -19592,7 +19312,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       __pyx_v_largest_chemical_potential_difference = __pyx_t_28;
     }
 
-    /* "pycalphad/core/minimizer.pyx":906
+    /* "pycalphad/core/minimizer.pyx":868
  *             largest_chemical_potential_difference = max(largest_chemical_potential_difference, state.chemical_potentials[comp_idx] - previous_chemical_potentials[comp_idx])
  * 
  *         if ((state.mass_residual > 1e-2) and (largest_chemical_potential_difference > 1.0)) or (iteration == 0):             # <<<<<<<<<<<<<<
@@ -19616,27 +19336,27 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_L19_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "pycalphad/core/minimizer.pyx":909
+      /* "pycalphad/core/minimizer.pyx":871
  *             # When mass residual is not satisfied, do not allow phases to leave the system
  *             # However, if the chemical potentials are changing very little, phases may leave the system
  *             for j in range(state.phase_amt.shape[0]):             # <<<<<<<<<<<<<<
  *                 if state.phase_amt[j] < 0:
  *                     state.phase_amt[j] = 1e-8
  */
-      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 909, __pyx_L1_error)}
+      if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 871, __pyx_L1_error)}
       __pyx_t_6 = (__pyx_v_state->phase_amt.shape[0]);
       __pyx_t_7 = __pyx_t_6;
       for (__pyx_t_29 = 0; __pyx_t_29 < __pyx_t_7; __pyx_t_29+=1) {
         __pyx_v_j = __pyx_t_29;
 
-        /* "pycalphad/core/minimizer.pyx":910
+        /* "pycalphad/core/minimizer.pyx":872
  *             # However, if the chemical potentials are changing very little, phases may leave the system
  *             for j in range(state.phase_amt.shape[0]):
  *                 if state.phase_amt[j] < 0:             # <<<<<<<<<<<<<<
  *                     state.phase_amt[j] = 1e-8
  * 
  */
-        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 910, __pyx_L1_error)}
+        if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 872, __pyx_L1_error)}
         __pyx_t_26 = __pyx_v_j;
         __pyx_t_21 = -1;
         if (__pyx_t_26 < 0) {
@@ -19645,19 +19365,19 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         } else if (unlikely(__pyx_t_26 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_21 = 0;
         if (unlikely(__pyx_t_21 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_21);
-          __PYX_ERR(0, 910, __pyx_L1_error)
+          __PYX_ERR(0, 872, __pyx_L1_error)
         }
         __pyx_t_8 = (((*((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_26)) ))) < 0.0) != 0);
         if (__pyx_t_8) {
 
-          /* "pycalphad/core/minimizer.pyx":911
+          /* "pycalphad/core/minimizer.pyx":873
  *             for j in range(state.phase_amt.shape[0]):
  *                 if state.phase_amt[j] < 0:
  *                     state.phase_amt[j] = 1e-8             # <<<<<<<<<<<<<<
  * 
  *         phases_changed = remove_and_consolidate_phases(spec, state)
  */
-          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 911, __pyx_L1_error)}
+          if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 873, __pyx_L1_error)}
           __pyx_t_26 = __pyx_v_j;
           __pyx_t_21 = -1;
           if (__pyx_t_26 < 0) {
@@ -19666,11 +19386,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
           } else if (unlikely(__pyx_t_26 >= __pyx_v_state->phase_amt.shape[0])) __pyx_t_21 = 0;
           if (unlikely(__pyx_t_21 != -1)) {
             __Pyx_RaiseBufferIndexError(__pyx_t_21);
-            __PYX_ERR(0, 911, __pyx_L1_error)
+            __PYX_ERR(0, 873, __pyx_L1_error)
           }
           *((double *) ( /* dim=0 */ ((char *) (((double *) __pyx_v_state->phase_amt.data) + __pyx_t_26)) )) = 1e-8;
 
-          /* "pycalphad/core/minimizer.pyx":910
+          /* "pycalphad/core/minimizer.pyx":872
  *             # However, if the chemical potentials are changing very little, phases may leave the system
  *             for j in range(state.phase_amt.shape[0]):
  *                 if state.phase_amt[j] < 0:             # <<<<<<<<<<<<<<
@@ -19680,7 +19400,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         }
       }
 
-      /* "pycalphad/core/minimizer.pyx":906
+      /* "pycalphad/core/minimizer.pyx":868
  *             largest_chemical_potential_difference = max(largest_chemical_potential_difference, state.chemical_potentials[comp_idx] - previous_chemical_potentials[comp_idx])
  * 
  *         if ((state.mass_residual > 1e-2) and (largest_chemical_potential_difference > 1.0)) or (iteration == 0):             # <<<<<<<<<<<<<<
@@ -19689,7 +19409,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":913
+    /* "pycalphad/core/minimizer.pyx":875
  *                     state.phase_amt[j] = 1e-8
  * 
  *         phases_changed = remove_and_consolidate_phases(spec, state)             # <<<<<<<<<<<<<<
@@ -19698,7 +19418,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
     __pyx_v_phases_changed = __pyx_f_9pycalphad_4core_9minimizer_remove_and_consolidate_phases(__pyx_v_spec, __pyx_v_state);
 
-    /* "pycalphad/core/minimizer.pyx":916
+    /* "pycalphad/core/minimizer.pyx":878
  * 
  *         solution_is_feasible = (
  *             (state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT) and             # <<<<<<<<<<<<<<
@@ -19708,14 +19428,14 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_8 = ((__pyx_v_state->largest_phase_amt_change[0]) < __pyx_v_ALLOWED_DELTA_PHASE_AMT);
     if (__pyx_t_8) {
     } else {
-      __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 916, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 878, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __pyx_t_14 = __pyx_t_16;
       __pyx_t_16 = 0;
       goto __pyx_L25_bool_binop_done;
     }
 
-    /* "pycalphad/core/minimizer.pyx":917
+    /* "pycalphad/core/minimizer.pyx":879
  *         solution_is_feasible = (
  *             (state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT) and
  *             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and             # <<<<<<<<<<<<<<
@@ -19725,22 +19445,22 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_t_8 = ((__pyx_v_state->largest_y_change[0]) < __pyx_v_ALLOWED_DELTA_Y);
     if (__pyx_t_8) {
     } else {
-      __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 917, __pyx_L1_error)
+      __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 879, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
       __pyx_t_14 = __pyx_t_16;
       __pyx_t_16 = 0;
       goto __pyx_L25_bool_binop_done;
     }
 
-    /* "pycalphad/core/minimizer.pyx":918
+    /* "pycalphad/core/minimizer.pyx":880
  *             (state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT) and
  *             (state.largest_y_change[0] < ALLOWED_DELTA_Y) and
  *             (state.largest_statevar_change[0] < ALLOWED_DELTA_STATEVAR)             # <<<<<<<<<<<<<<
  *         )
- *         #if state.largest_phase_amt_change[0] < ALLOWED_DELTA_PHASE_AMT:
+ * 
  */
     __pyx_t_8 = ((__pyx_v_state->largest_statevar_change[0]) < __pyx_v_ALLOWED_DELTA_STATEVAR);
-    __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 918, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyBool_FromLong(__pyx_t_8); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 880, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __pyx_t_14 = __pyx_t_16;
     __pyx_t_16 = 0;
@@ -19748,14 +19468,14 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __Pyx_XDECREF_SET(__pyx_v_solution_is_feasible, __pyx_t_14);
     __pyx_t_14 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":928
- * #            print('Yes3')
+    /* "pycalphad/core/minimizer.pyx":883
+ *         )
  * 
  *         if solution_is_feasible and (iterations_since_last_phase_change >= 5):             # <<<<<<<<<<<<<<
- *             #print('phases_changed1',phases_changed)
- *             #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
+ *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
+ *             if phases_changed:
  */
-    __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_v_solution_is_feasible); if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 928, __pyx_L1_error)
+    __pyx_t_20 = __Pyx_PyObject_IsTrue(__pyx_v_solution_is_feasible); if (unlikely(__pyx_t_20 < 0)) __PYX_ERR(0, 883, __pyx_L1_error)
     if (__pyx_t_20) {
     } else {
       __pyx_t_8 = __pyx_t_20;
@@ -19766,12 +19486,12 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __pyx_L29_bool_binop_done:;
     if (__pyx_t_8) {
 
-      /* "pycalphad/core/minimizer.pyx":931
- *             #print('phases_changed1',phases_changed)
- *             #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
+      /* "pycalphad/core/minimizer.pyx":884
+ * 
+ *         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
  *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)             # <<<<<<<<<<<<<<
- *             #print('converged')
  *             if phases_changed:
+ *                 iterations_since_last_phase_change = 0
  */
       __pyx_t_20 = (__pyx_v_phases_changed != 0);
       if (!__pyx_t_20) {
@@ -19784,38 +19504,38 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       __pyx_L31_bool_binop_done:;
       __pyx_v_phases_changed = __pyx_t_8;
 
-      /* "pycalphad/core/minimizer.pyx":933
+      /* "pycalphad/core/minimizer.pyx":885
+ *         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
  *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
- *             #print('converged')
  *             if phases_changed:             # <<<<<<<<<<<<<<
- *                 #print('phases_changed')
  *                 iterations_since_last_phase_change = 0
+ *             else:
  */
       __pyx_t_8 = (__pyx_v_phases_changed != 0);
       if (__pyx_t_8) {
 
-        /* "pycalphad/core/minimizer.pyx":935
+        /* "pycalphad/core/minimizer.pyx":886
+ *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
  *             if phases_changed:
- *                 #print('phases_changed')
  *                 iterations_since_last_phase_change = 0             # <<<<<<<<<<<<<<
  *             else:
- *                 #print('1')
+ *                 converged = True
  */
         __pyx_v_iterations_since_last_phase_change = 0;
 
-        /* "pycalphad/core/minimizer.pyx":933
+        /* "pycalphad/core/minimizer.pyx":885
+ *         if solution_is_feasible and (iterations_since_last_phase_change >= 5):
  *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
- *             #print('converged')
  *             if phases_changed:             # <<<<<<<<<<<<<<
- *                 #print('phases_changed')
  *                 iterations_since_last_phase_change = 0
+ *             else:
  */
         goto __pyx_L33;
       }
 
-      /* "pycalphad/core/minimizer.pyx":938
+      /* "pycalphad/core/minimizer.pyx":888
+ *                 iterations_since_last_phase_change = 0
  *             else:
- *                 #print('1')
  *                 converged = True             # <<<<<<<<<<<<<<
  *                 break
  *         iterations_since_last_phase_change += 1
@@ -19823,8 +19543,8 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       /*else*/ {
         __pyx_v_converged = 1;
 
-        /* "pycalphad/core/minimizer.pyx":939
- *                 #print('1')
+        /* "pycalphad/core/minimizer.pyx":889
+ *             else:
  *                 converged = True
  *                 break             # <<<<<<<<<<<<<<
  *         iterations_since_last_phase_change += 1
@@ -19834,16 +19554,16 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       }
       __pyx_L33:;
 
-      /* "pycalphad/core/minimizer.pyx":928
- * #            print('Yes3')
+      /* "pycalphad/core/minimizer.pyx":883
+ *         )
  * 
  *         if solution_is_feasible and (iterations_since_last_phase_change >= 5):             # <<<<<<<<<<<<<<
- *             #print('phases_changed1',phases_changed)
- *             #print('phase_changed2',change_phases(spec, state, metastable_phase_iterations, times_compset_removed))
+ *             phases_changed = phases_changed or change_phases(spec, state, metastable_phase_iterations, times_compset_removed)
+ *             if phases_changed:
  */
     }
 
-    /* "pycalphad/core/minimizer.pyx":940
+    /* "pycalphad/core/minimizer.pyx":890
  *                 converged = True
  *                 break
  *         iterations_since_last_phase_change += 1             # <<<<<<<<<<<<<<
@@ -19852,7 +19572,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
  */
     __pyx_v_iterations_since_last_phase_change = (__pyx_v_iterations_since_last_phase_change + 1);
 
-    /* "pycalphad/core/minimizer.pyx":942
+    /* "pycalphad/core/minimizer.pyx":892
  *         iterations_since_last_phase_change += 1
  * 
  *         for idx in range(len(state.compsets)):             # <<<<<<<<<<<<<<
@@ -19863,33 +19583,33 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __Pyx_INCREF(__pyx_t_14);
     if (unlikely(__pyx_t_14 == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 942, __pyx_L1_error)
+      __PYX_ERR(0, 892, __pyx_L1_error)
     }
-    __pyx_t_6 = PyList_GET_SIZE(__pyx_t_14); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 942, __pyx_L1_error)
+    __pyx_t_6 = PyList_GET_SIZE(__pyx_t_14); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 892, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
     __pyx_t_7 = __pyx_t_6;
     for (__pyx_t_21 = 0; __pyx_t_21 < __pyx_t_7; __pyx_t_21+=1) {
       __pyx_v_idx = __pyx_t_21;
 
-      /* "pycalphad/core/minimizer.pyx":943
+      /* "pycalphad/core/minimizer.pyx":893
  * 
  *         for idx in range(len(state.compsets)):
  *             if idx in state.free_stable_compset_indices:             # <<<<<<<<<<<<<<
  *                 metastable_phase_iterations[idx] = 0
  *             else:
  */
-      __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 943, __pyx_L1_error)
+      __pyx_t_14 = __Pyx_PyInt_From_int(__pyx_v_idx); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 893, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_14);
-      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 943, __pyx_L1_error)}
-      __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 943, __pyx_L1_error)
+      if (unlikely(!__pyx_v_state->free_stable_compset_indices.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 893, __pyx_L1_error)}
+      __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_state->free_stable_compset_indices, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 893, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_16);
-      __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_t_14, __pyx_t_16, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 943, __pyx_L1_error)
+      __pyx_t_8 = (__Pyx_PySequence_ContainsTF(__pyx_t_14, __pyx_t_16, Py_EQ)); if (unlikely(__pyx_t_8 < 0)) __PYX_ERR(0, 893, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
       __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
       __pyx_t_20 = (__pyx_t_8 != 0);
       if (__pyx_t_20) {
 
-        /* "pycalphad/core/minimizer.pyx":944
+        /* "pycalphad/core/minimizer.pyx":894
  *         for idx in range(len(state.compsets)):
  *             if idx in state.free_stable_compset_indices:
  *                 metastable_phase_iterations[idx] = 0             # <<<<<<<<<<<<<<
@@ -19904,11 +19624,11 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         } else if (unlikely(__pyx_t_26 >= __pyx_v_metastable_phase_iterations.shape[0])) __pyx_t_22 = 0;
         if (unlikely(__pyx_t_22 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_22);
-          __PYX_ERR(0, 944, __pyx_L1_error)
+          __PYX_ERR(0, 894, __pyx_L1_error)
         }
         *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_metastable_phase_iterations.data) + __pyx_t_26)) )) = 0;
 
-        /* "pycalphad/core/minimizer.pyx":943
+        /* "pycalphad/core/minimizer.pyx":893
  * 
  *         for idx in range(len(state.compsets)):
  *             if idx in state.free_stable_compset_indices:             # <<<<<<<<<<<<<<
@@ -19918,7 +19638,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         goto __pyx_L36;
       }
 
-      /* "pycalphad/core/minimizer.pyx":946
+      /* "pycalphad/core/minimizer.pyx":896
  *                 metastable_phase_iterations[idx] = 0
  *             else:
  *                 metastable_phase_iterations[idx] += 1             # <<<<<<<<<<<<<<
@@ -19934,7 +19654,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         } else if (unlikely(__pyx_t_26 >= __pyx_v_metastable_phase_iterations.shape[0])) __pyx_t_22 = 0;
         if (unlikely(__pyx_t_22 != -1)) {
           __Pyx_RaiseBufferIndexError(__pyx_t_22);
-          __PYX_ERR(0, 946, __pyx_L1_error)
+          __PYX_ERR(0, 896, __pyx_L1_error)
         }
         *((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_metastable_phase_iterations.data) + __pyx_t_26)) )) += 1;
       }
@@ -19943,20 +19663,20 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   }
   __pyx_L12_break:;
 
-  /* "pycalphad/core/minimizer.pyx":951
+  /* "pycalphad/core/minimizer.pyx":901
  *     #    raise ValueError('Not converged')
  *     # Convert moles of formula units to phase fractions
  *     phase_amt = np.array(state.phase_amt) * np.sum(state.phase_compositions, axis=1)             # <<<<<<<<<<<<<<
  * 
  *     x = state.dof[0]
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_14, __pyx_n_s_np); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_14, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 951, __pyx_L1_error)}
-  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_state->phase_amt, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 951, __pyx_L1_error)
+  if (unlikely(!__pyx_v_state->phase_amt.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 901, __pyx_L1_error)}
+  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_state->phase_amt, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __pyx_t_17 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
@@ -19971,68 +19691,68 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __pyx_t_16 = (__pyx_t_17) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_17, __pyx_t_14) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_14);
   __Pyx_XDECREF(__pyx_t_17); __pyx_t_17 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 951, __pyx_L1_error)
+  if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_sum); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_sum); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 951, __pyx_L1_error)}
-  __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_state->phase_compositions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 951, __pyx_L1_error)
+  if (unlikely(!__pyx_v_state->phase_compositions.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 901, __pyx_L1_error)}
+  __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_state->phase_compositions, 2, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_17 = PyTuple_New(1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __pyx_t_17 = PyTuple_New(1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __Pyx_GIVEREF(__pyx_t_13);
   PyTuple_SET_ITEM(__pyx_t_17, 0, __pyx_t_13);
   __pyx_t_13 = 0;
-  __pyx_t_13 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 951, __pyx_L1_error)
-  __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_17, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 951, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_13, __pyx_n_s_axis, __pyx_int_1) < 0) __PYX_ERR(0, 901, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_Call(__pyx_t_14, __pyx_t_17, __pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
   __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __pyx_t_13 = PyNumber_Multiply(__pyx_t_16, __pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 951, __pyx_L1_error)
+  __pyx_t_13 = PyNumber_Multiply(__pyx_t_16, __pyx_t_15); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 901, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_v_phase_amt = __pyx_t_13;
   __pyx_t_13 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":953
+  /* "pycalphad/core/minimizer.pyx":903
  *     phase_amt = np.array(state.phase_amt) * np.sum(state.phase_compositions, axis=1)
  * 
  *     x = state.dof[0]             # <<<<<<<<<<<<<<
  *     for cs_dof in state.dof[1:]:
  *         x = np.r_[x, cs_dof[num_statevars:]]
  */
-  __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 953, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_GetItemInt(__pyx_v_state->dof, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 953, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_13, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   __pyx_v_x = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":954
+  /* "pycalphad/core/minimizer.pyx":904
  * 
  *     x = state.dof[0]
  *     for cs_dof in state.dof[1:]:             # <<<<<<<<<<<<<<
  *         x = np.r_[x, cs_dof[num_statevars:]]
  *     x = np.r_[x, phase_amt]
  */
-  __pyx_t_13 = __Pyx_PyObject_GetSlice(__pyx_v_state->dof, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 954, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetSlice(__pyx_v_state->dof, 1, 0, NULL, NULL, &__pyx_slice__2, 1, 0, 1); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 904, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   if (likely(PyList_CheckExact(__pyx_t_13)) || PyTuple_CheckExact(__pyx_t_13)) {
     __pyx_t_15 = __pyx_t_13; __Pyx_INCREF(__pyx_t_15); __pyx_t_6 = 0;
     __pyx_t_30 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_15 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 954, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_15 = PyObject_GetIter(__pyx_t_13); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 904, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
-    __pyx_t_30 = Py_TYPE(__pyx_t_15)->tp_iternext; if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 954, __pyx_L1_error)
+    __pyx_t_30 = Py_TYPE(__pyx_t_15)->tp_iternext; if (unlikely(!__pyx_t_30)) __PYX_ERR(0, 904, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
   for (;;) {
@@ -20040,17 +19760,17 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
       if (likely(PyList_CheckExact(__pyx_t_15))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_15)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_13 = PyList_GET_ITEM(__pyx_t_15, __pyx_t_6); __Pyx_INCREF(__pyx_t_13); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 954, __pyx_L1_error)
+        __pyx_t_13 = PyList_GET_ITEM(__pyx_t_15, __pyx_t_6); __Pyx_INCREF(__pyx_t_13); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 904, __pyx_L1_error)
         #else
-        __pyx_t_13 = PySequence_ITEM(__pyx_t_15, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 954, __pyx_L1_error)
+        __pyx_t_13 = PySequence_ITEM(__pyx_t_15, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 904, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_15)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_13 = PyTuple_GET_ITEM(__pyx_t_15, __pyx_t_6); __Pyx_INCREF(__pyx_t_13); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 954, __pyx_L1_error)
+        __pyx_t_13 = PyTuple_GET_ITEM(__pyx_t_15, __pyx_t_6); __Pyx_INCREF(__pyx_t_13); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 904, __pyx_L1_error)
         #else
-        __pyx_t_13 = PySequence_ITEM(__pyx_t_15, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 954, __pyx_L1_error)
+        __pyx_t_13 = PySequence_ITEM(__pyx_t_15, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 904, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_13);
         #endif
       }
@@ -20060,7 +19780,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 954, __pyx_L1_error)
+          else __PYX_ERR(0, 904, __pyx_L1_error)
         }
         break;
       }
@@ -20069,23 +19789,23 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     __Pyx_XDECREF_SET(__pyx_v_cs_dof, __pyx_t_13);
     __pyx_t_13 = 0;
 
-    /* "pycalphad/core/minimizer.pyx":955
+    /* "pycalphad/core/minimizer.pyx":905
  *     x = state.dof[0]
  *     for cs_dof in state.dof[1:]:
  *         x = np.r_[x, cs_dof[num_statevars:]]             # <<<<<<<<<<<<<<
  *     x = np.r_[x, phase_amt]
- *     #print('finalx',converged, x,np.asarray(x))
+ *     return converged, x, np.array(state.chemical_potentials)
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_13, __pyx_n_s_np); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_r); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_16 = __Pyx_PyObject_GetAttrStr(__pyx_t_13, __pyx_n_s_r); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_16);
     __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-    __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_13 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_13);
-    __pyx_t_17 = __Pyx_PyObject_GetSlice(__pyx_v_cs_dof, __pyx_v_num_statevars, 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_GetSlice(__pyx_v_cs_dof, __pyx_v_num_statevars, 0, NULL, NULL, NULL, 1, 0, 1); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
-    __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_14);
     __Pyx_GIVEREF(__pyx_t_13);
     PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_13);
@@ -20093,18 +19813,18 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
     PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_t_17);
     __pyx_t_13 = 0;
     __pyx_t_17 = 0;
-    __pyx_t_17 = __Pyx_PyObject_GetItem(__pyx_t_16, __pyx_t_14); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_17 = __Pyx_PyObject_GetItem(__pyx_t_16, __pyx_t_14); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_17);
     __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
     __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_17, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 955, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_17, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 905, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
     __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
     __pyx_v_x = __pyx_t_5;
     __pyx_t_5.memview = NULL;
     __pyx_t_5.data = NULL;
 
-    /* "pycalphad/core/minimizer.pyx":954
+    /* "pycalphad/core/minimizer.pyx":904
  * 
  *     x = state.dof[0]
  *     for cs_dof in state.dof[1:]:             # <<<<<<<<<<<<<<
@@ -20114,21 +19834,20 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   }
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
 
-  /* "pycalphad/core/minimizer.pyx":956
+  /* "pycalphad/core/minimizer.pyx":906
  *     for cs_dof in state.dof[1:]:
  *         x = np.r_[x, cs_dof[num_statevars:]]
  *     x = np.r_[x, phase_amt]             # <<<<<<<<<<<<<<
- *     #print('finalx',converged, x,np.asarray(x))
  *     return converged, x, np.array(state.chemical_potentials)
  */
-  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_15, __pyx_n_s_np); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_r); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __pyx_t_17 = __Pyx_PyObject_GetAttrStr(__pyx_t_15, __pyx_n_s_r); if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __pyx_t_15 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __pyx_t_14 = PyTuple_New(2); if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
   __Pyx_GIVEREF(__pyx_t_15);
   PyTuple_SET_ITEM(__pyx_t_14, 0, __pyx_t_15);
@@ -20136,34 +19855,34 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __Pyx_GIVEREF(__pyx_v_phase_amt);
   PyTuple_SET_ITEM(__pyx_t_14, 1, __pyx_v_phase_amt);
   __pyx_t_15 = 0;
-  __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_t_17, __pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_GetItem(__pyx_t_17, __pyx_t_14); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_17); __pyx_t_17 = 0;
   __Pyx_DECREF(__pyx_t_14); __pyx_t_14 = 0;
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_15, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 956, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_t_15, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __PYX_XDEC_MEMVIEW(&__pyx_v_x, 1);
   __pyx_v_x = __pyx_t_5;
   __pyx_t_5.memview = NULL;
   __pyx_t_5.data = NULL;
 
-  /* "pycalphad/core/minimizer.pyx":958
+  /* "pycalphad/core/minimizer.pyx":907
+ *         x = np.r_[x, cs_dof[num_statevars:]]
  *     x = np.r_[x, phase_amt]
- *     #print('finalx',converged, x,np.asarray(x))
  *     return converged, x, np.array(state.chemical_potentials)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_15 = __Pyx_PyBool_FromLong(__pyx_v_converged); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 958, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyBool_FromLong(__pyx_v_converged); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 958, __pyx_L1_error)
+  __pyx_t_14 = __pyx_memoryview_fromslice(__pyx_v_x, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_14);
-  __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 958, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_16, __pyx_n_s_np); if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
-  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 958, __pyx_L1_error)
+  __pyx_t_13 = __Pyx_PyObject_GetAttrStr(__pyx_t_16, __pyx_n_s_array); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-  if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 958, __pyx_L1_error)}
-  __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_state->chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 958, __pyx_L1_error)
+  if (unlikely(!__pyx_v_state->chemical_potentials.memview)) {PyErr_SetString(PyExc_AttributeError,"Memoryview is not initialized");__PYX_ERR(0, 907, __pyx_L1_error)}
+  __pyx_t_16 = __pyx_memoryview_fromslice(__pyx_v_state->chemical_potentials, 1, (PyObject *(*)(char *)) __pyx_memview_get_double, (int (*)(char *, PyObject *)) __pyx_memview_set_double, 0);; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_16);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_13))) {
@@ -20178,10 +19897,10 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __pyx_t_17 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_13, __pyx_t_12, __pyx_t_16) : __Pyx_PyObject_CallOneArg(__pyx_t_13, __pyx_t_16);
   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
   __Pyx_DECREF(__pyx_t_16); __pyx_t_16 = 0;
-  if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 958, __pyx_L1_error)
+  if (unlikely(!__pyx_t_17)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_17);
   __Pyx_DECREF(__pyx_t_13); __pyx_t_13 = 0;
-  __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 958, __pyx_L1_error)
+  __pyx_t_13 = PyTuple_New(3); if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 907, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_13);
   __Pyx_GIVEREF(__pyx_t_15);
   PyTuple_SET_ITEM(__pyx_t_13, 0, __pyx_t_15);
@@ -20196,7 +19915,7 @@ static PyObject *__pyx_f_9pycalphad_4core_9minimizer_find_solution(PyObject *__p
   __pyx_t_13 = 0;
   goto __pyx_L0;
 
-  /* "pycalphad/core/minimizer.pyx":848
+  /* "pycalphad/core/minimizer.pyx":810
  * 
  * 
  * cpdef find_solution(list compsets, int num_statevars, int num_components,             # <<<<<<<<<<<<<<
@@ -20301,65 +20020,65 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_5find_solution(PyObject *_
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_statevars)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 1); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 1); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_num_components)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 2); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 2); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_prescribed_system_amount)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 3); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 3); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_initial_chemical_potentials)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 4); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 4); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_free_chemical_potential_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 5); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 5); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fixed_chemical_potential_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 6); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 6); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_prescribed_element_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 7); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 7); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_prescribed_elemental_amounts)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 8); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 8); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_free_statevar_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 9); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 9); __PYX_ERR(0, 810, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_fixed_statevar_indices)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 10); __PYX_ERR(0, 848, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, 10); __PYX_ERR(0, 810, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_solution") < 0)) __PYX_ERR(0, 848, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "find_solution") < 0)) __PYX_ERR(0, 810, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 11) {
       goto __pyx_L5_argtuple_error;
@@ -20377,26 +20096,26 @@ static PyObject *__pyx_pw_9pycalphad_4core_9minimizer_5find_solution(PyObject *_
       values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
     }
     __pyx_v_compsets = ((PyObject*)values[0]);
-    __pyx_v_num_statevars = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_num_statevars == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L3_error)
-    __pyx_v_num_components = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_num_components == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L3_error)
-    __pyx_v_prescribed_system_amount = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_prescribed_system_amount == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 849, __pyx_L3_error)
-    __pyx_v_initial_chemical_potentials = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_initial_chemical_potentials.memview)) __PYX_ERR(0, 849, __pyx_L3_error)
-    __pyx_v_free_chemical_potential_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_free_chemical_potential_indices.memview)) __PYX_ERR(0, 850, __pyx_L3_error)
-    __pyx_v_fixed_chemical_potential_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_fixed_chemical_potential_indices.memview)) __PYX_ERR(0, 850, __pyx_L3_error)
-    __pyx_v_prescribed_element_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_prescribed_element_indices.memview)) __PYX_ERR(0, 851, __pyx_L3_error)
-    __pyx_v_prescribed_elemental_amounts = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_prescribed_elemental_amounts.memview)) __PYX_ERR(0, 851, __pyx_L3_error)
-    __pyx_v_free_statevar_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[9], PyBUF_WRITABLE); if (unlikely(!__pyx_v_free_statevar_indices.memview)) __PYX_ERR(0, 852, __pyx_L3_error)
-    __pyx_v_fixed_statevar_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_fixed_statevar_indices.memview)) __PYX_ERR(0, 852, __pyx_L3_error)
+    __pyx_v_num_statevars = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_num_statevars == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 810, __pyx_L3_error)
+    __pyx_v_num_components = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_num_components == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 810, __pyx_L3_error)
+    __pyx_v_prescribed_system_amount = __pyx_PyFloat_AsDouble(values[3]); if (unlikely((__pyx_v_prescribed_system_amount == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 811, __pyx_L3_error)
+    __pyx_v_initial_chemical_potentials = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[4], PyBUF_WRITABLE); if (unlikely(!__pyx_v_initial_chemical_potentials.memview)) __PYX_ERR(0, 811, __pyx_L3_error)
+    __pyx_v_free_chemical_potential_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[5], PyBUF_WRITABLE); if (unlikely(!__pyx_v_free_chemical_potential_indices.memview)) __PYX_ERR(0, 812, __pyx_L3_error)
+    __pyx_v_fixed_chemical_potential_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[6], PyBUF_WRITABLE); if (unlikely(!__pyx_v_fixed_chemical_potential_indices.memview)) __PYX_ERR(0, 812, __pyx_L3_error)
+    __pyx_v_prescribed_element_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[7], PyBUF_WRITABLE); if (unlikely(!__pyx_v_prescribed_element_indices.memview)) __PYX_ERR(0, 813, __pyx_L3_error)
+    __pyx_v_prescribed_elemental_amounts = __Pyx_PyObject_to_MemoryviewSlice_dc_double(values[8], PyBUF_WRITABLE); if (unlikely(!__pyx_v_prescribed_elemental_amounts.memview)) __PYX_ERR(0, 813, __pyx_L3_error)
+    __pyx_v_free_statevar_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[9], PyBUF_WRITABLE); if (unlikely(!__pyx_v_free_statevar_indices.memview)) __PYX_ERR(0, 814, __pyx_L3_error)
+    __pyx_v_fixed_statevar_indices = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[10], PyBUF_WRITABLE); if (unlikely(!__pyx_v_fixed_statevar_indices.memview)) __PYX_ERR(0, 814, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 848, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("find_solution", 1, 11, 11, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 810, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("pycalphad.core.minimizer.find_solution", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_compsets), (&PyList_Type), 1, "compsets", 1))) __PYX_ERR(0, 848, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_compsets), (&PyList_Type), 1, "compsets", 1))) __PYX_ERR(0, 810, __pyx_L1_error)
   __pyx_r = __pyx_pf_9pycalphad_4core_9minimizer_4find_solution(__pyx_self, __pyx_v_compsets, __pyx_v_num_statevars, __pyx_v_num_components, __pyx_v_prescribed_system_amount, __pyx_v_initial_chemical_potentials, __pyx_v_free_chemical_potential_indices, __pyx_v_fixed_chemical_potential_indices, __pyx_v_prescribed_element_indices, __pyx_v_prescribed_elemental_amounts, __pyx_v_free_statevar_indices, __pyx_v_fixed_statevar_indices);
 
   /* function exit code */
@@ -20417,14 +20136,14 @@ static PyObject *__pyx_pf_9pycalphad_4core_9minimizer_4find_solution(CYTHON_UNUS
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("find_solution", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_initial_chemical_potentials.memview)) { __Pyx_RaiseUnboundLocalError("initial_chemical_potentials"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_free_chemical_potential_indices.memview)) { __Pyx_RaiseUnboundLocalError("free_chemical_potential_indices"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_fixed_chemical_potential_indices.memview)) { __Pyx_RaiseUnboundLocalError("fixed_chemical_potential_indices"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_prescribed_element_indices.memview)) { __Pyx_RaiseUnboundLocalError("prescribed_element_indices"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_prescribed_elemental_amounts.memview)) { __Pyx_RaiseUnboundLocalError("prescribed_elemental_amounts"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_free_statevar_indices.memview)) { __Pyx_RaiseUnboundLocalError("free_statevar_indices"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  if (unlikely(!__pyx_v_fixed_statevar_indices.memview)) { __Pyx_RaiseUnboundLocalError("fixed_statevar_indices"); __PYX_ERR(0, 848, __pyx_L1_error) }
-  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_find_solution(__pyx_v_compsets, __pyx_v_num_statevars, __pyx_v_num_components, __pyx_v_prescribed_system_amount, __pyx_v_initial_chemical_potentials, __pyx_v_free_chemical_potential_indices, __pyx_v_fixed_chemical_potential_indices, __pyx_v_prescribed_element_indices, __pyx_v_prescribed_elemental_amounts, __pyx_v_free_statevar_indices, __pyx_v_fixed_statevar_indices, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L1_error)
+  if (unlikely(!__pyx_v_initial_chemical_potentials.memview)) { __Pyx_RaiseUnboundLocalError("initial_chemical_potentials"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_free_chemical_potential_indices.memview)) { __Pyx_RaiseUnboundLocalError("free_chemical_potential_indices"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_fixed_chemical_potential_indices.memview)) { __Pyx_RaiseUnboundLocalError("fixed_chemical_potential_indices"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_prescribed_element_indices.memview)) { __Pyx_RaiseUnboundLocalError("prescribed_element_indices"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_prescribed_elemental_amounts.memview)) { __Pyx_RaiseUnboundLocalError("prescribed_elemental_amounts"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_free_statevar_indices.memview)) { __Pyx_RaiseUnboundLocalError("free_statevar_indices"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  if (unlikely(!__pyx_v_fixed_statevar_indices.memview)) { __Pyx_RaiseUnboundLocalError("fixed_statevar_indices"); __PYX_ERR(0, 810, __pyx_L1_error) }
+  __pyx_t_1 = __pyx_f_9pycalphad_4core_9minimizer_find_solution(__pyx_v_compsets, __pyx_v_num_statevars, __pyx_v_num_components, __pyx_v_prescribed_system_amount, __pyx_v_initial_chemical_potentials, __pyx_v_free_chemical_potential_indices, __pyx_v_fixed_chemical_potential_indices, __pyx_v_prescribed_element_indices, __pyx_v_prescribed_elemental_amounts, __pyx_v_free_statevar_indices, __pyx_v_fixed_statevar_indices, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 810, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22514,7 +22233,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":929
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -22526,7 +22245,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("set_array_base", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":930
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":932
  * 
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -22535,7 +22254,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   Py_INCREF(__pyx_v_base);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
  * cdef inline void set_array_base(ndarray arr, object base):
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -22544,7 +22263,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  */
   (void)(PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base));
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":929
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":931
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base):             # <<<<<<<<<<<<<<
@@ -22556,7 +22275,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __Pyx_RefNannyFinishContext();
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -22571,7 +22290,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":934
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":936
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -22580,7 +22299,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -22590,7 +22309,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = ((__pyx_v_base == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":936
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":938
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -22601,7 +22320,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -22610,7 +22329,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  */
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":937
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":939
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -22622,7 +22341,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":933
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":935
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -22637,7 +22356,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":941
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -22661,7 +22380,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22677,16 +22396,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")
  */
-      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 943, __pyx_L3_error)
+      __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 945, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22700,7 +22419,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":946
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -22710,28 +22429,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_array", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 944, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 946, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 945, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 947, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 945, __pyx_L5_except_error)
+      __PYX_ERR(2, 947, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":942
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":944
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22746,7 +22465,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":941
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":943
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -22769,7 +22488,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -22793,7 +22512,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22809,16 +22528,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 949, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 951, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22832,7 +22551,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":952
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -22842,28 +22561,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_umath", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 950, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 952, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 951, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 953, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 951, __pyx_L5_except_error)
+      __PYX_ERR(2, 953, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":948
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":950
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22878,7 +22597,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":949
  *         raise ImportError("numpy.core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -22901,7 +22620,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -22925,7 +22644,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22941,16 +22660,16 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":957
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")
  */
-      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 955, __pyx_L3_error)
+      __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 957, __pyx_L3_error)
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -22964,7 +22683,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":958
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -22974,28 +22693,28 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_t_4 = __Pyx_PyErr_ExceptionMatches(((PyObject *)(&((PyTypeObject*)PyExc_Exception)[0])));
     if (__pyx_t_4) {
       __Pyx_AddTraceback("numpy.import_ufunc", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 956, __pyx_L5_except_error)
+      if (__Pyx_GetException(&__pyx_t_5, &__pyx_t_6, &__pyx_t_7) < 0) __PYX_ERR(2, 958, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_7);
 
-      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":957
+      /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":959
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef extern from *:
  */
-      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 957, __pyx_L5_except_error)
+      __pyx_t_8 = __Pyx_PyObject_Call(__pyx_builtin_ImportError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(2, 959, __pyx_L5_except_error)
       __Pyx_GOTREF(__pyx_t_8);
       __Pyx_Raise(__pyx_t_8, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-      __PYX_ERR(2, 957, __pyx_L5_except_error)
+      __PYX_ERR(2, 959, __pyx_L5_except_error)
     }
     goto __pyx_L5_except_error;
     __pyx_L5_except_error:;
 
-    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":954
+    /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":956
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -23010,7 +22729,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":955
  *         raise ImportError("numpy.core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -23033,7 +22752,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":967
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -23046,7 +22765,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_timedelta64_object", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":979
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":981
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -23056,7 +22775,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":967
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":969
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj):             # <<<<<<<<<<<<<<
@@ -23070,7 +22789,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":982
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -23083,7 +22802,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("is_datetime64_object", 0);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":994
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":996
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -23093,7 +22812,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":982
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":984
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj):             # <<<<<<<<<<<<<<
@@ -23107,7 +22826,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":997
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -23118,7 +22837,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1004
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1006
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -23128,7 +22847,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":997
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":999
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -23141,7 +22860,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1007
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -23152,7 +22871,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1011
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1013
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -23162,7 +22881,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1007
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1009
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -23175,7 +22894,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1014
+/* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -23186,7 +22905,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1018
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1020
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -23194,7 +22913,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1014
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":1016
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) nogil:             # <<<<<<<<<<<<<<
@@ -38379,7 +38098,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_allocate_buffer, __pyx_k_allocate_buffer, sizeof(__pyx_k_allocate_buffer), 0, 0, 1, 1},
   {&__pyx_n_s_any, __pyx_k_any, sizeof(__pyx_k_any), 0, 0, 1, 1},
   {&__pyx_n_s_array, __pyx_k_array, sizeof(__pyx_k_array), 0, 0, 1, 1},
-  {&__pyx_n_s_asarray, __pyx_k_asarray, sizeof(__pyx_k_asarray), 0, 0, 1, 1},
   {&__pyx_n_s_axis, __pyx_k_axis, sizeof(__pyx_k_axis), 0, 0, 1, 1},
   {&__pyx_n_s_base, __pyx_k_base, sizeof(__pyx_k_base), 0, 0, 1, 1},
   {&__pyx_n_s_c, __pyx_k_c, sizeof(__pyx_k_c), 0, 0, 1, 1},
@@ -38389,7 +38107,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_components, __pyx_k_components, sizeof(__pyx_k_components), 0, 0, 1, 1},
   {&__pyx_n_s_compset, __pyx_k_compset, sizeof(__pyx_k_compset), 0, 0, 1, 1},
-  {&__pyx_n_u_compset, __pyx_k_compset, sizeof(__pyx_k_compset), 0, 1, 0, 1},
   {&__pyx_n_s_compsets, __pyx_k_compsets, sizeof(__pyx_k_compsets), 0, 0, 1, 1},
   {&__pyx_kp_s_contiguous_and_direct, __pyx_k_contiguous_and_direct, sizeof(__pyx_k_contiguous_and_direct), 0, 0, 1, 0},
   {&__pyx_kp_s_contiguous_and_indirect, __pyx_k_contiguous_and_indirect, sizeof(__pyx_k_contiguous_and_indirect), 0, 0, 1, 0},
@@ -38434,7 +38151,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_new, __pyx_k_new, sizeof(__pyx_k_new), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_nonzero, __pyx_k_nonzero, sizeof(__pyx_k_nonzero), 0, 0, 1, 1},
-  {&__pyx_n_u_norm_valence, __pyx_k_norm_valence, sizeof(__pyx_k_norm_valence), 0, 1, 0, 1},
   {&__pyx_n_s_np, __pyx_k_np, sizeof(__pyx_k_np), 0, 0, 1, 1},
   {&__pyx_n_s_num_components, __pyx_k_num_components, sizeof(__pyx_k_num_components), 0, 0, 1, 1},
   {&__pyx_n_s_num_statevars, __pyx_k_num_statevars, sizeof(__pyx_k_num_statevars), 0, 0, 1, 1},
@@ -38449,7 +38165,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_prescribed_element_indices, __pyx_k_prescribed_element_indices, sizeof(__pyx_k_prescribed_element_indices), 0, 0, 1, 1},
   {&__pyx_n_s_prescribed_elemental_amounts, __pyx_k_prescribed_elemental_amounts, sizeof(__pyx_k_prescribed_elemental_amounts), 0, 0, 1, 1},
   {&__pyx_n_s_prescribed_system_amount, __pyx_k_prescribed_system_amount, sizeof(__pyx_k_prescribed_system_amount), 0, 0, 1, 1},
-  {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_pycalphad_core_constants, __pyx_k_pycalphad_core_constants, sizeof(__pyx_k_pycalphad_core_constants), 0, 0, 1, 1},
   {&__pyx_n_s_pycalphad_core_minimizer, __pyx_k_pycalphad_core_minimizer, sizeof(__pyx_k_pycalphad_core_minimizer), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
@@ -38472,7 +38187,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_shape, __pyx_k_shape, sizeof(__pyx_k_shape), 0, 0, 1, 1},
-  {&__pyx_n_u_site, __pyx_k_site, sizeof(__pyx_k_site), 0, 1, 0, 1},
   {&__pyx_n_s_size, __pyx_k_size, sizeof(__pyx_k_size), 0, 0, 1, 1},
   {&__pyx_n_s_spec, __pyx_k_spec, sizeof(__pyx_k_spec), 0, 0, 1, 1},
   {&__pyx_n_s_start, __pyx_k_start, sizeof(__pyx_k_start), 0, 0, 1, 1},
@@ -38487,7 +38201,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_struct, __pyx_k_struct, sizeof(__pyx_k_struct), 0, 0, 1, 1},
   {&__pyx_n_s_sum, __pyx_k_sum, sizeof(__pyx_k_sum), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
-  {&__pyx_n_s_tolist, __pyx_k_tolist, sizeof(__pyx_k_tolist), 0, 0, 1, 1},
   {&__pyx_kp_s_unable_to_allocate_array_data, __pyx_k_unable_to_allocate_array_data, sizeof(__pyx_k_unable_to_allocate_array_data), 0, 0, 1, 0},
   {&__pyx_kp_s_unable_to_allocate_shape_and_str, __pyx_k_unable_to_allocate_shape_and_str, sizeof(__pyx_k_unable_to_allocate_shape_and_str), 0, 0, 1, 0},
   {&__pyx_n_s_unpack, __pyx_k_unpack, sizeof(__pyx_k_unpack), 0, 0, 1, 1},
@@ -38497,10 +38210,9 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 28, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 571, __pyx_L1_error)
-  __pyx_builtin_print = __Pyx_GetBuiltinName(__pyx_n_s_print); if (!__pyx_builtin_print) __PYX_ERR(0, 644, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 858, __pyx_L1_error)
-  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 945, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 570, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 820, __pyx_L1_error)
+  __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(2, 947, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 81, __pyx_L1_error)
   __pyx_builtin_OverflowError = __Pyx_GetBuiltinName(__pyx_n_s_OverflowError); if (!__pyx_builtin_OverflowError) __PYX_ERR(1, 81, __pyx_L1_error)
   __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(1, 94, __pyx_L1_error)
@@ -38516,47 +38228,47 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "pycalphad/core/minimizer.pyx":571
+  /* "pycalphad/core/minimizer.pyx":570
  *     # TODO: can we move this error check outside?
  *     if (num_stable_phases + num_fixed_phases + num_fixed_components + 1) != num_free_variables:
  *         raise ValueError('Conditions do not obey Gibbs Phase Rule')             # <<<<<<<<<<<<<<
  * 
  *     equilibrium_matrix[:,:] = 0
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Conditions_do_not_obey_Gibbs_Pha); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 571, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_Conditions_do_not_obey_Gibbs_Pha); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 570, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "pycalphad/core/minimizer.pyx":954
+  /* "pycalphad/core/minimizer.pyx":904
  * 
  *     x = state.dof[0]
  *     for cs_dof in state.dof[1:]:             # <<<<<<<<<<<<<<
  *         x = np.r_[x, cs_dof[num_statevars:]]
  *     x = np.r_[x, phase_amt]
  */
-  __pyx_slice__2 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 954, __pyx_L1_error)
+  __pyx_slice__2 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__2)) __PYX_ERR(0, 904, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__2);
   __Pyx_GIVEREF(__pyx_slice__2);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":945
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":947
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy.core.multiarray failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_umath() except -1:
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(2, 945, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_multiarray_failed_to); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(2, 947, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":951
+  /* "../../../opt/anaconda3/envs/pycalphad-CH/lib/python3.9/site-packages/numpy/__init__.pxd":953
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy.core.umath failed to import")             # <<<<<<<<<<<<<<
  * 
  * cdef inline int import_ufunc() except -1:
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(2, 951, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_u_numpy_core_umath_failed_to_impor); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(2, 953, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
@@ -40739,28 +40451,6 @@ static PyObject *__Pyx_PyLong_AbsNeg(PyObject *n) {
 #else
     return PyNumber_Negative(n);
 #endif
-}
-#endif
-
-/* PyObjectCallNoArg */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_CallNoArg(PyObject *func) {
-#if CYTHON_FAST_PYCALL
-    if (PyFunction_Check(func)) {
-        return __Pyx_PyFunction_FastCall(func, NULL, 0);
-    }
-#endif
-#ifdef __Pyx_CyFunction_USED
-    if (likely(PyCFunction_Check(func) || __Pyx_CyFunction_Check(func)))
-#else
-    if (likely(PyCFunction_Check(func)))
-#endif
-    {
-        if (likely(PyCFunction_GET_FLAGS(func) & METH_NOARGS)) {
-            return __Pyx_PyObject_CallMethO(func, NULL);
-        }
-    }
-    return __Pyx_PyObject_Call(func, __pyx_empty_tuple, NULL);
 }
 #endif
 

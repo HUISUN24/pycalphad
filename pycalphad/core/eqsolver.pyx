@@ -51,13 +51,10 @@ cdef bint add_new_phases(object composition_sets, object removed_compsets, objec
                 if verbose:
                     print('Candidate composition set ' + df_phase_name + ' at ' + str(np.array(compset.X)) + ' is not distinct from previously removed phase')
                 continue
-            #print('largest_df1',driving_forces[i])
             largest_df = driving_forces[i]
             df_idx = i
-    #print('largest_df',largest_df,minimum_df)
     if largest_df > minimum_df:
         # To add a phase, must not be within COMP_DIFFERENCE_TOL of composition of the same phase of its type
-        #print('largest_df',largest_df,minimum_df)
         df_comp = current_grid_X[df_idx]
         df_phase_name = <unicode>current_grid_Phase[df_idx]
         if df_phase_name == '_FAKE_':
@@ -81,23 +78,10 @@ cdef bint add_new_phases(object composition_sets, object removed_compsets, objec
         compset.update(current_grid_Y[df_idx, :compset.phase_record.phase_dof], 1e-6,
                        state_variables)
         compset_count=compset_name.count(df_phase_name)
-        print('adding phase name',df_phase_name,compset_name,compset_count)
-        #if compset_count==0:
-         #   print('changed')
-          #  composition_sets.append(compset);
-        #else:
-        if compset_name:
-            for k in phase_records[df_phase_name].components:
-                #print('species',k)
-                #try:
-                 #   if k.charge:
-                  #      pass;
-                #except:
-                composition_sets.append(compset);
-        #composition_sets.append(compset)
+        composition_sets.append(compset)
         
-                if verbose:
-                    print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
+        if verbose:
+            print('Adding ' + repr(compset) + ' Driving force: ' + str(largest_df))
         return True
     return False
 
@@ -303,7 +287,6 @@ def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_v
         energy = prop_GM_values[it.multi_index]
         add_nearly_stable(composition_sets, phase_records, grid, curr_idx, chemical_potentials,
                           state_variable_values, -1000, verbose)
-        #print('Composition Sets', composition_sets)
         phase_amt_sum = 0.0
         for compset in composition_sets:
             phase_amt_sum += compset.NP
@@ -319,9 +302,6 @@ def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_v
 
             chemical_potentials[:] = result.chemical_potentials
             changed_phases=False
-            #print('changed_phases',composition_sets, removed_compsets, phase_records,
-             #                               grid, curr_idx, chemical_potentials, state_variable_values,
-              #                              1e-4, verbose)
             changed_phases = add_new_phases(composition_sets, removed_compsets, phase_records,
                                             grid, curr_idx, chemical_potentials, state_variable_values,
                                             1e-4, verbose)
@@ -332,13 +312,10 @@ def _solve_eq_at_conditions(properties, phase_records, grid, conds_keys, state_v
             result = solve_and_update(composition_sets, cur_conds, iter_solver)
             chemical_potentials[:] = result.chemical_potentials
         if not iter_solver.ignore_convergence:
-            #print('ignore_convergence_yes')
             converged = result.converged
-            #print('con_not',converged)
         else:
             converged = True
         if converged:
-            #print('converged_yes')
             if verbose:
                 print('Composition Sets', composition_sets)
             prop_MU_values[it.multi_index] = chemical_potentials
