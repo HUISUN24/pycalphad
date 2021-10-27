@@ -41,6 +41,7 @@ def _sample_phase_constitution(model, sampler, fixed_grid, pdens):
     ndarray of points
     """
     # Eliminate pure vacancy endmembers from the calculation
+    import itertools
     vacancy_indices = []
     for sublattice in model.constituents:
         subl_va_indices = [idx for idx, spec in enumerate(sorted(set(sublattice))) if spec.number_of_atoms == 0]
@@ -50,19 +51,50 @@ def _sample_phase_constitution(model, sampler, fixed_grid, pdens):
     sublattice_dof = [len(subl) for subl in model.constituents]
     # Add all endmembers to guarantee their presence
     points = endmember_matrix(sublattice_dof, vacancy_indices=vacancy_indices)
+    species_charge=[]
+    for sublattice in model.constituents:
+        for species in sorted(sublattice):
+            species_charge.append(species.charge)
+    species_charge=np.array(species_charge)
+    #species_charge=species_charge.reshape(species_charge.shape[0],1)
+    
+    Q=np.sum(points*species_charge,axis=1)
+    Q_p=[]
+    Q_0=[]
+    Q_n=[]
+    for q in range(len(Q)):
+        if Q[q]>0:
+            Q_p.append(q)
+        elif Q[q]==0:
+            Q_0.append(points[q,:])
+        else:
+            Q_n.append(q)
+    print('Q',Q_n,Q_p,Q_0)  
+    all_comb=itertools.product(Q_p,Q_n)
+    Q_value=np.abs(Q)
+    update_points=np.asarray(Q_0)
+    for comb in all_comb:
+        Q_sum=Q_value[comb[1]]+Q_value[comb[0]]
+        charge_endmember=(points[comb[0],:]*Q_value[comb[1]]+points[comb[1],:]*Q_value[comb[0]])/Q_sum
+        update_points=np.insert(update_points,0,values=charge_endmember,axis=0)
     if fixed_grid is True:
         # Sample along the edges of the endmembers
         # These constitution space edges are often the equilibrium points!
-        em_pairs = list(itertools.combinations(points, 2))
+        em_pairs = list(itertools.combinations(update_points, 2))
         lingrid = np.linspace(0, 1, pdens)
         extra_points = [first_em * lingrid[np.newaxis].T +
                         second_em * lingrid[::-1][np.newaxis].T
                         for first_em, second_em in em_pairs]
-        points = np.concatenate(list(itertools.chain([points], extra_points)))
-
+        points = np.concatenate(list(itertools.chain([update_points], extra_points)))
     # Sample composition space for more points
     if sum(sublattice_dof) > len(sublattice_dof):
-        points = np.concatenate((points, sampler(sublattice_dof, pdof=pdens)))
+        if len(Q_p)>0:
+            sample=sampler([len(update_points)], pdof=pdens)
+            points_new=sample.dot(update_points)
+            points = np.concatenate((points,points_new))
+        else:
+            points = np.concatenate((points, sampler(sublattice_dof, pdof=pdens)))
+        #Q=np.sum(points_new*species_charge,axis=1)
 
     # Filter out nan's that may have slipped in if we sampled too high a vacancy concentration
     # Issues with this appear to be platform-dependent
@@ -70,7 +102,6 @@ def _sample_phase_constitution(model, sampler, fixed_grid, pdens):
     # Ensure that points has the correct dimensions and dtype
     points = np.atleast_2d(np.asarray(points, dtype=np.float_))
     return points
-
 
 def _compute_phase_values(components, statevar_dict,
                           points, phase_record, output, maximum_internal_dof, broadcast=True,
@@ -358,6 +389,7 @@ def calculate(dbf, comps, phases, mode=None, output='GM', fake_points=False, bro
         phase_record = phase_records[phase_name]
         points = points_dict[phase_name]
         if points is None:
+            print('sample',point_sample)
             points = _sample_phase_constitution(mod, sampler_dict[phase_name] or point_sample,
                                                 fixedgrid_dict[phase_name], pdens_dict[phase_name])
         points = np.atleast_2d(points)
@@ -367,6 +399,7 @@ def calculate(dbf, comps, phases, mode=None, output='GM', fake_points=False, bro
           #      update_points.append(k)
         #print('update_points',update_points)
         fp = fake_points and (phase_name == sorted(active_phases)[0])
+        print('here')
         phase_ds = _compute_phase_values(nonvacant_components, str_statevar_dict,
                                          points, phase_record, output,
                                          maximum_internal_dof, broadcast=broadcast, parameters=parameters,

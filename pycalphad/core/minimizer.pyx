@@ -599,7 +599,6 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
     cdef int soln_index_offset = spec.free_chemical_potential_indices.shape[0]  # Chemical potentials handled after solving
     cdef double[::1] new_y, x
     cdef CompsetState csst
-    cdef double ALLOWED_NP = 1e-5
 
     # 1. Step in phase amounts
     # Determine largest allowable step size such that the smallest phase amount is zero
@@ -641,8 +640,9 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
         # We need real state variable bounds support
 
     # 3. Step in phase internal degrees of freedom
-    #print('compset',state.compsets[0].phase_record.__dict__)
-    #print('site',str(state.compsets[0].phase_record))
+    #print('compset',state.compsets)
+    print('site',np.asarray(state.free_stable_compset_indices))
+    #state.free_stable_compset_indices=[0,2]
     #print('dbf',phases)
     #print('len=',len(state.compsets))
     for idx in range(len(state.compsets)):
@@ -657,7 +657,7 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
                     charge_factor = True
             except:
                 pass;
-        print('idx',idx,np.asarray(state.free_stable_compset_indices))
+        #print('idx',idx,np.asarray(state.free_stable_compset_indices))
         #if idx not in state.free_stable_compset_indices:
          #   print('not')
         #if state.compsets[idx].NP < ALLOWED_NP:
@@ -674,7 +674,7 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
         #print('phase_matrix',np.asarray(csst.phase_matrix))
         if charge_factor:
             norm_valence=csst.phase_matrix[-1,0:csst.delta_y.shape[0]]
-        ##print('norm_valence',norm_valence,np.sum(x[3:]))
+            print('norm_valence',np.asarray(norm_valence,np.sum(x[3:])))
             Q=np.sum(np.multiply(x[3:],norm_valence))
         #print('result=',Q)
         # TODO: needs charge balance contribution

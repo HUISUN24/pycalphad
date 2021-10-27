@@ -98,7 +98,6 @@ def starting_point(conditions, state_variables, phase_records, grid):
         ds_vars.update({str(f_sv): (conds_as_strings, np.empty(grid_shape))})
 
     result = LightDataset(ds_vars, coords=coord_dict, attrs={'engine': 'pycalphad %s' % pycalphad_version})
-    print('result.intial',result.Phase)
     if global_min_enabled:
         result = lower_convex_hull(grid, state_variables, result)
     else:

@@ -403,7 +403,7 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 $ TYPE_DEFINITION ) GES A_P_D HALITE MAGNETIC  -3.0    2.80000E-01 !
  PHASE HALITE:I %  2 1   1 !
-    CONSTITUENT HALITE:I :AL+3,FE+2,FE+3,VA : O-2 :  !
+    CONSTITUENT HALITE:I :AL+3,FE+2,FE+3,VA : O-2:  !
 
    PARAMETER G(HALITE,VA:O-2;0)  298.15  +ZERO;   6000.0   N REF3 !	
 	
