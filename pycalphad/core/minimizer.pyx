@@ -641,9 +641,10 @@ cpdef advance_state(SystemSpecification spec, SystemState state, double[::1] equ
         # TODO: Use better dof storage
         #print('compset',idx,state.phase_amt[idx],state.compsets[idx],np.asarray(state.dof[idx]).tolist())
         charge_factor = False
-        for k in state.compsets[idx].phase_record.components:
+        #print('component',state.compsets[idx].phase_record.variables,state.compsets[idx].phase_record.nonvacant_elements,state.compsets[idx].phase_record.components)
+        for k in state.compsets[idx].phase_record.variables:
             try:
-                if k.charge:
+                if k.species.charge:
                     charge_factor = True
             except:
                 pass;
@@ -904,4 +905,5 @@ cpdef find_solution(list compsets, int num_statevars, int num_components,
     for cs_dof in state.dof[1:]:
         x = np.r_[x, cs_dof[num_statevars:]]
     x = np.r_[x, phase_amt]
+    #print('re',converged, np.asarray(x))
     return converged, x, np.array(state.chemical_potentials)
